@@ -5,16 +5,25 @@
     {
       title: 'Dark Emperador Floating Sink',
       slug: 'dark-emperador-floating-sink',
-      cover: '/public/projects/dark-emperador-floating-sink/dark-emperador-floating-sink.png',
-      collage: '/public/projects/dark-emperador-floating-sink/dark-emperador-floating-sink.png',
-      galleryImages: [],
-      detailImages: [],
+      cover: '/public/projects/dark-emperador-floating-sink/cover.png',
+      coverImage: '/public/projects/dark-emperador-floating-sink/cover.png',
+      collage: '/public/projects/dark-emperador-floating-sink/collage.png',
+      galleryImages: [
+        '/public/projects/dark-emperador-floating-sink/gallery/gallery-1.png',
+      ],
+      detailImages: [
+        '/public/projects/dark-emperador-floating-sink/details/details-1.png',
+        '/public/projects/dark-emperador-floating-sink/details/details-2.png',
+        '/public/projects/dark-emperador-floating-sink/details/details-3.png',
+      ],
+      alt: 'Dark Emperador floating porcelain sink',
       categories: ['bespoke-sinks', 'bathrooms', 'premium-tiling'],
       featured: true,
-      material: 'Dark marble-effect porcelain',
-      scope: 'Floating bespoke sink with integrated bathroom composition',
-      descriptor: 'Dark stone surfaces with a quiet floating sink statement',
-      summary: 'A dramatic dark-toned bathroom composition built around a custom floating sink, precise detailing, and integrated lighting.',
+      material: 'Deep marble-effect porcelain',
+      category: 'Bespoke Floating Sink',
+      scope: 'Bespoke Floating Sink',
+      descriptor: 'Bespoke Floating Sink',
+      summary: 'A dramatic floating sink design with deep marble tones, strong veining, and a sculptural luxury presence.',
     },
     {
       title: 'Statuario Linear Sink',
@@ -45,15 +54,27 @@
     {
       title: 'Soft Stone Double Vanity',
       slug: 'soft-stone-double-vanity',
-      cover: '/public/projects/soft-stone-double-vanity/soft-stone-double-vanity.png',
-      collage: '/public/projects/soft-stone-double-vanity/soft-stone-double-vanity.png',
-      galleryImages: [],
-      detailImages: [],
+      cover: '/public/projects/soft-stone-double-vanity/cover.png',
+      coverImage: '/public/projects/soft-stone-double-vanity/cover.png',
+      collage: '/public/projects/soft-stone-double-vanity/collage.png',
+      galleryImages: [
+        '/public/projects/soft-stone-double-vanity/gallery/gallery-01.png',
+        '/public/projects/soft-stone-double-vanity/gallery/gallery-1.png',
+        '/public/projects/soft-stone-double-vanity/gallery/gallery-2.png',
+        '/public/projects/soft-stone-double-vanity/gallery/gallery-3.png',
+        '/public/projects/soft-stone-double-vanity/gallery/gallery-4.png',
+        '/public/projects/soft-stone-double-vanity/gallery/gallery-5.png',
+      ],
+      detailImages: [
+        '/public/projects/soft-stone-double-vanity/details/detail-1.png',
+      ],
+      alt: 'Soft Stone Double Vanity bespoke porcelain sink',
       categories: ['bathrooms', 'vanity-details'],
       material: 'Soft stone-effect porcelain',
-      scope: 'Double vanity with integrated storage and sink detailing',
-      descriptor: 'Soft stone textures with a restrained contemporary finish',
-      summary: 'A calm neutral-toned double vanity composition that highlights clean joinery, storage integration, and precise finish quality.',
+      category: 'Bespoke Porcelain Vanity',
+      scope: 'Bespoke Porcelain Vanity',
+      descriptor: 'Bespoke Porcelain Vanity',
+      summary: 'A calm double vanity crafted with soft stone tones, integrated sinks, and minimal architectural detailing.',
     },
     {
       title: 'Beige Stone Floating Vanity',
@@ -178,16 +199,27 @@
     {
       title: 'Calacatta Gold Bespoke Bathroom',
       slug: 'calacatta-gold-bespoke-bathroom',
-      cover: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-bespoke-bathroom.png',
-      collage: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-bespoke-bathroom.png',
-      galleryImages: [],
-      detailImages: [],
+      cover: '/public/projects/calacatta-gold-bespoke-bathroom/cover.png',
+      coverImage: '/public/projects/calacatta-gold-bespoke-bathroom/cover.png',
+      collage: '/public/projects/calacatta-gold-bespoke-bathroom/collage.png',
+      galleryImages: [
+        '/public/projects/calacatta-gold-bespoke-bathroom/gallery/gallery-01.png',
+        '/public/projects/calacatta-gold-bespoke-bathroom/gallery/gallery-02.png',
+      ],
+      detailImages: [
+        '/public/projects/calacatta-gold-bespoke-bathroom/details/details-1.jpg',
+        '/public/projects/calacatta-gold-bespoke-bathroom/details/details-2.jpg',
+        '/public/projects/calacatta-gold-bespoke-bathroom/details/details-3.jpg',
+        '/public/projects/calacatta-gold-bespoke-bathroom/details/details-4.png',
+      ],
+      alt: 'Calacatta Gold bespoke porcelain bathroom',
       categories: ['bathrooms', 'bespoke-sinks', 'premium-tiling'],
       featured: true,
       material: 'Calacatta Gold porcelain',
-      scope: 'Bespoke bathroom composition with floating sink and brass fixtures',
-      descriptor: 'Warm-veined porcelain with bespoke floating detailing',
-      summary: 'A premium bathroom composition built around warm-veined marble-effect porcelain, wall-mounted brass fixtures, and a bespoke floating sink.',
+      category: 'Bespoke Porcelain Bathroom',
+      scope: 'Bespoke Porcelain Bathroom',
+      descriptor: 'Bespoke Porcelain Bathroom',
+      summary: 'A refined bathroom concept using Calacatta Gold porcelain, elegant veining, and seamless premium finishes.',
     },
   ];
 
@@ -195,15 +227,14 @@
     portfolioProjects.map((project) => [project.slug, project])
   );
   const homepageSelectedWorkSlugs = [
+    'soft-stone-double-vanity',
     'calacatta-gold-bespoke-bathroom',
-    'mauve-stone-statement-bathroom',
-    'verde-marble-feature-bathroom',
+    'dark-emperador-floating-sink',
   ];
   const projectsFeaturedSlugs = [
+    'soft-stone-double-vanity',
     'calacatta-gold-bespoke-bathroom',
-    'mauve-stone-statement-bathroom',
-    'verde-marble-feature-bathroom',
-    'graphite-spa-bathroom',
+    'dark-emperador-floating-sink',
   ];
   const portfolioCategories = [
     'bespoke-sinks',
