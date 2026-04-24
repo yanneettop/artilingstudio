@@ -7,6 +7,21 @@
   'use strict';
 
   /* ──────────────────────────────────────────────
+     0. Scroll progress bar
+  ─────────────────────────────────────────────── */
+  const progressBar = document.querySelector('.scroll-progress');
+  if (progressBar) {
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+      progressBar.style.transform = `scaleX(${progress})`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  /* ──────────────────────────────────────────────
      1. Header: solid state on scroll
   ─────────────────────────────────────────────── */
   const header = document.querySelector('[data-header]');
@@ -101,7 +116,7 @@
           <div>
             <h3><button class="selected-work__title-action" type="button" data-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
             <p>${escapeHtml(project.category || project.descriptor)}</p>
-            <button class="selected-work__view" type="button" data-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
+            <button class="selected-work__view" type="button" data-lightbox-open="${project.slug}">Open gallery <span aria-hidden="true">→</span></button>
           </div>
         </div>
       </article>
@@ -380,5 +395,47 @@
 
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ──────────────────────────────────────────────
+     7. Custom dot cursor (desktop / fine pointer only)
+  ─────────────────────────────────────────────── */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+    document.body.classList.add('has-custom-cursor');
+
+    let cx = -200, cy = -200;
+
+    const updateCursor = () => {
+      cursor.style.left = cx + 'px';
+      cursor.style.top  = cy + 'px';
+    };
+
+    document.addEventListener('mousemove', (e) => {
+      cx = e.clientX;
+      cy = e.clientY;
+      updateCursor();
+      if (!cursor.classList.contains('is-ready')) {
+        cursor.classList.add('is-ready');
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursor.classList.remove('is-ready');
+    });
+
+    document.addEventListener('mouseover', (e) => {
+      const isBtn    = e.target.closest('.btn, button:not(.view-cursor)');
+      const isImage  = e.target.closest('.selected-work__media, .project-feature__media, .project-card__media, .sinks__strip figure, .sinks__visual');
+      const isLink   = e.target.closest('a, [role="button"]');
+
+      cursor.classList.remove('is-hovering-btn', 'is-hovering-image', 'is-hovering-link');
+
+      if (isBtn)        cursor.classList.add('is-hovering-btn');
+      else if (isImage) cursor.classList.add('is-hovering-image');
+      else if (isLink)  cursor.classList.add('is-hovering-link');
+    });
+  }
 })();
 

@@ -19,10 +19,11 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/css/styles.css?v=20260424-elegant-2" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=20260424-cards-soften" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230F0F10'/><text x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='18' fill='%23F6F4EF' font-style='italic'>A</text></svg>" />
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <!-- ──────────────────────────────────────────────────────────────
          HEADER
     ─────────────────────────────────────────────────────────────── -->
@@ -142,9 +143,11 @@
                 </defs>
                 <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.25" />
                 <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="0.3" opacity="0.15" />
-                <text font-family="Inter, sans-serif" font-size="8.2" letter-spacing="3.2" fill="currentColor" opacity="0.7">
-                  <textPath href="#hero-circle">BESPOKE · PORCELAIN · LONDON · SINCE 2000 · </textPath>
-                </text>
+                <g class="badge-ring">
+                  <text font-family="Inter, sans-serif" font-size="8.2" letter-spacing="3.2" fill="currentColor" opacity="0.7">
+                    <textPath href="#hero-circle">BESPOKE · PORCELAIN · LONDON · SINCE 2000 · </textPath>
+                  </text>
+                </g>
                 <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3" />
                 <text x="50" y="47" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="15" fill="currentColor" opacity="0.9">AS</text>
                 <text x="50" y="57" text-anchor="middle" font-family="Inter, sans-serif" font-size="5.5" letter-spacing="2.5" fill="currentColor" opacity="0.45">STUDIO</text>
@@ -187,6 +190,7 @@
       ─────────────────────────────────────────────────────────────── -->
       <section id="sinks" class="sinks">
         <div class="container">
+          <div class="section-rule" data-reveal><span>01 — Bespoke Sinks</span></div>
           <header class="section-head sinks__head" data-reveal>
             <p class="eyebrow">Signature Service</p>
             <h2 class="section-title">
@@ -282,6 +286,7 @@
       ─────────────────────────────────────────────────────────────── -->
       <section id="services" class="services">
         <div class="container">
+          <div class="section-rule" data-reveal><span>02 — Surfaces &amp; Finishes</span></div>
           <header class="section-head section-head--split" data-reveal>
             <div>
               <p class="eyebrow">Surfaces &amp; Finishes</p>
@@ -354,6 +359,7 @@
       ─────────────────────────────────────────────────────────────── -->
       <section id="portfolio" class="portfolio">
         <div class="container">
+          <div class="section-rule" data-reveal><span>03 — Selected Works</span></div>
           <header class="section-head section-head--split portfolio__intro" data-reveal>
             <div>
               <p class="eyebrow">Selected Works</p>
@@ -434,6 +440,7 @@
       ─────────────────────────────────────────────────────────────── -->
       <section class="process">
         <div class="container">
+          <div class="section-rule" data-reveal><span>04 — The Process</span></div>
           <header class="section-head section-head--centered" data-reveal>
             <p class="eyebrow">The Process</p>
             <h2 class="section-title"><em>Four</em> calm steps.</h2>
@@ -586,7 +593,7 @@
     </footer>
 
     <script src="./assets/js/portfolio-data.js?v=20260424-lightbox-gallery"></script>
-    <script src="./assets/js/main.js?v=20260424-landing-tonal-1"></script>
+    <script src="./assets/js/main.js?v=20260424-portfolio-cards"></script>
   </body>
 </html>
 
