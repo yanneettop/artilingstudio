@@ -396,46 +396,5 @@
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ──────────────────────────────────────────────
-     7. Custom dot cursor (desktop / fine pointer only)
-  ─────────────────────────────────────────────── */
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
-    document.body.classList.add('has-custom-cursor');
-
-    let cx = -200, cy = -200;
-
-    const updateCursor = () => {
-      cursor.style.left = cx + 'px';
-      cursor.style.top  = cy + 'px';
-    };
-
-    document.addEventListener('mousemove', (e) => {
-      cx = e.clientX;
-      cy = e.clientY;
-      updateCursor();
-      if (!cursor.classList.contains('is-ready')) {
-        cursor.classList.add('is-ready');
-      }
-    });
-
-    document.addEventListener('mouseleave', () => {
-      cursor.classList.remove('is-ready');
-    });
-
-    document.addEventListener('mouseover', (e) => {
-      const isBtn    = e.target.closest('.btn, button:not(.view-cursor)');
-      const isImage  = e.target.closest('.selected-work__media, .project-feature__media, .project-card__media, .sinks__strip figure, .sinks__visual');
-      const isLink   = e.target.closest('a, [role="button"]');
-
-      cursor.classList.remove('is-hovering-btn', 'is-hovering-image', 'is-hovering-link');
-
-      if (isBtn)        cursor.classList.add('is-hovering-btn');
-      else if (isImage) cursor.classList.add('is-hovering-image');
-      else if (isLink)  cursor.classList.add('is-hovering-link');
-    });
-  }
 })();
 
