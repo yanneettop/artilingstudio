@@ -281,7 +281,7 @@
     // } catch (err) {
     //   submitBtn.disabled = false;
     //   submitBtn.textContent = 'Send request →';
-    //   alert('Sorry — something went wrong. Please email studio@artilingstudio.co.uk directly.');
+    //   alert('Sorry — something went wrong. Please email artlingstudio@gmail.com directly.');
     //   return;
     // }
 
