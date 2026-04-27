@@ -6304,6 +6304,12 @@ body {
   .projects-support .project-card__caption {
     grid-template-columns: 1fr;
   }
+
+  /* On mobile, caption stacks below image — restore top spacing */
+  .projects-featured .project-feature__caption {
+    padding-top: clamp(14px, 4vw, 22px);
+    border-top: 1px solid rgba(15, 15, 16, 0.09);
+  }
 }
 
 /* Projects page material atmosphere */
