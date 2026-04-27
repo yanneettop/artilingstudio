@@ -6300,13 +6300,15 @@ body {
     aspect-ratio: 16 / 10;
   }
 
+  /* Must match the high-specificity even-child rule to override the 2-col grid. */
   .projects-featured .project-feature__caption,
+  .projects-featured .project-feature:nth-child(even) .project-feature__caption,
   .projects-support .project-card__caption {
     grid-template-columns: 1fr;
+    align-items: start;
   }
 
-  /* On mobile, caption stacks below image — restore top spacing.
-     Must match the high-specificity even-child rule to override it. */
+  /* On mobile, caption stacks below image — restore top spacing. */
   .projects-featured .project-feature__caption,
   .projects-featured .project-feature:nth-child(even) .project-feature__caption {
     padding-top: clamp(14px, 4vw, 22px);
