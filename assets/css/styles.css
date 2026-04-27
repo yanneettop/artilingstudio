@@ -1775,6 +1775,41 @@ section {
   gap: clamp(64px, 9vw, 132px);
 }
 
+.projects-detail-intro {
+  max-width: 760px;
+  padding-top: clamp(14px, 3vw, 36px);
+  border-top: 1px solid rgba(15, 15, 16, 0.12);
+}
+
+.projects-detail-intro .section-title {
+  max-width: 15ch;
+}
+
+.projects-detail-intro p:not(.eyebrow),
+.projects-note {
+  max-width: 62ch;
+  color: rgba(43, 43, 43, 0.72);
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.72;
+}
+
+.projects-note {
+  max-width: 760px;
+  margin: clamp(-28px, -2vw, -12px) 0 0;
+  padding-top: clamp(22px, 3vw, 34px);
+  border-top: 1px solid rgba(15, 15, 16, 0.1);
+  font-size: clamp(14px, 1vw, 16px);
+}
+
+.projects-support {
+  padding-top: clamp(20px, 3.6vw, 52px);
+}
+
+.projects-note {
+  color: rgba(43, 43, 43, 0.8);
+  font-size: clamp(15px, 1.08vw, 17px);
+}
+
 .projects-featured {
   display: grid;
   gap: clamp(70px, 10vw, 150px);
@@ -1877,7 +1912,7 @@ section {
 }
 
 .project-card .project-card__index {
-  display: none;
+  display: block;
 }
 
 .projects-support {
@@ -1977,6 +2012,7 @@ section {
     justify-content: flex-end;
   }
 
+  /* Featured: default secondary layout (image | caption) */
   .project-feature {
     grid-template-columns: minmax(0, 1fr) minmax(270px, 0.34fr);
   }
@@ -1998,25 +2034,58 @@ section {
     grid-row: 1;
   }
 
-  .project-feature:nth-child(2) .project-feature__media {
-    aspect-ratio: 1.78 / 1;
+  /* Lead: full-width stacked layout */
+  .project-feature--lead {
+    grid-template-columns: 1fr;
   }
 
-  .project-feature:nth-child(3) .project-feature__media {
-    aspect-ratio: 1.44 / 1;
+  .project-feature--lead .project-feature__media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-feature--lead .project-feature__caption {
+    border-top: 1px solid var(--line);
+    padding: clamp(22px, 2.5vw, 36px) 0 0;
+    padding-bottom: 0;
+  }
+
+  .project-feature--lead .project-feature__caption h3 {
+    font-size: clamp(40px, 5vw, 68px);
+  }
+
+  /* Pair: 2-col grid, portrait images, always stacked */
+  .projects-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects-pair .project-feature,
+  .projects-pair .project-feature:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-pair .project-feature .project-feature__media,
+  .projects-pair .project-feature:nth-child(even) .project-feature__media {
+    grid-column: 1;
+    grid-row: 1;
+    aspect-ratio: 4 / 5;
+  }
+
+  .projects-pair .project-feature:nth-child(even) .project-feature__caption {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .projects-pair .project-feature .project-feature__caption {
+    padding-bottom: 0;
   }
 
   .projects-support {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
   }
 
-  .project-card:nth-child(3n + 2) {
-    margin-top: clamp(34px, 5vw, 72px);
-  }
-
-  .project-card:nth-child(3n) {
-    margin-top: clamp(12px, 3vw, 38px);
+  .project-card:nth-child(even) {
+    margin-top: clamp(40px, 6vw, 80px);
   }
 
   .projects-final__panel {
@@ -2032,15 +2101,31 @@ section {
   }
 
   .projects-featured {
-    gap: 58px;
+    gap: 52px;
+  }
+
+  .projects-pair {
+    gap: 48px;
   }
 
   .project-feature__media {
     aspect-ratio: 4 / 3;
   }
 
+  .project-feature--lead .project-feature__media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .projects-pair .project-feature .project-feature__media {
+    aspect-ratio: 4 / 3;
+  }
+
   .projects-support {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card:nth-child(even) {
+    margin-top: clamp(28px, 4vw, 48px);
   }
 }
 
@@ -2056,9 +2141,9 @@ section {
 
   .project-feature__media,
   .project-card__media,
-  .project-card--2 .project-card__media,
-  .project-card--3 .project-card__media {
-    aspect-ratio: 4 / 4.5;
+  .project-card--1 .project-card__media,
+  .project-card--2 .project-card__media {
+    aspect-ratio: 4 / 4.2;
   }
 
   .project-feature__caption,
@@ -2070,9 +2155,125 @@ section {
   .projects-support {
     grid-template-columns: 1fr;
   }
+
+  .project-card:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .projects-pair {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* Editorial portfolio refinements */
+/* ── Projects page editorial redesign ────────────────────────── */
+
+/* Featured band — subtle warm stone panel */
+.projects-featured-band {
+  margin-top: clamp(18px, 2.5vw, 36px);
+  padding: clamp(44px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
+  background: var(--bone-deep);
+  border-top: 1px solid rgba(185, 178, 165, 0.24);
+  border-bottom: 1px solid rgba(185, 178, 165, 0.24);
+}
+
+/* Lead project caption treatment */
+.project-feature--lead .project-feature__caption {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(18px, 2.2vw, 30px);
+}
+
+.project-feature--lead .project-feature__caption h3 {
+  font-size: clamp(34px, 4vw, 58px);
+}
+
+/* Editorial description under title */
+.project-feature__editorial-desc {
+  margin-top: 14px;
+  color: var(--stone);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.68;
+  max-width: 50ch;
+}
+
+/* Subtle category label below editorial desc */
+.project-feature__label-line {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0.75;
+}
+
+/* Override <p> margin reset for these elements */
+.project-feature__editorial-desc,
+.project-feature__label-line {
+  margin-bottom: 0;
+}
+
+/* Secondary projects pair */
+.projects-pair {
+  margin-top: clamp(52px, 7.5vw, 108px);
+  display: grid;
+  gap: clamp(28px, 4vw, 52px);
+}
+
+/* Secondary items: stacked on mobile */
+.projects-pair .project-feature {
+  grid-template-columns: 1fr;
+}
+
+.projects-pair .project-feature .project-feature__media {
+  aspect-ratio: 4 / 5;
+}
+
+/* Detail card descriptor line */
+.project-card__desc {
+  margin-top: 6px;
+  font-size: clamp(12px, 0.9vw, 14px);
+  color: var(--stone);
+  line-height: 1.55;
+  max-width: 34ch;
+  opacity: 0.85;
+}
+
+/* Details section */
+.projects-details {
+  padding: clamp(56px, 8vw, 112px) 0 clamp(52px, 7vw, 100px);
+}
+
+.projects-details__header {
+  margin-bottom: clamp(36px, 5vw, 60px);
+  padding-top: clamp(28px, 3.5vw, 44px);
+  border-top: 1px solid rgba(15, 15, 16, 0.1);
+}
+
+.projects-details__header .section-title {
+  margin-top: 12px;
+  max-width: 18ch;
+}
+
+/* "More projects" italic note */
+.projects-note--italic {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: clamp(18px, 2.5vw, 30px);
+  border-top: 1px solid var(--line);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.1vw, 18px);
+  color: var(--stone);
+  letter-spacing: 0.01em;
+}
+
+/* Normalize detail card image ratio across all variants */
+.project-card__media,
+.project-card--1 .project-card__media,
+.project-card--2 .project-card__media {
+  aspect-ratio: 4 / 3.2;
+}
+
+/* ── Editorial portfolio refinements */
 .portfolio {
   position: relative;
   overflow: hidden;
@@ -2447,6 +2648,33 @@ section {
 .project-feature--soft-stone-double-vanity img,
 .project-card--soft-stone-double-vanity img {
   object-position: center center;
+}
+
+.projects-support .project-card,
+.projects-support .project-card:nth-child(3n + 2),
+.projects-support .project-card:nth-child(3n),
+.projects-support .project-card:nth-child(6n + 2),
+.projects-support .project-card:nth-child(6n + 3),
+.projects-support .project-card:nth-child(6n + 5),
+.projects-support .project-card:nth-child(6n + 6),
+.projects-support .project-card:nth-child(even) {
+  margin-top: 0;
+}
+
+.projects-support .project-card .project-card__media,
+.projects-support .project-card--2 .project-card__media,
+.projects-support .project-card--3 .project-card__media,
+.projects-support .project-card:nth-child(6n + 1) .project-card__media,
+.projects-support .project-card:nth-child(6n + 2) .project-card__media,
+.projects-support .project-card:nth-child(6n + 3) .project-card__media,
+.projects-support .project-card:nth-child(6n + 4) .project-card__media,
+.projects-support .project-card:nth-child(6n + 5) .project-card__media,
+.projects-support .project-card:nth-child(6n + 6) .project-card__media {
+  aspect-ratio: 16 / 10;
+}
+
+.projects-support .project-card__media img {
+  object-fit: cover;
 }
 
 /* Projects page tonal refinement */

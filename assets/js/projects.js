@@ -15,7 +15,37 @@
   const featuredProjects = portfolio
     ? portfolio.getBySlugs(portfolio.projectsFeaturedSlugs)
     : [];
-  const supportProjects = projects.filter((project) => !featuredRank.has(project.slug));
+  const detailStudySlugs = [
+    'statuario-linear-sink',
+    'calacatta-gold-led-vanity',
+    'beige-stone-floating-vanity',
+    'framed-mirror-double-vanity',
+    'taupe-stone-mono-sink',
+    'backlit-marble-double-vanity',
+  ];
+  const detailStudyLabels = {
+    'statuario-linear-sink': 'Porcelain vanity detail',
+    'calacatta-gold-led-vanity': 'Marble surface study',
+    'beige-stone-floating-vanity': 'Floating vanity detail',
+    'framed-mirror-double-vanity': 'Backlit bathroom composition',
+    'taupe-stone-mono-sink': 'Mitred porcelain detail',
+    'backlit-marble-double-vanity': 'Bespoke sink concept',
+  };
+  const detailStudyTitles = {
+    'statuario-linear-sink': 'Neutral Linear Sink',
+    'taupe-stone-mono-sink': 'Taupe Stone Mitred Sink',
+  };
+
+  /* Editorial descriptions for featured projects */
+  const editorialDescriptions = {
+    'soft-stone-double-vanity': 'Wall-to-wall porcelain vanity with integrated sink proportions and calm stone texture.',
+    'calacatta-gold-bespoke-bathroom': 'Bookmatched marble-effect porcelain, LED mirror detailing, and seamless vanity composition.',
+    'dark-emperador-floating-sink': 'Dramatic dark porcelain surface with floating sink lines and warm backlit mirror detail.',
+  };
+
+  const supportProjects = portfolio
+    ? portfolio.getBySlugs(detailStudySlugs)
+    : projects.filter((project) => !featuredRank.has(project.slug)).slice(0, 6);
 
   const matchesFilter = (project, filter) =>
     filter === 'all' || (project.categories || []).includes(filter);
@@ -47,38 +77,65 @@
   };
   let hasRenderedOnce = false;
 
-  const renderFeaturedProject = (project, index) => `
-    <article class="project-feature project-feature--${index + 1} project-feature--${project.slug}" data-reveal>
-      <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
-        <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
-      </button>
-      <div class="project-feature__caption">
-        <span class="project-card__index">0${index + 1}</span>
-        <div>
-          <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
-          <p>${escapeHtml(project.category || project.descriptor)}</p>
-          <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
-        </div>
-      </div>
-    </article>
-  `;
+  /* ── Featured project renderer ── */
+  const renderFeaturedProject = (project, index) => {
+    const isLead = index === 0;
+    const indexStr = String(index + 1).padStart(2, '0');
+    const editorialDesc = editorialDescriptions[project.slug] || '';
+    const descHtml = editorialDesc
+      ? `<p class="project-feature__editorial-desc">${escapeHtml(editorialDesc)}</p>`
+      : '';
+    const labelHtml = isLead
+      ? `<p class="project-feature__label-line">${escapeHtml(project.category || project.descriptor || '')}</p>`
+      : '';
 
-  const renderSupportProject = (project, index, offset = featuredProjects.length) => `
-    <article class="project-card project-card--${(index % 3) + 1} project-card--${project.slug}" data-reveal>
-      <button class="project-card__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
-        <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
-      </button>
-      <div class="project-card__caption">
-        <span class="project-card__index">${String(index + offset + 1).padStart(2, '0')}</span>
-        <div>
-          <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
-          <p>${escapeHtml(project.category || project.descriptor)}</p>
-          <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
+    return `
+      <article class="project-feature project-feature--${index + 1} ${isLead ? 'project-feature--lead' : 'project-feature--secondary'} project-feature--${project.slug}" data-reveal>
+        <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
+          <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
+        </button>
+        <div class="project-feature__caption">
+          <span class="project-card__index">${indexStr}&thinsp;/</span>
+          <div>
+            <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
+            ${descHtml}
+            ${labelHtml}
+            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
+          </div>
         </div>
-      </div>
-    </article>
-  `;
+      </article>
+    `;
+  };
 
+  /* ── Support / detail study renderer ── */
+  const renderSupportProject = (project, index, offset = featuredProjects.length) => {
+    const indexStr = String(index + offset + 1).padStart(2, '0');
+    const label = escapeHtml(detailStudyLabels[project.slug] || project.category || project.descriptor || '');
+    const title = escapeHtml(detailStudyTitles[project.slug] || project.title);
+    const descriptor = escapeHtml(project.descriptor || '');
+    const descHtml = descriptor && descriptor !== label
+      ? `<p class="project-card__desc">${descriptor}</p>`
+      : '';
+
+    return `
+      <article class="project-card project-card--${(index % 2) + 1} project-card--${project.slug}" data-reveal>
+        <button class="project-card__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
+          <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
+        </button>
+        <div class="project-card__caption">
+          <span class="project-card__index">${indexStr}&thinsp;/</span>
+          <div>
+            <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${title}</button></h3>
+            <p>${label}</p>
+            ${descHtml}
+            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
+          </div>
+        </div>
+      </article>
+    `;
+  };
+
+  /* ── Lightbox ── */
   const createProjectLightbox = () => {
     const lightbox = document.createElement('aside');
     lightbox.className = 'portfolio-lightbox';
@@ -226,13 +283,20 @@
     });
   };
 
+  /* ── Render ── */
   const renderProjects = (filter = 'all') => {
     const visibleFeatured = featuredProjects.filter((project) => matchesFilter(project, filter));
     const visibleSupport = supportProjects.filter((project) => matchesFilter(project, filter));
 
-    featuredRoot.innerHTML = visibleFeatured
-      .map((project, index) => renderFeaturedProject(project, index))
-      .join('');
+    /* Lead project + secondary pair */
+    const [lead, ...secondary] = visibleFeatured;
+    let featuredHtml = '';
+    if (lead) featuredHtml += renderFeaturedProject(lead, 0);
+    if (secondary.length) {
+      featuredHtml += `<div class="projects-pair">${secondary.map((project, i) => renderFeaturedProject(project, i + 1)).join('')}</div>`;
+    }
+    featuredRoot.innerHTML = featuredHtml;
+
     supportRoot.innerHTML = visibleSupport
       .map((project, index) => renderSupportProject(project, index, visibleFeatured.length))
       .join('');
@@ -243,7 +307,7 @@
     if (hasRenderedOnce) {
       requestAnimationFrame(() => {
         document
-          .querySelectorAll('.projects-results [data-reveal]')
+          .querySelectorAll('.projects-results [data-reveal], .projects-featured [data-reveal], .projects-support [data-reveal]')
           .forEach((element) => element.classList.add('is-inview'));
       });
     }
