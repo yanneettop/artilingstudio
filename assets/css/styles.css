@@ -2053,6 +2053,15 @@ section {
     font-size: clamp(40px, 5vw, 68px);
   }
 
+  /* Specific aspect ratios for 2nd and 3rd featured items */
+  .project-feature:nth-child(2) .project-feature__media {
+    aspect-ratio: 1.78 / 1;
+  }
+
+  .project-feature:nth-child(3) .project-feature__media {
+    aspect-ratio: 1.44 / 1;
+  }
+
   /* Pair: 2-col grid, portrait images, always stacked */
   .projects-pair {
     grid-template-columns: repeat(2, minmax(0, 1fr));

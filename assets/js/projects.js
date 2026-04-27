@@ -78,34 +78,21 @@
   let hasRenderedOnce = false;
 
   /* ── Featured project renderer ── */
-  const renderFeaturedProject = (project, index) => {
-    const isLead = index === 0;
-    const indexStr = String(index + 1).padStart(2, '0');
-    const editorialDesc = editorialDescriptions[project.slug] || '';
-    const descHtml = editorialDesc
-      ? `<p class="project-feature__editorial-desc">${escapeHtml(editorialDesc)}</p>`
-      : '';
-    const labelHtml = isLead
-      ? `<p class="project-feature__label-line">${escapeHtml(project.category || project.descriptor || '')}</p>`
-      : '';
-
-    return `
-      <article class="project-feature project-feature--${index + 1} ${isLead ? 'project-feature--lead' : 'project-feature--secondary'} project-feature--${project.slug}" data-reveal>
-        <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
-          <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
-        </button>
-        <div class="project-feature__caption">
-          <span class="project-card__index">${indexStr}&thinsp;/</span>
-          <div>
-            <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
-            ${descHtml}
-            ${labelHtml}
-            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
-          </div>
+  const renderFeaturedProject = (project, index) => `
+    <article class="project-feature project-feature--${index + 1} project-feature--${project.slug}" data-reveal>
+      <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
+        <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
+      </button>
+      <div class="project-feature__caption">
+        <span class="project-card__index">0${index + 1}</span>
+        <div>
+          <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
+          <p>${escapeHtml(project.category || project.descriptor)}</p>
+          <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
         </div>
-      </article>
-    `;
-  };
+      </div>
+    </article>
+  `;
 
   /* ── Support / detail study renderer ── */
   const renderSupportProject = (project, index, offset = featuredProjects.length) => {
@@ -288,14 +275,9 @@
     const visibleFeatured = featuredProjects.filter((project) => matchesFilter(project, filter));
     const visibleSupport = supportProjects.filter((project) => matchesFilter(project, filter));
 
-    /* Lead project + secondary pair */
-    const [lead, ...secondary] = visibleFeatured;
-    let featuredHtml = '';
-    if (lead) featuredHtml += renderFeaturedProject(lead, 0);
-    if (secondary.length) {
-      featuredHtml += `<div class="projects-pair">${secondary.map((project, i) => renderFeaturedProject(project, i + 1)).join('')}</div>`;
-    }
-    featuredRoot.innerHTML = featuredHtml;
+    featuredRoot.innerHTML = visibleFeatured
+      .map((project, index) => renderFeaturedProject(project, index))
+      .join('');
 
     supportRoot.innerHTML = visibleSupport
       .map((project, index) => renderSupportProject(project, index, visibleFeatured.length))
