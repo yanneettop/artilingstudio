@@ -266,33 +266,37 @@
     submitBtn.textContent = 'Sending…';
 
     const formData = new FormData(form);
+
+    // Web3Forms configuration
+    formData.append('access_key', 'f0ae1e03-05a1-4ad8-8fb6-e5fad0fffce5');
+    formData.append('subject', 'New Quote Request — Artiling Studio');
+    formData.append('from_name', 'Artiling Studio Quote Form');
+
+    // Attach uploaded photos
     uploadedFiles.forEach((file, i) => {
       formData.append(`photo-${i + 1}`, file, file.name);
     });
 
-    // ── Wire up to your form handler here ──
-    // Recommended: Formspree (https://formspree.io) or Web3Forms.
-    // Replace the endpoint below and uncomment the fetch call.
-    //
-    // const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-    // try {
-    //   const res = await fetch(ENDPOINT, { method: 'POST', body: formData, headers: { Accept: 'application/json' } });
-    //   if (!res.ok) throw new Error('Network error');
-    // } catch (err) {
-    //   submitBtn.disabled = false;
-    //   submitBtn.textContent = 'Send request →';
-    //   alert('Sorry — something went wrong. Please email artlingstudio@gmail.com directly.');
-    //   return;
-    // }
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
 
-    // For now: log payload locally and show success state.
-    if (window.console) {
+      const json = await res.json();
+
+      if (!res.ok || !json.success) {
+        throw new Error(json.message || 'Network error');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send request →';
       // eslint-disable-next-line no-console
-      console.info('Quote submission (no endpoint configured):', Object.fromEntries(formData.entries()));
+      console.error('Quote submission error:', err);
+      alert('Sorry — something went wrong. Please email artlingstudio@gmail.com directly.');
+      return;
     }
-
-    // Brief wait so the button state feels considered
-    await new Promise((r) => setTimeout(r, 500));
 
     if (wrapper) wrapper.hidden = true;
     if (success) {
