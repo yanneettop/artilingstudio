@@ -294,7 +294,7 @@
       submitBtn.textContent = 'Send request →';
       // eslint-disable-next-line no-console
       console.error('Quote submission error:', err);
-      alert('Sorry — something went wrong. Please email artlingstudio@gmail.com directly.');
+      alert('Sorry — something went wrong. Please email info@artilingstudio.co.uk directly.');
       return;
     }
 

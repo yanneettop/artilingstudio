@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F6F4EF" />
+    <title>Artiling Studio — Business Card Concept</title>
+    <link rel="canonical" href="https://artilingstudio.co.uk" />
+    <meta property="og:url" content="https://artilingstudio.co.uk" />
+    <meta name="twitter:url" content="https://artilingstudio.co.uk" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bone: #f6f4ef;
+        --bone-deep: #efece4;
+        --sand: #d8d2c6;
+        --stone: #a79f94;
+        --warm-stone: #b8a69d;
+        --clay: #70564b;
+        --ink: #2b2b2b;
+        --ink-deep: #0f0f10;
+        --line: rgba(15, 15, 16, 0.12);
+        --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        color: var(--ink-deep);
+        background: var(--bone);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 0%, #fbf8f1 0, transparent 34rem),
+          radial-gradient(circle at 88% 16%, #eee7dd 0, transparent 30rem),
+          var(--bone);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 56px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--stone);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(40px, 6vw, 72px);
+        font-weight: 300;
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .topbar__meta {
+        flex: 0 0 auto;
+        margin: 0;
+        color: var(--stone);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .board {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+        align-items: start;
+        padding-top: 40px;
+      }
+
+      .side {
+        display: grid;
+        gap: 14px;
+      }
+
+      .side__label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        color: var(--stone);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .side__label::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: var(--line);
+      }
+
+      .card-shell {
+        display: grid;
+        place-items: center;
+        min-height: 390px;
+        padding: 28px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.2)),
+          rgba(239, 236, 228, 0.72);
+        border: 1px solid rgba(15, 15, 16, 0.08);
+      }
+
+      .business-card {
+        position: relative;
+        width: min(100%, 510px);
+        aspect-ratio: 85 / 55;
+        overflow: hidden;
+        box-shadow: 0 28px 70px rgba(15, 15, 16, 0.18);
+      }
+
+      .business-card::after {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border: 1px solid rgba(246, 244, 239, 0.26);
+        pointer-events: none;
+      }
+
+      .business-card--front {
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 54% 58%, rgba(246, 244, 239, 0.92) 0 5%, rgba(246, 244, 239, 0.46) 14%, transparent 38%),
+          radial-gradient(circle at 44% 42%, rgba(229, 209, 199, 0.74) 0 12%, transparent 44%),
+          linear-gradient(135deg, #4f3931 0%, #8f766b 44%, #c6ada2 68%, #5f463c 100%);
+      }
+
+      .logo-panel {
+        width: 42%;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        background: rgba(246, 244, 239, 0.98);
+        box-shadow: 0 18px 42px rgba(15, 15, 16, 0.14);
+      }
+
+      .logo-panel img {
+        width: 82%;
+        height: 82%;
+        object-fit: contain;
+      }
+
+      .business-card--back {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        background:
+          radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.72), transparent 24%),
+          linear-gradient(135deg, #f7f4ed 0%, #ebe5da 100%);
+        color: var(--ink-deep);
+      }
+
+      .back-brand {
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 9px;
+        padding: 18px;
+        border-right: 1px solid rgba(15, 15, 16, 0.12);
+      }
+
+      .back-brand img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+      }
+
+      .brand-name {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: 21px;
+        font-weight: 400;
+        line-height: 1;
+        text-align: center;
+      }
+
+      .brand-tagline {
+        max-width: 16ch;
+        margin: 0;
+        color: var(--stone);
+        font-size: 6.5px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        line-height: 1.7;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .contact {
+        display: grid;
+        align-content: center;
+        gap: 10px;
+        padding: 22px 20px;
+      }
+
+      .contact__intro {
+        margin: 0 0 4px;
+        color: var(--stone);
+        font-size: 7px;
+        font-weight: 600;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .contact dl {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+      }
+
+      .contact-row {
+        display: grid;
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 10px;
+        align-items: baseline;
+      }
+
+      .contact dt {
+        color: var(--stone);
+        font-size: 6.5px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .contact dd {
+        margin: 0;
+        color: var(--ink);
+        font-size: 8.8px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+      }
+
+      .notes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .note {
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+
+      .note strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .note p {
+        margin: 0;
+        color: var(--stone);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 860px) {
+        .topbar,
+        .board,
+        .notes {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          display: grid;
+          align-items: start;
+        }
+
+        .topbar__meta {
+          text-align: left;
+        }
+
+        .card-shell {
+          min-height: auto;
+          padding: 18px;
+        }
+      }
+
+      @media print {
+        @page {
+          size: A4;
+          margin: 14mm;
+        }
+
+        body {
+          background: #fff;
+        }
+
+        .page {
+          width: auto;
+          padding: 0;
+        }
+
+        .topbar,
+        .side__label,
+        .notes {
+          display: none;
+        }
+
+        .board {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12mm;
+          padding: 0;
+        }
+
+        .card-shell {
+          min-height: 0;
+          padding: 0;
+          background: transparent;
+          border: 0;
+        }
+
+        .business-card {
+          width: 85mm;
+          height: 55mm;
+          box-shadow: none;
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Business Card Concept</p>
+          <h1>Artiling Studio</h1>
+        </div>
+        <p class="topbar__meta">85mm × 55mm · front / back</p>
+      </header>
+
+      <section class="board" aria-label="Business card front and back">
+        <article class="side">
+          <div class="side__label">Front</div>
+          <div class="card-shell">
+            <div class="business-card business-card--front" aria-label="Front side of Artiling Studio business card">
+              <div class="logo-panel">
+                <img src="../assets/images/artiling_logo.png" alt="Artiling Studio monogram" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="side">
+          <div class="side__label">Back</div>
+          <div class="card-shell">
+            <div class="business-card business-card--back" aria-label="Back side of Artiling Studio business card">
+              <div class="back-brand">
+                <img src="../assets/images/artiling_logo.png" alt="" />
+                <p class="brand-name">Artiling Studio</p>
+                <p class="brand-tagline">Bespoke Porcelain &amp; Premium Tiling</p>
+              </div>
+
+              <div class="contact">
+                <p class="contact__intro">Contact</p>
+                <dl>
+                  <div class="contact-row">
+                    <dt>Studio</dt>
+                    <dd>Artiling Studio</dd>
+                  </div>
+                  <div class="contact-row">
+                    <dt>Work</dt>
+                    <dd>Bespoke Porcelain Sinks &amp; Tiling</dd>
+                  </div>
+                  <div class="contact-row">
+                    <dt>Location</dt>
+                    <dd>London, UK</dd>
+                  </div>
+                  <div class="contact-row">
+                    <dt>Email</dt>
+                    <dd><a href="mailto:info@artilingstudio.co.uk">info@artilingstudio.co.uk</a></dd>
+                  </div>
+                  <div class="contact-row">
+                    <dt>Web</dt>
+                    <dd>artilingstudio.co.uk</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="notes" aria-label="Design notes">
+        <div class="note">
+          <strong>Direction</strong>
+          <p>Minimal luxury, warm stone palette, quiet contrast, and a monogram-led front.</p>
+        </div>
+        <div class="note">
+          <strong>Print</strong>
+          <p>Artwork is built at 85mm by 55mm. We can add 3mm bleed once the layout is final.</p>
+        </div>
+        <div class="note">
+          <strong>Next</strong>
+          <p>Official contact details are set for email and website.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
