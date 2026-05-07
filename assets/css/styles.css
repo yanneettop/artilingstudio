@@ -6932,3 +6932,38 @@ body {
     linear-gradient(90deg, rgba(15, 15, 16, 0.028), transparent 18%, transparent 82%, rgba(15, 15, 16, 0.022)),
     linear-gradient(180deg, #eee7dc 0%, #e4dac9 100%);
 }
+
+/* Final mobile polish: keep Selected Works aligned and remove detail strip photos. */
+@media (max-width: 899px) {
+  .sinks__strip {
+    display: none;
+  }
+
+  .portfolio__sequence .selected-work,
+  .portfolio__sequence .selected-work:nth-child(even),
+  .portfolio__sequence .selected-work--dark-emperador-floating-sink {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    justify-items: stretch;
+  }
+
+  .portfolio__sequence .selected-work .selected-work__media,
+  .portfolio__sequence .selected-work:nth-child(even) .selected-work__media,
+  .portfolio__sequence .selected-work--dark-emperador-floating-sink .selected-work__media,
+  .portfolio__sequence .selected-work .selected-work__caption,
+  .portfolio__sequence .selected-work:nth-child(even) .selected-work__caption,
+  .portfolio__sequence .selected-work--dark-emperador-floating-sink .selected-work__caption {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .portfolio__sequence .selected-work .selected-work__caption {
+    text-align: left;
+  }
+}
