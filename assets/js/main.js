@@ -89,8 +89,14 @@
       'calacatta-gold-bespoke-bathroom': 'Warm-veined porcelain shaped for a refined wet room.',
       'dark-emperador-floating-sink': 'Dark porcelain surfaces with a quiet architectural presence.',
     };
-    const withAssetVersion = (src) =>
-      src ? `${src}${src.includes('?') ? '&' : '?'}v=20260424-lightbox-gallery` : '';
+    const localAssetSrc = (src) =>
+      window.location.protocol === 'file:' && src.startsWith('/') ? `.${src}` : src;
+    const withAssetVersion = (src) => {
+      const assetSrc = localAssetSrc(src);
+      return assetSrc
+        ? `${assetSrc}${assetSrc.includes('?') ? '&' : '?'}v=20260424-lightbox-gallery`
+        : '';
+    };
     const projectImageFor = (project) =>
       withAssetVersion(project.coverImage || project.cover || project.galleryImages?.[0] || project.collage || '');
     const projectAltFor = (project) => project.alt || project.title;

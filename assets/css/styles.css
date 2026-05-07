@@ -291,6 +291,10 @@ section {
   font-weight: 500;
   white-space: nowrap;
   opacity: 0.7;
+  background: var(--bone);
+  padding-inline: 10px;
+  position: relative;
+  z-index: 1;
 }
 .section-rule::after {
   content: "";
