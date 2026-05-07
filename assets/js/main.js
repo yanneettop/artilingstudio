@@ -79,6 +79,16 @@
       'mauve-stone-statement-bathroom': 'dark',
       'verde-marble-feature-bathroom': 'verde',
     };
+    const selectedWorkTitles = {
+      'soft-stone-double-vanity': 'Soft Stone Double Vanity',
+      'calacatta-gold-bespoke-bathroom': 'Calacatta Wet Room',
+      'dark-emperador-floating-sink': 'Dark Emperor Feature Wall',
+    };
+    const selectedWorkDescriptions = {
+      'soft-stone-double-vanity': 'Integrated double vanity in calm soft-stone porcelain.',
+      'calacatta-gold-bespoke-bathroom': 'Warm-veined porcelain shaped for a refined wet room.',
+      'dark-emperador-floating-sink': 'Dark porcelain surfaces with a quiet architectural presence.',
+    };
     const withAssetVersion = (src) =>
       src ? `${src}${src.includes('?') ? '&' : '?'}v=20260424-lightbox-gallery` : '';
     const projectImageFor = (project) =>
@@ -108,14 +118,14 @@
 
     const renderSelectedWork = (project, index) => `
       <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal data-reveal-delay="${index * 90}">
-        <button class="selected-work__media" type="button" data-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
+        <button class="selected-work__media" type="button" data-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(selectedWorkTitles[project.slug] || project.title)} gallery">
           <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
         </button>
         <div class="selected-work__caption">
           <span class="selected-work__number">0${index + 1}</span>
           <div>
-            <h3><button class="selected-work__title-action" type="button" data-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
-            <p>${escapeHtml(project.category || project.descriptor)}</p>
+            <h3><button class="selected-work__title-action" type="button" data-lightbox-open="${project.slug}">${escapeHtml(selectedWorkTitles[project.slug] || project.title)}</button></h3>
+            <p>${escapeHtml(selectedWorkDescriptions[project.slug] || project.category || project.descriptor)}</p>
             <button class="selected-work__view" type="button" data-lightbox-open="${project.slug}">Open gallery <span aria-hidden="true">→</span></button>
           </div>
         </div>
@@ -397,4 +407,3 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 })();
-
