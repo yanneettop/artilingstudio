@@ -366,7 +366,7 @@
   ─────────────────────────────────────────────── */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const interactiveTiles = document.querySelectorAll(
-      '.service-card, .selected-work, .project-feature, .project-card, .process__step, .sinks__visual, .sinks__strip figure'
+      '.service-card, .service-editorial-card, .selected-work, .project-feature, .project-card, .process__step, .sinks__visual, .sinks__strip figure'
     );
 
     interactiveTiles.forEach((tile) => {
