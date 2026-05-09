@@ -1986,6 +1986,38 @@ section {
   text-transform: uppercase;
 }
 
+.project-feature__caption .project-feature__editorial-desc,
+.project-card__caption .project-card__desc {
+  max-width: 52ch;
+  margin-top: 14px;
+  color: var(--ink);
+  font-size: clamp(13.5px, 0.98vw, 15.5px);
+  letter-spacing: 0;
+  line-height: 1.72;
+  text-transform: none;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-card__tags li {
+  padding: 7px 10px;
+  border: 1px solid rgba(15, 15, 16, 0.1);
+  border-radius: 2px;
+  color: var(--stone);
+  background: rgba(250, 248, 244, 0.48);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .project-card__index {
   font-size: 10px;
   letter-spacing: 0.22em;
@@ -2188,7 +2220,22 @@ section {
 
 @media (max-width: 899px) {
   .projects-hero {
+    min-height: auto;
     padding-top: 132px;
+  }
+
+  .projects-hero .display {
+    max-width: 10.5ch;
+    font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .projects-hero__text {
+    max-width: 100%;
+    padding: 22px 0 0;
+    border-left: 0;
+    border-top: 1px solid rgba(15, 15, 16, 0.12);
+    font-size: clamp(16px, 4.8vw, 19px);
+    line-height: 1.58;
   }
 
   .projects-featured {
@@ -2778,9 +2825,47 @@ section {
 
 .projects-hero {
   border-bottom: 1px solid rgba(15, 15, 16, 0.08);
+  min-height: min(820px, calc(100svh - 24px));
+  display: flex;
+  align-items: center;
+  padding: clamp(118px, 13vw, 172px) 0 clamp(58px, 7vw, 104px);
   background:
     linear-gradient(115deg, rgba(15, 15, 16, 0.045) 0%, transparent 38%),
     linear-gradient(180deg, #e9e2d6 0%, #f1ede5 58%, #ebe5da 100%);
+}
+
+.projects-hero__bg img {
+  object-position: center 42%;
+  opacity: 0.12;
+}
+
+.projects-hero__grid {
+  width: 100%;
+  align-items: center;
+  gap: clamp(42px, 7vw, 118px);
+}
+
+.projects-hero__copy {
+  max-width: 760px;
+}
+
+.projects-hero .display {
+  max-width: 16ch;
+  margin-top: clamp(18px, 2.4vw, 30px);
+  margin-bottom: 0;
+  font-size: clamp(52px, 5.25vw, 82px);
+  line-height: 1.03;
+  letter-spacing: -0.028em;
+}
+
+.projects-hero__text {
+  align-self: center;
+  max-width: 520px;
+  padding: clamp(26px, 3.2vw, 42px) 0 clamp(24px, 3vw, 38px) clamp(24px, 3.4vw, 48px);
+  border-left: 1px solid rgba(15, 15, 16, 0.12);
+  color: rgba(43, 43, 43, 0.86);
+  font-size: clamp(17px, 1.28vw, 21px);
+  line-height: 1.62;
 }
 
 .projects-hero::before {
@@ -7513,6 +7598,67 @@ body {
   line-height: 1.72;
 }
 
+.projects-index__intro a,
+.projects-seo-panel a,
+.projects-faq a {
+  color: var(--ink-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.projects-copy-band {
+  padding: clamp(68px, 9vw, 130px) 0;
+  background:
+    linear-gradient(90deg, rgba(15, 15, 16, 0.024), transparent 18%, transparent 82%, rgba(15, 15, 16, 0.02)),
+    linear-gradient(180deg, #f4f0e8 0%, #eee7dc 100%);
+  border-top: 1px solid rgba(15, 15, 16, 0.07);
+}
+
+.projects-seo-grid {
+  display: grid;
+  gap: 1px;
+  margin-top: clamp(36px, 5vw, 64px);
+  border: 1px solid rgba(15, 15, 16, 0.08);
+  background: rgba(15, 15, 16, 0.08);
+}
+
+.projects-seo-panel {
+  min-height: 260px;
+  padding: clamp(28px, 3.4vw, 46px);
+  background: rgba(250, 248, 244, 0.82);
+  transition:
+    background-color 0.45s var(--ease),
+    transform 0.45s var(--ease);
+}
+
+.projects-seo-panel:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.projects-seo-panel h2 {
+  max-width: 12ch;
+  margin: 0 0 clamp(20px, 2.5vw, 30px);
+  font-family: var(--serif);
+  font-size: clamp(27px, 2.6vw, 40px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink-deep);
+}
+
+.projects-seo-panel p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--ink);
+  font-size: 14.5px;
+  line-height: 1.78;
+}
+
+.projects-faq {
+  padding: clamp(68px, 9vw, 124px) 0;
+}
+
 @media (min-width: 900px) {
   .service-hero__grid,
   .contact-hero__grid {
@@ -7527,6 +7673,10 @@ body {
 
   .service-editorial-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .projects-seo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

@@ -24,23 +24,27 @@
     'backlit-marble-double-vanity',
   ];
   const detailStudyLabels = {
-    'statuario-linear-sink': 'Porcelain vanity detail',
-    'calacatta-gold-led-vanity': 'Marble surface study',
-    'beige-stone-floating-vanity': 'Floating vanity detail',
-    'framed-mirror-double-vanity': 'Backlit bathroom composition',
-    'taupe-stone-mono-sink': 'Mitred porcelain detail',
-    'backlit-marble-double-vanity': 'Bespoke sink concept',
+    'statuario-linear-sink': 'Bespoke Sink · Porcelain · Vanity Detail',
+    'calacatta-gold-led-vanity': 'Porcelain · Bathroom Tiling · Integrated Lighting',
+    'beige-stone-floating-vanity': 'Bespoke Sink · Porcelain · Large Format Tiling',
+    'framed-mirror-double-vanity': 'Bathroom Tiling · Porcelain · Vanity Detail',
+    'taupe-stone-mono-sink': 'Bespoke Sink · Porcelain · Mitred Detail',
+    'backlit-marble-double-vanity': 'Bespoke Sink · Porcelain · Bathroom Tiling',
   };
   const detailStudyTitles = {
-    'statuario-linear-sink': 'Neutral Linear Sink',
-    'taupe-stone-mono-sink': 'Taupe Stone Mitred Sink',
+    'statuario-linear-sink': 'Statuario Linear Porcelain Sink Study',
+    'calacatta-gold-led-vanity': 'Calacatta Gold LED Vanity Study',
+    'beige-stone-floating-vanity': 'Beige Stone Floating Vanity Study',
+    'framed-mirror-double-vanity': 'Framed Mirror Double Vanity Study',
+    'taupe-stone-mono-sink': 'Taupe Stone Mitred Sink Study',
+    'backlit-marble-double-vanity': 'Backlit Marble Double Vanity Study',
   };
 
   /* Editorial descriptions for featured projects */
   const editorialDescriptions = {
-    'soft-stone-double-vanity': 'Wall-to-wall porcelain vanity with integrated sink proportions and calm stone texture.',
-    'calacatta-gold-bespoke-bathroom': 'Bookmatched marble-effect porcelain, LED mirror detailing, and seamless vanity composition.',
-    'dark-emperador-floating-sink': 'Dramatic dark porcelain surface with floating sink lines and warm backlit mirror detail.',
+    'soft-stone-double-vanity': 'Bespoke porcelain double vanity with integrated sink proportions, clean storage lines and soft stone-effect surfaces for a contemporary London bathroom.',
+    'calacatta-gold-bespoke-bathroom': 'Calacatta Gold porcelain bathroom with large-format wall surfaces, tailored vanity detailing and refined transitions around the mirror and storage.',
+    'dark-emperador-floating-sink': 'Dark marble-effect porcelain floating sink with integrated storage and mitred edge detailing for a contemporary London bathroom.',
   };
 
   const supportProjects = portfolio
@@ -54,6 +58,27 @@
   const projectImageFor = (project) =>
     withAssetVersion(project.coverImage || project.cover || project.galleryImages?.[0] || project.collage || '');
   const projectAltFor = (project) => project.alt || project.title;
+  const projectDescriptionFor = (project) =>
+    project.seoDescription || editorialDescriptions[project.slug] || project.summary || project.descriptor || '';
+  const projectTagsFor = (project) => {
+    const tags = project.serviceTags || [];
+    if (tags.length) return tags;
+    const fallbackTags = [];
+    if ((project.categories || []).includes('bespoke-sinks')) fallbackTags.push('Bespoke Sink');
+    if ((project.categories || []).includes('bathrooms')) fallbackTags.push('Bathroom Tiling');
+    if ((project.categories || []).includes('premium-tiling')) fallbackTags.push('Large Format Tiling');
+    fallbackTags.push('Porcelain');
+    return Array.from(new Set(fallbackTags)).slice(0, 4);
+  };
+  const renderTags = (project) => {
+    const tags = projectTagsFor(project);
+    if (!tags.length) return '';
+    return `
+      <ul class="project-card__tags" aria-label="Services">
+        ${tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join('')}
+      </ul>
+    `;
+  };
   const escapeHtml = (value = '') =>
     String(value)
       .replace(/&/g, '&amp;')
@@ -79,15 +104,17 @@
 
   /* ── Featured project renderer ── */
   const renderFeaturedProject = (project, index) => `
-    <article class="project-feature project-feature--${index + 1} project-feature--${project.slug}" data-reveal>
-      <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
-        <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
-      </button>
-      <div class="project-feature__caption">
-        <span class="project-card__index">0${index + 1}</span>
-        <div>
-          <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
+    <article id="${escapeHtml(project.slug)}" class="project-feature project-feature--${index + 1} project-feature--${project.slug}" data-reveal>
+        <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
+          <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
+        </button>
+        <div class="project-feature__caption">
+          <span class="project-card__index">0${index + 1}</span>
+          <div>
+            <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
           <p>${escapeHtml(project.category || project.descriptor)}</p>
+          <p class="project-feature__editorial-desc">${escapeHtml(projectDescriptionFor(project))}</p>
+          ${renderTags(project)}
           <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
         </div>
       </div>
@@ -99,13 +126,13 @@
     const indexStr = String(index + offset + 1).padStart(2, '0');
     const label = escapeHtml(detailStudyLabels[project.slug] || project.category || project.descriptor || '');
     const title = escapeHtml(detailStudyTitles[project.slug] || project.title);
-    const descriptor = escapeHtml(project.descriptor || '');
+    const descriptor = escapeHtml(projectDescriptionFor(project));
     const descHtml = descriptor && descriptor !== label
       ? `<p class="project-card__desc">${descriptor}</p>`
       : '';
 
     return `
-      <article class="project-card project-card--${(index % 2) + 1} project-card--${project.slug}" data-reveal>
+      <article id="${escapeHtml(project.slug)}" class="project-card project-card--${(index % 2) + 1} project-card--${project.slug}" data-reveal>
         <button class="project-card__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
           <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
         </button>
@@ -115,6 +142,7 @@
             <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${title}</button></h3>
             <p>${label}</p>
             ${descHtml}
+            ${renderTags(project)}
             <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
           </div>
         </div>
