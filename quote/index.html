@@ -126,9 +126,9 @@
             <p class="eyebrow">Enquiries</p>
             <h1 class="display">Request a <em>quote.</em></h1>
             <p class="quote-hero__intro">
-              Tell us about your space, materials and measurements. If you have photos,
-              you can send them after your enquiry and we&rsquo;ll review your project
-              carefully before getting back to you with the next steps.
+              Tell us about your space, materials and measurements. Upload photos if
+              you have them, and we&rsquo;ll review your project carefully before
+              getting back to you with the next steps.
             </p>
           </div>
         </div>
@@ -416,14 +416,15 @@
               <!-- ─── STEP 4 — Photos ─── -->
               <div class="quote-step" data-step="4">
                 <header class="quote-step__head">
-                  <h2 class="quote-step__title">Photos can follow after your enquiry.</h2>
+                  <h2 class="quote-step__title">Share photos of your space.</h2>
                   <p class="quote-step__sub">
-                    Photos help us understand proportion, light and existing finishes. To keep the quote form reliable,
-                    send any images, sketches, measurements or inspiration after submitting your enquiry.
+                    Photos help us understand proportion, light and existing finishes. Upload images of the
+                    current space, any material you have, sketches, measurements or inspiration.
                   </p>
                 </header>
 
-                <div class="quote-drop" aria-label="Photo follow-up information">
+                <label class="quote-drop" data-drop-zone>
+                  <input type="file" name="photos" multiple accept="image/*" data-file-input hidden />
                   <span class="quote-drop__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                       <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -432,13 +433,15 @@
                     </svg>
                   </span>
                   <span class="quote-drop__text">
-                    <span class="quote-drop__primary">Submit the enquiry first</span>
-                    <span class="quote-drop__secondary">then email photos to <a href="#" data-email-link data-email-display><span>info</span><span aria-hidden="true">@</span><span>artilingstudio.co.uk</span></a></span>
+                    <span class="quote-drop__primary">Drag photos here</span>
+                    <span class="quote-drop__secondary">or click to browse — JPG, PNG, HEIC up to 10MB each</span>
                   </span>
-                </div>
+                </label>
+
+                <ul class="quote-previews" data-file-previews aria-live="polite"></ul>
 
                 <p class="quote-step__footnote">
-                  Photos are optional — a written description is enough to start the conversation.
+                  Photos are optional — you can also describe the space in writing if it&rsquo;s easier.
                 </p>
               </div>
 
@@ -675,6 +678,6 @@
     <script src="../assets/js/tracking.js?v=20260515-step3-1"></script>
     <script src="../assets/js/email-links.js?v=20260507-mailto-1"></script>
     <script src="../assets/js/main.js?v=20260508-service-pages-2"></script>
-    <script src="../assets/js/quote.js?v=20260515-disable-upload-1"></script>
+    <script src="../assets/js/quote.js?v=20260516-photo-upload-1"></script>
   </body>
 </html>

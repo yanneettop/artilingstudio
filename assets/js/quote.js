@@ -190,6 +190,89 @@
   projectInputs.forEach((input) => input.addEventListener('change', updateSinkFields));
 
   /* ──────────────────────────────────────────────
+     File uploads with previews
+  ─────────────────────────────────────────────── */
+  const fileInput = form.querySelector('[data-file-input]');
+  const dropZone = form.querySelector('[data-drop-zone]');
+  const previewsList = form.querySelector('[data-file-previews]');
+  let uploadedFiles = [];
+
+  const formatBytes = (bytes) => {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  };
+
+  const renderPreviews = () => {
+    if (!previewsList) return;
+    previewsList.innerHTML = '';
+
+    uploadedFiles.forEach((file, index) => {
+      const item = document.createElement('li');
+      item.className = 'quote-preview';
+      item.innerHTML = `
+        <span class="quote-preview__thumb"><img alt="" /></span>
+        <span class="quote-preview__meta">
+          <span class="quote-preview__name">${escapeHtml(file.name)}</span>
+          <span class="quote-preview__size">${formatBytes(file.size)}</span>
+        </span>
+        <button type="button" class="quote-preview__remove" data-remove-index="${index}" aria-label="Remove ${escapeHtml(file.name)}">×</button>
+      `;
+      previewsList.appendChild(item);
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = item.querySelector('img');
+        if (img) img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const escapeHtml = (str) =>
+    String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const addFiles = (files) => {
+    const images = files.filter((f) => f.type.startsWith('image/'));
+    uploadedFiles = uploadedFiles.concat(images);
+    renderPreviews();
+  };
+
+  if (fileInput) {
+    fileInput.addEventListener('change', (e) => {
+      addFiles(Array.from(e.target.files));
+      // Reset native input so the same file can be re-selected
+      fileInput.value = '';
+    });
+  }
+
+  if (dropZone) {
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('is-dragover');
+    });
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('is-dragover');
+    });
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('is-dragover');
+      const files = Array.from(e.dataTransfer.files || []);
+      addFiles(files);
+    });
+  }
+
+  if (previewsList) {
+    previewsList.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-remove-index]');
+      if (!btn) return;
+      const idx = Number(btn.dataset.removeIndex);
+      uploadedFiles.splice(idx, 1);
+      renderPreviews();
+    });
+  }
+
+  /* ──────────────────────────────────────────────
      Step buttons
   ─────────────────────────────────────────────── */
   prevBtn.addEventListener('click', () => goToStep(currentStep - 1));
@@ -214,6 +297,11 @@
     formData.append('access_key', 'f0ae1e03-05a1-4ad8-8fb6-e5fad0fffce5');
     formData.append('subject', 'New Quote Request — Artiling Studio');
     formData.append('from_name', 'Artiling Studio Quote Form');
+
+    // Attach uploaded photos
+    uploadedFiles.forEach((file, i) => {
+      formData.append(`photo-${i + 1}`, file, file.name);
+    });
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
