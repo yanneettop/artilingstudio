@@ -291,6 +291,7 @@
     submitBtn.textContent = 'Sending…';
 
     const formData = new FormData(form);
+    formData.delete('photos');
 
     // Web3Forms configuration
     formData.append('access_key', 'f0ae1e03-05a1-4ad8-8fb6-e5fad0fffce5');
