@@ -34,6 +34,31 @@
 
   let currentStep = 1;
 
+  const getCheckedValue = (name) => {
+    const checked = form.querySelector(`input[name="${name}"]:checked`);
+    return checked ? checked.value : '';
+  };
+
+  const quoteContext = () => ({
+    project_type: getCheckedValue('projectType'),
+    material_situation: getCheckedValue('materialSituation'),
+    scope: getCheckedValue('scope'),
+    timeline: getCheckedValue('timeline'),
+    budget_range: getCheckedValue('budget'),
+    page_path: '/quote/',
+  });
+
+  const storeQuoteContext = (context) => {
+    try {
+      window.sessionStorage.setItem(
+        window.ArtilingTracking?.contextKey || 'artiling_quote_context',
+        JSON.stringify(context)
+      );
+    } catch (error) {
+      // Storage can fail in private browsing; submissions should still complete.
+    }
+  };
+
   /* ──────────────────────────────────────────────
      Step navigation
   ─────────────────────────────────────────────── */
@@ -298,12 +323,18 @@
       return;
     }
 
-    if (wrapper) wrapper.hidden = true;
-    if (success) {
-      success.hidden = false;
-      success.classList.add('is-visible');
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const context = quoteContext();
+    storeQuoteContext(context);
+    window.ArtilingTracking?.fireEvent?.('quote_form_submit', {
+      form_type: 'quote_form',
+      project_type: context.project_type,
+      material_situation: context.material_situation,
+      scope: context.scope,
+      timeline: context.timeline,
+      budget_range: context.budget_range,
+      page_path: '/quote/',
+    });
+    window.location.assign('/thank-you/');
   });
 
   /* ──────────────────────────────────────────────

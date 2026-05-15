@@ -118,91 +118,18 @@
         </div>
       </section>
 
-      <section class="quote-section">
-        <div class="container quote-page-grid">
-          <form class="quote-form quote-form--single" action="https://api.web3forms.com/submit" method="POST" data-reveal>
-            <input type="hidden" name="access_key" value="f0ae1e03-05a1-4ad8-8fb6-e5fad0fffce5" />
-            <input type="hidden" name="subject" value="New Quote Request — Artiling Studio" />
-            <input type="hidden" name="from_name" value="Artiling Studio Quote Form" />
-
-            <fieldset class="quote-fieldset">
-              <legend class="quote-fieldset__legend">Contact details</legend>
-              <div class="quote-input-row quote-input-row--double">
-                <label class="quote-input">
-                  <span class="quote-input__label">Name <span class="req">*</span></span>
-                  <input type="text" name="name" autocomplete="name" required />
-                </label>
-                <label class="quote-input">
-                  <span class="quote-input__label">Email <span class="req">*</span></span>
-                  <input type="email" name="email" autocomplete="email" required />
-                </label>
-              </div>
-              <div class="quote-input-row quote-input-row--double">
-                <label class="quote-input">
-                  <span class="quote-input__label">Phone <span class="quote-optional">optional</span></span>
-                  <input type="tel" name="phone" autocomplete="tel" placeholder="+44..." />
-                </label>
-                <label class="quote-input">
-                  <span class="quote-input__label">Project location</span>
-                  <input type="text" name="project_location" placeholder="e.g. Kensington, London" />
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="quote-fieldset">
-              <legend class="quote-fieldset__legend">Project details</legend>
-              <div class="quote-input-row quote-input-row--double">
-                <label class="quote-input">
-                  <span class="quote-input__label">Project type</span>
-                  <select name="project_type">
-                    <option value="">Choose a project type</option>
-                    <option value="Bespoke porcelain sink">Bespoke porcelain sink</option>
-                    <option value="Large format tiling">Large format tiling</option>
-                    <option value="Wet room / shower walls">Wet room / shower walls</option>
-                    <option value="Bathroom surfaces">Bathroom surfaces</option>
-                    <option value="Feature wall">Feature wall</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </label>
-                <label class="quote-input">
-                  <span class="quote-input__label">Do you already have materials?</span>
-                  <select name="materials_ready">
-                    <option value="">Choose one</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                    <option value="Not sure">Not sure</option>
-                  </select>
-                </label>
-              </div>
-              <label class="quote-input quote-input--full">
-                <span class="quote-input__label">Approximate dimensions</span>
-                <input type="text" name="approximate_dimensions" placeholder="e.g. vanity wall 1800mm wide, shower walls 8m2" />
-              </label>
-              <label class="quote-input quote-input--full">
-                <span class="quote-input__label">Message</span>
-                <textarea name="message" rows="6" placeholder="Tell us about the room, finish, timeline, drawings or anything already decided."></textarea>
-              </label>
-              <div class="quote-upload-note">
-                <span class="quote-upload-note__label">Photos</span>
-                <p>Photo upload is not implemented on this short form yet. Please mention available photos here, or email them to <a href="#" data-email-link data-email-display><span>info</span><span aria-hidden="true">@</span><span>artilingstudio.co.uk</span></a>.</p>
-              </div>
-            </fieldset>
-
-            <button type="submit" class="btn btn--dark">Submit Request<span aria-hidden="true">&nbsp;→</span></button>
-          </form>
-
-          <aside class="quote-side-note" data-reveal data-reveal-delay="100">
-            <p class="eyebrow">Useful to know</p>
-            <h2>What helps us respond well</h2>
-            <ul class="enquiry-list enquiry-list--compact">
-              <li><span>01</span> Project type</li>
-              <li><span>02</span> Rough dimensions</li>
-              <li><span>03</span> London location</li>
-              <li><span>04</span> Materials already chosen</li>
-              <li><span>05</span> Preferred timeline</li>
-            </ul>
-            <a href="/projects/" class="link-arrow">View selected work <span aria-hidden="true">→</span></a>
-          </aside>
+      <section class="projects-final">
+        <div class="container">
+          <div class="projects-final__panel" data-reveal>
+            <div>
+              <p class="eyebrow">Redirect</p>
+              <h2 class="projects-final__title">Continue to the quote form.</h2>
+              <p class="projects-final__body">
+                If you are not redirected automatically, use the link below to open the Artiling Studio quote form.
+              </p>
+            </div>
+            <a href="/quote/" class="btn btn--dark">Open Quote Form</a>
+          </div>
         </div>
       </section>
     </main>
@@ -241,6 +168,7 @@
       </div>
     </footer>
 
+    <script src="../assets/js/tracking.js?v=20260515-step3-1"></script>
     <script src="../assets/js/email-links.js?v=20260507-mailto-1"></script>
     <script src="../assets/js/main.js?v=20260508-service-pages-1"></script>
   </body>
