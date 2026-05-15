@@ -602,6 +602,16 @@
                     <a href="/privacy-policy/" target="_blank" rel="noopener noreferrer">Artiling Studio Privacy Policy</a>.
                   </span>
                 </label>
+
+                <!-- TODO: Replace this placeholder with the real Cloudflare Turnstile site key. -->
+                <div
+                  class="cf-turnstile"
+                  data-turnstile-widget
+                  data-sitekey="1x00000000000000000000AA"
+                  data-callback="onQuoteTurnstileSuccess"
+                  data-expired-callback="onQuoteTurnstileExpired"
+                  data-error-callback="onQuoteTurnstileError"
+                ></div>
               </div>
 
               <!-- Navigation -->
@@ -679,5 +689,6 @@
     <script src="../assets/js/email-links.js?v=20260507-mailto-1"></script>
     <script src="../assets/js/main.js?v=20260508-service-pages-2"></script>
     <script src="../assets/js/quote.js?v=20260516-photo-upload-1"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </body>
 </html>

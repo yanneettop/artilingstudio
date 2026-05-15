@@ -195,7 +195,18 @@
   const fileInput = form.querySelector('[data-file-input]');
   const dropZone = form.querySelector('[data-drop-zone]');
   const previewsList = form.querySelector('[data-file-previews]');
+  const turnstileWidget = form.querySelector('[data-turnstile-widget]');
   let uploadedFiles = [];
+
+  const maxFiles = 6;
+  const maxFileSize = 10 * 1024 * 1024;
+  const allowedImageTypes = new Set([
+    'image/jpeg',
+    'image/png',
+    'image/webp',
+    'image/heic',
+    'image/heif',
+  ]);
 
   const formatBytes = (bytes) => {
     if (bytes < 1024) return `${bytes} B`;
@@ -232,10 +243,45 @@
   const escapeHtml = (str) =>
     String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+  const isAllowedImage = (file) => {
+    const type = (file.type || '').toLowerCase();
+    const name = (file.name || '').toLowerCase();
+    return allowedImageTypes.has(type) || (!type && /\.(heic|heif)$/.test(name));
+  };
+
+  const fileValidationMessage = (file) => {
+    if (!isAllowedImage(file)) {
+      return `${file.name} is not a supported image type. Please use JPG, PNG, WebP or HEIC.`;
+    }
+    if (file.size > maxFileSize) {
+      return `${file.name} is larger than 10MB. Please choose a smaller image.`;
+    }
+    return '';
+  };
+
   const addFiles = (files) => {
-    const images = files.filter((f) => f.type.startsWith('image/'));
-    uploadedFiles = uploadedFiles.concat(images);
+    const accepted = [];
+    const rejected = [];
+
+    files.forEach((file) => {
+      const message = fileValidationMessage(file);
+      if (message) {
+        rejected.push(message);
+        return;
+      }
+      if (uploadedFiles.length + accepted.length >= maxFiles) {
+        rejected.push(`Only ${maxFiles} photos can be uploaded.`);
+        return;
+      }
+      accepted.push(file);
+    });
+
+    uploadedFiles = uploadedFiles.concat(accepted);
     renderPreviews();
+
+    if (rejected.length) {
+      alert(rejected.join('\n'));
+    }
   };
 
   if (fileInput) {
@@ -273,6 +319,26 @@
   }
 
   /* ──────────────────────────────────────────────
+     Cloudflare Turnstile
+  ─────────────────────────────────────────────── */
+  window.onQuoteTurnstileSuccess = (token) => {
+    if (turnstileWidget) turnstileWidget.dataset.token = token || '';
+  };
+
+  window.onQuoteTurnstileExpired = () => {
+    if (turnstileWidget) turnstileWidget.dataset.token = '';
+  };
+
+  window.onQuoteTurnstileError = () => {
+    if (turnstileWidget) turnstileWidget.dataset.token = '';
+  };
+
+  const getTurnstileToken = () => {
+    const field = form.querySelector('input[name="cf-turnstile-response"], textarea[name="cf-turnstile-response"]');
+    return field?.value || turnstileWidget?.dataset.token || '';
+  };
+
+  /* ──────────────────────────────────────────────
      Step buttons
   ─────────────────────────────────────────────── */
   prevBtn.addEventListener('click', () => goToStep(currentStep - 1));
@@ -293,18 +359,23 @@
     const formData = new FormData(form);
     formData.delete('photos');
 
-    // Web3Forms configuration
-    formData.append('access_key', 'f0ae1e03-05a1-4ad8-8fb6-e5fad0fffce5');
-    formData.append('subject', 'New Quote Request — Artiling Studio');
-    formData.append('from_name', 'Artiling Studio Quote Form');
+    const turnstileToken = getTurnstileToken();
+    if (!window.turnstile || !turnstileToken) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send request →';
+      alert('Please complete the quick spam check before sending your request.');
+      return;
+    }
+
+    formData.set('cf-turnstile-response', turnstileToken);
 
     // Attach uploaded photos
-    uploadedFiles.forEach((file, i) => {
-      formData.append(`photo-${i + 1}`, file, file.name);
+    uploadedFiles.forEach((file) => {
+      formData.append('photos', file, file.name);
     });
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/quote', {
         method: 'POST',
         body: formData,
         headers: { Accept: 'application/json' },
@@ -312,15 +383,19 @@
 
       const json = await res.json();
 
-      if (!res.ok || !json.success) {
+      if (!res.ok || !json.ok) {
         throw new Error(json.message || 'Network error');
       }
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send request →';
+      if (window.turnstile && turnstileWidget) {
+        window.turnstile.reset();
+        turnstileWidget.dataset.token = '';
+      }
       // eslint-disable-next-line no-console
       console.error('Quote submission error:', err);
-      alert('Sorry — something went wrong. Please email info@artilingstudio.co.uk directly.');
+      alert(err.message || 'Sorry — something went wrong. Please email info@artilingstudio.co.uk directly.');
       return;
     }
 
