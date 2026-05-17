@@ -53,16 +53,74 @@ const ALLOWED_IMAGE_TYPES = new Set([
   'image/heif',
 ]);
 
-const jsonResponse = (body, status = 200) =>
+const DEFAULT_ALLOWED_ORIGINS = [
+  'https://artilingstudio.co.uk',
+  'https://www.artilingstudio.co.uk',
+];
+
+const QUOTE_TO_EMAIL = 'info@artilingstudio.co.uk';
+const CORS_ALLOWED_HEADERS = 'Accept, Content-Type';
+const CORS_ALLOWED_METHODS = 'POST, OPTIONS';
+
+const asString = (value) => (typeof value === 'string' ? value.trim() : '');
+
+const normalizeOrigin = (origin) => {
+  const value = asString(origin);
+  if (!value) return '';
+
+  try {
+    return new URL(value).origin;
+  } catch (error) {
+    return value.replace(/\/+$/, '');
+  }
+};
+
+const splitOriginList = (value) =>
+  asString(value)
+    .split(',')
+    .map(normalizeOrigin)
+    .filter(Boolean);
+
+const getAllowedOrigins = (env) =>
+  new Set([
+    ...DEFAULT_ALLOWED_ORIGINS,
+    ...splitOriginList(env.ALLOWED_ORIGIN),
+    ...splitOriginList(env.ALLOWED_ORIGINS),
+  ]);
+
+const getRequestOrigin = (request) =>
+  normalizeOrigin(request.headers.get('Origin'));
+
+const getAllowedRequestOrigin = (request, env) => {
+  const origin = getRequestOrigin(request);
+  if (!origin) return '';
+  return getAllowedOrigins(env).has(origin) ? origin : '';
+};
+
+const corsHeaders = (request, env) => {
+  const allowedOrigin = getAllowedRequestOrigin(request, env);
+  if (!allowedOrigin) return {};
+
+  const requestedHeaders = asString(request.headers.get('Access-Control-Request-Headers'));
+
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': CORS_ALLOWED_METHODS,
+    'Access-Control-Allow-Headers': requestedHeaders || CORS_ALLOWED_HEADERS,
+    'Access-Control-Max-Age': '86400',
+    Vary: 'Origin',
+  };
+};
+
+const jsonResponse = (body, status = 200, request, env) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': 'no-store',
+      ...(request && env ? corsHeaders(request, env) : {}),
     },
   });
-
-const asString = (value) => (typeof value === 'string' ? value.trim() : '');
 
 const escapeHtml = (value) =>
   String(value || '').replace(/[&<>"']/g, (char) => ({
@@ -107,15 +165,7 @@ const collectFields = (formData) => {
   return fields;
 };
 
-const verifyOrigin = (request, env) => {
-  const allowedOrigin = asString(env.ALLOWED_ORIGIN);
-  if (!allowedOrigin) return true;
-
-  const origin = request.headers.get('Origin');
-  if (!origin) return true;
-
-  return origin === allowedOrigin;
-};
+const verifyOrigin = (request, env) => !getRequestOrigin(request) || !!getAllowedRequestOrigin(request, env);
 
 const verifyTurnstile = async (request, env, token) => {
   if (!env.TURNSTILE_SECRET_KEY) {
@@ -244,7 +294,7 @@ const buildEmail = ({ fields, submissionId, uploads, publicBaseUrl }) => {
 };
 
 const sendEmail = async ({ env, fields, submissionId, uploads }) => {
-  if (!env.RESEND_API_KEY || !env.QUOTE_TO_EMAIL || !env.QUOTE_FROM_EMAIL) {
+  if (!env.RESEND_API_KEY || !env.QUOTE_FROM_EMAIL) {
     throw new Error('Resend email settings are not configured.');
   }
 
@@ -263,7 +313,7 @@ const sendEmail = async ({ env, fields, submissionId, uploads }) => {
     },
     body: JSON.stringify({
       from: env.QUOTE_FROM_EMAIL,
-      to: [env.QUOTE_TO_EMAIL],
+      to: [QUOTE_TO_EMAIL],
       subject: 'New Quote Request - Artiling Studio',
       text,
       html,
@@ -282,7 +332,7 @@ export async function onRequestPost({ request, env }) {
       return jsonResponse({
         ok: false,
         message: 'This quote request could not be accepted from this origin.',
-      }, 403);
+      }, 403, request, env);
     }
 
     const formData = await request.formData();
@@ -293,7 +343,7 @@ export async function onRequestPost({ request, env }) {
       return jsonResponse({
         ok: false,
         message: 'Please complete the spam check and try again.',
-      }, 400);
+      }, 400, request, env);
     }
 
     const turnstileOk = await verifyTurnstile(request, env, turnstileToken);
@@ -301,7 +351,7 @@ export async function onRequestPost({ request, env }) {
       return jsonResponse({
         ok: false,
         message: 'The spam check could not be verified. Please try again.',
-      }, 400);
+      }, 400, request, env);
     }
 
     const missing = REQUIRED_FIELDS.filter((name) => !fields[name]);
@@ -309,14 +359,14 @@ export async function onRequestPost({ request, env }) {
       return jsonResponse({
         ok: false,
         message: 'Please complete all required fields before sending your request.',
-      }, 400);
+      }, 400, request, env);
     }
 
     if (!validateEmail(fields.email)) {
       return jsonResponse({
         ok: false,
         message: 'Please enter a valid email address.',
-      }, 400);
+      }, 400, request, env);
     }
 
     const photos = formData.getAll('photos').filter(isFileLike);
@@ -324,7 +374,7 @@ export async function onRequestPost({ request, env }) {
       return jsonResponse({
         ok: false,
         message: `Please upload no more than ${MAX_FILES} photos.`,
-      }, 400);
+      }, 400, request, env);
     }
 
     for (const photo of photos) {
@@ -332,13 +382,13 @@ export async function onRequestPost({ request, env }) {
         return jsonResponse({
           ok: false,
           message: 'Please upload JPG, PNG, WebP or HEIC images only.',
-        }, 400);
+        }, 400, request, env);
       }
       if (photo.size > MAX_FILE_SIZE) {
         return jsonResponse({
           ok: false,
           message: 'Each uploaded image must be 10MB or smaller.',
-        }, 400);
+        }, 400, request, env);
       }
     }
 
@@ -360,12 +410,32 @@ export async function onRequestPost({ request, env }) {
     return jsonResponse({
       ok: true,
       message: 'Quote request sent successfully.',
-    });
+    }, 200, request, env);
   } catch (error) {
     console.error('Quote request failed:', error.message);
     return jsonResponse({
       ok: false,
       message: 'Sorry, something went wrong while sending your request. Please email info@artilingstudio.co.uk directly.',
-    }, 500);
+    }, 500, request, env);
   }
+}
+
+export async function onRequestOptions({ request, env }) {
+  if (!verifyOrigin(request, env)) {
+    return new Response(null, {
+      status: 403,
+      headers: {
+        'Cache-Control': 'no-store',
+        Vary: 'Origin',
+      },
+    });
+  }
+
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Cache-Control': 'no-store',
+      ...corsHeaders(request, env),
+    },
+  });
 }

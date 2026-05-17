@@ -50,18 +50,21 @@ Set these in the Cloudflare Pages project settings:
 
 - `TURNSTILE_SECRET_KEY`
 - `RESEND_API_KEY`
-- `QUOTE_TO_EMAIL`
 - `QUOTE_FROM_EMAIL`
 - `ALLOWED_ORIGIN`
+- `ALLOWED_ORIGINS` (optional, comma-separated)
 - `R2_PUBLIC_BASE_URL` (optional)
 
-`ALLOWED_ORIGIN` should be the production origin, for example:
+The Function accepts both production origins by default:
 
 ```text
+https://artilingstudio.co.uk
 https://www.artilingstudio.co.uk
 ```
 
-If `ALLOWED_ORIGIN` is missing, the Function will not hard-fail local/dev requests, but production should set it.
+If extra origins are needed for testing, add them with `ALLOWED_ORIGINS`, separated by commas. Do not use wildcard origins. Only include `https://artilingstudio.pages.dev` if submissions need to be tested from the Pages preview domain.
+
+Successful quote submissions are sent to `info@artilingstudio.co.uk`.
 
 ### Required R2 binding
 
@@ -102,7 +105,7 @@ In Resend:
 3. Create an API key.
 4. Set `RESEND_API_KEY` in Cloudflare Pages.
 5. Set `QUOTE_FROM_EMAIL` to an approved sender on the verified domain.
-6. Set `QUOTE_TO_EMAIL` to the inbox that should receive quote requests.
+6. Quote requests are sent to `info@artilingstudio.co.uk`.
 
 The Function stores images in R2 and includes object keys or public links in the email. It does not attach uploaded images.
 
