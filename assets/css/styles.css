@@ -542,17 +542,51 @@ section {
 
 .nav {
   display: none;
-  gap: 40px;
+  gap: 34px;
   font-size: 12.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 400;
+  align-items: center;
 }
 .nav a {
   position: relative;
   padding: 5px 0;
   color: var(--ink);
   white-space: nowrap;
+}
+.nav__item {
+  position: relative;
+}
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  min-width: 260px;
+  padding: 18px 20px;
+  display: grid;
+  gap: 12px;
+  background: rgba(250, 248, 244, 0.98);
+  border: 1px solid rgba(15, 15, 16, 0.1);
+  box-shadow: 0 24px 70px -42px rgba(15, 15, 16, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.nav__dropdown a {
+  display: block;
+  padding: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: none;
+}
+.nav__item:hover .nav__dropdown,
+.nav__item:focus-within .nav__dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
 }
 .nav a::after {
   content: "";
@@ -736,7 +770,7 @@ section {
 .hero__parallax-bg {
   position: absolute;
   inset: -20% 0;
-  background-image: url("../images/hero3.png");
+  background-image: url("../images/hero3.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -62,7 +62,7 @@
         "@type": "Organization",
         "name": "Artiling Studio",
         "url": "https://www.artilingstudio.co.uk/",
-        "logo": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png",
+        "logo": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.webp",
         "description": "Bespoke porcelain sinks, large-format tiling, wet rooms and premium tiled surfaces for London interiors.",
         "areaServed": "London",
         "sameAs": []
@@ -74,7 +74,7 @@
         "@type": "HomeAndConstructionBusiness",
         "name": "Artiling Studio",
         "url": "https://www.artilingstudio.co.uk/",
-        "logo": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png",
+        "logo": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.webp",
         "image": "https://www.artilingstudio.co.uk/og-image-v2.jpg",
         "description": "Bespoke porcelain sinks, large-format tiling, wet rooms and premium tiled surfaces for London interiors.",
         "email": "info@artilingstudio.co.uk",
@@ -111,7 +111,7 @@
         <a href="#top" class="brand" aria-label="Artiling Studio — Home">
           <!-- AS monogram -->
           <span class="brand__mark brand__mark--header" aria-hidden="true">
-            <img src="./assets/images/artiling_logo.png" alt="" />
+            <img src="./assets/images/artiling_logo.webp" alt="Artiling Studio logo" />
           </span>
           <span class="brand__wordmark">
             <span class="brand__name">Artiling<span>&nbsp;</span>Studio</span>
@@ -121,9 +121,16 @@
 
         <nav class="nav" aria-label="Primary">
           <a href="/" class="is-active">Home</a>
-          <a href="/bespoke-porcelain-sinks/">Bespoke Sinks</a>
-          <a href="/large-format-tiling-london/">Surfaces</a>
-          <a href="/projects/">Portfolio</a>
+          <div class="nav__item nav__item--services">
+            <a href="/services/" class="nav__link">Services</a>
+            <div class="nav__dropdown" aria-label="Services">
+              <a href="/bespoke-porcelain-sinks/">Bespoke Porcelain Sinks</a>
+              <a href="/large-format-tiling-london/">Large Format Tiling</a>
+              <a href="/wet-rooms-bathroom-tiling/">Wet Rooms &amp; Bathroom Tiling</a>
+            </div>
+          </div>
+          <a href="/projects/">Projects</a>
+          <a href="/#studio">Studio</a>
           <a href="/contact/">Contact</a>
         </nav>
 
@@ -145,9 +152,12 @@
       <div class="mobile-menu" data-mobile-menu aria-hidden="true">
         <nav aria-label="Mobile">
           <a href="/">Home</a>
-          <a href="/bespoke-porcelain-sinks/">Bespoke Sinks</a>
-          <a href="/large-format-tiling-london/">Surfaces</a>
-          <a href="/projects/">Portfolio</a>
+          <a href="/services/">Services</a>
+          <a href="/bespoke-porcelain-sinks/">Bespoke Porcelain Sinks</a>
+          <a href="/large-format-tiling-london/">Large Format Tiling</a>
+          <a href="/wet-rooms-bathroom-tiling/">Wet Rooms &amp; Bathroom Tiling</a>
+          <a href="/projects/">Projects</a>
+          <a href="/#studio">Studio</a>
           <a href="/contact/">Contact</a>
           <a href="/quote/" class="btn btn--dark">Request a Quote</a>
         </nav>
@@ -197,7 +207,7 @@
           <div class="hero__visual" data-reveal data-reveal-delay="120">
             <!-- Primary: full sink presentation panel -->
             <figure class="hero__image hero__image--primary">
-              <div class="image-ph image-ph--sink-hero" role="img" aria-label="Bespoke porcelain sink — full presentation"></div>
+              <div class="image-ph image-ph--sink-hero" role="img" aria-label="Bespoke porcelain sink and premium tiling installation by Artiling Studio"></div>
               <figcaption>Notting Hill Residence</figcaption>
             </figure>
 
@@ -285,8 +295,8 @@
             <figure class="sinks__visual" data-reveal data-reveal-delay="120">
               <img
                 class="sinks__photo"
-                src="./assets/images/Signature/main.png?v=20260425-main-refresh-1"
-                alt="Bespoke porcelain sink in architectural profile view"
+                src="./assets/images/Signature/main.webp?v=20260425-main-refresh-1"
+                alt="Custom porcelain sink with integrated drawer by Artiling Studio"
               />
               <figcaption>
                 <span>01</span>
@@ -334,24 +344,24 @@
             <figure>
               <img
                 class="sinks__strip-photo"
-                src="./assets/images/Signature/material_finish.png"
-                alt="Porcelain surface material finish close-up"
+                src="./assets/images/Signature/material_finish.webp"
+                alt="Porcelain material finish close-up for a bespoke Artiling Studio sink"
               />
               <figcaption>Material Finish</figcaption>
             </figure>
             <figure>
               <img
                 class="sinks__strip-photo"
-                src="./assets/images/Signature/precision_edge.png"
-                alt="Precision-cut porcelain edge profile"
+                src="./assets/images/Signature/precision_edge.webp"
+                alt="Precision-cut porcelain edge detail by Artiling Studio"
               />
               <figcaption>Precision Edge</figcaption>
             </figure>
             <figure>
               <img
                 class="sinks__strip-photo"
-                src="./assets/images/Signature/detail.png"
-                alt="Clean bespoke porcelain sink detail close-up"
+                src="./assets/images/Signature/detail.webp"
+                alt="Bespoke porcelain sink detail close-up by Artiling Studio"
               />
               <figcaption>Seam Detail</figcaption>
             </figure>
@@ -439,6 +449,7 @@
               </p>
             </div>
             <div class="hero__actions">
+              <a href="/services/" class="btn btn--ghost">View All Services</a>
               <a href="/large-format-tiling-london/" class="btn btn--dark">View Surface Service</a>
               <a href="/wet-rooms-bathroom-tiling/" class="btn btn--ghost">Wet Rooms &amp; Bathroom Tiling</a>
             </div>
@@ -578,13 +589,13 @@
       <!-- ──────────────────────────────────────────────────────────────
            ABOUT
       ─────────────────────────────────────────────────────────────── -->
-      <section id="about" class="about">
+      <section id="studio" class="about">
         <div class="container about__layout">
           <figure class="about__visual" data-reveal>
             <img
               class="about__photo"
-              src="./assets/images/studio.png?v=20260425-studio-image-1"
-              alt="Artiling Studio porcelain samples and surface drawings"
+              src="./assets/images/studio.webp?v=20260425-studio-image-1"
+              alt="Artiling Studio porcelain samples and bespoke surface drawings"
             />
             <figcaption>Surface Sample — Artiling Studio</figcaption>
           </figure>
@@ -669,7 +680,7 @@
       <div class="container footer__grid">
         <div class="footer__brand">
           <span class="brand__mark brand__mark--footer" aria-hidden="true">
-            <img src="./assets/images/artiling_logo.png" alt="" />
+            <img src="./assets/images/artiling_logo.webp" alt="Artiling Studio logo" />
           </span>
           <p class="footer__name">Artiling Studio</p>
           <p class="footer__tag">Bespoke Porcelain Sinks &amp; Tiling</p>
@@ -677,10 +688,12 @@
 
         <nav class="footer__nav" aria-label="Footer">
           <h4>Services</h4>
+          <a href="/services/">Services</a>
           <a href="/bespoke-porcelain-sinks/">Bespoke Sinks</a>
           <a href="/large-format-tiling-london/">Large Format Tiling</a>
           <a href="/wet-rooms-bathroom-tiling/">Wet Rooms &amp; Bathroom Tiling</a>
-          <a href="/projects/">Portfolio</a>
+          <a href="/projects/">Projects</a>
+          <a href="/#studio">Studio</a>
           <a href="/contact/">Contact</a>
         </nav>
 
