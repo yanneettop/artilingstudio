@@ -115,7 +115,7 @@
           <p>${escapeHtml(project.category || project.descriptor)}</p>
           <p class="project-feature__editorial-desc">${escapeHtml(projectDescriptionFor(project))}</p>
           ${renderTags(project)}
-          <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
+          <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
         </div>
       </div>
     </article>
@@ -143,7 +143,7 @@
             <p>${label}</p>
             ${descHtml}
             ${renderTags(project)}
-            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View project<span aria-hidden="true">+</span></button>
+            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
           </div>
         </div>
       </article>
