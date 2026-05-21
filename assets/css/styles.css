@@ -789,7 +789,7 @@ section {
 .hero__parallax-bg {
   position: absolute;
   inset: -20% 0;
-  background-image: url("../images/hero3.png");
+  background-image: url("../images/hero3.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
