@@ -41,16 +41,27 @@
   const mobileMenu = document.querySelector('[data-mobile-menu]');
 
   if (menuBtn && mobileMenu) {
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'mobile-menu__close';
+    closeBtn.type = 'button';
+    closeBtn.setAttribute('aria-label', 'Close menu');
+    closeBtn.setAttribute('data-menu-close', '');
+    closeBtn.innerHTML = '<span></span><span></span>';
+    mobileMenu.prepend(closeBtn);
+
     const setMenu = (open) => {
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
       document.body.classList.toggle('is-menu-open', open);
+      closeBtn.tabIndex = open ? 0 : -1;
     };
 
     menuBtn.addEventListener('click', () => {
       const open = menuBtn.getAttribute('aria-expanded') === 'true';
       setMenu(!open);
     });
+
+    closeBtn.addEventListener('click', () => setMenu(false));
 
     mobileMenu.querySelectorAll('a').forEach((a) =>
       a.addEventListener('click', () => setMenu(false))
@@ -60,6 +71,8 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') setMenu(false);
     });
+
+    setMenu(false);
   }
 
   /* ──────────────────────────────────────────────
