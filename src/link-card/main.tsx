@@ -20,7 +20,7 @@ const heroActions: HeroAction[] = [
 const linkItems: LinkItem[] = [
   { label: "Phone Call", href: "tel:+447481613339", variant: "dark" },
   { label: "WhatsApp", href: "https://wa.me/447481613339", variant: "dark" },
-  { label: "Email", href: "mailto:info@artilingstudio.co.uk", variant: "dark" },
+  { label: "Email", href: "mailto:info@artilingstudio.co.uk?subject=Artiling%20Studio%20Enquiry", variant: "dark" },
 ];
 
 function HeroButton({ label, href, tone = "solid" }: HeroAction) {
