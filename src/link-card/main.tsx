@@ -18,8 +18,8 @@ const heroActions: HeroAction[] = [
 ];
 
 const linkItems: LinkItem[] = [
-  { label: "Contact", href: "/contact/", variant: "dark" },
-  { label: "Projects", href: "/projects/", variant: "dark" },
+  { label: "Phone Call", href: "tel:+447481613339", variant: "dark" },
+  { label: "WhatsApp", href: "https://wa.me/447481613339", variant: "dark" },
   { label: "Email", href: "mailto:info@artilingstudio.co.uk", variant: "dark" },
 ];
 
