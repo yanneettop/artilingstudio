@@ -13,13 +13,13 @@ type HeroAction = LinkItem & {
 };
 
 const heroActions: HeroAction[] = [
-  { label: "Request a Quote", href: "mailto:info@artilingstudio.co.uk?subject=Quote%20request", tone: "solid" },
+  { label: "Request a Quote", href: "/quote/", tone: "solid" },
   { label: "Website", href: "https://www.artilingstudio.co.uk/", tone: "soft" },
 ];
 
 const linkItems: LinkItem[] = [
-  { label: "Phone Call", href: "tel:+440000000000", variant: "dark" },
-  { label: "WhatsApp", href: "https://wa.me/440000000000", variant: "dark" },
+  { label: "Contact", href: "/contact/", variant: "dark" },
+  { label: "Projects", href: "/projects/", variant: "dark" },
   { label: "Email", href: "mailto:info@artilingstudio.co.uk", variant: "dark" },
 ];
 
