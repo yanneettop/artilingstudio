@@ -4,6 +4,7 @@ Thumbs.db
 server-error.log
 server-output.log
 node_modules/
+dist/
 .vscode/
 .idea/
 .env
