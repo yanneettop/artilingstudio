@@ -15,12 +15,12 @@
     <title>Artiling Studio | Bespoke Porcelain Sinks & Tiling, London</title>
     <meta
       name="description"
-      content="A refined digital link card for Artiling Studio, London specialists in bespoke porcelain sinks, large-format tiling and wet rooms."
+      content="A refined digital link card for Artiling Studio, London specialists in bespoke porcelain sinks, vanity tops, large-format tiling and wet rooms."
     />
     <link rel="canonical" href="https://www.artilingstudio.co.uk/card/" />
     <meta property="og:site_name" content="Artiling Studio" />
     <meta property="og:title" content="Artiling Studio | Bespoke Porcelain Sinks & Tiling, London" />
-    <meta property="og:description" content="Bespoke porcelain sinks, large-format tiling and wet rooms for elegant London interiors." />
+    <meta property="og:description" content="Bespoke porcelain sinks, vanity tops and large-format tiling for refined London interiors." />
     <meta property="og:url" content="https://www.artilingstudio.co.uk/card/" />
     <meta property="og:image" content="https://www.artilingstudio.co.uk/og-image-v2.jpg" />
     <meta property="og:type" content="website" />
@@ -31,9 +31,421 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      :root {
+        --porcelain-50: #fbf8f1;
+        --porcelain-100: #f5f0e7;
+        --porcelain-700: #665c50;
+        --charcoal: #1d1b18;
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-width: 320px;
+        background: var(--porcelain-100);
+        color: var(--charcoal);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+        padding: 24px 16px;
+        background: var(--porcelain-100);
+      }
+
+      .page::before,
+      .page::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .page::before {
+        background:
+          radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.86), transparent 30rem),
+          radial-gradient(circle at 90% 12%, rgba(210, 195, 174, 0.3), transparent 28rem);
+      }
+
+      .page::after {
+        opacity: 0.16;
+        background-image:
+          linear-gradient(115deg, transparent 0%, rgba(83, 75, 66, 0.18) 48%, transparent 51%),
+          linear-gradient(70deg, transparent 0%, rgba(255, 255, 255, 0.7) 54%, transparent 56%);
+        background-size: 220px 220px, 320px 320px;
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      .hero {
+        position: relative;
+        isolation: isolate;
+        min-height: 620px;
+        overflow: hidden;
+        border-radius: 30px;
+        padding: 28px;
+        background: var(--charcoal);
+        box-shadow: 0 26px 80px rgba(29, 27, 24, 0.13);
+      }
+
+      .hero__image,
+      .hero__shade,
+      .hero__tint {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: -3;
+      }
+
+      .hero__shade {
+        z-index: -2;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.28),
+          rgba(0, 0, 0, 0.2) 46%,
+          rgba(0, 0, 0, 0.58)
+        );
+      }
+
+      .hero__tint {
+        z-index: -1;
+        background: rgba(42, 33, 27, 0.18);
+        mix-blend-mode: multiply;
+      }
+
+      .hero__content {
+        min-height: 566px;
+        display: flex;
+        flex-direction: column;
+        color: var(--porcelain-50);
+        text-align: center;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding-top: 4px;
+        text-align: left;
+      }
+
+      .brand__logo {
+        width: 64px;
+        height: 64px;
+        flex: 0 0 auto;
+        object-fit: contain;
+        opacity: 0.95;
+        filter: brightness(0) invert(1);
+        filter: brightness(0) invert(1) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.24));
+      }
+
+      .brand__name {
+        margin: 0;
+        color: #fffaf0;
+        font-family: var(--serif);
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0.04em;
+      }
+
+      .brand__line {
+        max-width: 15rem;
+        margin: 8px 0 0;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 1.45;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .hero__copy {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 48px 0 40px;
+      }
+
+      h1 {
+        max-width: 305px;
+        margin: 0 auto;
+        color: #fffaf0;
+        font-family: var(--serif);
+        font-size: clamp(33px, 8.6vw, 39px);
+        font-weight: 500;
+        line-height: 1.12;
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+
+      .hero__copy p {
+        max-width: 320px;
+        margin: 28px auto 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 15px;
+        line-height: 1.55;
+        text-wrap: balance;
+      }
+
+      .hero__actions,
+      .links {
+        display: grid;
+      }
+
+      .hero__actions {
+        gap: 14px;
+      }
+
+      .hero-button,
+      .link-button {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        transition:
+          transform 0.3s ease,
+          background-color 0.3s ease;
+      }
+
+      .hero-button {
+        height: 60px;
+        padding: 0 20px;
+        color: var(--charcoal);
+        background: var(--porcelain-50);
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.16);
+      }
+
+      .hero-button--soft {
+        background: rgba(251, 248, 241, 0.95);
+      }
+
+      .links {
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .link-button {
+        min-height: 58px;
+        padding: 0 20px;
+        color: var(--porcelain-50);
+        background: var(--charcoal);
+        box-shadow: 0 10px 28px rgba(29, 27, 24, 0.055);
+      }
+
+      .hero-button:hover,
+      .link-button:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-button:hover {
+        background: #ffffff;
+      }
+
+      .link-button:hover {
+        background: #27231f;
+      }
+
+      .hero-button:focus-visible,
+      .link-button:focus-visible {
+        outline: 2px solid var(--charcoal);
+        outline-offset: 4px;
+      }
+
+      .hero-button:focus-visible {
+        outline-color: var(--porcelain-50);
+      }
+
+      .detail {
+        margin-top: 24px;
+        padding: 28px 24px;
+        border: 1px solid rgba(29, 27, 24, 0.1);
+        border-radius: 22px;
+        background: rgba(243, 237, 228, 0.7);
+        text-align: center;
+        box-shadow: 0 14px 42px rgba(29, 27, 24, 0.055);
+      }
+
+      .detail__title {
+        max-width: 18rem;
+        margin: 0 auto;
+        color: var(--charcoal);
+        font-family: var(--serif);
+        font-size: 23px;
+        line-height: 1.12;
+      }
+
+      .detail__line {
+        max-width: 18rem;
+        margin: 12px auto 0;
+        color: var(--porcelain-700);
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1.65;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .footer {
+        padding: 32px 16px 12px;
+        text-align: center;
+      }
+
+      .footer__name {
+        margin: 0;
+        color: rgba(29, 27, 24, 0.9);
+        font-family: var(--serif);
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .footer__line {
+        margin: 12px 0 0;
+        color: var(--porcelain-700);
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1.65;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      @media (min-width: 640px) {
+        .page {
+          padding: 40px 24px;
+        }
+
+        .hero {
+          padding: 32px;
+        }
+
+        .hero__content {
+          min-height: 556px;
+        }
+
+        .brand__logo {
+          width: 95px;
+          height: 95px;
+        }
+
+        .brand__name {
+          font-size: 28px;
+        }
+
+        .brand__line {
+          max-width: 20rem;
+          font-size: 11px;
+        }
+
+        .hero__copy {
+          padding: 56px 0 48px;
+        }
+
+        h1 {
+          max-width: 360px;
+          font-size: 46px;
+        }
+
+        .hero__copy p {
+          max-width: 350px;
+          font-size: 16px;
+        }
+
+        .link-button {
+          min-height: 62px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/link-card/main.tsx"></script>
+    <main class="page">
+      <div class="shell">
+        <section class="hero" aria-label="Artiling Studio introduction">
+          <img
+            src="/assets/images/hero3.webp"
+            alt="Warm minimal bathroom with custom double porcelain sink and stone surfaces"
+            class="hero__image"
+          />
+          <div class="hero__shade" aria-hidden="true"></div>
+          <div class="hero__tint" aria-hidden="true"></div>
+
+          <div class="hero__content">
+            <header class="brand">
+              <img src="/assets/images/artiling_logo.webp" alt="Artiling Studio logo" class="brand__logo" />
+              <div>
+                <p class="brand__name">Artiling Studio</p>
+                <p class="brand__line">Bespoke Porcelain Sinks &amp; Tiling <span aria-hidden="true">&middot;</span> London</p>
+              </div>
+            </header>
+
+            <div class="hero__copy">
+              <h1>Bespoke porcelain surfaces for refined interiors.</h1>
+              <p>Custom sinks, vanity tops and large-format finishes, crafted for London homes.</p>
+            </div>
+
+            <div class="hero__actions" aria-label="Primary actions">
+              <a class="hero-button" href="mailto:info@artilingstudio.co.uk?subject=Quote%20request">Request a Quote</a>
+              <a class="hero-button hero-button--soft" href="https://www.artilingstudio.co.uk/">Website</a>
+            </div>
+          </div>
+        </section>
+
+        <nav class="links" aria-label="Artiling Studio links">
+          <a class="link-button" href="tel:+440000000000">Phone Call</a>
+          <a class="link-button" href="https://wa.me/440000000000">WhatsApp</a>
+          <a class="link-button" href="mailto:info@artilingstudio.co.uk">Email</a>
+        </nav>
+
+        <section class="detail">
+          <p class="detail__title">Specialist in custom porcelain work</p>
+          <p class="detail__line">
+            Sinks <span aria-hidden="true">&middot;</span> vanity tops<br />
+            Large-format tiling <span aria-hidden="true">&middot;</span> wet rooms
+          </p>
+        </section>
+
+        <footer class="footer">
+          <p class="footer__name">Artiling Studio</p>
+          <p class="footer__line">Bespoke porcelain sinks &amp; tiling <span aria-hidden="true">&middot;</span> London</p>
+        </footer>
+      </div>
+    </main>
   </body>
 </html>
