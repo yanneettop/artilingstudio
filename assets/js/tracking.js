@@ -20,14 +20,15 @@
       Object.entries(params).filter(([, value]) => value !== undefined && value !== null && value !== '')
     );
 
+  // Shared GA4 event helper. Uses the existing gtag setup when present and
+  // falls back to dataLayer only if gtag has not loaded yet.
   const fireEvent = (eventName, params = {}) => {
     const payload = cleanParams(params);
 
     try {
       if (typeof window.gtag === 'function') {
         window.gtag('event', eventName, payload);
-      }
-      if (Array.isArray(window.dataLayer)) {
+      } else if (Array.isArray(window.dataLayer)) {
         window.dataLayer.push({ event: eventName, ...payload });
       }
       if (isLocal && window.console && typeof window.console.debug === 'function') {
@@ -79,28 +80,6 @@
     return undefined;
   };
 
-  const trackThankYouView = () => {
-    if (pagePath() !== '/thank-you/') return;
-
-    let context = {};
-    try {
-      const stored = window.sessionStorage.getItem(CONTEXT_KEY);
-      if (stored) context = JSON.parse(stored) || {};
-    } catch (error) {
-      context = {};
-    }
-
-    fireEvent('thank_you_view', {
-      page_path: '/thank-you/',
-      source: Object.keys(context).length ? 'quote_form' : undefined,
-      project_type: context.project_type,
-      material_situation: context.material_situation,
-      scope: context.scope,
-      timeline: context.timeline,
-      budget_range: context.budget_range,
-    });
-  };
-
   document.addEventListener('click', (event) => {
     const element = event.target.closest('a, button');
     if (!element) return;
@@ -116,12 +95,37 @@
       element.closest('[data-project-slug]')?.dataset.projectSlug ||
       element.closest('[id]')?.id;
 
+    // GA4 lead action: user clicked a phone link.
+    if (href.startsWith('tel:')) {
+      fireEvent('phone_click', {
+        page_path: currentPath,
+        phone_number: href.replace(/^tel:/, ''),
+        link_location: linkLocation,
+        cta_label: ctaLabel,
+      });
+      return;
+    }
+
+    // GA4 lead action: user clicked an email link.
     if (element.matches('[data-email-link]') || href.startsWith('mailto:')) {
       fireEvent('email_click', {
         page_path: currentPath,
         email_address: EMAIL_ADDRESS,
         link_location: linkLocation,
         cta_label: ctaLabel || EMAIL_ADDRESS,
+      });
+      return;
+    }
+
+    // GA4 lead action: user clicked a main Request a Quote CTA.
+    if (targetPath === '/quote/' || targetPath === '/request-a-quote/') {
+      fireEvent('quote_cta_click', {
+        page_path: currentPath,
+        source_page: currentPath,
+        target_path: targetPath,
+        cta_label: ctaLabel,
+        link_location: linkLocation,
+        service_type: serviceFor(element, targetPath),
       });
       return;
     }
@@ -136,6 +140,7 @@
       return;
     }
 
+    // GA4 portfolio action: project cards, lightboxes and portfolio links.
     if (element.matches('[data-lightbox-open], [data-project-lightbox-open]')) {
       fireEvent('portfolio_cta_click', {
         page_path: currentPath,
@@ -162,8 +167,8 @@
       return;
     }
 
+    // GA4 service action: service navigation and service-specific CTAs.
     if (
-      targetPath === '/quote/' ||
       targetPath === '/bespoke-porcelain-sinks/' ||
       targetPath === '/large-format-tiling-london/' ||
       targetPath === '/wet-rooms-bathroom-tiling/' ||
@@ -175,7 +180,7 @@
         source_page: currentPath,
         target_path: targetPath,
         cta_label: ctaLabel,
-        service: serviceFor(element, targetPath),
+        service_type: serviceFor(element, targetPath),
       });
     }
   });
@@ -184,10 +189,4 @@
     fireEvent,
     contextKey: CONTEXT_KEY,
   };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', trackThankYouView, { once: true });
-  } else {
-    trackThankYouView();
-  }
 })();

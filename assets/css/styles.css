@@ -815,9 +815,17 @@ section {
    7. HERO
 ─────────────────────────────────────────────────────────────── */
 .hero {
-  padding: clamp(140px, 16vh, 200px) 0 clamp(80px, 10vw, 140px);
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding:
+    calc(clamp(104px, 12vh, 148px) + env(safe-area-inset-top))
+    0
+    calc(clamp(56px, 8vh, 96px) + env(safe-area-inset-bottom));
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .hero__parallax-bg {
   position: absolute;
@@ -863,6 +871,7 @@ section {
   position: relative;
   z-index: 2;
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr;
   gap: clamp(40px, 6vw, 100px);
   align-items: center;
@@ -5696,8 +5705,13 @@ body {
 }
 
 .hero {
-  min-height: auto;
-  padding: clamp(116px, 15vw, 148px) 0 clamp(64px, 8vw, 88px);
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding:
+    calc(clamp(104px, 12vh, 148px) + env(safe-area-inset-top))
+    0
+    calc(clamp(56px, 8vh, 88px) + env(safe-area-inset-bottom));
 }
 
 .hero__grid {
@@ -5870,7 +5884,10 @@ body {
   }
 
   .hero {
-    padding: 126px 0 76px;
+    padding:
+      calc(126px + env(safe-area-inset-top))
+      0
+      calc(76px + env(safe-area-inset-bottom));
   }
 
   .hero__copy {
@@ -5964,8 +5981,8 @@ body {
   }
 
   .hero {
-    padding-top: 132px;
-    padding-bottom: 82px;
+    padding-top: calc(132px + env(safe-area-inset-top));
+    padding-bottom: calc(82px + env(safe-area-inset-bottom));
   }
 
   .hero__copy {
@@ -6058,8 +6075,8 @@ body {
   }
 
   .hero {
-    padding-top: clamp(144px, 10vw, 168px);
-    padding-bottom: clamp(86px, 7vw, 110px);
+    padding-top: calc(clamp(144px, 10vw, 168px) + env(safe-area-inset-top));
+    padding-bottom: calc(clamp(86px, 7vw, 110px) + env(safe-area-inset-bottom));
   }
 
   .display--alt {
@@ -6080,11 +6097,13 @@ body {
   }
 
   .hero {
-    min-height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     padding:
       calc(104px + env(safe-area-inset-top))
       0
-      64px;
+      calc(64px + env(safe-area-inset-bottom));
   }
 
   .hero__visual {

@@ -48,6 +48,15 @@
     page_path: '/quote/',
   });
 
+  const serviceTypeFor = (projectType) => {
+    const normalized = String(projectType || '').toLowerCase();
+    if (normalized.includes('sink')) return 'bespoke_porcelain_sinks';
+    if (normalized.includes('large format') || normalized.includes('tiling')) return 'large_format_tiling';
+    if (normalized.includes('wet room') || normalized.includes('bathroom')) return 'wet_rooms_bathroom_tiling';
+    if (normalized.includes('other')) return 'other';
+    return undefined;
+  };
+
   const storeQuoteContext = (context) => {
     try {
       window.sessionStorage.setItem(
@@ -401,14 +410,19 @@
 
     const context = quoteContext();
     storeQuoteContext(context);
+
+    // GA4 conversion event: fires only after /api/quote returns success.
+    // This is the primary quote conversion, not the Thank You page view.
     window.ArtilingTracking?.fireEvent?.('quote_form_submit', {
-      form_type: 'quote_form',
+      form_name: 'request_quote',
+      page_path: window.location.pathname || context.page_path,
+      service_type: serviceTypeFor(context.project_type),
       project_type: context.project_type,
       material_situation: context.material_situation,
       scope: context.scope,
       timeline: context.timeline,
       budget_range: context.budget_range,
-      page_path: '/quote/',
+      transport_type: 'beacon',
     });
     window.location.assign('/thank-you/');
   });
