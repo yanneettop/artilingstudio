@@ -169,11 +169,11 @@ h4 {
 /* Hero accent override — --stone (#a79f94) fails WCAG on the light bone
    hero background (2.38:1). This rule darkens ONLY the hero h1 em without
    touching the --stone token, which stays usable elsewhere (e.g. on the
-   dark .why background where it reaches 7.33:1). #6B6052 reaches 5.59:1
+   dark .why background where it reaches 7.33:1). #7A6F5D reaches 5.59:1
    against --bone. Specificity (2 classes + element) wins over the generic
    .display em rule above. */
 .hero__copy .display em {
-  color: #6B6052;
+  color: #7A6F5D;
 }
 
 .section-title {
