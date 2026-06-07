@@ -7488,6 +7488,10 @@ body {
   border: 1px solid rgba(15, 15, 16, 0.08);
 }
 
+.service-editorial-grid--services .service-editorial-card__media {
+  aspect-ratio: 16 / 9;
+}
+
 .service-editorial-card {
   min-height: 260px;
   padding: clamp(30px, 3.4vw, 48px);
@@ -7928,6 +7932,10 @@ body {
 
   .service-editorial-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .service-editorial-grid--services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .projects-seo-grid {
