@@ -7490,6 +7490,12 @@ body {
   margin: 0;
 }
 
+.contact-card {
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+}
+
 .contact-card div {
   padding: 22px 0;
   border-bottom: 1px solid var(--line);
@@ -7521,14 +7527,26 @@ body {
 .contact-card dd {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(22px, 2.3vw, 32px);
-  line-height: 1.12;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.18;
+  overflow-wrap: anywhere;
 }
 
 .contact-card a,
 .quote-upload-note a {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.contact-card a {
+  display: inline;
+  max-width: 100%;
+}
+
+.contact-card [data-email-display] {
+  font-size: clamp(18px, 1.45vw, 24px);
+  line-height: 1.2;
+  word-break: break-word;
 }
 
 .enquiry-list {
@@ -7782,6 +7800,11 @@ body {
     grid-template-columns: minmax(0, 1fr) minmax(340px, 0.42fr);
   }
 
+  .contact-hero__grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(420px, 0.45fr);
+    align-items: center;
+  }
+
   .service-intro__grid,
   .service-feature-row,
   .quote-page-grid {
@@ -7801,6 +7824,11 @@ body {
   .service-hero,
   .contact-hero {
     padding-top: 132px;
+  }
+
+  .contact-card {
+    max-width: none;
+    justify-self: stretch;
   }
 
   .quote-side-note {
