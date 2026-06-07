@@ -56,6 +56,7 @@
   });
 
   const updateGoogleConsent = (consent) => {
+    window[`ga-disable-${GA_ID}`] = !consent.analytics;
     window.gtag('consent', 'update', consentModePayload(consent));
   };
 
@@ -69,12 +70,17 @@
     document.head.appendChild(script);
   };
 
+  let analyticsConfigured = false;
+
   const loadAnalytics = (consent) => {
     if (!consent.analytics) return;
 
     loadScript('artiling-ga4', `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
-    window.gtag('js', new Date());
-    window.gtag('config', GA_ID);
+    if (!analyticsConfigured) {
+      window.gtag('js', new Date());
+      window.gtag('config', GA_ID);
+      analyticsConfigured = true;
+    }
 
     window.clarity = window.clarity || function clarity(){ (window.clarity.q = window.clarity.q || []).push(arguments); };
     loadScript('artiling-clarity', `https://www.clarity.ms/tag/${CLARITY_ID}`);
@@ -91,9 +97,22 @@
     document.querySelector('[data-cookie-consent]')?.remove();
   };
 
+  const stopLoadedAnalytics = (previousConsent, nextConsent) => {
+    if (!previousConsent.analytics || nextConsent.analytics) return false;
+
+    document.getElementById('artiling-ga4')?.remove();
+    document.getElementById('artiling-clarity')?.remove();
+    document.getElementById('artiling-ahrefs')?.remove();
+    analyticsConfigured = false;
+    window.setTimeout(() => window.location.reload(), 40);
+    return true;
+  };
+
   const saveConsent = (consent) => {
+    const previousConsent = currentConsent;
     currentConsent = writeConsent(consent);
     updateGoogleConsent(currentConsent);
+    if (stopLoadedAnalytics(previousConsent, currentConsent)) return;
     loadAnalytics(currentConsent);
     closePanel();
   };
