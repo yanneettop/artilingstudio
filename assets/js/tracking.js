@@ -23,6 +23,13 @@
   // Shared GA4 event helper. Uses the existing gtag setup when present and
   // falls back to dataLayer only if gtag has not loaded yet.
   const fireEvent = (eventName, params = {}) => {
+    if (!window.ArtilingConsent?.hasAnalyticsConsent?.()) {
+      if (isLocal && window.console && typeof window.console.debug === 'function') {
+        window.console.debug('[Artiling tracking consent denied]', eventName);
+      }
+      return;
+    }
+
     const payload = cleanParams(params);
 
     try {

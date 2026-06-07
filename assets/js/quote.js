@@ -10,6 +10,154 @@
   const form = document.querySelector('[data-quote-form]');
   if (!form) return;
 
+  form.innerHTML = `
+    <div class="quote-progress" aria-hidden="true">
+      <div class="quote-progress__bar">
+        <div class="quote-progress__fill" data-progress-fill></div>
+      </div>
+      <div class="quote-progress__steps">
+        <span data-step-indicator="1" class="is-active">01</span>
+        <span data-step-indicator="2">02</span>
+        <span data-step-indicator="3">03</span>
+      </div>
+    </div>
+
+    <div class="quote-form__heading">
+      <p class="eyebrow"><span data-step-current>01</span> &nbsp;/&nbsp; 03 &nbsp;-&nbsp; <span data-step-name>Project</span></p>
+    </div>
+
+    <div class="quote-step is-active" data-step="1">
+      <header class="quote-step__head">
+        <h2 class="quote-step__title">What can we help with?</h2>
+        <p class="quote-step__sub">Choose the closest option. If you are not sure yet, that is completely fine.</p>
+      </header>
+
+      <div class="option-grid option-grid--2col" data-required="radio-group" data-name="projectType">
+        <label class="option-card">
+          <input type="radio" name="projectType" value="Bespoke porcelain sink" />
+          <span class="option-card__face">
+            <span class="option-card__num">01</span>
+            <span class="option-card__label">Bespoke porcelain sink</span>
+          </span>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="projectType" value="Large format tiling" />
+          <span class="option-card__face">
+            <span class="option-card__num">02</span>
+            <span class="option-card__label">Large format tiling</span>
+          </span>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="projectType" value="Wet room / bathroom tiling" />
+          <span class="option-card__face">
+            <span class="option-card__num">03</span>
+            <span class="option-card__label">Wet room / bathroom</span>
+          </span>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="projectType" value="Not sure yet" />
+          <span class="option-card__face">
+            <span class="option-card__num">04</span>
+            <span class="option-card__label">Not sure yet</span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="quote-step" data-step="2">
+      <header class="quote-step__head">
+        <h2 class="quote-step__title">Tell us the basics.</h2>
+        <p class="quote-step__sub">A short note is enough to start. Photos are optional, but helpful.</p>
+      </header>
+
+      <label class="quote-input quote-input--full">
+        <span class="quote-input__label">Short message <span class="req">*</span></span>
+        <textarea name="projectMessage" rows="5" data-required="text" required placeholder="Tell us roughly what you need, where the project is, or what you would like to change."></textarea>
+      </label>
+
+      <label class="quote-drop" data-drop-zone>
+        <input type="file" name="photos" multiple accept="image/*" data-file-input hidden />
+        <span class="quote-drop__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <path d="m21 15-5-5L5 21" />
+          </svg>
+        </span>
+        <span class="quote-drop__text">
+          <span class="quote-drop__primary">Add photos if you have them</span>
+          <span class="quote-drop__secondary">JPG, PNG, WebP or HEIC up to 10MB each</span>
+        </span>
+      </label>
+
+      <ul class="quote-previews" data-file-previews aria-live="polite"></ul>
+    </div>
+
+    <div class="quote-step" data-step="3">
+      <header class="quote-step__head">
+        <h2 class="quote-step__title">How should we reach you?</h2>
+        <p class="quote-step__sub">Leave an email, a phone number, or both. We will come back with the next step.</p>
+      </header>
+
+      <fieldset class="quote-fieldset">
+        <legend class="quote-fieldset__legend">Your details</legend>
+        <div class="quote-input-row quote-input-row--double">
+          <label class="quote-input">
+            <span class="quote-input__label">Full name <span class="req">*</span></span>
+            <input type="text" name="name" autocomplete="name" data-required="text" required />
+          </label>
+          <label class="quote-input">
+            <span class="quote-input__label">Email</span>
+            <input type="email" name="email" autocomplete="email" />
+          </label>
+        </div>
+
+        <div class="quote-input-row quote-input-row--double" data-required="contact-group">
+          <label class="quote-input">
+            <span class="quote-input__label">Phone or WhatsApp</span>
+            <input type="tel" name="phone" autocomplete="tel" placeholder="+44..." />
+          </label>
+          <label class="quote-input">
+            <span class="quote-input__label">Preferred contact method</span>
+            <select name="contactMethod">
+              <option value="">Choose</option>
+              <option value="Email">Email</option>
+              <option value="Phone">Phone</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Any">Any</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <label class="quote-consent">
+        <input type="checkbox" name="consent" data-required="checkbox" required />
+        <span class="quote-consent__face" aria-hidden="true"></span>
+        <span class="quote-consent__text">
+          I agree to be contacted about this enquiry and understand my details
+          will be handled in line with the
+          <a href="/privacy-policy/" target="_blank" rel="noopener noreferrer">Artiling Studio Privacy Policy</a>.
+        </span>
+      </label>
+
+      <div
+        class="cf-turnstile"
+        data-turnstile-widget
+        data-sitekey="0x4AAAAAADQE2tP_lox31aIG"
+        data-callback="onQuoteTurnstileSuccess"
+        data-expired-callback="onQuoteTurnstileExpired"
+        data-error-callback="onQuoteTurnstileError"
+      ></div>
+    </div>
+
+    <div class="quote-form__nav">
+      <button type="button" class="btn btn--ghost" data-prev hidden>Back</button>
+      <span class="quote-form__nav-spacer" aria-hidden="true"></span>
+      <button type="button" class="btn btn--dark" data-next>Continue <span aria-hidden="true">-&gt;</span></button>
+      <button type="submit" class="btn btn--dark" data-submit hidden>Send request <span aria-hidden="true">-&gt;</span></button>
+    </div>
+  `;
+
   const wrapper = document.querySelector('[data-quote-form-wrapper]');
   const success = document.querySelector('[data-success]');
   const steps = Array.from(form.querySelectorAll('.quote-step'));
@@ -24,12 +172,9 @@
   const stepNameEl = form.querySelector('[data-step-name]');
 
   const stepNames = [
-    'Project Type',
-    'Material Situation',
-    'Requirements',
-    'Photos',
-    'Timeline & Location',
-    'Budget & Contact',
+    'Project',
+    'Details',
+    'Contact',
   ];
 
   let currentStep = 1;
@@ -41,6 +186,7 @@
 
   const quoteContext = () => ({
     project_type: getCheckedValue('projectType'),
+    project_message: form.querySelector('[name="projectMessage"]')?.value.trim() || '',
     material_situation: getCheckedValue('materialSituation'),
     scope: getCheckedValue('scope'),
     timeline: getCheckedValue('timeline'),
@@ -133,6 +279,11 @@
         } else {
           isValid = el.value.trim() !== '';
         }
+      } else if (type === 'contact-group') {
+        const email = stepEl.querySelector('input[name="email"]')?.value.trim() || '';
+        const phone = stepEl.querySelector('input[name="phone"]')?.value.trim() || '';
+        const emailIsValid = email === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        isValid = emailIsValid && (phone !== '' || email !== '');
       } else if (type === 'checkbox') {
         isValid = el.checked;
       }
@@ -145,7 +296,7 @@
     });
 
     if (firstInvalid) {
-      const target = firstInvalid.tagName === 'DIV'
+      const target = firstInvalid.tagName === 'DIV' || firstInvalid.tagName === 'FIELDSET'
         ? firstInvalid.querySelector('input')
         : firstInvalid;
       if (target) {
@@ -172,6 +323,7 @@
       if (wrap) wrap.classList.remove('has-error');
     } else if (target.matches('input, textarea, select')) {
       target.classList.remove('has-error');
+      target.closest('[data-required="contact-group"]')?.classList.remove('has-error');
     }
   });
 
@@ -418,6 +570,7 @@
       page_path: window.location.pathname || context.page_path,
       service_type: serviceTypeFor(context.project_type),
       project_type: context.project_type,
+      project_message_provided: context.project_message ? 'yes' : 'no',
       material_situation: context.material_situation,
       scope: context.scope,
       timeline: context.timeline,

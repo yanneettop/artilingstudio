@@ -1,17 +1,13 @@
 const REQUIRED_FIELDS = [
   'projectType',
-  'materialSituation',
-  'scope',
-  'condition',
-  'timeline',
-  'budget',
+  'projectMessage',
   'name',
-  'email',
   'consent',
 ];
 
 const FIELD_LABELS = [
   ['projectType', 'Project type'],
+  ['projectMessage', 'Project message'],
   ['materialSituation', 'Material situation'],
   ['scope', 'Scope'],
   ['condition', 'Current condition'],
@@ -362,10 +358,17 @@ export async function onRequestPost({ request, env }) {
       }, 400, request, env);
     }
 
-    if (!validateEmail(fields.email)) {
+    if (fields.email && !validateEmail(fields.email)) {
       return jsonResponse({
         ok: false,
         message: 'Please enter a valid email address.',
+      }, 400, request, env);
+    }
+
+    if (!fields.email && !fields.phone) {
+      return jsonResponse({
+        ok: false,
+        message: 'Please add either an email address or a phone number.',
       }, 400, request, env);
     }
 
