@@ -7541,6 +7541,7 @@ body {
 .contact-card a {
   display: inline;
   max-width: 100%;
+  text-decoration: none;
 }
 
 .contact-card [data-email-display] {
