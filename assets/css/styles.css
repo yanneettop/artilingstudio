@@ -1220,6 +1220,12 @@ section {
   box-shadow: 0 30px 80px -40px rgba(15, 15, 16, 0.3);
   transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
 }
+.sinks__visual--wide {
+  aspect-ratio: 4 / 3;
+}
+.sinks__visual--tall {
+  aspect-ratio: 3 / 4;
+}
 .sinks__visual:hover {
   transform: translateY(-6px);
   box-shadow: 0 36px 90px -42px rgba(15, 15, 16, 0.36);
@@ -1231,6 +1237,12 @@ section {
   object-fit: cover;
   display: block;
   transition: transform 2s var(--ease);
+}
+.sinks__visual--wide .sinks__photo {
+  object-position: center center;
+}
+.sinks__visual--tall .sinks__photo {
+  object-position: center 42%;
 }
 .sinks__visual:hover .image-ph,
 .sinks__visual:hover .sinks__photo {
@@ -2940,6 +2952,9 @@ section {
 }
 
 .projects-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center 42%;
   opacity: 0.12;
 }
@@ -5424,6 +5439,22 @@ body {
     aspect-ratio: 16 / 12;
   }
 
+  .sinks__visual--wide {
+    aspect-ratio: 4 / 3;
+  }
+
+  .sinks__visual--tall {
+    aspect-ratio: 3 / 4;
+  }
+
+  .service-feature-row--media-text .sinks__text {
+    max-width: 620px;
+  }
+
+  .service-feature-row--media-text .section-title {
+    max-width: 16ch;
+  }
+
   .sinks__visual figcaption,
   .about__visual figcaption {
     left: 12px;
@@ -7593,6 +7624,42 @@ body {
 
 .service-feature-row {
   align-items: start;
+}
+
+.service-feature-row--media-text {
+  align-items: start;
+}
+
+.service-feature-row--media-text .sinks__visual {
+  align-self: start;
+  margin-top: clamp(46px, 4.8vw, 72px);
+}
+
+.service-feature-row--media-text .sinks__text {
+  align-self: start;
+  max-width: 500px;
+  padding-top: 0;
+}
+
+.service-feature-row--media-text .section-title {
+  max-width: 19ch;
+  margin-top: 18px;
+  margin-bottom: 22px;
+  font-size: clamp(32px, 2.7vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.service-feature-row--media-text .service-intro__copy p,
+.service-feature-row--media-text .sinks__text > p:not(.eyebrow) {
+  max-width: 42ch;
+  font-size: clamp(15.5px, 1.05vw, 17px);
+  line-height: 1.62;
+}
+
+.service-feature-row--media-text .service-intro__copy p + p,
+.service-feature-row--media-text .sinks__text > p:not(.eyebrow) + p {
+  margin-top: 22px;
 }
 
 .service-mini-list {
