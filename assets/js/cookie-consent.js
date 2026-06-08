@@ -149,8 +149,8 @@
       <div class="cookie-consent__panel">
         <div class="cookie-consent__copy">
           <p class="cookie-consent__eyebrow">Cookie preferences</p>
-          <h2>${isPreferences ? 'Manage cookies' : 'Cookies on this website'}</h2>
-          <p>We use cookies to improve this website, understand how visitors use it, and measure enquiries. You can accept all cookies, reject non-essential cookies, or manage your preferences.</p>
+          <h2>${isPreferences ? 'Manage cookies' : 'Cookie preferences'}</h2>
+          <p>${isPreferences ? 'Choose which optional cookies Artiling Studio can use for analytics and measurement.' : 'We use optional cookies for analytics and enquiry measurement. Choose what works for you.'}</p>
         </div>
 
         <div class="cookie-consent__prefs" ${isPreferences ? '' : 'hidden'}>
