@@ -7635,6 +7635,76 @@ body {
   margin-top: clamp(46px, 4.8vw, 72px);
 }
 
+.service-feature-row.service-feature-row--wet-room {
+  grid-template-columns: minmax(0, 1.28fr) minmax(360px, 0.72fr);
+  gap: clamp(72px, 8vw, 140px);
+  align-items: start;
+}
+
+.service-feature-row--wet-room .sinks__visual {
+  width: min(100%, 760px);
+  aspect-ratio: 5 / 3.7;
+  margin-top: clamp(68px, 5.2vw, 96px);
+}
+
+.service-feature-row--wet-room .sinks__text {
+  max-width: 520px;
+}
+
+.service-feature-row.service-feature-row--wet-room-reverse {
+  grid-template-columns: minmax(360px, 0.72fr) minmax(0, 1.28fr);
+}
+
+.service-feature-row--wet-room-reverse .sinks__visual {
+  justify-self: end;
+}
+
+.service-feature-row.service-feature-row--fabrication {
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.78fr);
+  gap: clamp(72px, 8vw, 136px);
+  align-items: start;
+}
+
+.service-feature-row--fabrication .sinks__visual {
+  width: min(100%, 740px);
+  aspect-ratio: 5 / 3.65;
+  margin-top: clamp(34px, 3.2vw, 54px);
+}
+
+.service-feature-row--fabrication .sinks__text {
+  max-width: 520px;
+}
+
+.service-feature-row.service-feature-row--fabrication-reverse {
+  grid-template-columns: minmax(360px, 0.78fr) minmax(0, 1.2fr);
+}
+
+.service-feature-row--fabrication-reverse .sinks__visual {
+  justify-self: end;
+  width: min(100%, 780px);
+  margin-top: clamp(10px, 1.6vw, 28px);
+}
+
+@media (max-width: 899px) {
+  .service-feature-row.service-feature-row--wet-room,
+  .service-feature-row.service-feature-row--wet-room-reverse,
+  .service-feature-row.service-feature-row--fabrication,
+  .service-feature-row.service-feature-row--fabrication-reverse {
+    grid-template-columns: 1fr;
+    gap: clamp(34px, 8vw, 52px);
+  }
+
+  .service-feature-row--wet-room .sinks__visual,
+  .service-feature-row--wet-room-reverse .sinks__visual,
+  .service-feature-row--fabrication .sinks__visual,
+  .service-feature-row--fabrication-reverse .sinks__visual {
+    width: 100%;
+    justify-self: stretch;
+    aspect-ratio: 4 / 3;
+    margin-top: 0;
+  }
+}
+
 .service-feature-row--media-text .sinks__text {
   align-self: start;
   max-width: 500px;
@@ -7660,6 +7730,18 @@ body {
 .service-feature-row--media-text .service-intro__copy p + p,
 .service-feature-row--media-text .sinks__text > p:not(.eyebrow) + p {
   margin-top: 22px;
+}
+
+.service-feature-row--install-detail {
+  align-items: center;
+}
+
+.service-feature-row--install-detail .sinks__visual {
+  align-self: center;
+}
+
+.service-feature-row--install-detail .sinks__text {
+  align-self: center;
 }
 
 .service-mini-list {
