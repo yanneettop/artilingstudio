@@ -140,9 +140,31 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../assets/css/styles.css?v=20260608-cookie-bottom-bar" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260611-page-loader" />
   </head>
   <body>
+    <div class="page-loader" data-page-loader aria-hidden="true">
+      <img class="page-loader__mark" src="../assets/images/loader-mark.webp" alt="" width="262" height="360" decoding="async" fetchpriority="high" />
+      <span class="page-loader__line"></span>
+    </div>
+    <script>
+      (function () {
+        var loader = document.querySelector('[data-page-loader]');
+        if (!loader) return;
+        try {
+          if (sessionStorage.getItem('artiling-loader')) { loader.remove(); return; }
+          sessionStorage.setItem('artiling-loader', '1');
+        } catch (e) {}
+        var hide = function () {
+          if (!loader.parentNode) return;
+          loader.classList.add('is-done');
+          setTimeout(function () { if (loader.parentNode) loader.remove(); }, 700);
+        };
+        if (document.readyState === 'complete') { setTimeout(hide, 400); }
+        else { window.addEventListener('load', function () { setTimeout(hide, 400); }); }
+        setTimeout(hide, 3200);
+      })();
+    </script>
     <div class="scroll-progress" aria-hidden="true"></div>
     <header class="site-header" data-header>
       <div class="container header__inner">

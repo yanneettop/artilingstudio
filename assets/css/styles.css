@@ -8356,3 +8356,95 @@ body {
     padding: 11px 12px;
   }
 }
+
+/* ──────────────────────────────────────────────────────────────
+   PAGE LOADER — AS monogram, shown once per session
+─────────────────────────────────────────────────────────────── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  background: var(--bone);
+  transition: opacity 0.6s var(--ease-out), visibility 0s linear 0.6s;
+}
+
+.page-loader__mark {
+  width: clamp(54px, 7vw, 70px);
+  height: auto;
+  animation: page-loader-breathe 2.4s var(--ease) infinite;
+}
+
+.page-loader__line {
+  position: relative;
+  display: block;
+  width: 76px;
+  height: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.page-loader__line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: page-loader-sweep 1.7s var(--ease) infinite;
+}
+
+.page-loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes page-loader-breathe {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.68;
+    transform: scale(0.965);
+  }
+}
+
+@keyframes page-loader-sweep {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  52% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  53% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__mark,
+  .page-loader__line::after {
+    animation: none;
+  }
+
+  .page-loader__line::after {
+    transform: scaleX(1);
+  }
+
+  .page-loader {
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+  }
+}
