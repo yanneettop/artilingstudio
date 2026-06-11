@@ -139,7 +139,7 @@
 
     const isPreferences = mode === 'preferences';
     const shell = document.createElement('div');
-    shell.className = 'cookie-consent';
+    shell.className = `cookie-consent${isPreferences ? ' is-expanded' : ''}`;
     shell.dataset.cookieConsent = 'true';
     shell.setAttribute('role', isPreferences ? 'dialog' : 'region');
     shell.setAttribute('aria-live', 'polite');
@@ -148,9 +148,8 @@
     shell.innerHTML = `
       <div class="cookie-consent__panel">
         <div class="cookie-consent__copy">
-          <p class="cookie-consent__eyebrow">Cookie preferences</p>
-          <h2>${isPreferences ? 'Manage cookies' : 'Cookie preferences'}</h2>
-          <p>${isPreferences ? 'Choose which optional cookies Artiling Studio can use for analytics and measurement.' : 'We use optional cookies for analytics and enquiry measurement. Choose what works for you.'}</p>
+          <h2>Cookie preferences</h2>
+          <p>${isPreferences ? 'Choose which optional cookies Artiling Studio can use for analytics, enquiry measurement and future marketing.' : 'Essential cookies keep the site working. Optional analytics and marketing help us measure enquiries.'}</p>
         </div>
 
         <div class="cookie-consent__prefs" ${isPreferences ? '' : 'hidden'}>
@@ -159,29 +158,38 @@
               <strong>Strictly necessary cookies</strong>
               <small>Required for core website and form functionality.</small>
             </span>
-            <input type="checkbox" checked disabled />
+            <span class="cookie-consent__toggle">
+              <input type="checkbox" checked disabled />
+              <span class="cookie-consent__toggle-face" aria-hidden="true"></span>
+            </span>
           </label>
           <label class="cookie-consent__row">
             <span>
               <strong>Analytics cookies</strong>
               <small>Help us understand site usage and measure enquiries.</small>
             </span>
-            <input type="checkbox" data-cookie-analytics ${currentConsent.analytics ? 'checked' : ''} />
+            <span class="cookie-consent__toggle">
+              <input type="checkbox" data-cookie-analytics ${currentConsent.analytics ? 'checked' : ''} />
+              <span class="cookie-consent__toggle-face" aria-hidden="true"></span>
+            </span>
           </label>
           <label class="cookie-consent__row">
             <span>
               <strong>Marketing cookies</strong>
               <small>Optional measurement for future advertising activity.</small>
             </span>
-            <input type="checkbox" data-cookie-marketing ${currentConsent.marketing ? 'checked' : ''} />
+            <span class="cookie-consent__toggle">
+              <input type="checkbox" data-cookie-marketing ${currentConsent.marketing ? 'checked' : ''} />
+              <span class="cookie-consent__toggle-face" aria-hidden="true"></span>
+            </span>
           </label>
         </div>
 
         <div class="cookie-consent__actions">
           ${isPreferences ? '<button type="button" class="btn btn--dark" data-cookie-save>Save preferences</button>' : ''}
           <button type="button" class="btn btn--dark" data-cookie-accept>Accept all</button>
-          <button type="button" class="btn btn--ghost" data-cookie-reject>Reject non-essential</button>
-          ${isPreferences ? '' : '<button type="button" class="btn btn--ghost" data-cookie-manage>Manage preferences</button>'}
+          <button type="button" class="btn btn--ghost" data-cookie-reject>Reject optional</button>
+          ${isPreferences ? '' : '<button type="button" class="btn btn--ghost" data-cookie-manage>Customise</button>'}
         </div>
       </div>
     `;
