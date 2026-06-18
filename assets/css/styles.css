@@ -485,7 +485,7 @@ section {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   color: var(--ink-deep);
   flex-shrink: 0;
 }
@@ -525,19 +525,23 @@ section {
 .brand__wordmark {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   line-height: 1;
-  gap: 7px;
+  gap: 4px;
+  transform: translateY(-3px);
 }
 .brand__name {
   font-family: var(--serif);
   font-size: 22px;
-  letter-spacing: 0.15em;
+  line-height: 0.92;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   font-weight: 400;
 }
 .brand__tag {
   font-size: 10px;
-  letter-spacing: 0.22em;
+  line-height: 1;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--stone);
 }
@@ -8153,6 +8157,10 @@ body {
 
   .service-editorial-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .service-editorial-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .service-editorial-grid--services {
