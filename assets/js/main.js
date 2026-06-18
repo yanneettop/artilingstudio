@@ -361,7 +361,7 @@
     let ticking = false;
 
     const updateParallax = () => {
-      const offset = window.scrollY * 0.4;
+      const offset = window.scrollY * 0.24;
       heroBg.style.transform = `translateY(${offset}px)`;
       ticking = false;
     };

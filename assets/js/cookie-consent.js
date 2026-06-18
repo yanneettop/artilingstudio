@@ -122,8 +122,8 @@
   };
 
   const injectFooterLink = () => {
-    const footerMeta = document.querySelector('.footer__meta');
-    if (!footerMeta || footerMeta.querySelector('[data-cookie-settings]')) return;
+    const footerLegal = document.querySelector('.footer__legal');
+    if (!footerLegal || footerLegal.querySelector('[data-cookie-settings]')) return;
 
     const button = document.createElement('button');
     button.type = 'button';
@@ -131,7 +131,7 @@
     button.dataset.cookieSettings = 'true';
     button.textContent = 'Cookie settings';
     button.addEventListener('click', openPreferences);
-    footerMeta.appendChild(button);
+    footerLegal.appendChild(button);
   };
 
   const renderConsentUi = ({ mode = 'banner' } = {}) => {
