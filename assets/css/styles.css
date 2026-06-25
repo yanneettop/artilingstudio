@@ -1491,9 +1491,6 @@ section {
 
 /* Top row: number + arrow */
 .service-card__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 28px;
 }
 .service-card__num {
@@ -1504,19 +1501,6 @@ section {
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0.04em;
-}
-.service-card__arrow {
-  font-size: 16px;
-  color: var(--stone);
-  opacity: 0;
-  transform: translate(-4px, 4px);
-  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), color 0.45s var(--ease);
-  display: inline-block;
-}
-.service-card:hover .service-card__arrow {
-  opacity: 1;
-  transform: translate(0, 0);
-  color: var(--ink-deep);
 }
 
 .service-card h3 {
@@ -8850,6 +8834,15 @@ body {
   gap: clamp(28px, 3.5vw, 48px);
   padding: 22px 0;
   border-bottom: 1px solid rgba(35, 32, 28, 0.1);
+  transition:
+    transform 0.45s var(--ease),
+    padding-left 0.45s var(--ease),
+    border-color 0.45s var(--ease);
+}
+.sink-principle__points article:hover {
+  transform: translateX(8px);
+  padding-left: 8px;
+  border-color: rgba(35, 32, 28, 0.22);
 }
 
 .sink-principle__points h3,
@@ -8863,12 +8856,20 @@ body {
   font-size: clamp(1.24rem, 1.8vw, 1.55rem);
   font-weight: 400;
   line-height: 1.1;
+  transition: color 0.45s var(--ease);
+}
+.sink-principle__points article:hover h3 {
+  color: var(--ink-deep);
 }
 
 .sink-principle__points p {
   color: rgba(35, 32, 28, 0.55);
   font-size: 0.82rem;
   line-height: 1.55;
+  transition: color 0.45s var(--ease);
+}
+.sink-principle__points article:hover p {
+  color: rgba(35, 32, 28, 0.75);
 }
 
 @media (max-width: 760px) {
