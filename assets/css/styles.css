@@ -9081,3 +9081,153 @@ body {
     padding: 16px 0;
   }
 }
+
+@media (max-width: 767px) {
+  .site-header {
+    padding: 10px 0;
+  }
+
+  .site-header.is-scrolled {
+    padding: 8px 0;
+  }
+
+  .header__inner {
+    min-height: 48px;
+    gap: 10px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand__mark--header {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand__mark--header img {
+    transform: scale(1.38);
+  }
+
+  .brand__name {
+    max-width: calc(100vw - 126px);
+    font-size: clamp(16px, 4.4vw, 18px);
+    letter-spacing: 0.11em;
+  }
+
+  .menu-toggle {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .menu-toggle span {
+    width: 21px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding:
+      calc(82px + env(safe-area-inset-top))
+      0
+      calc(26px + env(safe-area-inset-bottom));
+    align-items: flex-start;
+  }
+
+  .hero__parallax-bg {
+    inset: -14% 0;
+    background-position: 58% center;
+  }
+
+  .hero__grid {
+    gap: 0;
+  }
+
+  .hero__copy {
+    max-width: 100%;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 26px;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+  }
+
+  .hero .display {
+    max-width: 9.8em;
+    font-size: clamp(33px, 10.7vw, 43px);
+    line-height: 0.97;
+  }
+
+  .hero .lede {
+    max-width: 22.5rem;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.48;
+  }
+
+  .hero .hero__actions {
+    gap: 12px;
+    margin: 30px 0 26px;
+  }
+
+  .hero .btn {
+    min-height: 48px;
+    padding: 14px 16px;
+    font-size: 10px;
+  }
+
+  .hero .hero__meta {
+    gap: 12px;
+    padding-top: 18px;
+  }
+
+  .hero .hero__meta dt {
+    font-size: 9px;
+  }
+
+  .hero .hero__meta dd {
+    font-size: 17px;
+  }
+
+  .hero .hero__meta > div:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) and (max-height: 720px) {
+  .hero {
+    padding-top: calc(76px + env(safe-area-inset-top));
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 22px;
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+  }
+
+  .hero .display {
+    font-size: clamp(31px, 10vw, 38px);
+  }
+
+  .hero .lede {
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .hero .hero__actions {
+    margin: 26px 0 20px;
+  }
+
+  .hero .btn {
+    min-height: 46px;
+    padding-block: 13px;
+  }
+
+  .hero .hero__meta {
+    padding-top: 14px;
+  }
+
+}
