@@ -212,6 +212,7 @@
     });
 
     document.body.appendChild(shell);
+    window.requestAnimationFrame(() => shell.classList.add('is-visible'));
   };
 
   window.ArtilingConsent = {
@@ -225,7 +226,7 @@
     if (!currentConsent.decided) {
       const showBanner = () => renderConsentUi();
       if (window.matchMedia('(max-width: 640px)').matches) {
-        window.requestAnimationFrame(() => window.setTimeout(showBanner, 800));
+        window.requestAnimationFrame(() => window.setTimeout(showBanner, 1600));
       } else {
         showBanner();
       }

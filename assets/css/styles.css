@@ -8409,10 +8409,21 @@ body {
   z-index: 1200;
   display: flex;
   width: min(460px, calc(100vw - 40px));
+  opacity: 0;
   pointer-events: none;
+  transform: translate3d(0, 10px, 0);
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cookie-consent.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .cookie-consent__panel {
+  position: relative;
   display: grid;
   gap: 18px;
   width: 100%;
@@ -8427,6 +8438,16 @@ body {
   backdrop-filter: blur(18px) saturate(112%);
   -webkit-backdrop-filter: blur(18px) saturate(112%);
   pointer-events: auto;
+}
+
+.cookie-consent__panel::before {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 34px;
+  height: 1px;
+  content: "";
+  background: rgba(42, 39, 34, 0.24);
 }
 
 .cookie-consent.is-expanded {
@@ -8579,6 +8600,11 @@ body {
   white-space: nowrap;
 }
 
+.cookie-consent__actions .btn--ghost {
+  border-color: rgba(42, 39, 34, 0.16);
+  background: rgba(255, 255, 255, 0.28);
+}
+
 .cookie-consent.is-expanded .cookie-consent__actions {
   grid-template-columns: 1fr;
 }
@@ -8606,30 +8632,42 @@ body {
 
 @media (max-width: 640px) {
   .cookie-consent {
-    left: 12px;
+    left: 14px;
     right: auto;
-    bottom: calc(10px + env(safe-area-inset-bottom));
+    bottom: calc(12px + env(safe-area-inset-bottom));
     width: auto !important;
-    max-width: min(320px, calc(100vw - 24px)) !important;
+    max-width: min(330px, calc(100vw - 28px)) !important;
+    transform: translate3d(0, 14px, 0);
   }
 
   .cookie-consent__panel {
     max-height: min(58vh, 360px);
-    gap: 9px;
-    padding: 11px 12px 12px;
-    background: rgba(250, 248, 244, 0.92);
-    box-shadow: 0 16px 42px -34px rgba(15, 15, 16, 0.55), 0 1px 0 rgba(255, 255, 255, 0.65) inset;
+    gap: 10px;
+    padding: 16px 14px 13px;
+    background:
+      linear-gradient(180deg, rgba(255, 252, 246, 0.95), rgba(246, 241, 232, 0.93)),
+      var(--bone);
+    border-color: rgba(42, 39, 34, 0.12);
+    box-shadow: 0 18px 48px -38px rgba(15, 15, 16, 0.58), 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  }
+
+  .cookie-consent__panel::before {
+    top: 13px;
+    left: 14px;
+    width: 28px;
   }
 
   .cookie-consent__copy h2 {
-    margin-bottom: 4px;
-    font-size: 17px;
+    margin: 0 0 5px 42px;
+    font-size: 18px;
+    line-height: 0.96;
   }
 
   .cookie-consent__copy p {
     max-width: 25rem;
-    font-size: 10.5px;
-    line-height: 1.42;
+    color: rgba(35, 32, 28, 0.72);
+    font-size: 10px;
+    line-height: 1.45;
   }
 
   .cookie-consent__prefs {
@@ -8666,14 +8704,23 @@ body {
   }
 
   .cookie-consent__actions {
-    grid-template-columns: 1fr auto auto;
-    gap: 5px;
+    grid-template-columns: minmax(92px, 1fr) auto auto;
+    gap: 6px;
   }
 
   .cookie-consent__actions .btn {
     min-height: 31px;
-    padding: 8px 9px;
+    padding: 8px 10px;
     font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .cookie-consent__actions .btn--dark {
+    box-shadow: 0 10px 24px -22px rgba(15, 15, 16, 0.72);
+  }
+
+  .cookie-consent__actions .btn--ghost {
+    background: rgba(255, 255, 255, 0.35);
   }
 
   .cookie-consent.is-expanded {
@@ -8686,6 +8733,72 @@ body {
 
   .cookie-consent.is-expanded .cookie-consent__panel {
     max-height: min(78vh, 560px);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero__copy .eyebrow,
+  .hero__copy .display,
+  .hero__copy .lede,
+  .hero__copy .hero__actions,
+  .hero__copy .hero__meta {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+
+  .hero__copy.is-inview .eyebrow,
+  .hero__copy.is-inview .display,
+  .hero__copy.is-inview .lede,
+  .hero__copy.is-inview .hero__actions,
+  .hero__copy.is-inview .hero__meta {
+    animation: hero-mobile-text-reveal 860ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero__copy.is-inview .display {
+    animation-delay: 120ms;
+  }
+
+  .hero__copy.is-inview .lede {
+    animation-delay: 260ms;
+  }
+
+  .hero__copy.is-inview .hero__actions {
+    animation-delay: 390ms;
+  }
+
+  .hero__copy.is-inview .hero__meta {
+    animation-delay: 500ms;
+  }
+}
+
+@keyframes hero-mobile-text-reveal {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie-consent {
+    transition: opacity 180ms ease;
+    transform: none;
+  }
+
+  .hero__copy .eyebrow,
+  .hero__copy .display,
+  .hero__copy .lede,
+  .hero__copy .hero__actions,
+  .hero__copy .hero__meta {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+    filter: none;
   }
 }
 
