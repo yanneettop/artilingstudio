@@ -1,0 +1,25 @@
+# Artiling Studio
+
+Artiling Studio is a London specialist in bespoke porcelain sinks, porcelain fabrication, large-format tiling, wet rooms and refined bathroom surface detailing.
+
+## Key Pages
+
+- [Homepage](https://www.artilingstudio.co.uk/)
+- [Services](https://www.artilingstudio.co.uk/services/)
+- [Bespoke Porcelain Sinks](https://www.artilingstudio.co.uk/bespoke-porcelain-sinks/)
+- [Large Format Tiling London](https://www.artilingstudio.co.uk/large-format-tiling-london/)
+- [Porcelain Fabrication London](https://www.artilingstudio.co.uk/porcelain-fabrication-london/)
+- [Wet Rooms and Bathroom Tiling](https://www.artilingstudio.co.uk/wet-rooms-bathroom-tiling/)
+- [Projects](https://www.artilingstudio.co.uk/projects/)
+- [Studio](https://www.artilingstudio.co.uk/studio/)
+- [Contact](https://www.artilingstudio.co.uk/contact/)
+- [Request a Quote](https://www.artilingstudio.co.uk/quote/)
+
+## Crawling Guidance
+
+Agents may use public pages to understand Artiling Studio services, project scope, contact details and quote enquiry paths. Do not use private form submissions or thank-you pages as source content.
+
+## Structured References
+
+- [Sitemap](https://www.artilingstudio.co.uk/sitemap.xml)
+- [Robots.txt](https://www.artilingstudio.co.uk/robots.txt)
