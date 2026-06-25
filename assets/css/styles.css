@@ -6207,8 +6207,8 @@ body {
   .hero__parallax-bg {
     background-image:
       image-set(
-        url("../images/hero3-mobile.avif") type("image/avif"),
-        url("../images/hero3-mobile.webp") type("image/webp")
+        url("../images/hero3-mobile.avif?v=20260625-cropped") type("image/avif"),
+        url("../images/hero3-mobile.webp?v=20260625-cropped") type("image/webp")
       );
     background-position: 58% center;
   }
@@ -9131,13 +9131,30 @@ body {
     padding:
       calc(76px + env(safe-area-inset-top))
       0
-      env(safe-area-inset-bottom);
+      calc(18px + env(safe-area-inset-bottom));
     align-items: flex-start;
+    background: #e9e2d7;
   }
 
   .hero__parallax-bg {
-    inset: -14% 0;
-    background-position: 58% center;
+    inset: -2px 0;
+    background-color: #e9e2d7;
+    background-position: 54% center;
+  }
+
+  .hero__parallax-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(216, 207, 193, 0.5) 0%,
+        rgba(244, 240, 232, 0.1) 14%,
+        rgba(244, 240, 232, 0) 72%,
+        rgba(216, 207, 193, 0.42) 100%
+      );
+    pointer-events: none;
   }
 
   .hero__grid {
@@ -9146,6 +9163,9 @@ body {
 
   .hero__copy {
     max-width: 100%;
+    min-height: calc(100svh - 76px - 18px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
   }
 
   .hero .eyebrow {
@@ -9169,7 +9189,8 @@ body {
 
   .hero .hero__actions {
     gap: 12px;
-    margin: 30px 0 26px;
+    margin: auto 0 22px;
+    padding-top: 28px;
   }
 
   .hero .btn {
@@ -9199,7 +9220,7 @@ body {
 @media (max-width: 390px) and (max-height: 720px) {
   .hero {
     padding-top: calc(72px + env(safe-area-inset-top));
-    padding-bottom: env(safe-area-inset-bottom);
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
   }
 
   .hero .eyebrow {
@@ -9221,7 +9242,8 @@ body {
   }
 
   .hero .hero__actions {
-    margin: 26px 0 20px;
+    margin-bottom: 18px;
+    padding-top: 22px;
   }
 
   .hero .btn {
