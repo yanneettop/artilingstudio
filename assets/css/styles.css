@@ -9127,10 +9127,11 @@ body {
 
   .hero {
     min-height: 100svh;
+    min-height: 100dvh;
     padding:
-      calc(88px + env(safe-area-inset-top))
+      calc(76px + env(safe-area-inset-top))
       0
-      calc(18px + env(safe-area-inset-bottom));
+      env(safe-area-inset-bottom);
     align-items: flex-start;
   }
 
@@ -9197,8 +9198,8 @@ body {
 
 @media (max-width: 390px) and (max-height: 720px) {
   .hero {
-    padding-top: calc(84px + env(safe-area-inset-top));
-    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+    padding-top: calc(72px + env(safe-area-inset-top));
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .hero .eyebrow {
