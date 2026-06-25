@@ -222,7 +222,14 @@
 
   const init = () => {
     injectFooterLink();
-    if (!currentConsent.decided) renderConsentUi();
+    if (!currentConsent.decided) {
+      const showBanner = () => renderConsentUi();
+      if (window.matchMedia('(max-width: 640px)').matches) {
+        window.requestAnimationFrame(() => window.setTimeout(showBanner, 800));
+      } else {
+        showBanner();
+      }
+    }
   };
 
   if (document.readyState === 'loading') {
