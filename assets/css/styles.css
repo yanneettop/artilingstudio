@@ -9189,7 +9189,7 @@ body {
 
   .hero .hero__actions {
     gap: 12px;
-    margin: auto 0 22px;
+    margin: auto 0 52px;
     padding-top: 28px;
   }
 
@@ -9200,20 +9200,52 @@ body {
   }
 
   .hero .hero__meta {
-    gap: 12px;
-    padding-top: 18px;
-  }
-
-  .hero .hero__meta dt {
-    font-size: 9px;
-  }
-
-  .hero .hero__meta dd {
-    font-size: 17px;
-  }
-
-  .hero .hero__meta > div:last-child {
     display: none;
+  }
+
+  .hero__scroll {
+    left: 50%;
+    right: auto;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    display: flex;
+    width: 1px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-deep);
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    opacity: 0.62;
+  }
+
+  .hero__scroll span:first-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 36px;
+    border: 0;
+    border-radius: 0;
+    background: rgba(15, 15, 16, 0.22);
+    order: 0;
+  }
+
+  .hero__scroll-line::after {
+    left: 50%;
+    right: auto;
+    top: 0;
+    width: 1px;
+    height: 42%;
+    background: currentColor;
+    transform: translateX(-50%);
+    animation: mobileScrollPulse 1.9s var(--ease-out) infinite;
   }
 }
 
@@ -9242,7 +9274,7 @@ body {
   }
 
   .hero .hero__actions {
-    margin-bottom: 18px;
+    margin-bottom: 46px;
     padding-top: 22px;
   }
 
@@ -9255,4 +9287,10 @@ body {
     padding-top: 14px;
   }
 
+}
+
+@keyframes mobileScrollPulse {
+  0% { opacity: 0; transform: translate(-50%, -3px); }
+  35% { opacity: 0.75; }
+  100% { opacity: 0; transform: translate(-50%, 6px); }
 }
