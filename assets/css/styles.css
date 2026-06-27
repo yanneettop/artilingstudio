@@ -8343,7 +8343,20 @@ body {
 }
 
 .quote-hero--simple {
+  padding-top: clamp(104px, 11vh, 144px);
   padding-bottom: clamp(46px, 6vw, 76px);
+}
+
+.quote-hero--simple .display {
+  max-width: 12ch;
+}
+
+.quote-hero--simple .quote-hero__intro {
+  max-width: 48ch;
+}
+
+.quote-hero--simple + .quote-section {
+  padding-top: clamp(10px, 2.4vw, 34px);
 }
 
 .quote-form--single {
@@ -8365,6 +8378,21 @@ body {
 
 .quote-form--single .btn {
   justify-self: start;
+}
+
+.quote-input__hint {
+  margin-top: -2px;
+  color: var(--stone);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.quote-reassurance {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .quote-optional {
@@ -8432,6 +8460,50 @@ body {
   font-family: var(--serif);
   font-size: clamp(27px, 2.6vw, 40px);
   line-height: 1.08;
+}
+
+.quote-contact-list {
+  margin: 0;
+}
+
+.quote-contact-list div {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.quote-contact-list dt {
+  margin-bottom: 8px;
+  color: var(--stone);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.quote-contact-list dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.65vw, 27px);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.quote-contact-list a {
+  color: var(--ink-deep);
+  text-decoration: none;
+}
+
+.quote-trust-block {
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.quote-trust-block .eyebrow {
+  margin-bottom: 10px;
+}
+
+.quote-trust-block p:last-child {
+  margin: 0;
 }
 
 .enquiry-list--compact li {
@@ -8617,6 +8689,12 @@ body {
 
   .quote-form--single {
     padding: 24px 18px;
+  }
+}
+
+@media (max-width: 540px) {
+  .quote-form--single .quote-form__nav {
+    flex-direction: column;
   }
 }
 
