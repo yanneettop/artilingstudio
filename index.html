@@ -105,10 +105,7 @@
       (function () {
         var loader = document.querySelector('[data-page-loader]');
         if (!loader) return;
-        try {
-          if (sessionStorage.getItem('artiling-loader')) { loader.remove(); return; }
-          sessionStorage.setItem('artiling-loader', '1');
-        } catch (e) {}
+        document.documentElement.classList.add('js-loader');
         var hide = function () {
           if (!loader.parentNode) return;
           loader.classList.add('is-done');
@@ -116,7 +113,7 @@
         };
         if (document.readyState === 'complete') { setTimeout(hide, 400); }
         else { window.addEventListener('load', function () { setTimeout(hide, 400); }); }
-        setTimeout(hide, 3200);
+        setTimeout(hide, 4000);
       })();
     </script>
     <div class="scroll-progress" aria-hidden="true"></div>
@@ -205,13 +202,13 @@
             </p>
 
             <div class="hero__actions">
-              <a href="/quote/" class="btn btn--dark">Start a Bespoke Sink Enquiry</a>
+              <a href="/quote/" class="btn btn--dark">Request a Quote</a>
               <a href="/services/" class="btn btn--ghost">View Services<span aria-hidden="true">&nbsp;→</span></a>
             </div>
 
             <dl class="hero__meta">
               <div>
-                <dt>Est.</dt>
+                <dt>Experience</dt>
                 <dd>26 Years</dd>
               </div>
               <div>
@@ -276,20 +273,24 @@
       ─────────────────────────────────────────────────────────────── -->
       <section class="trust" aria-label="Studio credentials">
         <div class="container trust__grid trust__grid--simple">
-          <div class="trust__item trust__item--pill" data-reveal>
-            <span class="trust__pill-label">Bespoke Sinks</span>
+          <div class="trust__item trust__item--stat" data-reveal>
+            <span class="trust__stat-number" data-count-to="100" data-count-suffix="+">100+</span>
+            <span class="trust__stat-label">London Projects</span>
           </div>
           <div class="trust__divider" aria-hidden="true"></div>
-          <div class="trust__item trust__item--pill" data-reveal data-reveal-delay="80">
-            <span class="trust__pill-label">Premium Tiling</span>
+          <div class="trust__item trust__item--stat" data-reveal data-reveal-delay="80">
+            <span class="trust__stat-number" data-count-to="26">26</span>
+            <span class="trust__stat-label">Years Experience</span>
           </div>
           <div class="trust__divider" aria-hidden="true"></div>
-          <div class="trust__item trust__item--pill" data-reveal data-reveal-delay="160">
-            <span class="trust__pill-label">London Studio</span>
+          <div class="trust__item trust__item--stat" data-reveal data-reveal-delay="160">
+            <span class="trust__stat-number" data-count-to="10" data-count-suffix="‑Year">10‑Year</span>
+            <span class="trust__stat-label">Workmanship Guarantee</span>
           </div>
           <div class="trust__divider" aria-hidden="true"></div>
-          <div class="trust__item trust__item--pill" data-reveal data-reveal-delay="240">
-            <span class="trust__pill-label">26 Years Experience</span>
+          <div class="trust__item trust__item--stat" data-reveal data-reveal-delay="240">
+            <span class="trust__stat-number">London</span>
+            <span class="trust__stat-label">Studio &amp; Installation</span>
           </div>
         </div>
       </section>
@@ -406,124 +407,85 @@
         </div>
       </section>
 
-      <section class="sink-principle" aria-labelledby="sink-principle-title">
-        <div class="container sink-principle__grid">
-          <div class="sink-principle__title" data-reveal>
-            <p class="eyebrow">Bespoke Porcelain Sink Design</p>
-            <h2 id="sink-principle-title">
-              Not a basin added at the end.
-              <em>A surface designed from the beginning.</em>
-            </h2>
-          </div>
-
-          <div class="sink-principle__body">
-            <p data-reveal data-reveal-delay="80">
-              A bespoke porcelain sink changes how a bathroom feels. The basin,
-              splashback, edge thickness, tap position and surrounding surfaces
-              can be planned as one calm composition, rather than assembled
-              from separate products.
-            </p>
-
-            <div class="sink-principle__points" aria-label="Bespoke sink details">
-              <article data-reveal data-reveal-delay="160">
-                <h3>Mitred edges</h3>
-                <p>Clean folded porcelain corners for a refined architectural finish.</p>
-              </article>
-              <article data-reveal data-reveal-delay="250">
-                <h3>Integrated storage</h3>
-                <p>Push-to-open and soft-close drawers can be planned beneath the porcelain surface for a cleaner, more practical vanity area.</p>
-              </article>
-              <article data-reveal data-reveal-delay="340">
-                <h3>Surface continuity</h3>
-                <p>Porcelain, veining and surrounding tiles planned to feel connected.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- ──────────────────────────────────────────────────────────────
            SERVICES
       ─────────────────────────────────────────────────────────────── -->
       <section id="services" class="services">
         <div class="container">
-          <div class="section-rule" data-reveal><span>02 — Surfaces &amp; Finishes</span></div>
+          <div class="section-rule" data-reveal><span>02 - Services</span></div>
           <header class="section-head section-head--split" data-reveal>
             <div>
-              <p class="eyebrow">Surfaces &amp; Finishes</p>
+              <p class="eyebrow">Services</p>
               <h2 class="section-title">
-                Considered surfaces, <em>from floor to feature wall.</em>
+                Surface work, <em>shaped around the room.</em>
               </h2>
             </div>
             <p class="section-sub">
-              From bathrooms and splashbacks to feature walls and refined flooring,
-              we shape surfaces with a focus on proportion, material harmony,
-              and long-term visual calm.
+              From bespoke porcelain sinks to full bathroom surfaces, each service is
+              planned around proportion, material continuity and precise installation.
             </p>
           </header>
 
           <ul class="service-grid">
-            <li class="service-card" data-reveal>
-              <div class="service-card__top">
-                <span class="service-card__num">01</span>
-              </div>
-              <h3>Large Format<br>Tiling</h3>
-              <p>For calm, architectural surfaces with fewer joins and a more seamless finish.</p>
+            <li class="service-card service-card--sinks" data-reveal>
+              <a href="/bespoke-porcelain-sinks/" class="service-card__link">
+                <figure class="service-card__media">
+                  <img src="./assets/images/services/service-bespoke-porcelain-sinks.webp" alt="Bespoke porcelain sink surface by Artiling Studio" loading="lazy" decoding="async" />
+                </figure>
+                <div class="service-card__content">
+                  <span class="service-card__num">01</span>
+                  <h3>Bespoke porcelain sinks</h3>
+                  <p>Made-to-measure basins, vanity tops and integrated sink details designed as part of the room.</p>
+                  <span class="service-card__cta">Explore Bespoke Sinks <span aria-hidden="true">&rarr;</span></span>
+                </div>
+              </a>
             </li>
-            <li class="service-card" data-reveal data-reveal-delay="60">
-              <div class="service-card__top">
-                <span class="service-card__num">02</span>
-              </div>
-              <h3>Wet Room &amp;<br>Shower Walls</h3>
-              <p>Designed for durability, balance, and a refined everyday experience.</p>
+            <li class="service-card service-card--tiling" data-reveal data-reveal-delay="70">
+              <a href="/large-format-tiling-london/" class="service-card__link">
+                <figure class="service-card__media">
+                  <img src="./assets/images/services/service-large-format-tiling.webp" alt="Large format porcelain tiling in a refined bathroom interior" loading="lazy" decoding="async" />
+                </figure>
+                <div class="service-card__content">
+                  <span class="service-card__num">02</span>
+                  <h3>Large-format porcelain tiling</h3>
+                  <p>Architectural porcelain surfaces with fewer joins, refined alignment and a seamless finish.</p>
+                  <span class="service-card__cta">View Large-Format Tiling <span aria-hidden="true">&rarr;</span></span>
+                </div>
+              </a>
             </li>
-            <li class="service-card" data-reveal data-reveal-delay="120">
-              <div class="service-card__top">
-                <span class="service-card__num">03</span>
-              </div>
-              <h3>Vanity &amp;<br>Basin Areas</h3>
-              <p>Tailored surface detailing around sinks, mirrors, and fitted elements.</p>
+            <li class="service-card service-card--wet-room" data-reveal data-reveal-delay="140">
+              <a href="/wet-rooms-bathroom-tiling/" class="service-card__link">
+                <figure class="service-card__media">
+                  <img src="./assets/images/services/service-wet-rooms-bathroom-tiling.webp" alt="Wet room and bathroom tiling with porcelain surfaces" loading="lazy" decoding="async" />
+                </figure>
+                <div class="service-card__content">
+                  <span class="service-card__num">03</span>
+                  <h3>Wet room and bathroom tiling</h3>
+                  <p>Waterproof bathroom surfaces planned for practical use, visual calm and long-term durability.</p>
+                  <span class="service-card__cta">Plan a Wet Room <span aria-hidden="true">&rarr;</span></span>
+                </div>
+              </a>
             </li>
-            <li class="service-card" data-reveal data-reveal-delay="60">
-              <div class="service-card__top">
-                <span class="service-card__num">04</span>
-              </div>
-              <h3>Feature<br>Walls</h3>
-              <p>Quiet focal points that bring depth, texture, and material presence.</p>
-            </li>
-            <li class="service-card" data-reveal data-reveal-delay="120">
-              <div class="service-card__top">
-                <span class="service-card__num">05</span>
-              </div>
-              <h3>Floors</h3>
-              <p>Carefully laid surfaces that ground the space with consistency and flow.</p>
-            </li>
-            <li class="service-card" data-reveal data-reveal-delay="180">
-              <div class="service-card__top">
-                <span class="service-card__num">06</span>
-              </div>
-              <h3>Surface<br>Detailing</h3>
-              <p>Edges, transitions, and finishing touches handled with precision.</p>
+            <li class="service-card service-card--fabrication" data-reveal data-reveal-delay="210">
+              <a href="/porcelain-fabrication-london/" class="service-card__link">
+                <figure class="service-card__media">
+                  <img src="./assets/images/services/service-porcelain-fabrication.webp" alt="Porcelain fabrication detail with mitred surface work" loading="lazy" decoding="async" />
+                </figure>
+                <div class="service-card__content">
+                  <span class="service-card__num">04</span>
+                  <h3>Porcelain fabrication</h3>
+                  <p>Cut, mitred and detailed porcelain for sinks, niches, returns, edges and custom features.</p>
+                  <span class="service-card__cta">See Fabrication Detail <span aria-hidden="true">&rarr;</span></span>
+                </div>
+              </a>
             </li>
           </ul>
 
-          <div class="portfolio-cta" data-reveal>
-            <div class="portfolio-cta__copy">
-              <p class="eyebrow">Surfaces</p>
-              <h3 class="portfolio-cta__title">Large format tiling in London</h3>
-              <p class="portfolio-cta__body">
-                Explore our approach to premium porcelain tile installation for seamless architectural surfaces.
-              </p>
-            </div>
-            <div class="hero__actions">
-              <a href="/services/" class="btn btn--ghost">View All Services</a>
-              <a href="/large-format-tiling-london/" class="btn btn--dark">View Surface Service</a>
-              <a href="/wet-rooms-bathroom-tiling/" class="btn btn--ghost">Wet Rooms &amp; Bathroom Tiling</a>
-            </div>
+          <div class="services__footer" data-reveal>
+            <a href="/services/" class="text-link">View all services <span aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
       </section>
-
       <!-- ──────────────────────────────────────────────────────────────
            PORTFOLIO
       ─────────────────────────────────────────────────────────────── -->
@@ -551,9 +513,9 @@
               </p>
             </div>
             <div class="hero__actions">
-              <a href="/projects/" class="btn btn--dark">View All Projects</a>
-              <a href="/contact/" class="btn btn--ghost">Contact</a>
-              <a href="/quote/" class="btn btn--ghost">Get a Free Quote</a>
+              <a href="/quote/" class="btn btn--dark">Request a Quote</a>
+              <a href="/projects/" class="text-link">View All Projects <span aria-hidden="true">→</span></a>
+              <a href="/contact/" class="text-link">Contact <span aria-hidden="true">→</span></a>
             </div>
           </div>
 
@@ -569,63 +531,13 @@
       </section>
 
       <!-- ──────────────────────────────────────────────────────────────
-           WHY ARTILING
-      ─────────────────────────────────────────────────────────────── -->
-      <section class="why">
-        <div class="container why__layout">
-          <div class="why__lead" data-reveal>
-            <p class="eyebrow">Why Artiling Studio</p>
-            <h2 class="section-title">
-              <em>Quiet luxury</em> lives in the details that most never notice.
-            </h2>
-            <p class="why__body">
-              From alignment and edge finishing to tone matching and visual
-              balance, every decision is made to create surfaces that feel
-              calm, resolved, and built to last.
-            </p>
-          </div>
-
-          <ol class="why__points" data-reveal data-reveal-delay="120">
-            <li>
-              <div class="why__point-head">
-                <span class="why__num">01</span>
-                <h3>Precisely judged proportions</h3>
-              </div>
-              <p>Every surface is considered in relation to the room, the light, and the elements around it.</p>
-            </li>
-            <li>
-              <div class="why__point-head">
-                <span class="why__num">02</span>
-                <h3>Refined material pairing</h3>
-              </div>
-              <p>Finishes are chosen for harmony, contrast, and long-term visual balance.</p>
-            </li>
-            <li>
-              <div class="why__point-head">
-                <span class="why__num">03</span>
-                <h3>Clean detailing throughout</h3>
-              </div>
-              <p>Edges, joins, and transitions are handled with care so the final result feels seamless and intentional.</p>
-            </li>
-            <li>
-              <div class="why__point-head">
-                <span class="why__num">04</span>
-                <h3>Built for daily use</h3>
-              </div>
-              <p>Beautiful surfaces still need to function well, wear well, and feel right in everyday life.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- ──────────────────────────────────────────────────────────────
            PROCESS
       ─────────────────────────────────────────────────────────────── -->
       <section class="process">
         <div class="container">
-          <div class="section-rule" data-reveal><span>04 — The Process</span></div>
+          <div class="section-rule" data-reveal><span>04 — How it works</span></div>
           <header class="section-head section-head--centered" data-reveal>
-            <p class="eyebrow">The Process</p>
+            <p class="eyebrow">How it works</p>
             <h2 class="section-title"><em>Four</em> calm steps.</h2>
             <p class="section-sub">
               From first enquiry to final installation, our process is shaped to feel clear, considered, and quietly efficient.
@@ -658,6 +570,58 @@
       </section>
 
       <!-- ──────────────────────────────────────────────────────────────
+           WHY ARTILING
+      ─────────────────────────────────────────────────────────────── -->
+      <section class="why">
+        <div class="container why__layout">
+          <div class="why__lead" data-reveal>
+            <p class="eyebrow">Why Artiling Studio</p>
+            <h2 class="section-title">
+              Surfaces planned as one <em>calm composition.</em>
+            </h2>
+            <p class="why__body">
+              A bespoke sink or tiled room should not feel assembled from
+              separate products. Basin, splashback, edge thickness, tap
+              position, storage, veining and surrounding surfaces are planned
+              together so the finished space feels quiet, resolved and built
+              to last.
+            </p>
+          </div>
+
+          <ol class="why__points" data-reveal data-reveal-delay="120">
+            <li>
+              <div class="why__point-head">
+                <span class="why__num">01</span>
+                <h3>Designed from the beginning</h3>
+              </div>
+              <p>Every surface is considered in relation to the room, the light, and the elements around it.</p>
+            </li>
+            <li>
+              <div class="why__point-head">
+                <span class="why__num">02</span>
+                <h3>Quiet detail, carefully judged</h3>
+              </div>
+              <p>Alignment, tone matching, folded edges, joins and transitions are handled so the final result feels intentional rather than overstated.</p>
+            </li>
+            <li>
+              <div class="why__point-head">
+                <span class="why__num">03</span>
+                <h3>Material-led studio thinking</h3>
+              </div>
+              <p>Artiling Studio brings together bespoke porcelain sinks, refined tiling and considered surface work shaped around the character of each space.</p>
+            </li>
+            <li>
+              <div class="why__point-head">
+                <span class="why__num">04</span>
+                <h3>Built for daily use</h3>
+              </div>
+              <p>Beautiful surfaces still need to function well, wear well, and feel right in everyday life.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ──────────────────────────────────────────────────────────────
            ABOUT
       ─────────────────────────────────────────────────────────────── -->
       <section id="studio" class="about">
@@ -678,19 +642,17 @@
           <div class="about__copy" data-reveal data-reveal-delay="120">
             <p class="eyebrow">The Studio</p>
             <h2 class="section-title">
-              A London studio for <em>quietly bespoke</em> surfaces.
+              A London studio for <em>material decisions</em> made with care.
             </h2>
-            <p>
-              Artiling Studio brings together bespoke porcelain sinks, refined
-              tiling, and considered surface work shaped around the character
-              of each space. We focus on calm materials, precise detailing, and
-              finishes that feel quietly resolved rather than overstated.
-            </p>
             <p>
               Based in London, we work with homeowners, designers, and
               hospitality spaces looking for a more tailored approach to
-              surfaces, where proportion, texture, and installation are treated
-              with equal care.
+              surfaces.
+            </p>
+            <p>
+              Samples, drawings and installation details are reviewed together,
+              so proportion, texture and practical fitting decisions are
+              resolved before work begins.
             </p>
 
             <div class="about__signature">
@@ -720,8 +682,8 @@
           </div>
 
           <div class="cta__actions">
-            <a href="/quote/" class="btn btn--light">Get a Free Quote</a>
-            <a href="#" class="btn btn--ghost btn--ghost-light" data-email-link>Or email the studio <span aria-hidden="true">→</span></a>
+            <a href="/quote/" class="btn btn--light">Request a Quote</a>
+            <a href="mailto:info@artilingstudio.co.uk" class="text-link text-link--light" data-email-link>Or email the studio <span aria-hidden="true">→</span></a>
           </div>
 
         </div>
@@ -745,14 +707,14 @@
           <a href="/bespoke-porcelain-sinks/">Bespoke Sinks</a>
           <a href="/large-format-tiling-london/">Large Format Tiling</a>
           <a href="/projects/">Projects</a>
-          <a href="/quote/">Quote</a>
+          <a href="/quote/">Request a Quote</a>
         </nav>
 
         <div class="footer__contact">
           <h4>Contact</h4>
           <p class="footer__contact-item"><span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.7 6-11a6 6 0 0 0-12 0c0 5.3 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg></span><span>London, UK</span></p>
           <p class="footer__contact-item"><span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 4.8 8.9 4c.7-.2 1.4.1 1.7.8l1 2.4c.2.6.1 1.2-.4 1.6l-1.1 1c.8 1.7 2.2 3.1 3.9 3.9l1-1.1c.4-.5 1.1-.6 1.6-.4l2.4 1c.7.3 1 1 .8 1.7l-.8 2.3c-.2.7-.8 1.1-1.5 1.1C10.9 18.4 5.6 13.1 5.6 6.5c0-.7.4-1.3 1-1.7Z"/></svg></span><a href="tel:+447481613339">+44 7481 613339</a></p>
-          <p class="footer__contact-item"><span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="1.8"/><path d="m5 7 7 6 7-6"/></svg></span><a href="#" data-email-link data-email-display><span>info</span><span aria-hidden="true">@</span><span>artilingstudio.co.uk</span></a></p>
+          <p class="footer__contact-item"><span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="1.8"/><path d="m5 7 7 6 7-6"/></svg></span><a href="mailto:info@artilingstudio.co.uk" data-email-link data-email-display><span>info</span><span aria-hidden="true">@</span><span>artilingstudio.co.uk</span></a></p>
           <a href="https://www.tiktok.com/@artiling.ltd" target="_blank" rel="noopener noreferrer" class="footer__social-link"><span class="footer__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 4v9.1a3.7 3.7 0 1 1-3.7-3.7c.4 0 .8.1 1.2.2v2.6a1.4 1.4 0 1 0 0 1.2V4h2.5c.4 2.3 1.8 3.8 4.1 4.2v2.6c-1.6-.1-3-.7-4.1-1.7Z"/></svg></span><span>TikTok</span></a>
         </div>
       </div>

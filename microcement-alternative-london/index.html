@@ -151,10 +151,7 @@
       (function () {
         var loader = document.querySelector('[data-page-loader]');
         if (!loader) return;
-        try {
-          if (sessionStorage.getItem('artiling-loader')) { loader.remove(); return; }
-          sessionStorage.setItem('artiling-loader', '1');
-        } catch (e) {}
+        document.documentElement.classList.add('js-loader');
         var hide = function () {
           if (!loader.parentNode) return;
           loader.classList.add('is-done');
@@ -162,7 +159,7 @@
         };
         if (document.readyState === 'complete') { setTimeout(hide, 400); }
         else { window.addEventListener('load', function () { setTimeout(hide, 400); }); }
-        setTimeout(hide, 3200);
+        setTimeout(hide, 4000);
       })();
     </script>
     <div class="scroll-progress" aria-hidden="true"></div>

@@ -306,23 +306,85 @@
     createPortfolioLightbox(selectedWorksTeaser);
   }
   const revealTargets = document.querySelectorAll('[data-reveal]');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!('IntersectionObserver' in window)) {
+  const revealAll = () => {
+    document.documentElement.classList.add('reveal-failsafe');
     revealTargets.forEach((el) => el.classList.add('is-inview'));
+  };
+
+  if (!revealTargets.length || prefersReducedMotion) {
+    revealAll();
   } else {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-          const delay = parseInt(el.dataset.revealDelay || '0', 10);
-          setTimeout(() => el.classList.add('is-inview'), delay);
-          io.unobserve(el);
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-    revealTargets.forEach((el) => io.observe(el));
+    document.documentElement.classList.add('js-reveal');
+    const failsafeTimer = window.setTimeout(revealAll, 3000);
+
+    if (!('IntersectionObserver' in window)) {
+      window.clearTimeout(failsafeTimer);
+      revealAll();
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const delay = parseInt(el.dataset.revealDelay || '0', 10);
+            setTimeout(() => el.classList.add('is-inview'), delay);
+            io.unobserve(el);
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+      revealTargets.forEach((el) => io.observe(el));
+    }
+  }
+
+  const countTargets = document.querySelectorAll('[data-count-to]');
+  if (countTargets.length) {
+    const setCountValue = (el, value) => {
+      const suffix = el.dataset.countSuffix || '';
+      el.textContent = `${value}${suffix}`;
+    };
+
+    const animateCount = (el) => {
+      if (el.dataset.countDone === 'true') return;
+      el.dataset.countDone = 'true';
+
+      const end = parseInt(el.dataset.countTo || '0', 10);
+      if (prefersReducedMotion || !Number.isFinite(end)) {
+        setCountValue(el, end);
+        return;
+      }
+
+      const duration = 1200;
+      const startTime = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCountValue(el, Math.round(end * eased));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      setCountValue(el, 0);
+      requestAnimationFrame(tick);
+    };
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      countTargets.forEach(animateCount);
+    } else {
+      const countObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            animateCount(entry.target);
+            countObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.45 }
+      );
+      countTargets.forEach((el) => countObserver.observe(el));
+    }
   }
 
   /* ──────────────────────────────────────────────
