@@ -7913,6 +7913,41 @@ body {
   text-underline-offset: 4px;
 }
 
+#sink-options {
+  scroll-margin-top: 96px;
+}
+
+.service-hero--sinks .lede,
+.service-hero--sinks .service-hero__note p,
+#sink-options .section-sub,
+.service-hero--sinks ~ .service-intro .service-intro__copy p,
+.service-hero--sinks ~ .service-copy-band .sinks__text > p:not(.eyebrow),
+.service-hero--sinks ~ .service-process .section-sub,
+.service-hero--sinks ~ .service-faq .service-faq__item p {
+  font-size: clamp(16px, 1.05vw, 17px);
+  line-height: 1.66;
+}
+
+.sink-options-grid {
+  margin-top: clamp(30px, 4vw, 54px);
+}
+
+.sink-options-grid .service-editorial-card {
+  min-height: clamp(230px, 24vw, 310px);
+}
+
+.sink-options-grid .service-editorial-card h2 {
+  max-width: 12ch;
+}
+
+.service-detail-line {
+  margin-top: clamp(18px, 2.2vw, 26px);
+  padding-top: clamp(14px, 1.7vw, 20px);
+  border-top: 1px solid rgba(15, 15, 16, 0.12);
+  color: var(--ink-deep);
+  font-weight: 500;
+}
+
 /* Studio page */
 .studio-hero {
   min-height: min(760px, 92vh);
@@ -9775,5 +9810,99 @@ html.js-loader .page-loader {
 @media (max-width: 767px) {
   .services .service-card__content {
     min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-hero--sinks,
+  .service-hero--sinks ~ section {
+    overflow-x: clip;
+  }
+
+  .service-hero--sinks .container,
+  .service-hero--sinks ~ section .container,
+  .service-hero--sinks .service-hero__copy,
+  .service-hero--sinks .service-hero__note,
+  .service-hero--sinks ~ section .section-head,
+  .service-hero--sinks ~ section .service-intro__copy,
+  .service-hero--sinks ~ section .sinks__text,
+  .service-hero--sinks ~ section .sinks__visual,
+  .service-hero--sinks ~ section .service-supporting-visual,
+  .service-hero--sinks ~ section .service-editorial-grid,
+  .service-hero--sinks ~ section .service-editorial-card,
+  .service-hero--sinks ~ section .process__steps,
+  .service-hero--sinks ~ section .process__step,
+  .service-hero--sinks ~ section .service-faq__list,
+  .service-hero--sinks ~ section .service-faq__item,
+  .service-hero--sinks ~ section .projects-final__panel {
+    min-width: 0;
+    width: min(100%, calc(100vw - 40px));
+    max-width: calc(100vw - 40px);
+    justify-self: start;
+  }
+
+  .service-hero--sinks .display,
+  .service-hero--sinks ~ section .section-title,
+  .service-hero--sinks ~ section h2,
+  .service-hero--sinks ~ section h3,
+  .service-hero--sinks .lede,
+  .service-hero--sinks ~ section p {
+    width: auto;
+    max-width: calc(100vw - 40px);
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+  }
+
+  .service-hero--sinks .display {
+    font-size: clamp(40px, 12vw, 52px);
+    line-height: 1.02;
+  }
+
+  .service-hero--sinks ~ section .section-title {
+    font-size: clamp(31px, 9.4vw, 40px);
+    line-height: 1.08;
+  }
+
+  .service-hero--sinks .hero__actions,
+  .service-hero--sinks ~ section .projects-final__panel {
+    width: 100%;
+  }
+
+  .service-hero--sinks .hero__actions .btn,
+  .service-hero--sinks ~ section .projects-final__panel .btn {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .service-hero--sinks .container,
+  .service-hero--sinks ~ section .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .service-hero--sinks .service-hero__copy,
+  .service-hero--sinks .service-hero__note,
+  .service-hero--sinks .hero__actions,
+  .service-hero--sinks ~ section .section-head,
+  .service-hero--sinks ~ section .service-intro__copy,
+  .service-hero--sinks ~ section .sinks__text,
+  .service-hero--sinks ~ section .sinks__visual,
+  .service-hero--sinks ~ section .service-supporting-visual,
+  .service-hero--sinks ~ section .service-editorial-grid,
+  .service-hero--sinks ~ section .process__steps,
+  .service-hero--sinks ~ section .service-faq__list,
+  .service-hero--sinks ~ section .projects-final__panel {
+    width: min(100%, 320px);
+    max-width: 320px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .service-hero--sinks .display,
+  .service-hero--sinks .lede,
+  .service-hero--sinks ~ section .section-title,
+  .service-hero--sinks ~ section p {
+    max-width: 320px;
   }
 }
