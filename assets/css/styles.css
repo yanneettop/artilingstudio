@@ -1455,6 +1455,82 @@ section {
   opacity: 0.6;
 }
 
+/* Zoomable sink photos — cursor hint */
+@media (hover: hover) and (pointer: fine) {
+  .sinks__photo,
+  .sinks__strip-photo {
+    cursor: zoom-in;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   9b. SINK PHOTO ZOOM (FLIP lightbox)
+─────────────────────────────────────────────────────────────── */
+.sink-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.sink-zoom__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 19, 17, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+.sink-zoom.is-open .sink-zoom__backdrop {
+  opacity: 1;
+}
+.sink-zoom__img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.7);
+  transform-origin: top left;
+  will-change: transform;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.sink-zoom__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--bone);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s var(--ease-out) 0.15s, transform 0.5s var(--ease-out) 0.15s;
+  pointer-events: none;
+}
+.sink-zoom.is-open .sink-zoom__cap {
+  opacity: 0.78;
+  transform: translateY(0);
+}
+.is-sink-zoom-open {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sink-zoom__backdrop,
+  .sink-zoom__img,
+  .sink-zoom__cap {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ──────────────────────────────────────────────────────────────
    10. SERVICES
 ─────────────────────────────────────────────────────────────── */

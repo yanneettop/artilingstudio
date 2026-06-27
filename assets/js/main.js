@@ -484,6 +484,173 @@
     document.addEventListener('scroll', () => viewCursor.classList.remove('is-visible'), { passive: true });
   }
 
+  /* ──────────────────────────────────────────────
+     7. Sink photo zoom (FLIP lightbox)
+        Click a sink photo → it lifts into the window.
+        Click again (or Esc) → it settles back.
+  ─────────────────────────────────────────────── */
+  const zoomables = document.querySelectorAll('.sinks__photo, .sinks__strip-photo');
+  if (zoomables.length) {
+    const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
+    const DURATION = 560;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let active = null; // { overlay, clone, source, caption }
+
+    const targetRect = (img) => {
+      const natW = img.naturalWidth || img.width;
+      const natH = img.naturalHeight || img.height;
+      const maxW = window.innerWidth * 0.92;
+      const maxH = window.innerHeight * 0.9;
+      const ratio = Math.min(maxW / natW, maxH / natH);
+      const w = natW * ratio;
+      const h = natH * ratio;
+      return {
+        w,
+        h,
+        left: (window.innerWidth - w) / 2,
+        top: (window.innerHeight - h) / 2,
+      };
+    };
+
+    const close = () => {
+      if (!active) return;
+      const { overlay, clone, source, first } = active;
+      const current = active; // freeze reference
+      active = null;
+
+      const last = targetRect(clone);
+      // Invert from the open (target) position back to the source rect.
+      const dx = first.left - last.left;
+      const dy = first.top - last.top;
+      const sx = first.width / last.w;
+      const sy = first.height / last.h;
+
+      overlay.classList.remove('is-open');
+      if (reduceMotion) {
+        source.style.opacity = '';
+        overlay.remove();
+        document.body.classList.remove('is-sink-zoom-open');
+        return;
+      }
+      clone.style.transition = `transform ${DURATION}ms ${EASE}`;
+      requestAnimationFrame(() => {
+        clone.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+      });
+      const done = () => {
+        clone.removeEventListener('transitionend', done);
+        if (active !== current) {
+          source.style.opacity = '';
+          overlay.remove();
+        }
+        if (!active) document.body.classList.remove('is-sink-zoom-open');
+      };
+      clone.addEventListener('transitionend', done);
+      window.setTimeout(done, DURATION + 80);
+    };
+
+    const open = (source) => {
+      if (active) return;
+      const first = source.getBoundingClientRect();
+      if (!first.width) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'sink-zoom';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+
+      const backdrop = document.createElement('div');
+      backdrop.className = 'sink-zoom__backdrop';
+
+      const clone = document.createElement('img');
+      clone.className = 'sink-zoom__img';
+      clone.src = source.currentSrc || source.src;
+      clone.alt = source.alt || '';
+      clone.decoding = 'sync';
+
+      const figure = source.closest('figure');
+      const capText = figure && figure.querySelector('figcaption')
+        ? figure.querySelector('figcaption').textContent.trim()
+        : '';
+
+      overlay.appendChild(backdrop);
+      overlay.appendChild(clone);
+      if (capText) {
+        const cap = document.createElement('p');
+        cap.className = 'sink-zoom__cap';
+        cap.textContent = capText;
+        overlay.appendChild(cap);
+      }
+      document.body.appendChild(overlay);
+      document.body.classList.add('is-sink-zoom-open');
+
+      const last = targetRect(source);
+      // Place clone at final position, then invert to the source rect.
+      clone.style.width = `${last.w}px`;
+      clone.style.height = `${last.h}px`;
+      clone.style.transform =
+        `translate(${last.left}px, ${last.top}px)`;
+
+      const overlayState = { overlay, clone, source, first };
+      active = overlayState;
+
+      const dx = first.left - last.left;
+      const dy = first.top - last.top;
+      const sx = first.width / last.w;
+      const sy = first.height / last.h;
+
+      source.style.opacity = '0';
+
+      if (reduceMotion) {
+        overlay.classList.add('is-open');
+        return;
+      }
+
+      // Invert (no transition), then play to the resting open state.
+      clone.style.transition = 'none';
+      clone.style.transform =
+        `translate(${last.left + dx}px, ${last.top + dy}px) scale(${sx}, ${sy})`;
+      // Force reflow so the inverted transform is committed before we animate.
+      void clone.offsetWidth;
+
+      let played = false;
+      const play = () => {
+        if (played || active !== overlayState) return;
+        played = true;
+        overlay.classList.add('is-open');
+        clone.style.transition = `transform ${DURATION}ms ${EASE}`;
+        clone.style.transform = `translate(${last.left}px, ${last.top}px)`;
+      };
+      // rAF for a clean frame boundary, with a timeout fallback so the
+      // resting state always lands even if frames are starved.
+      requestAnimationFrame(play);
+      window.setTimeout(play, 40);
+    };
+
+    zoomables.forEach((img) => {
+      img.addEventListener('click', (event) => {
+        event.preventDefault();
+        open(img);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (active && event.target.closest('.sink-zoom')) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (active && event.key === 'Escape') close();
+    });
+    window.addEventListener('resize', () => {
+      if (active) {
+        // Snap to the recomputed centre on viewport change.
+        const last = targetRect(active.clone);
+        active.clone.style.transition = 'none';
+        active.clone.style.width = `${last.w}px`;
+        active.clone.style.height = `${last.h}px`;
+        active.clone.style.transform = `translate(${last.left}px, ${last.top}px)`;
+      }
+    }, { passive: true });
+  }
+
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
