@@ -255,19 +255,19 @@ export const portfolioData = [
     id: "calacatta-gold-bespoke-bathroom",
     title: "Calacatta Gold Bespoke Bathroom",
     slug: "calacatta-gold-bespoke-bathroom",
-    cover: "/projects/calacatta-gold-bespoke-bathroom/cover.png",
-    coverImage: "/projects/calacatta-gold-bespoke-bathroom/cover.png",
-    collage: "/projects/calacatta-gold-bespoke-bathroom/collage.png",
+    cover:
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp",
+    coverImage:
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp",
+    collage:
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp",
     galleryImages: [
-      "/projects/calacatta-gold-bespoke-bathroom/gallery/gallery-01.png",
-      "/projects/calacatta-gold-bespoke-bathroom/gallery/gallery-02.png",
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-porcelain-vanity-mirror-bathroom.webp",
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-double-basin-vanity-detail.webp",
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-wall-mounted-tap-basin-detail.webp",
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-bathroom-niche-toilet-detail.webp",
     ],
-    detailImages: [
-      "/projects/calacatta-gold-bespoke-bathroom/details/details-1.jpg",
-      "/projects/calacatta-gold-bespoke-bathroom/details/details-2.jpg",
-      "/projects/calacatta-gold-bespoke-bathroom/details/details-3.jpg",
-      "/projects/calacatta-gold-bespoke-bathroom/details/details-4.png",
-    ],
+    detailImages: [],
     alt: "Calacatta Gold bespoke porcelain bathroom",
     categories: ["bathrooms", "bespoke-sinks", "premium-tiling"],
     featured: true,

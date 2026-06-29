@@ -92,16 +92,46 @@
       'mauve-stone-statement-bathroom': 'dark',
       'verde-marble-feature-bathroom': 'verde',
     };
-    const selectedWorkTitles = {
-      'soft-stone-double-vanity': 'Soft Stone Double Vanity',
-      'calacatta-gold-bespoke-bathroom': 'Calacatta Wet Room',
-      'dark-emperador-floating-sink': 'Dark Emperor Feature Wall',
+    const conceptTitles = {
+      'soft-stone-double-vanity': 'Floating Porcelain Sink Concept',
+      'calacatta-gold-bespoke-bathroom': 'Integrated Vanity Sink Concept',
+      'dark-emperador-floating-sink': 'Mitred Porcelain Basin Concept',
     };
-    const selectedWorkDescriptions = {
-      'soft-stone-double-vanity': 'Integrated double vanity in calm soft-stone porcelain.',
-      'calacatta-gold-bespoke-bathroom': 'Warm-veined porcelain shaped for a refined wet room.',
-      'dark-emperador-floating-sink': 'Dark porcelain surfaces with a quiet architectural presence.',
+    const conceptDescriptions = {
+      'soft-stone-double-vanity': 'A design concept for made-to-measure porcelain sinks, floating proportions and soft stone-effect bathroom vanity tops.',
+      'calacatta-gold-bespoke-bathroom': 'A concept preview for an integrated vanity layout with warm porcelain finishes, storage lines and mitred edge detailing.',
+      'dark-emperador-floating-sink': 'A porcelain basin concept inspired by real fabrication work, showing darker marble-effect surfaces and sculptural bathroom details.',
     };
+    const conceptAltText = [
+      'Concept preview of a bespoke porcelain sink with mitred edges',
+      'Design concept for a made-to-measure porcelain vanity sink',
+      'Porcelain basin concept inspired by real fabrication work',
+    ];
+    const completedProjects = [
+      {
+        title: 'Bespoke Porcelain Sink, London',
+        image: './assets/images/services/bespoke-sinks/tanis-floating-trough-grey.webp',
+        alt: 'Completed bespoke porcelain sink installation in London',
+        description: 'Made-to-measure porcelain sink with mitred edges, fabricated and installed to fit the client\'s bathroom layout.',
+        details: ['Mitred porcelain edges', 'Custom measurements', 'Fabricated & installed in London'],
+      },
+      {
+        title: 'Double Porcelain Vanity Sink',
+        image: './assets/images/services/bespoke-sinks/tanis-double-porcelain-sink.webp',
+        alt: 'Made-to-measure porcelain sink with mitred edges',
+        description: 'A completed double vanity formed from porcelain with integrated basins, clean surface returns and bathroom-ready proportions.',
+        details: ['Double basin layout', 'Made-to-measure porcelain sinks', 'Bathroom vanity top fabrication'],
+      },
+      {
+        title: 'Mitred Porcelain Basin Detail',
+        image: './assets/images/services/porcelain-fabrication/mitred-porcelain-sink-basin-detail-london.webp',
+        alt: 'Real porcelain bathroom surface installation by Artiling Studio',
+        description: 'Real fabrication work showing porcelain cutouts, mitred edges and the precision needed before final installation.',
+        details: ['Porcelain fabrication', 'Mitred edge work', 'Surface and basin detailing'],
+      },
+    ];
+    const selectedWorkTitles = conceptTitles;
+    const selectedWorkDescriptions = conceptDescriptions;
     const localAssetSrc = (src) =>
       window.location.protocol === 'file:' && src.startsWith('/') ? `.${src}` : src;
     const withAssetVersion = (src) => {
@@ -151,9 +181,61 @@
       </article>
     `;
 
-    portfolioSequenceRoot.innerHTML = selectedWorksTeaser
-      .map((project, index) => renderSelectedWork(project, index))
-      .join('');
+    const renderConceptWork = (project, index) => `
+      <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal data-reveal-delay="${index * 90}">
+        <button class="selected-work__media" type="button" data-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(conceptTitles[project.slug] || project.title)} gallery">
+          <img src="${projectImageFor(project)}" alt="${escapeHtml(conceptAltText[index] || projectAltFor(project))}" loading="lazy" />
+        </button>
+        <div class="selected-work__caption">
+          <span class="selected-work__number">0${index + 1}</span>
+          <div>
+            <h3><button class="selected-work__title-action" type="button" data-lightbox-open="${project.slug}">${escapeHtml(conceptTitles[project.slug] || project.title)}</button></h3>
+            <p>${escapeHtml(conceptDescriptions[project.slug] || project.summary || project.descriptor)}</p>
+          </div>
+        </div>
+      </article>
+    `;
+
+    const renderCompletedProject = (project, index) => `
+      <article class="completed-project-card" data-reveal data-reveal-delay="${index * 90}">
+        <figure class="completed-project-card__media">
+          <img src="${withAssetVersion(project.image)}" alt="${escapeHtml(project.alt)}" loading="lazy" />
+          <figcaption class="portfolio-badge portfolio-badge--solid">Completed Project</figcaption>
+        </figure>
+        <div class="completed-project-card__body">
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.description)}</p>
+          <ul class="completed-project-card__details">
+            ${project.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join('')}
+          </ul>
+          <a href="/quote/" class="completed-project-card__link">Discuss a Similar Project <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    `;
+
+    portfolioSequenceRoot.innerHTML = `
+      <section class="portfolio-group portfolio-group--concepts" aria-labelledby="portfolio-concepts-title">
+        <header class="portfolio-group__head" data-reveal>
+          <p class="eyebrow">Inspiration ideas</p>
+          <h3 id="portfolio-concepts-title">Design Concepts</h3>
+          <p>Visual ideas inspired by real porcelain fabrication work, created to help clients explore possible sink styles, vanity layouts, porcelain finishes and mitred bathroom details.</p>
+        </header>
+        <div class="portfolio-concepts-grid">
+          ${selectedWorksTeaser.map((project, index) => renderConceptWork(project, index)).join('')}
+        </div>
+      </section>
+
+      <section class="portfolio-group portfolio-group--completed" aria-labelledby="portfolio-completed-title">
+        <header class="portfolio-group__head" data-reveal>
+          <p class="eyebrow">Real installations</p>
+          <h3 id="portfolio-completed-title">Completed Projects</h3>
+          <p>Real installations fabricated and fitted for clients across London, using made-to-measure porcelain pieces, mitred edges and carefully planned bathroom details.</p>
+        </header>
+        <div class="completed-projects-grid">
+          ${completedProjects.map((project, index) => renderCompletedProject(project, index)).join('')}
+        </div>
+      </section>
+    `;
 
     const createPortfolioLightbox = (projects) => {
       const lightbox = document.createElement('aside');
