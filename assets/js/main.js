@@ -93,19 +93,19 @@
       'verde-marble-feature-bathroom': 'verde',
     };
     const conceptTitles = {
-      'soft-stone-double-vanity': 'Floating Porcelain Sink Concept',
-      'calacatta-gold-bespoke-bathroom': 'Integrated Vanity Sink Concept',
-      'dark-emperador-floating-sink': 'Mitred Porcelain Basin Concept',
+      'soft-stone-double-vanity': 'Floating Porcelain Vanity',
+      'calacatta-gold-bespoke-bathroom': 'Integrated Vanity Sink',
+      'dark-emperador-floating-sink': 'Mitred Porcelain Basin',
     };
     const conceptDescriptions = {
-      'soft-stone-double-vanity': 'A design concept for made-to-measure porcelain sinks, floating proportions and soft stone-effect bathroom vanity tops.',
-      'calacatta-gold-bespoke-bathroom': 'A concept preview for an integrated vanity layout with warm porcelain finishes, storage lines and mitred edge detailing.',
-      'dark-emperador-floating-sink': 'A porcelain basin concept inspired by real fabrication work, showing darker marble-effect surfaces and sculptural bathroom details.',
+      'soft-stone-double-vanity': 'A soft stone vanity direction with made-to-measure proportions, floating lines and calm porcelain surface detail.',
+      'calacatta-gold-bespoke-bathroom': 'An integrated vanity layout with warm porcelain finishes, storage lines and mitred edge detailing.',
+      'dark-emperador-floating-sink': 'A darker porcelain basin study shaped by real fabrication methods, sculptural surfaces and spa-like bathroom detailing.',
     };
     const conceptAltText = [
-      'Concept preview of a bespoke porcelain sink with mitred edges',
-      'Design concept for a made-to-measure porcelain vanity sink',
-      'Porcelain basin concept inspired by real fabrication work',
+      'Studio preview of a bespoke porcelain sink with mitred edges',
+      'Made-to-measure porcelain vanity sink preview',
+      'Porcelain basin study inspired by real fabrication work',
     ];
     const completedProjects = [
       {
@@ -216,9 +216,9 @@
     portfolioSequenceRoot.innerHTML = `
       <section class="portfolio-group portfolio-group--concepts" aria-labelledby="portfolio-concepts-title">
         <header class="portfolio-group__head" data-reveal>
-          <p class="eyebrow">Inspiration ideas</p>
-          <h3 id="portfolio-concepts-title">Design Concepts</h3>
-          <p>Visual ideas inspired by real porcelain fabrication work, created to help clients explore possible sink styles, vanity layouts, porcelain finishes and mitred bathroom details.</p>
+          <p class="eyebrow">Studio previews</p>
+          <h3 id="portfolio-concepts-title">Material Studies</h3>
+          <p>Porcelain sink and vanity directions shaped around real fabrication details, helping clients picture possible proportions, finishes and mitred bathroom surfaces.</p>
         </header>
         <div class="portfolio-concepts-grid">
           ${selectedWorksTeaser.map((project, index) => renderConceptWork(project, index)).join('')}

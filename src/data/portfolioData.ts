@@ -187,7 +187,7 @@ export const portfolioData = [
     scope: "Floating sink with spa-style shower composition",
     descriptor: "Graphite surfaces with a calm spa-like atmosphere",
     summary:
-      "A darker spa-like bathroom concept defined by quiet luxury, integrated lighting, and a strong floating sink statement.",
+      "A darker spa-like bathroom direction defined by quiet luxury, integrated lighting, and a strong floating sink statement.",
   },
   {
     id: "mauve-stone-statement-bathroom",
@@ -276,7 +276,7 @@ export const portfolioData = [
     scope: "Bespoke Porcelain Bathroom",
     descriptor: "Bespoke Porcelain Bathroom",
     summary:
-      "A refined bathroom concept using Calacatta Gold porcelain, elegant veining, and seamless premium finishes.",
+      "A refined bathroom composition using Calacatta Gold porcelain, elegant veining, and seamless premium finishes.",
   },
 ] as const satisfies readonly PortfolioItem[];
 
