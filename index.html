@@ -32,60 +32,262 @@
     <meta name="twitter:title" content="Artiling Studio | Bespoke Porcelain Sinks &amp; Tiling London" />
     <meta name="twitter:description" content="Bespoke porcelain sinks, premium tiling, wet rooms and refined surface detailing for considered London interiors." />
     <meta name="twitter:image" content="https://www.artilingstudio.co.uk/og-image-v2.jpg" />
-    <script type="application/ld+json">
+
+    <!-- Fonts: editorial serif + modern sans -->
+    <script type="application/ld+json" data-artiling-schema>
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Artiling Studio",
-        "alternateName": "Artiling Studio | Bespoke Porcelain Sinks & Tiling London",
-        "url": "https://www.artilingstudio.co.uk/"
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "HomeAndConstructionBusiness",
-        "@id": "https://www.artilingstudio.co.uk/#business",
-        "name": "Artiling Studio",
-        "url": "https://www.artilingstudio.co.uk/",
-        "logo": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png",
-        "image": [
-          "https://www.artilingstudio.co.uk/og-image-v2.jpg",
-          "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png"
-        ],
-        "description": "Bespoke porcelain sinks, large-format tiling, wet rooms and premium tiled surfaces for considered London interiors. 26 years of experience.",
-        "email": "info@artilingstudio.co.uk",
-        "telephone": "+447481613339",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "London",
-          "addressRegion": "Greater London",
-          "addressCountry": "GB"
-        },
-        "areaServed": [
-          { "@type": "City", "name": "London" },
-          { "@type": "AdministrativeArea", "name": "Greater London" }
-        ],
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-          "opens": "08:00",
-          "closes": "18:00"
-        }],
-        "knowsAbout": [
-          "Bespoke porcelain sinks",
-          "Large format tiling",
-          "Wet room tiling",
-          "Porcelain fabrication",
-          "Microcement alternative"
-        ],
-        "sameAs": [
-          "https://www.tiktok.com/@artiling.ltd"
+        "@graph": [
+          {
+            "@type": [
+              "Organization",
+              "HomeAndConstructionBusiness"
+            ],
+            "@id": "https://www.artilingstudio.co.uk/#business",
+            "name": "Artiling Studio",
+            "url": "https://www.artilingstudio.co.uk/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.artilingstudio.co.uk/#logo",
+              "url": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png"
+            },
+            "image": [
+              "https://www.artilingstudio.co.uk/og-image-v2.jpg",
+              "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png"
+            ],
+            "description": "London-based studio specialising in bespoke porcelain sinks, porcelain fabrication, large-format tiling, wet rooms, bathroom tiling, mitred porcelain edges, vanity units and custom porcelain surfaces.",
+            "email": "info@artilingstudio.co.uk",
+            "telephone": "+447481613339",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressRegion": "Greater London",
+              "addressCountry": "GB"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "London"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Greater London"
+              }
+            ],
+            "knowsAbout": [
+              "Bespoke porcelain sinks",
+              "Porcelain fabrication",
+              "Large format tiling",
+              "Wet rooms",
+              "Bathroom tiling",
+              "Mitred porcelain edges",
+              "Custom bathroom surfaces"
+            ],
+            "sameAs": [
+              "https://www.tiktok.com/@artiling.ltd"
+            ],
+            "hasOfferCatalog": {
+              "@id": "https://www.artilingstudio.co.uk/#services"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.artilingstudio.co.uk/#website",
+            "name": "Artiling Studio",
+            "alternateName": "Artiling Studio | Bespoke Porcelain Sinks & Tiling London",
+            "url": "https://www.artilingstudio.co.uk/",
+            "publisher": {
+              "@id": "https://www.artilingstudio.co.uk/#business"
+            },
+            "inLanguage": "en-GB"
+          },
+          {
+            "@type": "OfferCatalog",
+            "@id": "https://www.artilingstudio.co.uk/#services",
+            "name": "Artiling Studio porcelain and tiling services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Bespoke Porcelain Sinks",
+                  "url": "https://www.artilingstudio.co.uk/bespoke-porcelain-sinks/",
+                  "provider": {
+                    "@id": "https://www.artilingstudio.co.uk/#business"
+                  },
+                  "areaServed": [
+                    {
+                      "@type": "City",
+                      "name": "London"
+                    },
+                    {
+                      "@type": "AdministrativeArea",
+                      "name": "Greater London"
+                    }
+                  ]
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Porcelain Fabrication",
+                  "url": "https://www.artilingstudio.co.uk/porcelain-fabrication-london/",
+                  "provider": {
+                    "@id": "https://www.artilingstudio.co.uk/#business"
+                  },
+                  "areaServed": [
+                    {
+                      "@type": "City",
+                      "name": "London"
+                    },
+                    {
+                      "@type": "AdministrativeArea",
+                      "name": "Greater London"
+                    }
+                  ]
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Large Format Tiling",
+                  "url": "https://www.artilingstudio.co.uk/large-format-tiling-london/",
+                  "provider": {
+                    "@id": "https://www.artilingstudio.co.uk/#business"
+                  },
+                  "areaServed": [
+                    {
+                      "@type": "City",
+                      "name": "London"
+                    },
+                    {
+                      "@type": "AdministrativeArea",
+                      "name": "Greater London"
+                    }
+                  ]
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Wet Rooms",
+                  "url": "https://www.artilingstudio.co.uk/wet-rooms-bathroom-tiling/",
+                  "provider": {
+                    "@id": "https://www.artilingstudio.co.uk/#business"
+                  },
+                  "areaServed": [
+                    {
+                      "@type": "City",
+                      "name": "London"
+                    },
+                    {
+                      "@type": "AdministrativeArea",
+                      "name": "Greater London"
+                    }
+                  ]
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Bathroom Tiling",
+                  "url": "https://www.artilingstudio.co.uk/wet-rooms-bathroom-tiling/",
+                  "provider": {
+                    "@id": "https://www.artilingstudio.co.uk/#business"
+                  },
+                  "areaServed": [
+                    {
+                      "@type": "City",
+                      "name": "London"
+                    },
+                    {
+                      "@type": "AdministrativeArea",
+                      "name": "Greater London"
+                    }
+                  ]
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Mitred Porcelain Edges",
+                  "url": "https://www.artilingstudio.co.uk/porcelain-fabrication-london/",
+                  "provider": {
+                    "@id": "https://www.artilingstudio.co.uk/#business"
+                  },
+                  "areaServed": [
+                    {
+                      "@type": "City",
+                      "name": "London"
+                    },
+                    {
+                      "@type": "AdministrativeArea",
+                      "name": "Greater London"
+                    }
+                  ]
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Custom Bathroom Surfaces",
+                  "url": "https://www.artilingstudio.co.uk/microcement-alternative-london/",
+                  "provider": {
+                    "@id": "https://www.artilingstudio.co.uk/#business"
+                  },
+                  "areaServed": [
+                    {
+                      "@type": "City",
+                      "name": "London"
+                    },
+                    {
+                      "@type": "AdministrativeArea",
+                      "name": "Greater London"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://www.artilingstudio.co.uk/#webpage",
+            "url": "https://www.artilingstudio.co.uk/",
+            "name": "Artiling Studio | Bespoke Porcelain Sinks & Tiling London",
+            "description": "Bespoke porcelain sinks, vanity units, large-format tiling, wet rooms and mitred bathroom details for refined London interiors.",
+            "image": "https://www.artilingstudio.co.uk/og-image-v2.jpg",
+            "isPartOf": {
+              "@id": "https://www.artilingstudio.co.uk/#website"
+            },
+            "about": {
+              "@id": "https://www.artilingstudio.co.uk/#business"
+            },
+            "inLanguage": "en-GB"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.artilingstudio.co.uk/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.artilingstudio.co.uk/"
+              }
+            ]
+          }
         ]
       }
     </script>
 
-    <!-- Fonts: editorial serif + modern sans -->
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

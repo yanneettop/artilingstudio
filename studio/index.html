@@ -30,33 +30,109 @@
     <meta name="twitter:title" content="Artiling Studio | Specialist Porcelain &amp; Tiling Studio London" />
     <meta name="twitter:description" content="A specialist London porcelain and tiling studio creating bespoke sinks, large-format tiling, wet rooms and refined bathroom surfaces." />
     <meta name="twitter:image" content="https://www.artilingstudio.co.uk/og-image-v2.jpg" />
-    <script type="application/ld+json">
+    <script type="application/ld+json" data-artiling-schema>
       {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Artiling Studio",
-        "url": "https://www.artilingstudio.co.uk/studio/",
-        "description": "A specialist London porcelain and tiling studio creating bespoke sinks, large-format tiling, wet rooms and refined bathroom surfaces.",
-        "mainEntity": {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "Artiling Studio",
-          "url": "https://www.artilingstudio.co.uk/",
-          "logo": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png",
-          "image": "https://www.artilingstudio.co.uk/og-image-v2.jpg",
-          "email": "info@artilingstudio.co.uk",
-          "telephone": "+447481613339",
-          "areaServed": {
-            "@type": "City",
-            "name": "London"
+        "@graph": [
+          {
+            "@type": [
+              "Organization",
+              "HomeAndConstructionBusiness"
+            ],
+            "@id": "https://www.artilingstudio.co.uk/#business",
+            "name": "Artiling Studio",
+            "url": "https://www.artilingstudio.co.uk/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.artilingstudio.co.uk/#logo",
+              "url": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png"
+            },
+            "image": [
+              "https://www.artilingstudio.co.uk/og-image-v2.jpg",
+              "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png"
+            ],
+            "description": "London-based studio specialising in bespoke porcelain sinks, porcelain fabrication, large-format tiling, wet rooms, bathroom tiling, mitred porcelain edges, vanity units and custom porcelain surfaces.",
+            "email": "info@artilingstudio.co.uk",
+            "telephone": "+447481613339",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressRegion": "Greater London",
+              "addressCountry": "GB"
+            },
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "London"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Greater London"
+              }
+            ],
+            "knowsAbout": [
+              "Bespoke porcelain sinks",
+              "Porcelain fabrication",
+              "Large format tiling",
+              "Wet rooms",
+              "Bathroom tiling",
+              "Mitred porcelain edges",
+              "Custom bathroom surfaces"
+            ],
+            "sameAs": [
+              "https://www.tiktok.com/@artiling.ltd"
+            ]
           },
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "London",
-            "addressCountry": "GB"
+          {
+            "@type": "WebSite",
+            "@id": "https://www.artilingstudio.co.uk/#website",
+            "name": "Artiling Studio",
+            "alternateName": "Artiling Studio | Bespoke Porcelain Sinks & Tiling London",
+            "url": "https://www.artilingstudio.co.uk/",
+            "publisher": {
+              "@id": "https://www.artilingstudio.co.uk/#business"
+            },
+            "inLanguage": "en-GB"
+          },
+          {
+            "@type": "AboutPage",
+            "@id": "https://www.artilingstudio.co.uk/studio/#webpage",
+            "url": "https://www.artilingstudio.co.uk/studio/",
+            "name": "Artiling Studio",
+            "description": "Studio page for Artiling Studio, a London-based specialist in bespoke porcelain sinks, porcelain fabrication and premium bathroom surface work.",
+            "image": "https://www.artilingstudio.co.uk/og-image-v2.jpg",
+            "isPartOf": {
+              "@id": "https://www.artilingstudio.co.uk/#website"
+            },
+            "about": {
+              "@id": "https://www.artilingstudio.co.uk/#business"
+            },
+            "inLanguage": "en-GB"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.artilingstudio.co.uk/studio/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.artilingstudio.co.uk/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Studio",
+                "item": "https://www.artilingstudio.co.uk/studio/"
+              }
+            ]
           }
-        }
+        ]
       }
     </script>
+
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
