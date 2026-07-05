@@ -596,18 +596,66 @@
   const zoomables = document.querySelectorAll('.sinks__photo, .sinks__strip-photo');
   if (zoomables.length) {
     let active = null;
+
+    const zoomEase = 'cubic-bezier(0.22, 1, 0.36, 1)';
+    const zoomDuration = 430;
+    const getZoomPadding = () => Math.min(Math.max(window.innerWidth * 0.03, 14), 36);
+    const getImageRect = (image) => {
+      const rect = image.getBoundingClientRect();
+      return {
+        left: rect.left,
+        top: rect.top,
+        width: rect.width,
+        height: rect.height,
+      };
+    };
+    const getFinalRect = (image) => {
+      const padding = getZoomPadding();
+      const maxWidth = Math.min(window.innerWidth - padding * 2, 1480);
+      const maxHeight = window.innerHeight * 0.88;
+      const sourceRect = image.getBoundingClientRect();
+      const aspect =
+        image.naturalWidth && image.naturalHeight
+          ? image.naturalWidth / image.naturalHeight
+          : sourceRect.width / sourceRect.height || 1;
+
+      let width = maxWidth;
+      let height = width / aspect;
+      if (height > maxHeight) {
+        height = maxHeight;
+        width = height * aspect;
+      }
+
+      return {
+        left: (window.innerWidth - width) / 2,
+        top: (window.innerHeight - height) / 2,
+        width,
+        height,
+      };
+    };
+    const applyRect = (image, rect) => {
+      image.style.left = `${rect.left}px`;
+      image.style.top = `${rect.top}px`;
+      image.style.width = `${rect.width}px`;
+      image.style.height = `${rect.height}px`;
+    };
+
     const close = () => {
       if (!active) return;
-      const overlay = active;
+      const { overlay, clone, source } = active;
       active = null;
+      if (source && source.isConnected) {
+        applyRect(clone, getImageRect(source));
+      }
       overlay.classList.remove('is-open');
-      const remove = () => {
-        overlay.removeEventListener('transitionend', remove);
+      const remove = (event) => {
+        if (event && event.target !== overlay) return;
+        clone.removeEventListener('transitionend', remove);
         overlay.remove();
         document.body.classList.remove('is-sink-zoom-open');
       };
-      overlay.addEventListener('transitionend', remove);
-      window.setTimeout(remove, 260);
+      clone.addEventListener('transitionend', remove);
+      window.setTimeout(remove, zoomDuration + 120);
     };
 
     const open = (source) => {
@@ -625,6 +673,9 @@
       clone.src = source.currentSrc || source.src;
       clone.alt = source.alt || '';
       clone.decoding = 'async';
+      clone.style.transitionDuration = `${zoomDuration}ms`;
+      clone.style.transitionTimingFunction = zoomEase;
+      applyRect(clone, getImageRect(source));
 
       const figure = source.closest('figure');
       const capText = figure && figure.querySelector('figcaption')
@@ -641,16 +692,50 @@
       }
       document.body.appendChild(overlay);
       document.body.classList.add('is-sink-zoom-open');
-      active = overlay;
-      requestAnimationFrame(() => overlay.classList.add('is-open'));
+      active = { overlay, clone, source };
+      requestAnimationFrame(() => {
+        overlay.classList.add('is-open');
+        applyRect(clone, getFinalRect(source));
+      });
     };
 
     zoomables.forEach((img) => {
+      img.setAttribute('role', 'button');
+      img.tabIndex = img.tabIndex >= 0 ? img.tabIndex : 0;
+      img.setAttribute('aria-label', img.alt ? `Zoom image: ${img.alt}` : 'Zoom image');
       img.addEventListener('click', (event) => {
         event.preventDefault();
         open(img);
       });
+      img.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        open(img);
+      });
     });
+
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const zoomCursor = document.createElement('div');
+      zoomCursor.className = 'view-cursor view-cursor--zoom';
+      zoomCursor.textContent = 'Zoom';
+      document.body.appendChild(zoomCursor);
+
+      const moveZoomCursor = (event) => {
+        const target = event.target.closest('.sinks__photo, .sinks__strip-photo');
+        if (!target || active) {
+          zoomCursor.classList.remove('is-visible');
+          return;
+        }
+
+        zoomCursor.style.left = `${event.clientX}px`;
+        zoomCursor.style.top = `${event.clientY}px`;
+        zoomCursor.classList.add('is-visible');
+      };
+
+      document.addEventListener('mousemove', moveZoomCursor);
+      document.addEventListener('mouseleave', () => zoomCursor.classList.remove('is-visible'));
+      document.addEventListener('scroll', () => zoomCursor.classList.remove('is-visible'), { passive: true });
+    }
 
     document.addEventListener('click', (event) => {
       if (active && event.target.closest('.sink-zoom')) close();
@@ -662,5 +747,25 @@
 
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  if (!document.querySelector('[data-whatsapp-float]')) {
+    const whatsappFloat = document.createElement('a');
+    whatsappFloat.className = 'whatsapp-float';
+    whatsappFloat.href = 'https://wa.me/447481613339?text=Hello%20Artiling%20Studio%2C%20I%27d%20like%20to%20discuss%20a%20project.';
+    whatsappFloat.target = '_blank';
+    whatsappFloat.rel = 'noopener noreferrer';
+    whatsappFloat.setAttribute('aria-label', 'Chat with Artiling Studio on WhatsApp');
+    whatsappFloat.setAttribute('data-whatsapp-float', '');
+    whatsappFloat.innerHTML = `
+      <span class="whatsapp-float__signal" aria-hidden="true"></span>
+      <span class="whatsapp-float__label" aria-hidden="true">WhatsApp</span>
+      <span class="whatsapp-float__icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32" focusable="false">
+          <path d="M16 3.6c-6.8 0-12.4 5.5-12.4 12.3 0 2.2.6 4.4 1.7 6.3L3.6 28.4l6.4-1.7c1.8 1 3.9 1.5 6 1.5 6.8 0 12.4-5.5 12.4-12.3S22.8 3.6 16 3.6Zm0 22.5c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-3.8 1 1-3.7-.2-.4c-1.1-1.6-1.6-3.5-1.6-5.5 0-5.6 4.6-10.2 10.3-10.2s10.3 4.6 10.3 10.2S21.7 26.1 16 26.1Zm5.6-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.8.7.8.2 1.4.2 2 .1.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4Z"/>
+        </svg>
+      </span>
+    `;
+    document.body.appendChild(whatsappFloat);
+  }
 
 })();
