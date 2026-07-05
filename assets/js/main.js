@@ -166,7 +166,7 @@
     };
 
     const renderSelectedWork = (project, index) => `
-      <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal data-reveal-delay="${index * 90}">
+      <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal="card" data-reveal-delay="${index * 90}">
         <button class="selected-work__media" type="button" data-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(selectedWorkTitles[project.slug] || project.title)} gallery">
           <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
         </button>
@@ -182,7 +182,7 @@
     `;
 
     const renderConceptWork = (project, index) => `
-      <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal data-reveal-delay="${index * 90}">
+      <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal="card" data-reveal-delay="${index * 90}">
         <button class="selected-work__media" type="button" data-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(conceptTitles[project.slug] || project.title)} gallery">
           <img src="${projectImageFor(project)}" alt="${escapeHtml(conceptAltText[index] || projectAltFor(project))}" loading="lazy" />
         </button>
@@ -197,7 +197,7 @@
     `;
 
     const renderCompletedProject = (project, index) => `
-      <article class="completed-project-card" data-reveal data-reveal-delay="${index * 90}">
+      <article class="completed-project-card" data-reveal="card" data-reveal-delay="${index * 90}">
         <figure class="completed-project-card__media">
           <img src="${withAssetVersion(project.image)}" alt="${escapeHtml(project.alt)}" loading="lazy" />
           <figcaption class="portfolio-badge portfolio-badge--solid">Completed Project</figcaption>
@@ -215,7 +215,7 @@
 
     portfolioSequenceRoot.innerHTML = `
       <section class="portfolio-group portfolio-group--concepts" aria-labelledby="portfolio-concepts-title">
-        <header class="portfolio-group__head" data-reveal>
+        <header class="portfolio-group__head" data-reveal="copy">
           <p class="eyebrow">Studio previews</p>
           <h3 id="portfolio-concepts-title">Material Studies</h3>
           <p>Porcelain sink and vanity directions shaped around real fabrication details, helping clients picture possible proportions, finishes and mitred bathroom surfaces.</p>
@@ -226,7 +226,7 @@
       </section>
 
       <section class="portfolio-group portfolio-group--completed" aria-labelledby="portfolio-completed-title">
-        <header class="portfolio-group__head" data-reveal>
+        <header class="portfolio-group__head" data-reveal="copy">
           <p class="eyebrow">Real installations</p>
           <h3 id="portfolio-completed-title">Completed Projects</h3>
           <p>Real installations fabricated and fitted for clients across London, using made-to-measure porcelain pieces, mitred edges and carefully planned bathroom details.</p>

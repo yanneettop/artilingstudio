@@ -5486,7 +5486,7 @@ body.is-menu-open {
 ─────────────────────────────────────────────────────────────── */
 html.js-reveal [data-reveal] {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translate3d(0, 42px, 0);
   filter: blur(8px);
   transition:
     opacity 1.1s var(--ease-out),
@@ -5498,24 +5498,147 @@ html.js-reveal [data-reveal] {
 html.js-reveal [data-reveal].is-inview,
 html.js-reveal.reveal-failsafe [data-reveal] {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+html.js-reveal [data-reveal="copy"] {
+  transform: translate3d(0, 34px, 0);
+}
+
+html.js-reveal [data-reveal="visual"],
+html.js-reveal [data-reveal="image-left"],
+html.js-reveal [data-reveal="image-right"] {
+  transform: translate3d(0, 46px, 0) scale(0.985);
+}
+
+html.js-reveal [data-reveal="image-left"] {
+  transform: translate3d(-26px, 38px, 0) scale(0.985);
+}
+
+html.js-reveal [data-reveal="image-right"] {
+  transform: translate3d(26px, 38px, 0) scale(0.985);
+}
+
+html.js-reveal [data-reveal="card"],
+html.js-reveal [data-reveal="step"],
+html.js-reveal [data-reveal="stat"] {
+  transform: translate3d(0, 32px, 0) scale(0.975);
+}
+
+html.js-reveal [data-reveal="cta"] {
+  transform: translate3d(0, 34px, 0) scale(0.99);
+}
+
+html.js-reveal [data-reveal="rule"] {
+  transform: translate3d(0, 18px, 0);
+  filter: blur(4px);
+}
+
+html.js-reveal [data-reveal="rule"]::before,
+html.js-reveal [data-reveal="rule"]::after {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.15s var(--ease-out);
+}
+
+html.js-reveal [data-reveal="rule"].is-inview::before,
+html.js-reveal [data-reveal="rule"].is-inview::after,
+html.js-reveal.reveal-failsafe [data-reveal="rule"]::before,
+html.js-reveal.reveal-failsafe [data-reveal="rule"]::after {
+  transform: scaleX(1);
+}
+
+html.js-reveal [data-reveal="gallery"] figure {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0) scale(0.985);
+  filter: blur(7px);
+  transition:
+    opacity 1s var(--ease-out),
+    transform 1s var(--ease-out),
+    filter 1s var(--ease-out);
+}
+
+html.js-reveal [data-reveal="gallery"] figure:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+html.js-reveal [data-reveal="gallery"] figure:nth-child(3) {
+  transition-delay: 180ms;
+}
+
+html.js-reveal [data-reveal="gallery"].is-inview figure,
+html.js-reveal.reveal-failsafe [data-reveal="gallery"] figure {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+html.js-reveal [data-reveal="list"] .detail-list__item,
+html.js-reveal [data-reveal="points"] li {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  filter: blur(5px);
+  transition:
+    opacity 850ms var(--ease-out),
+    transform 850ms var(--ease-out),
+    filter 850ms var(--ease-out);
+}
+
+html.js-reveal [data-reveal="list"] .detail-list__item:nth-child(2),
+html.js-reveal [data-reveal="points"] li:nth-child(2) {
+  transition-delay: 70ms;
+}
+
+html.js-reveal [data-reveal="list"] .detail-list__item:nth-child(3),
+html.js-reveal [data-reveal="points"] li:nth-child(3) {
+  transition-delay: 140ms;
+}
+
+html.js-reveal [data-reveal="list"] .detail-list__item:nth-child(4),
+html.js-reveal [data-reveal="points"] li:nth-child(4) {
+  transition-delay: 210ms;
+}
+
+html.js-reveal [data-reveal="list"].is-inview .detail-list__item,
+html.js-reveal [data-reveal="points"].is-inview li,
+html.js-reveal.reveal-failsafe [data-reveal="list"] .detail-list__item,
+html.js-reveal.reveal-failsafe [data-reveal="points"] li {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
   filter: blur(0);
 }
 
 /* Image wipe-in reveal — clip from bottom */
 html.js-reveal [data-reveal] .sinks__photo,
 html.js-reveal [data-reveal] .sinks__strip-photo,
-html.js-reveal [data-reveal] .hero__image img {
+html.js-reveal [data-reveal] .hero__image img,
+html.js-reveal [data-reveal] .service-card__media img,
+html.js-reveal [data-reveal] .about__photo,
+html.js-reveal [data-reveal] .completed-project-card__media img,
+html.js-reveal [data-reveal] .selected-work__media img {
   clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.2s var(--ease-out) 0.2s;
+  transform: scale(1.035);
+  transition:
+    clip-path 1.25s var(--ease-out) 0.18s,
+    transform 1.25s var(--ease-out) 0.18s;
 }
 html.js-reveal [data-reveal].is-inview .sinks__photo,
 html.js-reveal [data-reveal].is-inview .sinks__strip-photo,
 html.js-reveal [data-reveal].is-inview .hero__image img,
+html.js-reveal [data-reveal].is-inview .service-card__media img,
+html.js-reveal [data-reveal].is-inview .about__photo,
+html.js-reveal [data-reveal].is-inview .completed-project-card__media img,
+html.js-reveal [data-reveal].is-inview .selected-work__media img,
 html.js-reveal.reveal-failsafe [data-reveal] .sinks__photo,
 html.js-reveal.reveal-failsafe [data-reveal] .sinks__strip-photo,
-html.js-reveal.reveal-failsafe [data-reveal] .hero__image img {
+html.js-reveal.reveal-failsafe [data-reveal] .hero__image img,
+html.js-reveal.reveal-failsafe [data-reveal] .service-card__media img,
+html.js-reveal.reveal-failsafe [data-reveal] .about__photo,
+html.js-reveal.reveal-failsafe [data-reveal] .completed-project-card__media img,
+html.js-reveal.reveal-failsafe [data-reveal] .selected-work__media img {
   clip-path: inset(0% 0 0 0);
+  transform: scale(1);
 }
 
 /* Hero meta — staggered reveal */
@@ -5544,8 +5667,20 @@ html.js-reveal.reveal-failsafe [data-reveal] .hero__image img {
   }
   [data-reveal] .sinks__photo,
   [data-reveal] .sinks__strip-photo,
-  [data-reveal] .hero__image img {
+  [data-reveal] .hero__image img,
+  [data-reveal] .service-card__media img,
+  [data-reveal] .about__photo,
+  [data-reveal] .completed-project-card__media img,
+  [data-reveal] .selected-work__media img {
     clip-path: inset(0% 0 0 0);
+    transform: none;
+  }
+  [data-reveal="gallery"] figure,
+  [data-reveal="list"] .detail-list__item,
+  [data-reveal="points"] li {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
   .hero__badge,
   .hero__scroll-line::after {
