@@ -10552,3 +10552,156 @@ html.js-loader .page-loader {
     transition-duration: 0.01ms;
   }
 }
+
+/* Real sink portfolio cards */
+.projects-featured {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(22px, 3vw, 42px);
+}
+
+.projects-featured .project-feature,
+.projects-featured .project-feature:nth-child(1),
+.projects-featured .project-feature:nth-child(2),
+.projects-featured .project-feature:nth-child(3),
+.projects-featured .project-feature:nth-child(4),
+.projects-featured .project-feature:nth-child(even),
+.projects-support .project-card,
+.projects-support .project-card:nth-child(3n + 2),
+.projects-support .project-card:nth-child(3n),
+.projects-support .project-card:nth-child(6n + 1),
+.projects-support .project-card:nth-child(6n + 2),
+.projects-support .project-card:nth-child(6n + 3),
+.projects-support .project-card:nth-child(6n + 4),
+.projects-support .project-card:nth-child(6n + 5),
+.projects-support .project-card:nth-child(6n + 6),
+.projects-support .project-card:nth-child(even) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(15, 15, 16, 0.1);
+  border-radius: 6px;
+  background: rgba(250, 248, 244, 0.72);
+  box-shadow: 0 24px 60px -52px rgba(15, 15, 16, 0.44);
+}
+
+.projects-featured .project-feature:first-child {
+  border-top: 1px solid rgba(15, 15, 16, 0.1);
+}
+
+.projects-featured .project-feature__media,
+.projects-featured .project-feature:nth-child(even) .project-feature__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5 !important;
+  padding: 0 !important;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  line-height: 0;
+}
+
+.projects-support .project-card .project-card__media,
+.projects-support .project-card--2 .project-card__media,
+.projects-support .project-card--3 .project-card__media,
+.projects-support .project-card:nth-child(6n + 1) .project-card__media,
+.projects-support .project-card:nth-child(6n + 2) .project-card__media,
+.projects-support .project-card:nth-child(6n + 3) .project-card__media,
+.projects-support .project-card:nth-child(6n + 4) .project-card__media,
+.projects-support .project-card:nth-child(6n + 5) .project-card__media,
+.projects-support .project-card:nth-child(6n + 6) .project-card__media {
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+  line-height: 0;
+}
+
+.projects-featured .project-feature__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+}
+
+.projects-featured .project-feature--arabescato-oak-basin .project-feature__media img,
+.projects-featured .project-feature--floating-mitred-porcelain-sink .project-feature__media img,
+.projects-featured .project-feature--onyx-vein-floating-sink .project-feature__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+}
+
+.projects-featured .project-feature--onyx-vein-floating-sink .project-feature__media {
+  aspect-ratio: 4 / 5 !important;
+}
+
+.projects-featured .project-feature--onyx-vein-floating-sink .project-feature__media img {
+  object-position: center bottom;
+}
+
+.projects-support .project-card__media img {
+  width: 100%;
+  height: auto;
+  object-fit: unset;
+  object-position: center;
+  padding: 0;
+}
+
+.projects-featured .project-feature__caption,
+.projects-featured .project-feature:nth-child(even) .project-feature__caption,
+.projects-support .project-card__caption {
+  max-width: none;
+  padding: clamp(18px, 2.2vw, 28px);
+}
+
+.projects-featured .project-feature__caption h3 {
+  font-size: clamp(25px, 2.5vw, 38px);
+}
+
+.projects-featured .project-feature__caption p,
+.projects-support .project-card__caption p {
+  max-width: 58ch;
+}
+
+.projects-support {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 30px);
+}
+
+.projects-support .project-card {
+  max-width: none;
+}
+
+@media (max-width: 980px) {
+  .projects-featured,
+  .projects-support {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-featured .project-feature__media,
+  .projects-featured .project-feature:nth-child(even) .project-feature__media {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .projects-support .project-card .project-card__media {
+    aspect-ratio: auto;
+  }
+
+  .projects-featured .project-feature__caption,
+  .projects-featured .project-feature:nth-child(even) .project-feature__caption,
+  .projects-support .project-card__caption {
+    padding: 18px;
+  }
+}

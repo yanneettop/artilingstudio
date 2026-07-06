@@ -16,6 +16,9 @@
     ? portfolio.getBySlugs(portfolio.projectsFeaturedSlugs)
     : [];
   const detailStudySlugs = [
+    'soft-stone-double-vanity',
+    'calacatta-gold-bespoke-bathroom',
+    'dark-emperador-floating-sink',
     'statuario-linear-sink',
     'calacatta-gold-led-vanity',
     'beige-stone-floating-vanity',
@@ -42,6 +45,10 @@
 
   /* Editorial descriptions for featured projects */
   const editorialDescriptions = {
+    'arabescato-oak-basin': 'Made-to-measure porcelain basin with Arabescato-style surfaces, mitred edges, an integrated rectangular sink and a warm oak vanity.',
+    'calacatta-line-sink': 'Wall-to-wall porcelain sink with an integrated basin, slim linear drain, matte black wall tap and clean Calacatta-style surface movement.',
+    'floating-mitred-porcelain-sink': 'Floating bespoke porcelain sink in warm neutral stone tones, detailed with mitred edges, an integrated basin and wall-mounted tap.',
+    'onyx-vein-floating-sink': 'Statement floating porcelain sink with dramatic onyx-style veining, integrated basin and a clean mitred block form.',
     'soft-stone-double-vanity': 'Bespoke porcelain double vanity with integrated sink proportions, clean storage lines and soft stone-effect surfaces for a contemporary London bathroom.',
     'calacatta-gold-bespoke-bathroom': 'Calacatta Gold porcelain bathroom with large-format wall surfaces, tailored vanity detailing and refined transitions around the mirror and storage.',
     'dark-emperador-floating-sink': 'Dark marble-effect porcelain floating sink with integrated storage and mitred edge detailing for a contemporary London bathroom.',
