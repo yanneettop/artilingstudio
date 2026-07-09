@@ -17,11 +17,12 @@
     ? portfolio.getBySlugs(portfolio.projectsFeaturedSlugs)
     : [];
   /* Additional real, completed work shown under "More Porcelain Sink & Vanity Projects" */
-  const morePorcelainSlugs = [];
-  /* Studio previews / concept visuals shown under "Design Studies & Sink Concepts" */
-  const designStudySlugs = [
+  const morePorcelainSlugs = [
     'soft-stone-double-vanity',
     'calacatta-gold-bespoke-bathroom',
+  ];
+  /* Studio previews / concept visuals shown under "Design Studies & Sink Concepts" */
+  const designStudySlugs = [
     'statuario-linear-sink',
     'calacatta-gold-led-vanity',
     'beige-stone-floating-vanity',
@@ -29,8 +30,6 @@
     'backlit-marble-double-vanity',
   ];
   const detailStudyLabels = {
-    'soft-stone-double-vanity': 'Porcelain Vanity Unit · Bathroom Porcelain',
-    'calacatta-gold-bespoke-bathroom': 'Porcelain Bathroom · Calacatta Marble Effect',
     'statuario-linear-sink': 'Bespoke Porcelain Sink · Mitred Edges',
     'calacatta-gold-led-vanity': 'Porcelain Vanity Unit · Calacatta Marble Effect',
     'beige-stone-floating-vanity': 'Floating Sink · Large Format Tiling',
@@ -104,8 +103,9 @@
       </dl>
     `;
   };
-  const renderTags = (project) => {
-    const tags = projectTagsFor(project);
+  const renderTags = (project, max) => {
+    let tags = projectTagsFor(project);
+    if (typeof max === 'number') tags = tags.slice(0, max);
     if (!tags.length) return '';
     return `
       <ul class="project-card__tags" aria-label="Services">
@@ -150,7 +150,7 @@
           <p>${escapeHtml(project.category || project.descriptor)}</p>
           <p class="project-feature__editorial-desc">${escapeHtml(projectDescriptionFor(project))}</p>
           ${renderDetails(project)}
-          ${renderTags(project)}
+          ${renderTags(project, 3)}
           <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
         </div>
       </div>
@@ -158,7 +158,8 @@
   `;
 
   /* ── Support / detail study renderer ── */
-  const renderSupportProject = (project, index, offset = featuredProjects.length) => {
+  const renderSupportProject = (project, index, offset = featuredProjects.length, options = {}) => {
+    const isStudy = Boolean(options.isStudy);
     const indexStr = String(index + offset + 1).padStart(2, '0');
     const label = escapeHtml(detailStudyLabels[project.slug] || project.category || project.descriptor || '');
     const title = escapeHtml(detailStudyTitles[project.slug] || project.title);
@@ -166,11 +167,13 @@
     const descHtml = descriptor && descriptor !== label
       ? `<p class="project-card__desc">${descriptor}</p>`
       : '';
+    const viewLabel = isStudy ? 'View Study' : 'View Project';
 
     return `
-      <article id="${escapeHtml(project.slug)}" class="project-card project-card--${(index % 2) + 1} project-card--${project.slug}" data-reveal>
+      <article id="${escapeHtml(project.slug)}" class="project-card project-card--${(index % 2) + 1} project-card--${project.slug}${isStudy ? ' project-card--study' : ''}" data-reveal>
         <button class="project-card__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
           <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
+          ${isStudy ? '<span class="project-card__badge project-card__badge--overlay">Design Study</span>' : ''}
         </button>
         <div class="project-card__caption">
           <span class="project-card__index">${indexStr}&thinsp;/</span>
@@ -180,7 +183,7 @@
             ${descHtml}
             ${renderDetails(project)}
             ${renderTags(project)}
-            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
+            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">${viewLabel}<span aria-hidden="true">+</span></button>
           </div>
         </div>
       </article>
@@ -376,7 +379,7 @@
 
     if (studiesRoot) {
       studiesRoot.innerHTML = visibleStudies
-        .map((project, index) => renderSupportProject(project, index, 0))
+        .map((project, index) => renderSupportProject(project, index, 0, { isStudy: true }))
         .join('');
       studiesRoot.hidden = visibleStudies.length === 0;
     }

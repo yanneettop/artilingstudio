@@ -1995,7 +1995,7 @@ section {
 }
 
 .completed-projects-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .concept-card,
@@ -2386,7 +2386,7 @@ section {
 }
 
 .projects-index {
-  padding: clamp(42px, 7vw, 94px) 0 clamp(78px, 10vw, 138px);
+  padding: clamp(30px, 4vw, 60px) 0 clamp(56px, 7vw, 104px);
   background: var(--bone);
 }
 
@@ -2978,7 +2978,11 @@ section {
 
 /* Details section */
 .projects-details {
-  padding: clamp(56px, 8vw, 112px) 0 clamp(52px, 7vw, 100px);
+  padding: clamp(40px, 5.5vw, 76px) 0 clamp(38px, 5vw, 68px);
+}
+
+.projects-details--studies {
+  padding-top: clamp(30px, 4vw, 56px);
 }
 
 .projects-details__header {
@@ -3241,6 +3245,31 @@ section {
   color: var(--ink);
 }
 
+/* Design Study badge — subtle overlay chip, marks concept cards */
+.project-card__media {
+  position: relative;
+}
+
+.project-card__badge--overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 6px 11px;
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-deep);
+  background: rgba(246, 244, 239, 0.86);
+  border: 1px solid rgba(15, 15, 16, 0.08);
+  border-radius: 2px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  pointer-events: none;
+}
+
 /* Closing CTA supporting line */
 .projects-final__meta {
   margin: 14px 0 0;
@@ -3464,7 +3493,7 @@ section {
   }
 
   .projects-featured {
-    gap: clamp(92px, 12vw, 178px);
+    gap: clamp(64px, 8vw, 120px);
   }
 
   .project-feature {
@@ -3510,8 +3539,8 @@ section {
 
   .projects-support {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: clamp(42px, 5vw, 78px) clamp(24px, 3vw, 44px);
-    padding-top: clamp(52px, 7vw, 104px);
+    gap: clamp(38px, 4.5vw, 66px) clamp(24px, 3vw, 44px);
+    padding-top: clamp(34px, 4.5vw, 62px);
   }
 
   .project-card {
@@ -3685,10 +3714,10 @@ section {
 
 .projects-hero {
   border-bottom: 1px solid rgba(15, 15, 16, 0.08);
-  min-height: min(820px, calc(100svh - 24px));
+  min-height: min(620px, calc(100svh - 24px));
   display: flex;
   align-items: center;
-  padding: clamp(118px, 13vw, 172px) 0 clamp(58px, 7vw, 104px);
+  padding: clamp(104px, 10vw, 148px) 0 clamp(48px, 5.5vw, 84px);
   background:
     linear-gradient(115deg, rgba(15, 15, 16, 0.045) 0%, transparent 38%),
     linear-gradient(180deg, #e9e2d6 0%, #f1ede5 58%, #ebe5da 100%);
@@ -3705,7 +3734,7 @@ section {
 .projects-hero__grid {
   width: 100%;
   align-items: center;
-  gap: clamp(42px, 7vw, 118px);
+  gap: clamp(30px, 4vw, 72px);
 }
 
 .projects-hero__copy {
@@ -9566,7 +9595,7 @@ body {
 }
 
 .projects-copy-band {
-  padding: clamp(68px, 9vw, 130px) 0;
+  padding: clamp(52px, 6.5vw, 96px) 0;
   background:
     linear-gradient(90deg, rgba(15, 15, 16, 0.024), transparent 18%, transparent 82%, rgba(15, 15, 16, 0.02)),
     linear-gradient(180deg, #f4f0e8 0%, #eee7dc 100%);
@@ -9582,8 +9611,8 @@ body {
 }
 
 .projects-seo-panel {
-  min-height: 260px;
-  padding: clamp(28px, 3.4vw, 46px);
+  min-height: 0;
+  padding: clamp(26px, 3vw, 40px);
   background: rgba(250, 248, 244, 0.82);
   transition:
     background-color 0.45s var(--ease),
@@ -9596,12 +9625,12 @@ body {
 }
 
 .projects-seo-panel h2 {
-  max-width: 12ch;
-  margin: 0 0 clamp(20px, 2.5vw, 30px);
+  max-width: 16ch;
+  margin: 0 0 clamp(12px, 1.6vw, 18px);
   font-family: var(--serif);
-  font-size: clamp(27px, 2.6vw, 40px);
+  font-size: clamp(24px, 2.2vw, 33px);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.06;
   color: var(--ink-deep);
 }
 
@@ -9614,7 +9643,7 @@ body {
 }
 
 .projects-faq {
-  padding: clamp(68px, 9vw, 124px) 0;
+  padding: clamp(50px, 6.5vw, 92px) 0;
 }
 
 @media (min-width: 900px) {
@@ -10952,10 +10981,27 @@ html.js-loader .page-loader {
 }
 
 /* Real sink portfolio cards */
+/* Completed Projects grid - 2 cols desktop/tablet, 1 mobile.
+   Scoped to .projects-featured only; .projects-support (More / Design Studies) is untouched. */
 .projects-featured {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(22px, 3vw, 42px);
+  width: min(100%, 960px);
+  margin-inline: auto;
+  gap: clamp(16px, 2vw, 24px);
+  align-items: stretch;
+}
+
+/* Completed cards keep a consistent portfolio height */
+.projects-featured .project-feature {
+  height: 100%;
+  align-content: stretch;
+  grid-template-rows: auto 1fr;
+}
+
+.projects-featured .project-feature__caption {
+  height: 100%;
+  align-self: stretch;
 }
 
 .projects-featured .project-feature,
@@ -11085,12 +11131,90 @@ html.js-loader .page-loader {
 }
 
 .projects-featured .project-feature__caption h3 {
-  font-size: clamp(25px, 2.5vw, 38px);
+  font-size: clamp(28px, 2.35vw, 38px);
+  min-height: 1.9em;
+  display: flex;
+  align-items: center;
 }
 
 .projects-featured .project-feature__caption p,
 .projects-support .project-card__caption p {
   max-width: 58ch;
+}
+
+/* Completed cards — calmer rhythm: tighter padding, even gaps, clamped copy */
+.projects-featured .project-feature__caption {
+  padding: clamp(22px, 2.6vw, 34px);
+  align-items: start;
+  min-height: auto;
+}
+
+.projects-featured .project-feature__caption > div {
+  display: grid;
+  grid-template-rows: auto auto auto auto auto 1fr;
+  gap: clamp(9px, 1vw, 14px);
+  min-height: 100%;
+}
+
+.projects-featured .project-feature__caption > div > * {
+  margin: 0;
+}
+
+/* Subtitle — max 2 lines */
+.projects-featured .project-feature__caption > div > p:not(.project-feature__editorial-desc) {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  min-height: 3em;
+  overflow: hidden;
+}
+
+/* Description — one calm block, max 3 lines */
+.projects-featured .project-feature__editorial-desc {
+  display: block;
+  min-height: 4.85em;
+  overflow: visible;
+}
+
+/* Tags — tighter chips, no wrapping to tall stacks */
+.projects-featured .project-card__tags {
+  margin: clamp(4px, 0.8vw, 10px) 0 0;
+  gap: 6px;
+}
+
+.projects-featured .project-card__details {
+  margin: clamp(4px, 0.9vw, 12px) 0 0;
+}
+
+.projects-featured .project-card__detail-row {
+  grid-template-columns: minmax(92px, 0.22fr) minmax(0, 1fr);
+  gap: 6px clamp(14px, 1.7vw, 22px);
+  padding: 6px 0;
+  border-top-color: rgba(15, 15, 16, 0.065);
+}
+
+.projects-featured .project-card__detail-row:first-child {
+  border-top: 1px solid rgba(15, 15, 16, 0.065);
+}
+
+.projects-featured .project-card__details dt {
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  color: rgba(65, 59, 52, 0.48);
+}
+
+.projects-featured .project-card__details dd {
+  max-width: 38ch;
+  font-size: clamp(12px, 0.78vw, 13.5px);
+  line-height: 1.55;
+  color: rgba(43, 43, 43, 0.68);
+}
+
+.projects-featured .project-card__view {
+  margin-top: clamp(8px, 1.1vw, 14px);
+  padding-top: clamp(12px, 1.3vw, 18px);
+  border-top: 1px solid rgba(15, 15, 16, 0.1);
+  align-self: end;
 }
 
 .projects-support {
@@ -11103,8 +11227,22 @@ html.js-loader .page-loader {
 }
 
 @media (max-width: 980px) {
-  .projects-featured,
   .projects-support {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Completed Projects: tablet - keep 2 columns while space allows */
+@media (max-width: 1100px) {
+  .projects-featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 920px);
+  }
+}
+
+/* Completed Projects: mobile - 1 column */
+@media (max-width: 640px) {
+  .projects-featured {
     grid-template-columns: 1fr;
   }
 }
@@ -11123,6 +11261,21 @@ html.js-loader .page-loader {
   .projects-featured .project-feature:nth-child(even) .project-feature__caption,
   .projects-support .project-card__caption {
     padding: 18px;
+  }
+
+  .projects-featured .project-feature__caption,
+  .projects-featured .project-feature:nth-child(even) .project-feature__caption {
+    min-height: auto;
+  }
+
+  .projects-featured .project-feature__caption h3 {
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .projects-featured .project-feature__caption > div > p:not(.project-feature__editorial-desc),
+  .projects-featured .project-feature__editorial-desc {
+    min-height: auto;
   }
 }
 

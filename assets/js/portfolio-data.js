@@ -45,7 +45,7 @@
         'Seamless porcelain surface detail',
         'Designed and installed in London',
       ],
-      seoDescription: 'Bespoke porcelain vanity built with an integrated mitred sink, matching push-to-open drawer fronts and bronze wall-mounted taps, installed against a blue onyx-effect feature wall.',
+      seoDescription: 'A made-to-measure porcelain vanity with push-to-open drawers, mitred edges and bronze wall-mounted taps, built around the bathroom layout.',
       details: {
         material: 'Beige marble-effect porcelain, blue onyx-effect wall',
         work: 'Bespoke vanity unit, integrated sink, push-to-open drawers',
@@ -126,7 +126,7 @@
         'Seamless-looking porcelain surfaces',
         'Premium bathroom finish',
       ],
-      seoDescription: 'Two bespoke rose onyx-effect porcelain sinks with integrated basins and wall-mounted taps, installed with matching large-format porcelain walls and shower areas across one London home.',
+      seoDescription: 'A pair of bespoke rose onyx-effect porcelain sinks with integrated basins, wall-mounted taps and matching large-format walls.',
       details: {
         material: 'Rose onyx-effect porcelain',
         work: 'Two bespoke sinks, large format wall tiling, shower areas',
@@ -161,7 +161,7 @@
       scope: 'Bespoke Porcelain Basin',
       descriptor: 'Bespoke Porcelain Basin',
       summary: 'A bespoke porcelain basin with Arabescato-style surfaces, mitred edges, an integrated sink and a warm oak vanity.',
-      seoDescription: 'A made-to-measure Arabescato-effect porcelain basin with an integrated sink and mitred edges, paired with a warm oak vanity and wall-mounted chrome taps.',
+      seoDescription: 'A made-to-measure Arabescato-effect porcelain basin with an integrated sink, mitred edges and a warm oak vanity.',
       details: {
         material: 'Arabescato-effect porcelain, warm oak vanity',
         work: 'Bespoke basin, integrated sink, vanity unit',
@@ -189,7 +189,7 @@
       scope: 'Bespoke Porcelain Sink',
       descriptor: 'Bespoke Porcelain Sink',
       summary: 'A made-to-measure porcelain sink with integrated basin, mitred edges and a slim linear drain.',
-      seoDescription: 'A wall-to-wall Calacatta-effect porcelain sink with an integrated basin, slim linear drain and mitred edges, finished with a matte black wall-mounted tap.',
+      seoDescription: 'A compact porcelain sink installation with Calacatta-effect surfaces, clean mitred edges and a wall-mounted black tap.',
       details: {
         material: 'Calacatta marble-effect porcelain',
         work: 'Wall-to-wall bespoke sink, integrated basin',
@@ -217,7 +217,7 @@
       scope: 'Bespoke Floating Sink',
       descriptor: 'Bespoke Floating Sink',
       summary: 'A custom floating porcelain sink designed with clean mitred edges, integrated basin and a minimal wall-mounted tap setup.',
-      seoDescription: 'A bespoke floating porcelain sink in warm stone-effect porcelain, built with an integrated basin, mitred edges and a single wall-mounted tap.',
+      seoDescription: 'A bespoke floating porcelain sink in a warm stone-effect finish, with an integrated basin, mitred edges and a wall-mounted tap.',
       details: {
         material: 'Warm neutral stone-effect porcelain',
         work: 'Bespoke floating sink, integrated basin',
@@ -247,7 +247,7 @@
       scope: 'Statement Floating Sink',
       descriptor: 'Statement Floating Sink',
       summary: 'A statement floating porcelain sink with integrated basin and bold onyx-style veining.',
-      seoDescription: 'A bespoke floating porcelain sink with an integrated basin and bold onyx-effect veining, formed as a clean mitred block for a statement bathroom wall.',
+      seoDescription: 'A bespoke floating porcelain sink with an integrated basin, bold onyx-effect veining and a clean mitred block form.',
       details: {
         material: 'Onyx-effect porcelain',
         work: 'Bespoke floating sink, integrated basin',
