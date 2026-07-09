@@ -292,7 +292,8 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="../assets/css/styles.css?v=20260709-projects-refresh-15" />
+    <link rel="preload" as="image" href="/public/projects/projects-hero-bespoke-porcelain-double-sink.png" fetchpriority="high" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260709-projects-hero-motion" />
   </head>
   <body>
     <div class="page-loader" data-page-loader aria-hidden="true">
@@ -376,18 +377,38 @@
 
     <main id="top">
       <section class="projects-hero">
-        <figure class="projects-hero__bg" aria-hidden="true">
-          <img src="/public/projects/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin2.png" alt="Arabescato Oak bespoke porcelain basin project by Artiling Studio" loading="eager" width="1280" height="720" decoding="async" fetchpriority="high" />
+        <figure class="projects-hero__bg" data-parallax-bg aria-hidden="true">
+          <img src="/public/projects/projects-hero-bespoke-porcelain-double-sink.png" alt="Bespoke porcelain double sink vanity bathroom project by Artiling Studio" loading="eager" width="1773" height="887" decoding="async" fetchpriority="high" />
         </figure>
         <div class="container projects-hero__grid">
           <div class="projects-hero__copy" data-reveal>
-            <p class="eyebrow">Porcelain sinks London</p>
-            <h1 class="display">Bespoke Porcelain Sink Projects</h1>
-          </div>
-          <div class="projects-hero__text" data-reveal data-reveal-delay="90">
-            <p>
-              Made-to-measure porcelain sinks, vanity surfaces and bathroom details for London homes.
+            <p class="eyebrow">Bespoke porcelain projects &middot; London</p>
+            <h1 class="display">
+              Bespoke Porcelain<br>
+              Sink Projects.
+              <em>Made around real<br>spaces.</em>
+            </h1>
+            <p class="projects-hero__intro lede">
+              Explore completed porcelain sinks, vanity surfaces and large-format bathroom details shaped around London homes and interior projects.
             </p>
+            <div class="projects-hero__actions">
+              <a href="/quote/" class="btn btn--dark">Start a Bespoke Sink Enquiry <span aria-hidden="true">→</span></a>
+              <a href="#completed-projects" class="btn btn--ghost">View Completed Projects <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="projects-hero__meta" aria-label="Project details">
+              <div>
+                <span>Made to measure</span>
+                <p>Each Space</p>
+              </div>
+              <div>
+                <span>Installation</span>
+                <p>London</p>
+              </div>
+              <div>
+                <span>Specialism</span>
+                <p>Porcelain &amp; Large Format</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -400,18 +421,18 @@
           </div>
           <div class="projects-values__divider" aria-hidden="true"></div>
           <div class="projects-values__item" data-reveal data-reveal-delay="80">
-            <p class="projects-values__label">Mitred porcelain detailing</p>
-            <p class="projects-values__text">Clean edges, integrated basins and seamless surfaces.</p>
+            <p class="projects-values__label">London installation</p>
+            <p class="projects-values__text">Designed, fabricated and installed for London homes and interior projects.</p>
           </div>
           <div class="projects-values__divider" aria-hidden="true"></div>
           <div class="projects-values__item" data-reveal data-reveal-delay="160">
-            <p class="projects-values__label">London installation</p>
-            <p class="projects-values__text">Designed, fabricated and installed for homes and interior projects.</p>
+            <p class="projects-values__label">Porcelain &amp; large format</p>
+            <p class="projects-values__text">Premium porcelain surfaces with seamless bathroom details.</p>
           </div>
         </div>
       </section>
 
-      <section class="projects-index" aria-labelledby="projects-title">
+      <section class="projects-index" id="completed-projects" aria-labelledby="projects-title">
 
         <!-- Section header -->
         <div class="container">
@@ -635,6 +656,6 @@
     <script src="../assets/js/portfolio-data.js?v=20260709-projects-refresh-15"></script>
     <script src="../assets/js/email-links.js?v=20260507-mailto-1"></script>
     <script src="../assets/js/projects.js?v=20260709-projects-refresh-15"></script>
-    <script src="../assets/js/main.js?v=20260424-landing-tonal-1"></script>
+    <script src="../assets/js/main.js?v=20260709-projects-parallax-1"></script>
   </body>
 </html>

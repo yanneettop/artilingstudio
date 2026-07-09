@@ -497,13 +497,22 @@
   /* ──────────────────────────────────────────────
      5. Hero parallax
   ─────────────────────────────────────────────── */
-  const heroBg = document.querySelector('.hero__parallax-bg');
-  if (heroBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const parallaxTargets = document.querySelectorAll('.hero__parallax-bg, [data-parallax-bg]');
+  if (parallaxTargets.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     let ticking = false;
 
     const updateParallax = () => {
-      const offset = window.scrollY * 0.24;
-      heroBg.style.transform = `translateY(${offset}px)`;
+      parallaxTargets.forEach((target) => {
+        const rect = target.getBoundingClientRect();
+        const progress = Math.max(-1, Math.min(1, (window.innerHeight / 2 - rect.top) / window.innerHeight));
+        const strength = target.hasAttribute('data-parallax-bg') ? 34 : window.scrollY * 0.24;
+
+        if (target.hasAttribute('data-parallax-bg')) {
+          target.style.setProperty('--parallax-y', `${progress * strength}px`);
+        } else {
+          target.style.transform = `translateY(${strength}px)`;
+        }
+      });
       ticking = false;
     };
 
@@ -513,6 +522,8 @@
         ticking = true;
       }
     }, { passive: true });
+
+    updateParallax();
   }
 
   /* ──────────────────────────────────────────────
