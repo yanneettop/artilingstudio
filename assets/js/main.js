@@ -88,19 +88,16 @@
     const teaserToneBySlug = {
       'soft-stone-double-vanity': 'warm',
       'calacatta-gold-bespoke-bathroom': 'warm',
-      'dark-emperador-floating-sink': 'dark',
       'mauve-stone-statement-bathroom': 'dark',
       'verde-marble-feature-bathroom': 'verde',
     };
     const conceptTitles = {
       'soft-stone-double-vanity': 'Floating Porcelain Vanity',
       'calacatta-gold-bespoke-bathroom': 'Integrated Vanity Sink',
-      'dark-emperador-floating-sink': 'Mitred Porcelain Basin',
     };
     const conceptDescriptions = {
       'soft-stone-double-vanity': 'A soft stone vanity direction with made-to-measure proportions, floating lines and calm porcelain surface detail.',
       'calacatta-gold-bespoke-bathroom': 'An integrated vanity layout with warm porcelain finishes, storage lines and mitred edge detailing.',
-      'dark-emperador-floating-sink': 'A darker porcelain basin study shaped by real fabrication methods, sculptural surfaces and spa-like bathroom detailing.',
     };
     const conceptAltText = [
       'Studio preview of a bespoke porcelain sink with mitred edges',

@@ -226,31 +226,6 @@
       serviceTags: ['Bespoke Sink', 'Porcelain', 'Feature Wall', 'Mitred Detail'],
     },
     {
-      title: 'Dark Emperador Floating Sink',
-      slug: 'dark-emperador-floating-sink',
-      cover: '/public/projects/dark-emperador-floating-sink/cover.png',
-      coverImage: '/public/projects/dark-emperador-floating-sink/cover.png',
-      collage: '/public/projects/dark-emperador-floating-sink/collage.png',
-      galleryImages: [
-        '/public/projects/dark-emperador-floating-sink/gallery/gallery-1.png',
-      ],
-      detailImages: [
-        '/public/projects/dark-emperador-floating-sink/details/details-1.png',
-        '/public/projects/dark-emperador-floating-sink/details/details-2.png',
-        '/public/projects/dark-emperador-floating-sink/details/details-3.png',
-      ],
-      alt: 'Dark Emperador bespoke porcelain floating sink with mitred edge detail in a London bathroom',
-      categories: ['bespoke-sinks', 'bathrooms', 'premium-tiling'],
-      featured: true,
-      material: 'Deep marble-effect porcelain',
-      category: 'Bespoke Floating Sink',
-      scope: 'Bespoke Floating Sink',
-      descriptor: 'Bespoke Floating Sink',
-      summary: 'A dramatic floating sink design with deep marble tones, strong veining, and a sculptural luxury presence.',
-      seoDescription: 'Dark marble-effect porcelain floating sink with integrated storage, backlit mirror detail and mitred edge finishing for a contemporary London bathroom.',
-      serviceTags: ['Bespoke Sink', 'Porcelain', 'Wet Room', 'Large Format Tiling'],
-    },
-    {
       title: 'Statuario Linear Sink',
       slug: 'statuario-linear-sink',
       cover: '/public/projects/statuario-linear-sink/statuario-linear-sink.png',
@@ -339,22 +314,6 @@
       summary: 'A polished double vanity composition pairing architectural mirror framing with soft lighting and warm metal fixtures.',
       seoDescription: 'Double vanity bathroom composition with framed mirror symmetry, porcelain surface detailing, integrated lighting and warm brass fixtures.',
       serviceTags: ['Porcelain', 'Bathroom Tiling', 'Vanity Detail'],
-    },
-    {
-      title: 'Taupe Stone Mono Sink',
-      slug: 'taupe-stone-mono-sink',
-      cover: '/public/projects/taupe-stone-mono-sink/taupe-stone-mono-sink.png',
-      collage: '/public/projects/taupe-stone-mono-sink/taupe-stone-mono-sink.png',
-      galleryImages: [],
-      detailImages: [],
-      alt: 'Taupe stone bespoke porcelain mono sink with mitred edge detailing',
-      categories: ['bespoke-sinks', 'vanity-details'],
-      material: 'Taupe stone-effect porcelain',
-      scope: 'Minimal monolithic sink feature',
-      descriptor: 'Warm taupe stone shaped into a monolithic sink form',
-      summary: 'A compact monolithic sink design with a warm stone character and restrained contemporary detailing.',
-      seoDescription: 'Taupe stone-effect porcelain mono sink with a monolithic form, mitred edge detailing and restrained contemporary finish.',
-      serviceTags: ['Bespoke Sink', 'Porcelain', 'Mitred Detail'],
     },
     {
       title: 'Backlit Marble Double Vanity',
@@ -487,7 +446,6 @@
   const homepageSelectedWorkSlugs = [
     'soft-stone-double-vanity',
     'calacatta-gold-bespoke-bathroom',
-    'dark-emperador-floating-sink',
   ];
   const projectsFeaturedSlugs = [
     'onyx-frame-porcelain-vanity',

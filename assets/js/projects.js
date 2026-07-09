@@ -18,12 +18,10 @@
   const detailStudySlugs = [
     'soft-stone-double-vanity',
     'calacatta-gold-bespoke-bathroom',
-    'dark-emperador-floating-sink',
     'statuario-linear-sink',
     'calacatta-gold-led-vanity',
     'beige-stone-floating-vanity',
     'framed-mirror-double-vanity',
-    'taupe-stone-mono-sink',
     'backlit-marble-double-vanity',
   ];
   const detailStudyLabels = {
@@ -31,7 +29,6 @@
     'calacatta-gold-led-vanity': 'Porcelain · Bathroom Tiling · Integrated Lighting',
     'beige-stone-floating-vanity': 'Bespoke Sink · Porcelain · Large Format Tiling',
     'framed-mirror-double-vanity': 'Bathroom Tiling · Porcelain · Vanity Detail',
-    'taupe-stone-mono-sink': 'Bespoke Sink · Porcelain · Mitred Detail',
     'backlit-marble-double-vanity': 'Bespoke Sink · Porcelain · Bathroom Tiling',
   };
   const detailStudyTitles = {
@@ -39,7 +36,6 @@
     'calacatta-gold-led-vanity': 'Calacatta Gold LED Vanity Study',
     'beige-stone-floating-vanity': 'Beige Stone Floating Vanity Study',
     'framed-mirror-double-vanity': 'Framed Mirror Double Vanity Study',
-    'taupe-stone-mono-sink': 'Taupe Stone Mitred Sink Study',
     'backlit-marble-double-vanity': 'Backlit Marble Double Vanity Study',
   };
 
@@ -51,7 +47,6 @@
     'onyx-vein-floating-sink': 'Statement floating porcelain sink with dramatic onyx-style veining, integrated basin and a clean mitred block form.',
     'soft-stone-double-vanity': 'Bespoke porcelain double vanity with integrated sink proportions, clean storage lines and soft stone-effect surfaces for a contemporary London bathroom.',
     'calacatta-gold-bespoke-bathroom': 'Calacatta Gold porcelain bathroom with large-format wall surfaces, tailored vanity detailing and refined transitions around the mirror and storage.',
-    'dark-emperador-floating-sink': 'Dark marble-effect porcelain floating sink with integrated storage and mitred edge detailing for a contemporary London bathroom.',
   };
 
   const supportProjects = portfolio

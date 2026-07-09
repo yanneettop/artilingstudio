@@ -212,31 +212,6 @@ export const portfolioData = [
     ],
   },
   {
-    id: "dark-emperador-floating-sink",
-    title: "Dark Emperador Floating Sink",
-    slug: "dark-emperador-floating-sink",
-    cover: "/projects/dark-emperador-floating-sink/cover.png",
-    coverImage: "/projects/dark-emperador-floating-sink/cover.png",
-    collage: "/projects/dark-emperador-floating-sink/collage.png",
-    galleryImages: [
-      "/projects/dark-emperador-floating-sink/gallery/gallery-1.png",
-    ],
-    detailImages: [
-      "/projects/dark-emperador-floating-sink/details/details-1.png",
-      "/projects/dark-emperador-floating-sink/details/details-2.png",
-      "/projects/dark-emperador-floating-sink/details/details-3.png",
-    ],
-    alt: "Dark Emperador floating porcelain sink",
-    categories: ["bespoke-sinks", "bathrooms", "premium-tiling"],
-    featured: true,
-    material: "Deep marble-effect porcelain",
-    category: "Bespoke Floating Sink",
-    scope: "Bespoke Floating Sink",
-    descriptor: "Bespoke Floating Sink",
-    summary:
-      "A dramatic floating sink design with deep marble tones, strong veining, and a sculptural luxury presence.",
-  },
-  {
     id: "statuario-linear-sink",
     title: "Statuario Linear Sink",
     slug: "statuario-linear-sink",
@@ -322,21 +297,6 @@ export const portfolioData = [
     descriptor: "Framed mirror symmetry with warm brass detailing",
     summary:
       "A polished double vanity composition pairing architectural mirror framing with soft lighting and warm metal fixtures.",
-  },
-  {
-    id: "taupe-stone-mono-sink",
-    title: "Taupe Stone Mono Sink",
-    slug: "taupe-stone-mono-sink",
-    cover: "/projects/taupe-stone-mono-sink/taupe-stone-mono-sink.png",
-    collage: "/projects/taupe-stone-mono-sink/taupe-stone-mono-sink.png",
-    galleryImages: [],
-    detailImages: [],
-    categories: ["bespoke-sinks", "vanity-details"],
-    material: "Taupe stone-effect porcelain",
-    scope: "Minimal monolithic sink feature",
-    descriptor: "Warm taupe stone shaped into a monolithic sink form",
-    summary:
-      "A compact monolithic sink design with a warm stone character and restrained contemporary detailing.",
   },
   {
     id: "backlit-marble-double-vanity",
@@ -465,7 +425,6 @@ export type PortfolioSlug = (typeof portfolioData)[number]["slug"];
 export const homepageSelectedWorkSlugs = [
   "soft-stone-double-vanity",
   "calacatta-gold-bespoke-bathroom",
-  "dark-emperador-floating-sink",
 ] as const satisfies readonly PortfolioSlug[];
 
 export const projectsFeaturedSlugs = [
@@ -473,7 +432,6 @@ export const projectsFeaturedSlugs = [
   "rose-onyx-porcelain-sinks-large-format-bathroom-tiling",
   "soft-stone-double-vanity",
   "calacatta-gold-bespoke-bathroom",
-  "dark-emperador-floating-sink",
 ] as const satisfies readonly PortfolioSlug[];
 
 export const featuredPortfolioItems = portfolioData.filter((item) => item.featured);

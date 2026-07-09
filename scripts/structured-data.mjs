@@ -156,13 +156,6 @@ const projectItems = [
       'Calacatta Gold porcelain bathroom with large-format wall surfaces, tailored vanity detailing and refined transitions.',
   },
   {
-    name: 'Dark Emperador Floating Sink',
-    url: `${siteUrl}/projects/#dark-emperador-floating-sink`,
-    image: `${siteUrl}/public/projects/dark-emperador-floating-sink/cover.png`,
-    description:
-      'Dark marble-effect porcelain floating sink with integrated storage and mitred edge detailing.',
-  },
-  {
     name: 'Porcelain Sink and Vanity Material Studies',
     url: `${siteUrl}/projects/#details-material-studies`,
     image: `${siteUrl}/og-image-v2.jpg`,
