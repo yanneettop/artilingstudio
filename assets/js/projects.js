@@ -67,6 +67,10 @@
     src ? `${src}${src.includes('?') ? '&' : '?'}v=20260424-lightbox-gallery` : '';
   const projectImageFor = (project) =>
     withAssetVersion(project.coverImage || project.cover || project.galleryImages?.[0] || project.collage || '');
+  const projectHoverImageFor = (project) => {
+    const gallery = projectGalleryFor(project);
+    return gallery[1] || null;
+  };
   const projectAltFor = (project) => project.alt || project.title;
   const projectDescriptionFor = (project) =>
     project.seoDescription || editorialDescriptions[project.slug] || project.summary || project.descriptor || '';
@@ -135,13 +139,34 @@
           : `${project.title} ${imageIndex <= (project.galleryImages || []).length ? 'gallery' : 'detail'} image ${imageIndex}`),
     }));
   };
+  const projectModalGalleryFor = (project) => {
+    const images = project.modalGalleryImages?.length
+      ? project.modalGalleryImages
+      : [
+          project.coverImage || project.cover,
+          ...(project.galleryImages || []),
+          ...(project.detailImages || []),
+        ].filter(Boolean);
+
+    return images.map((src, imageIndex) => ({
+      src: withAssetVersion(src),
+      alt:
+        project.modalImageAlts?.[imageIndex] ||
+        project.imageAlts?.[imageIndex] ||
+        (imageIndex === 0 ? projectAltFor(project) : `${project.title} gallery image ${imageIndex}`),
+    }));
+  };
   let hasRenderedOnce = false;
 
   /* ── Featured project renderer ── */
-  const renderFeaturedProject = (project, index) => `
-    <article id="${escapeHtml(project.slug)}" class="project-feature project-feature--${index + 1} project-feature--${project.slug}" data-reveal>
+  const renderFeaturedProject = (project, index) => {
+    const hoverImage = projectHoverImageFor(project);
+
+    return `
+    <article id="${escapeHtml(project.slug)}" class="project-feature project-feature--${index + 1} project-feature--${project.slug}${hoverImage ? ' project-feature--has-hover-image' : ''}" data-reveal>
         <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
-          <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
+          <img class="project-feature__image project-feature__image--primary" src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
+          ${hoverImage ? `<img class="project-feature__image project-feature__image--hover" src="${hoverImage.src}" alt="${escapeHtml(hoverImage.alt)}" loading="lazy" aria-hidden="true" />` : ''}
         </button>
         <div class="project-feature__caption">
           <span class="project-card__index">0${index + 1}</span>
@@ -149,13 +174,13 @@
             <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
           <p>${escapeHtml(project.category || project.descriptor)}</p>
           <p class="project-feature__editorial-desc">${escapeHtml(projectDescriptionFor(project))}</p>
-          ${renderDetails(project)}
           ${renderTags(project, 3)}
           <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
         </div>
       </div>
     </article>
   `;
+  };
 
   /* ── Support / detail study renderer ── */
   const renderSupportProject = (project, index, offset = featuredProjects.length, options = {}) => {
@@ -206,6 +231,7 @@
             <h2 data-project-lightbox-title></h2>
             <p class="portfolio-lightbox__description" data-project-lightbox-description hidden></p>
             <div class="portfolio-lightbox__sections" data-project-lightbox-sections hidden></div>
+            <div class="portfolio-lightbox__details" data-project-lightbox-details hidden></div>
             <ul class="portfolio-lightbox__features" data-project-lightbox-features hidden></ul>
           </div>
           <button class="portfolio-lightbox__close" type="button" data-project-lightbox-close aria-label="Close gallery">Close</button>
@@ -230,6 +256,7 @@
     const categoryEl = lightbox.querySelector('[data-project-lightbox-category]');
     const descriptionEl = lightbox.querySelector('[data-project-lightbox-description]');
     const sectionsEl = lightbox.querySelector('[data-project-lightbox-sections]');
+    const detailsEl = lightbox.querySelector('[data-project-lightbox-details]');
     const featuresEl = lightbox.querySelector('[data-project-lightbox-features]');
     const imageEl = lightbox.querySelector('[data-project-lightbox-image]');
     const counterEl = lightbox.querySelector('[data-project-lightbox-counter]');
@@ -284,7 +311,7 @@
     const open = (slug, index = 0) => {
       const project = bySlug.get(slug);
       if (!project) return;
-      activeImages = projectGalleryFor(project);
+      activeImages = projectModalGalleryFor(project);
       if (!activeImages.length) return;
       titleEl.textContent = project.title;
       categoryEl.textContent = project.category || project.descriptor || project.scope || '';
@@ -301,6 +328,28 @@
         `)
         .join('');
       sectionsEl.hidden = !sections.length;
+      const detailRows = [
+        ['Material', project.details?.material],
+        ['Work', project.details?.work],
+        ['Detail', project.details?.detail],
+      ].filter(([, value]) => value);
+      detailsEl.innerHTML = detailRows.length
+        ? `
+          <h3>Details</h3>
+          <dl>
+            ${detailRows
+              .map(
+                ([label, value]) => `
+              <div>
+                <dt>${escapeHtml(label)}</dt>
+                <dd>${escapeHtml(value)}</dd>
+              </div>`
+              )
+              .join('')}
+          </dl>
+        `
+        : '';
+      detailsEl.hidden = !detailRows.length;
       const features = project.features || [];
       featuresEl.innerHTML = features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join('');
       featuresEl.hidden = !features.length;

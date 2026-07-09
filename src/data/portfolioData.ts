@@ -29,6 +29,11 @@ export type PortfolioItem = {
     title: string;
     body: string;
   }[];
+  details?: {
+    material?: string;
+    work?: string;
+    detail?: string;
+  };
   features?: string[];
   seoDescription?: string;
   serviceTags?: string[];
@@ -117,7 +122,7 @@ export const portfolioData = [
   },
   {
     id: "rose-onyx-porcelain-sinks-large-format-bathroom-tiling",
-    title: "Rose Onyx Porcelain Sinks",
+    title: "Rose Onyx Large Format Bathrooms",
     slug: "rose-onyx-porcelain-sinks-large-format-bathroom-tiling",
     cover:
       "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london.webp",
@@ -126,89 +131,88 @@ export const portfolioData = [
     collage:
       "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london.webp",
     galleryImages: [
-      "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/angled-rose-onyx-porcelain-sink-integrated-basin-floating-shelf.webp",
-      "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/close-view-rose-onyx-porcelain-sink-integrated-basin-taps.webp",
       "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-porcelain-bathroom-large-format-shower-walls.webp",
       "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-large-format-porcelain-bathroom-freestanding-bath.webp",
+      "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/angled-rose-onyx-porcelain-sink-integrated-basin-floating-shelf.webp",
+      "/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/close-view-rose-onyx-porcelain-sink-integrated-basin-taps.webp",
     ],
     detailImages: [],
     imageAlts: [
-      "Front view of bespoke rose onyx-effect porcelain sink with wall-mounted taps by Artiling Studio.",
-      "Angled view of rose onyx-effect porcelain sink with integrated basin and floating shelf detail.",
-      "Close view of rose onyx-effect porcelain sink showing the integrated basin and wall-mounted taps.",
-      "Rose onyx-effect porcelain bathroom with large format walls, bespoke sink and walk-in shower.",
-      "Second bathroom with rose onyx-effect large format porcelain walls, freestanding bath and polished finish.",
+      "Rose onyx-effect large format porcelain bathroom with shower walls.",
+      "Rose onyx-effect porcelain shower wall with niche detail.",
+      "Large format 1600x3200 porcelain tiles installed in rose onyx-effect bathroom.",
+      "Large format porcelain bathroom tiling across two bathrooms.",
+      "Rose onyx-effect large format porcelain bathroom with continuous wall surfaces.",
     ],
     alt:
-      "Front view of bespoke rose onyx-effect porcelain sink with wall-mounted taps by Artiling Studio.",
-    categories: ["bespoke-sinks", "bathrooms", "premium-tiling", "vanity-details"],
+      "Rose onyx-effect large format porcelain bathroom with shower walls.",
+    categories: ["bathrooms", "premium-tiling"],
     featured: true,
-    material: "Rose onyx-effect porcelain",
-    category: "Bespoke Porcelain Sinks & Large Format Bathroom Tiling",
-    scope: "Two rose onyx-effect porcelain bathrooms in one London home",
+    material: "Rose onyx-effect porcelain slabs, 1600x3200 mm",
+    category: "Large Format Porcelain Tiling Across Two Bathrooms",
+    scope: "Large format porcelain bathroom tiling across two bathrooms",
     descriptor:
-      "Bespoke rose onyx-effect porcelain sinks and large format bathroom tiling",
+      "Large Format Porcelain Bathroom Tiling",
     summary:
-      "A pair of bespoke rose onyx-effect porcelain bathrooms completed within the same home, featuring made-to-measure porcelain sinks, integrated basins, wall-mounted taps and large format porcelain wall installation.",
+      "Large format 1600x3200 rose onyx-effect porcelain tiles installed across two bathrooms, creating continuous wall, shower and feature surfaces with minimal grout lines.",
     metaTitle:
-      "Rose Onyx Porcelain Sinks & Large Format Bathroom Tiling London | Artiling Studio",
+      "Rose Onyx Large Format Bathrooms | Artiling Studio",
     metaDescription:
-      "Bespoke rose onyx-effect porcelain sinks and large format bathroom tiling completed across two bathrooms in the same London home by Artiling Studio.",
+      "Large format 1600x3200 rose onyx-effect porcelain tiling across two bathrooms, including shower walls, feature walls and continuous porcelain surfaces.",
     fullDescription:
-      "A pair of bespoke rose onyx-effect porcelain bathrooms completed within the same home, featuring made-to-measure porcelain sinks, integrated basins, wall-mounted taps and large format porcelain wall installation. The project combines dramatic rose-toned porcelain surfaces with clean architectural detailing, creating two bold bathrooms with seamless-looking material continuity across the sinks, walls, shower areas and feature details.",
+      "Large format 1600x3200 rose onyx-effect porcelain tiles installed across two bathrooms, creating continuous shower walls, feature surfaces and a bold rose-toned bathroom finish.",
     projectSections: [
       {
         title: "Overview",
         body:
-          "A pair of bespoke rose onyx-effect porcelain bathrooms completed within the same home, featuring made-to-measure porcelain sinks, integrated basins, wall-mounted taps and large format porcelain wall installation. The project combines dramatic rose-toned porcelain surfaces with clean architectural detailing, creating two bold bathrooms with seamless-looking material continuity across the sinks, walls, shower areas and feature details.",
+          "This project covered two bathrooms within the same property, using large format 1600x3200 rose onyx-effect porcelain tiles across the wall, shower and feature areas. The large slab format helped reduce grout lines and create a more continuous surface, allowing the rose-toned porcelain pattern to flow through the bathrooms with stronger visual depth.",
       },
       {
-        title: "Bespoke Porcelain Sinks",
+        title: "Large Format Porcelain Tiling",
         body:
-          "The porcelain sinks were designed as clean architectural pieces, with integrated basins, wall-mounted taps and rose onyx-effect porcelain surfaces. The finish creates a bold focal point while keeping the form simple and refined.",
+          "The main work focused on the installation of 1600x3200 porcelain slabs across bathroom walls and shower areas. The large tile format creates a cleaner architectural finish with fewer joints and a stronger sense of material continuity.",
       },
       {
-        title: "Large Format Bathroom Tiling",
+        title: "Shower & Feature Wall Areas",
         body:
-          "Across both bathrooms, large format porcelain was installed to the walls and shower areas, creating a continuous rose-toned surface with strong visual depth. The same finish continues through the shower walls, niche detailing and surrounding bathroom features.",
+          "The rose onyx-effect porcelain continues through the shower walls, niches and surrounding bathroom surfaces, giving both bathrooms a consistent and dramatic material identity.",
       },
       {
         title: "Result",
         body:
-          "The result is a pair of statement bathrooms with a strong material identity, combining bespoke porcelain sink fabrication with precise large format installation.",
+          "The result is a pair of bold rose-toned bathrooms with large format porcelain surfaces, minimal grout lines and a strong continuous stone-effect finish.",
       },
     ],
     features: [
-      "Two bathrooms completed in the same property",
-      "Bespoke porcelain sinks",
-      "Integrated porcelain basins",
-      "Large format porcelain wall tiling",
-      "Rose onyx-effect porcelain finish",
-      "Wall-mounted tap areas",
-      "Shower wall installation",
-      "Recessed shower niche detail",
-      "Clean architectural porcelain detailing",
-      "Seamless-looking porcelain surfaces",
-      "Premium bathroom finish",
+      "Large Format Tiling",
+      "1600x3200 Porcelain Slabs",
+      "Rose Onyx Effect",
+      "Porcelain Bathroom",
+      "Shower Walls",
+      "Feature Walls",
+      "Minimal Grout Lines",
+      "Niche Detailing",
     ],
     seoDescription:
-      "Bespoke rose onyx-effect porcelain sinks and large format porcelain bathroom walls completed across two bathrooms in the same home.",
+      "Large format 1600x3200 rose onyx-effect porcelain tiles installed across two bathrooms, creating continuous wall, shower and feature surfaces with minimal grout lines.",
+    details: {
+      material: "Rose onyx-effect porcelain slabs, 1600x3200 mm",
+      work: "Large format bathroom tiling, shower walls, feature wall areas",
+      detail:
+        "Bookmatch-style surface flow, minimal grout lines, niche and shower detailing",
+    },
     serviceTags: [
-      "Bespoke Porcelain Sinks",
       "Large Format Tiling",
-      "Bathroom Porcelain",
-      "Rose Onyx Effect",
-      "Mitred Porcelain Details",
-      "Wall-Mounted Taps",
-      "Porcelain Shower Walls",
+      "Onyx Effect",
+      "Porcelain Bathroom",
     ],
     keywords: [
-      "rose onyx porcelain sink London",
-      "bespoke porcelain sinks London",
+      "rose onyx large format tiling London",
+      "1600x3200 porcelain slabs bathroom",
       "large format porcelain bathroom tiling",
       "rose onyx-effect porcelain bathroom",
       "porcelain shower walls",
-      "wall-mounted taps porcelain sink",
+      "minimal grout porcelain bathroom",
     ],
   },
   {
