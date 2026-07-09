@@ -2,10 +2,11 @@
   'use strict';
 
   const featuredRoot = document.querySelector('[data-projects-featured]');
-  const supportRoot = document.querySelector('[data-projects-support]');
+  const moreRoot = document.querySelector('[data-projects-more]');
+  const studiesRoot = document.querySelector('[data-projects-studies]');
   const filterButtons = Array.from(document.querySelectorAll('[data-project-filter]'));
 
-  if (!featuredRoot || !supportRoot) return;
+  if (!featuredRoot || (!moreRoot && !studiesRoot)) return;
 
   const portfolio = window.ArtilingPortfolio;
   const projects = portfolio ? portfolio.projects : [];
@@ -15,7 +16,10 @@
   const featuredProjects = portfolio
     ? portfolio.getBySlugs(portfolio.projectsFeaturedSlugs)
     : [];
-  const detailStudySlugs = [
+  /* Additional real, completed work shown under "More Porcelain Sink & Vanity Projects" */
+  const morePorcelainSlugs = [];
+  /* Studio previews / concept visuals shown under "Design Studies & Sink Concepts" */
+  const designStudySlugs = [
     'soft-stone-double-vanity',
     'calacatta-gold-bespoke-bathroom',
     'statuario-linear-sink',
@@ -25,11 +29,13 @@
     'backlit-marble-double-vanity',
   ];
   const detailStudyLabels = {
-    'statuario-linear-sink': 'Bespoke Sink · Porcelain · Vanity Detail',
-    'calacatta-gold-led-vanity': 'Porcelain · Bathroom Tiling · Integrated Lighting',
-    'beige-stone-floating-vanity': 'Bespoke Sink · Porcelain · Large Format Tiling',
-    'framed-mirror-double-vanity': 'Bathroom Tiling · Porcelain · Vanity Detail',
-    'backlit-marble-double-vanity': 'Bespoke Sink · Porcelain · Bathroom Tiling',
+    'soft-stone-double-vanity': 'Porcelain Vanity Unit · Bathroom Porcelain',
+    'calacatta-gold-bespoke-bathroom': 'Porcelain Bathroom · Calacatta Marble Effect',
+    'statuario-linear-sink': 'Bespoke Porcelain Sink · Mitred Edges',
+    'calacatta-gold-led-vanity': 'Porcelain Vanity Unit · Calacatta Marble Effect',
+    'beige-stone-floating-vanity': 'Floating Sink · Large Format Tiling',
+    'framed-mirror-double-vanity': 'Porcelain Vanity Unit · Bathroom Porcelain',
+    'backlit-marble-double-vanity': 'Porcelain Vanity Unit · Bathroom Porcelain',
   };
   const detailStudyTitles = {
     'statuario-linear-sink': 'Statuario Linear Porcelain Sink Study',
@@ -49,9 +55,12 @@
     'calacatta-gold-bespoke-bathroom': 'Calacatta Gold porcelain bathroom with large-format wall surfaces, tailored vanity detailing and refined transitions around the mirror and storage.',
   };
 
-  const supportProjects = portfolio
-    ? portfolio.getBySlugs(detailStudySlugs)
-    : projects.filter((project) => !featuredRank.has(project.slug)).slice(0, 6);
+  const moreProjects = portfolio
+    ? portfolio.getBySlugs(morePorcelainSlugs)
+    : projects.filter((project) => !featuredRank.has(project.slug)).slice(0, 2);
+  const studyProjects = portfolio
+    ? portfolio.getBySlugs(designStudySlugs)
+    : [];
 
   const matchesFilter = (project, filter) =>
     filter === 'all' || (project.categories || []).includes(filter);
@@ -71,6 +80,29 @@
     if ((project.categories || []).includes('premium-tiling')) fallbackTags.push('Large Format Tiling');
     fallbackTags.push('Porcelain');
     return Array.from(new Set(fallbackTags)).slice(0, 4);
+  };
+  const renderDetails = (project) => {
+    const details = project.details;
+    if (!details) return '';
+    const rows = [
+      ['Material', details.material],
+      ['Work', details.work],
+      ['Detail', details.detail],
+    ].filter(([, value]) => value);
+    if (!rows.length) return '';
+    return `
+      <dl class="project-card__details">
+        ${rows
+          .map(
+            ([label, value]) => `
+          <div class="project-card__detail-row">
+            <dt>${escapeHtml(label)}</dt>
+            <dd>${escapeHtml(value)}</dd>
+          </div>`
+          )
+          .join('')}
+      </dl>
+    `;
   };
   const renderTags = (project) => {
     const tags = projectTagsFor(project);
@@ -117,6 +149,7 @@
             <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
           <p>${escapeHtml(project.category || project.descriptor)}</p>
           <p class="project-feature__editorial-desc">${escapeHtml(projectDescriptionFor(project))}</p>
+          ${renderDetails(project)}
           ${renderTags(project)}
           <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
         </div>
@@ -145,6 +178,7 @@
             <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${title}</button></h3>
             <p>${label}</p>
             ${descHtml}
+            ${renderDetails(project)}
             ${renderTags(project)}
             <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
           </div>
@@ -326,18 +360,28 @@
   /* ── Render ── */
   const renderProjects = (filter = 'all') => {
     const visibleFeatured = featuredProjects.filter((project) => matchesFilter(project, filter));
-    const visibleSupport = supportProjects.filter((project) => matchesFilter(project, filter));
+    const visibleMore = moreProjects.filter((project) => matchesFilter(project, filter));
+    const visibleStudies = studyProjects.filter((project) => matchesFilter(project, filter));
 
     featuredRoot.innerHTML = visibleFeatured
       .map((project, index) => renderFeaturedProject(project, index))
       .join('');
 
-    supportRoot.innerHTML = visibleSupport
-      .map((project, index) => renderSupportProject(project, index, visibleFeatured.length))
-      .join('');
+    if (moreRoot) {
+      moreRoot.innerHTML = visibleMore
+        .map((project, index) => renderSupportProject(project, index, visibleFeatured.length))
+        .join('');
+      moreRoot.hidden = visibleMore.length === 0;
+    }
+
+    if (studiesRoot) {
+      studiesRoot.innerHTML = visibleStudies
+        .map((project, index) => renderSupportProject(project, index, 0))
+        .join('');
+      studiesRoot.hidden = visibleStudies.length === 0;
+    }
 
     featuredRoot.hidden = visibleFeatured.length === 0;
-    supportRoot.hidden = visibleSupport.length === 0;
 
     if (hasRenderedOnce) {
       requestAnimationFrame(() => {
