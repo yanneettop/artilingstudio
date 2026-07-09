@@ -3941,9 +3941,10 @@ body.is-menu-open {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: clamp(14px, 2.4vh, 22px);
-  width: min(1420px, 100%);
+  grid-template-columns: minmax(300px, 0.42fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: clamp(18px, 2.4vw, 34px);
+  width: min(1560px, 100%);
   height: min(880px, 100%);
   max-height: calc(100vh - clamp(32px, 6vw, 80px));
   padding: clamp(14px, 1.8vw, 24px);
@@ -3951,7 +3952,7 @@ body.is-menu-open {
   border-radius: 6px;
   background:
     linear-gradient(180deg, rgba(246, 244, 239, 0.075), rgba(246, 244, 239, 0.025)),
-    rgba(16, 15, 13, 0.72);
+    rgba(16, 15, 13, 0.88);
   box-shadow:
     inset 0 1px 0 rgba(246, 244, 239, 0.12),
     0 42px 140px rgba(0, 0, 0, 0.48);
@@ -3965,6 +3966,24 @@ body.is-menu-open {
   gap: 24px;
 }
 
+.portfolio-lightbox__header {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: start;
+  display: block;
+  min-width: 0;
+  max-height: 100%;
+  overflow: auto;
+  padding-right: clamp(4px, 1vw, 12px);
+  scrollbar-color: rgba(246, 244, 239, 0.28) transparent;
+  scrollbar-width: thin;
+}
+
+.portfolio-lightbox__footer {
+  grid-column: 2;
+  grid-row: 2;
+}
+
 .portfolio-lightbox__kicker {
   margin: 0 0 8px;
   font-size: 10px;
@@ -3976,10 +3995,81 @@ body.is-menu-open {
 
 .portfolio-lightbox h2 {
   font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 58px);
+  font-size: clamp(34px, 4vw, 64px);
   line-height: 0.98;
   color: var(--bone);
   text-wrap: balance;
+}
+
+.portfolio-lightbox__description {
+  max-width: 42ch;
+  max-height: 18em;
+  overflow: auto;
+  margin: 18px 0 0;
+  color: rgba(246, 244, 239, 0.76);
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 1.68;
+  scrollbar-color: rgba(246, 244, 239, 0.28) transparent;
+  scrollbar-width: thin;
+}
+
+.portfolio-lightbox__sections {
+  display: grid;
+  gap: 14px;
+  max-width: 44ch;
+  max-height: 310px;
+  margin-top: 20px;
+  overflow: auto;
+  padding-right: 8px;
+  scrollbar-color: rgba(246, 244, 239, 0.28) transparent;
+  scrollbar-width: thin;
+}
+
+.portfolio-lightbox__section {
+  padding-top: 14px;
+  border-top: 1px solid rgba(246, 244, 239, 0.13);
+}
+
+.portfolio-lightbox__section h3 {
+  margin: 0 0 7px;
+  color: rgba(246, 244, 239, 0.86);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.portfolio-lightbox__section p {
+  margin: 0;
+  color: rgba(246, 244, 239, 0.7);
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+.portfolio-lightbox__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 46ch;
+  max-height: 180px;
+  overflow: auto;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  scrollbar-color: rgba(246, 244, 239, 0.28) transparent;
+  scrollbar-width: thin;
+}
+
+.portfolio-lightbox__features li {
+  padding: 7px 10px;
+  border: 1px solid rgba(246, 244, 239, 0.16);
+  border-radius: 999px;
+  color: rgba(246, 244, 239, 0.72);
+  font-size: 10px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  background: rgba(246, 244, 239, 0.04);
 }
 
 .portfolio-lightbox__close,
@@ -4001,6 +4091,10 @@ body.is-menu-open {
 }
 
 .portfolio-lightbox__close {
+  position: absolute;
+  top: clamp(14px, 1.8vw, 24px);
+  right: clamp(14px, 1.8vw, 24px);
+  z-index: 4;
   flex: 0 0 48px;
   font-size: 0;
 }
@@ -4039,11 +4133,15 @@ body.is-menu-open {
 }
 
 .portfolio-lightbox__stage {
+  --portfolio-stage-height: min(70vh, 700px);
+  grid-column: 2;
+  grid-row: 1;
   position: relative;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(10px, 2vw, 24px);
+  height: var(--portfolio-stage-height);
   min-height: 0;
 }
 
@@ -4053,6 +4151,7 @@ body.is-menu-open {
   place-items: center;
   width: 100%;
   height: 100%;
+  max-height: var(--portfolio-stage-height);
   min-height: 0;
   margin: 0;
   overflow: hidden;
@@ -4065,9 +4164,10 @@ body.is-menu-open {
 }
 
 .portfolio-lightbox__figure img {
-  width: 100%;
-  height: 100%;
-  max-height: min(68vh, 680px);
+  width: auto;
+  height: auto;
+  max-width: calc(100% - 24px);
+  max-height: calc(var(--portfolio-stage-height) - 24px);
   object-fit: contain;
   object-position: center center;
   opacity: 0;
@@ -4092,7 +4192,7 @@ body.is-menu-open {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  max-width: min(760px, 72vw);
+  max-width: min(820px, 100%);
   overflow-x: auto;
   padding: 4px 0 8px;
   scrollbar-width: thin;
@@ -4108,6 +4208,11 @@ body.is-menu-open {
   opacity: 0.58;
   background: rgba(246, 244, 239, 0.04);
   transition: opacity 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.portfolio-lightbox__footer {
+  position: relative;
+  z-index: 2;
 }
 
 .portfolio-lightbox__thumb img {
@@ -4131,13 +4236,26 @@ body.is-menu-open {
     padding: 14px;
   }
 
+  .portfolio-lightbox__backdrop {
+    background: rgba(12, 11, 10, 0.92);
+  }
+
   .portfolio-lightbox__dialog {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     height: 100%;
     max-height: none;
+    overflow-y: auto;
+    background:
+      linear-gradient(180deg, rgba(246, 244, 239, 0.06), rgba(246, 244, 239, 0.02)),
+      rgba(16, 15, 13, 0.94);
   }
 
   .portfolio-lightbox__header {
+    grid-column: 1;
+    grid-row: 1;
     align-items: start;
+    padding-right: 56px;
   }
 
   .portfolio-lightbox__close {
@@ -4154,6 +4272,9 @@ body.is-menu-open {
   }
 
   .portfolio-lightbox__stage {
+    --portfolio-stage-height: min(42svh, 360px);
+    grid-column: 1;
+    grid-row: 2;
     grid-template-columns: 1fr;
   }
 
@@ -4190,10 +4311,12 @@ body.is-menu-open {
   }
 
   .portfolio-lightbox__figure img {
-    max-height: 64vh;
+    max-height: calc(var(--portfolio-stage-height) - 24px);
   }
 
   .portfolio-lightbox__footer {
+    grid-column: 1;
+    grid-row: 3;
     display: grid;
     gap: 12px;
   }
@@ -6409,6 +6532,37 @@ body {
     max-width: 11ch;
   }
 
+  .portfolio-lightbox__description {
+    max-height: 4.7em;
+    overflow: auto;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .portfolio-lightbox__sections {
+    max-height: 150px;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .portfolio-lightbox__section {
+    padding-top: 10px;
+  }
+
+  .portfolio-lightbox__section p {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .portfolio-lightbox__features {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .portfolio-lightbox__features li:nth-child(n+3) {
+    display: none;
+  }
+
   .portfolio-lightbox__kicker {
     margin-bottom: 6px;
     font-size: 8.5px;
@@ -6420,6 +6574,7 @@ body {
   }
 
   .portfolio-lightbox__stage {
+    --portfolio-stage-height: min(38svh, 320px);
     min-height: 0;
   }
 
@@ -6429,8 +6584,8 @@ body {
   }
 
   .portfolio-lightbox__figure img {
-    max-width: 100%;
-    max-height: 58svh;
+    max-width: calc(100% - 24px);
+    max-height: calc(var(--portfolio-stage-height) - 24px);
   }
 
   .portfolio-lightbox__arrow {
@@ -10647,6 +10802,28 @@ html.js-loader .page-loader {
 
 .projects-featured .project-feature--onyx-vein-floating-sink .project-feature__media img {
   object-position: center bottom;
+}
+
+.projects-featured .project-feature--arabescato-oak-basin .project-feature__media img {
+  object-position: center 48%;
+  transform: scale(1.12);
+  transform-origin: center 64%;
+}
+
+.projects-featured .project-feature--calacatta-line-sink .project-feature__media img {
+  object-position: center 44%;
+  transform: scale(1.14);
+  transform-origin: center 62%;
+}
+
+.projects-featured .project-feature--arabescato-oak-basin:hover .project-feature__media img,
+.projects-featured .project-feature--arabescato-oak-basin:focus-within .project-feature__media img {
+  transform: scale(1.14);
+}
+
+.projects-featured .project-feature--calacatta-line-sink:hover .project-feature__media img,
+.projects-featured .project-feature--calacatta-line-sink:focus-within .project-feature__media img {
+  transform: scale(1.16);
 }
 
 .projects-support .project-card__media img {

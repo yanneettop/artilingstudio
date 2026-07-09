@@ -102,9 +102,10 @@
     return images.map((src, imageIndex) => ({
       src: withAssetVersion(src),
       alt:
-        imageIndex === 0
+        project.imageAlts?.[imageIndex] ||
+        (imageIndex === 0
           ? projectAltFor(project)
-          : `${project.title} ${imageIndex <= (project.galleryImages || []).length ? 'gallery' : 'detail'} image ${imageIndex}`,
+          : `${project.title} ${imageIndex <= (project.galleryImages || []).length ? 'gallery' : 'detail'} image ${imageIndex}`),
     }));
   };
   let hasRenderedOnce = false;
@@ -171,6 +172,9 @@
           <div>
             <p class="portfolio-lightbox__kicker" data-project-lightbox-category></p>
             <h2 data-project-lightbox-title></h2>
+            <p class="portfolio-lightbox__description" data-project-lightbox-description hidden></p>
+            <div class="portfolio-lightbox__sections" data-project-lightbox-sections hidden></div>
+            <ul class="portfolio-lightbox__features" data-project-lightbox-features hidden></ul>
           </div>
           <button class="portfolio-lightbox__close" type="button" data-project-lightbox-close aria-label="Close gallery">Close</button>
         </header>
@@ -192,6 +196,9 @@
     const bySlug = new Map(projects.map((project) => [project.slug, project]));
     const titleEl = lightbox.querySelector('[data-project-lightbox-title]');
     const categoryEl = lightbox.querySelector('[data-project-lightbox-category]');
+    const descriptionEl = lightbox.querySelector('[data-project-lightbox-description]');
+    const sectionsEl = lightbox.querySelector('[data-project-lightbox-sections]');
+    const featuresEl = lightbox.querySelector('[data-project-lightbox-features]');
     const imageEl = lightbox.querySelector('[data-project-lightbox-image]');
     const counterEl = lightbox.querySelector('[data-project-lightbox-counter]');
     const thumbsEl = lightbox.querySelector('[data-project-lightbox-thumbs]');
@@ -249,6 +256,22 @@
       if (!activeImages.length) return;
       titleEl.textContent = project.title;
       categoryEl.textContent = project.category || project.descriptor || project.scope || '';
+      const description = project.fullDescription || '';
+      descriptionEl.textContent = description;
+      descriptionEl.hidden = !description;
+      const sections = project.projectSections || [];
+      sectionsEl.innerHTML = sections
+        .map((section) => `
+          <section class="portfolio-lightbox__section">
+            <h3>${escapeHtml(section.title)}</h3>
+            <p>${escapeHtml(section.body)}</p>
+          </section>
+        `)
+        .join('');
+      sectionsEl.hidden = !sections.length;
+      const features = project.features || [];
+      featuresEl.innerHTML = features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join('');
+      featuresEl.hidden = !features.length;
       renderThumbs();
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
