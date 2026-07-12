@@ -1,4 +1,4 @@
-export type MaterialImage = {
+﻿export type MaterialImage = {
   src: string;
   alt: string;
   caption: string;
@@ -32,99 +32,99 @@ export type Material = {
 const gallery = (slug: string) =>
   slug === "calacatta-gold"
     ? [
-        { src: "/images/tile-styles/inspiration/calacatta-marble-bespoke-vanity.png", alt: "Calacatta Gold marble-effect porcelain floating vanity with integrated basin and mitred edges", caption: "Bespoke marble-effect vanity" },
-        { src: "/images/tile-styles/inspiration/calacatta-marble-feature-wall.png", alt: "Calacatta Gold marble-effect porcelain feature wall with freestanding bath", caption: "Large-format feature wall" },
-        { src: "/images/tile-styles/inspiration/calacatta-marble-detail-niche.png", alt: "Calacatta Gold marble-effect porcelain shower niche and vanity detail", caption: "Mitred niche and vanity detail" },
+        { src: "/images/tile-styles/inspiration/calacatta-marble-bespoke-vanity.webp", alt: "Calacatta Gold marble-effect porcelain floating vanity with integrated basin and mitred edges", caption: "Bespoke marble-effect vanity" },
+        { src: "/images/tile-styles/inspiration/calacatta-marble-feature-wall.webp", alt: "Calacatta Gold marble-effect porcelain feature wall with freestanding bath", caption: "Large-format feature wall" },
+        { src: "/images/tile-styles/inspiration/calacatta-marble-detail-niche.webp", alt: "Calacatta Gold marble-effect porcelain shower niche and vanity detail", caption: "Mitred niche and vanity detail" },
       ]
     : slug === "calacatta-macchia"
       ? [
-          { src: "/images/tile-styles/inspiration/calacatta-macchia-bespoke-vanity.png", alt: "Calacatta Macchia marble-effect porcelain wall-mounted vanity with integrated basin and mitred edges", caption: "Sculptural bespoke vanity" },
-          { src: "/images/tile-styles/inspiration/calacatta-macchia-bookmatch-bathroom.png", alt: "Bookmatched Calacatta Macchia marble-effect porcelain feature wall behind a dark sculptural bath", caption: "Bookmatched statement wall" },
-          { src: "/images/tile-styles/inspiration/calacatta-macchia-mitred-niche-detail.png", alt: "Calacatta Macchia marble-effect porcelain mitred shower return and recessed niche detail", caption: "Mitred niche craftsmanship" },
+          { src: "/images/tile-styles/inspiration/calacatta-macchia-bespoke-vanity.webp", alt: "Calacatta Macchia marble-effect porcelain wall-mounted vanity with integrated basin and mitred edges", caption: "Sculptural bespoke vanity" },
+          { src: "/images/tile-styles/inspiration/calacatta-macchia-bookmatch-bathroom.webp", alt: "Bookmatched Calacatta Macchia marble-effect porcelain feature wall behind a dark sculptural bath", caption: "Bookmatched statement wall" },
+          { src: "/images/tile-styles/inspiration/calacatta-macchia-mitred-niche-detail.webp", alt: "Calacatta Macchia marble-effect porcelain mitred shower return and recessed niche detail", caption: "Mitred niche craftsmanship" },
         ]
       : slug === "statuario"
         ? [
-            { src: "/images/tile-styles/inspiration/statuario-cantilevered-trough-sink.png", alt: "Statuario marble-effect porcelain cantilevered trough sink with cool grey veining", caption: "Cantilevered trough sink" },
-            { src: "/images/tile-styles/inspiration/statuario-sunken-wet-room.png", alt: "Sunken wet room clad in large-format Statuario marble-effect porcelain", caption: "Sunken porcelain wet room" },
-            { src: "/images/tile-styles/inspiration/statuario-floating-shelf-detail.png", alt: "Floating Statuario porcelain shelf with mitred edge and concealed lighting detail", caption: "Floating shelf junction" },
+            { src: "/images/tile-styles/inspiration/statuario-cantilevered-trough-sink.webp", alt: "Statuario marble-effect porcelain cantilevered trough sink with cool grey veining", caption: "Cantilevered trough sink" },
+            { src: "/images/tile-styles/inspiration/statuario-sunken-wet-room.webp", alt: "Sunken wet room clad in large-format Statuario marble-effect porcelain", caption: "Sunken porcelain wet room" },
+            { src: "/images/tile-styles/inspiration/statuario-floating-shelf-detail.webp", alt: "Floating Statuario porcelain shelf with mitred edge and concealed lighting detail", caption: "Floating shelf junction" },
           ]
         : slug === "arabescato"
           ? [
-              { src: "/images/tile-styles/inspiration/arabescato-pedestal-basin.png", alt: "Wall-mounted Arabescato marble-effect porcelain linear sink with mitred apron and twin wall taps", caption: "Bespoke linear porcelain sink" },
-              { src: "/images/tile-styles/inspiration/arabescato-arched-shower.png", alt: "Arched walk-through shower portal clad in Arabescato marble-effect porcelain", caption: "Arched porcelain shower" },
-              { src: "/images/tile-styles/inspiration/arabescato-stepped-bench-detail.png", alt: "Arabescato porcelain stepped plinth and integrated bench with matched veining", caption: "Stepped bench fabrication" },
+              { src: "/images/tile-styles/inspiration/arabescato-pedestal-basin.webp", alt: "Wall-mounted Arabescato marble-effect porcelain linear sink with mitred apron and twin wall taps", caption: "Bespoke linear porcelain sink" },
+              { src: "/images/tile-styles/inspiration/arabescato-arched-shower.webp", alt: "Arched walk-through shower portal clad in Arabescato marble-effect porcelain", caption: "Arched porcelain shower" },
+              { src: "/images/tile-styles/inspiration/arabescato-stepped-bench-detail.webp", alt: "Arabescato porcelain stepped plinth and integrated bench with matched veining", caption: "Stepped bench fabrication" },
             ]
           : slug === "invisible-white"
             ? [
-                { src: "/images/tile-styles/inspiration/invisible-white-linear-sink.png", alt: "Wall-mounted Invisible White porcelain linear sink with mitred apron and twin wall taps", caption: "Bespoke linear porcelain sink" },
-                { src: "/images/tile-styles/inspiration/invisible-white-corner-wet-room.png", alt: "Sloped-roof wet room clad in large-format Invisible White porcelain slabs", caption: "Architectural corner wet room" },
-                { src: "/images/tile-styles/inspiration/invisible-white-waterfall-detail.png", alt: "Invisible White porcelain waterfall vanity end with mitred corner and recessed drawer", caption: "Waterfall vanity junction" },
+                { src: "/images/tile-styles/inspiration/invisible-white-linear-sink.webp", alt: "Wall-mounted Invisible White porcelain linear sink with mitred apron and twin wall taps", caption: "Bespoke linear porcelain sink" },
+                { src: "/images/tile-styles/inspiration/invisible-white-corner-wet-room.webp", alt: "Sloped-roof wet room clad in large-format Invisible White porcelain slabs", caption: "Architectural corner wet room" },
+                { src: "/images/tile-styles/inspiration/invisible-white-waterfall-detail.webp", alt: "Invisible White porcelain waterfall vanity end with mitred corner and recessed drawer", caption: "Waterfall vanity junction" },
               ]
             : slug === "breccia-capraia"
               ? [
-                  { src: "/images/tile-styles/inspiration/breccia-capraia-linear-sink.png", alt: "Wall-mounted Breccia Capraia porcelain linear sink with burgundy veining and twin wall taps", caption: "Bespoke statement sink" },
-                  { src: "/images/tile-styles/inspiration/breccia-capraia-shower-divider.png", alt: "Freestanding shower divider clad in bookmatched Breccia Capraia porcelain", caption: "Sculptural shower divider" },
-                  { src: "/images/tile-styles/inspiration/breccia-capraia-mitred-detail.png", alt: "Breccia Capraia porcelain sink corner with continuous burgundy vein across mitred edges", caption: "Vein-wrapped mitred corner" },
+                  { src: "/images/tile-styles/inspiration/breccia-capraia-linear-sink.webp", alt: "Wall-mounted Breccia Capraia porcelain linear sink with burgundy veining and twin wall taps", caption: "Bespoke statement sink" },
+                  { src: "/images/tile-styles/inspiration/breccia-capraia-shower-divider.webp", alt: "Freestanding shower divider clad in bookmatched Breccia Capraia porcelain", caption: "Sculptural shower divider" },
+                  { src: "/images/tile-styles/inspiration/breccia-capraia-mitred-detail.webp", alt: "Breccia Capraia porcelain sink corner with continuous burgundy vein across mitred edges", caption: "Vein-wrapped mitred corner" },
                 ]
               : slug === "fior-di-bosco"
                 ? [
-                    { src: "/images/tile-styles/inspiration/fior-di-bosco-compact-sink.png", alt: "Compact wall-mounted Fior di Bosco porcelain sink with mitred apron and bronze wall tap", caption: "Compact bespoke sink" },
-                    { src: "/images/tile-styles/inspiration/fior-di-bosco-curved-wall.png", alt: "Bathroom walls, floor and bath surround installed in large-format Fior di Bosco porcelain slabs", caption: "Large-format bathroom installation" },
-                    { src: "/images/tile-styles/inspiration/fior-di-bosco-drawer-detail.png", alt: "Fior di Bosco porcelain vanity drawer with shadow gap and aligned amber vein", caption: "Mitred drawer detail" },
+                    { src: "/images/tile-styles/inspiration/fior-di-bosco-compact-sink.webp", alt: "Compact wall-mounted Fior di Bosco porcelain sink with mitred apron and bronze wall tap", caption: "Compact bespoke sink" },
+                    { src: "/images/tile-styles/inspiration/fior-di-bosco-curved-wall.webp", alt: "Bathroom walls, floor and bath surround installed in large-format Fior di Bosco porcelain slabs", caption: "Large-format bathroom installation" },
+                    { src: "/images/tile-styles/inspiration/fior-di-bosco-drawer-detail.webp", alt: "Fior di Bosco porcelain vanity drawer with shadow gap and aligned amber vein", caption: "Mitred drawer detail" },
                   ]
                 : slug === "sahara-noir"
                   ? [
-                      { src: "/images/tile-styles/inspiration/sahara-noir-linear-sink.png", alt: "Wall-mounted Sahara Noir porcelain linear sink with white and gold veining", caption: "Bespoke black porcelain sink" },
-                      { src: "/images/tile-styles/inspiration/sahara-noir-large-format-bathroom.png", alt: "Bathroom clad in large-format Sahara Noir porcelain across walls, floor and bath surround", caption: "Large-format noir bathroom" },
-                      { src: "/images/tile-styles/inspiration/sahara-noir-niche-detail.png", alt: "Sahara Noir porcelain shower niche and mitred corner with aligned white and gold veins", caption: "Vein-aligned niche detail" },
+                      { src: "/images/tile-styles/inspiration/sahara-noir-linear-sink.webp", alt: "Wall-mounted Sahara Noir porcelain linear sink with white and gold veining", caption: "Bespoke black porcelain sink" },
+                      { src: "/images/tile-styles/inspiration/sahara-noir-large-format-bathroom.webp", alt: "Bathroom clad in large-format Sahara Noir porcelain across walls, floor and bath surround", caption: "Large-format noir bathroom" },
+                      { src: "/images/tile-styles/inspiration/sahara-noir-niche-detail.webp", alt: "Sahara Noir porcelain shower niche and mitred corner with aligned white and gold veins", caption: "Vein-aligned niche detail" },
                     ]
                   : slug === "patagonia"
                     ? [
-                        { src: "/images/tile-styles/inspiration/patagonia-linear-sink.png", alt: "Wall-mounted Patagonia porcelain linear sink with ivory crystal, amber and charcoal pattern", caption: "Bespoke crystalline sink" },
-                        { src: "/images/tile-styles/inspiration/patagonia-large-format-bathroom.png", alt: "Bathroom with large-format bookmatched Patagonia porcelain shower wall and bath surround", caption: "Large-format Patagonia bathroom" },
-                        { src: "/images/tile-styles/inspiration/patagonia-mitred-crystal-detail.png", alt: "Patagonia porcelain mitred sink corner with amber crystal and charcoal pattern continuity", caption: "Crystal-wrapped mitred edge" },
+                        { src: "/images/tile-styles/inspiration/patagonia-linear-sink.webp", alt: "Wall-mounted Patagonia porcelain linear sink with ivory crystal, amber and charcoal pattern", caption: "Bespoke crystalline sink" },
+                        { src: "/images/tile-styles/inspiration/patagonia-large-format-bathroom.webp", alt: "Bathroom with large-format bookmatched Patagonia porcelain shower wall and bath surround", caption: "Large-format Patagonia bathroom" },
+                        { src: "/images/tile-styles/inspiration/patagonia-mitred-crystal-detail.webp", alt: "Patagonia porcelain mitred sink corner with amber crystal and charcoal pattern continuity", caption: "Crystal-wrapped mitred edge" },
                       ]
                     : slug === "silver-travertine"
                       ? [
-                          { src: "/images/tile-styles/inspiration/silver-travertine-sink.png", alt: "Wall-mounted Silver Travertine porcelain sink with horizontal vein-cut banding", caption: "Bespoke silver travertine sink" },
-                          { src: "/images/tile-styles/inspiration/silver-travertine-bathroom.png", alt: "Bathroom clad in large-format Silver Travertine porcelain across walls, floor and bath surround", caption: "Large-format travertine bathroom" },
-                          { src: "/images/tile-styles/inspiration/silver-travertine-mitred-detail.png", alt: "Silver Travertine porcelain mitred sink corner with continuous horizontal bands", caption: "Vein-aligned mitred detail" },
+                          { src: "/images/tile-styles/inspiration/silver-travertine-sink.webp", alt: "Wall-mounted Silver Travertine porcelain sink with horizontal vein-cut banding", caption: "Bespoke silver travertine sink" },
+                          { src: "/images/tile-styles/inspiration/silver-travertine-bathroom.webp", alt: "Bathroom clad in large-format Silver Travertine porcelain across walls, floor and bath surround", caption: "Large-format travertine bathroom" },
+                          { src: "/images/tile-styles/inspiration/silver-travertine-mitred-detail.webp", alt: "Silver Travertine porcelain mitred sink corner with continuous horizontal bands", caption: "Vein-aligned mitred detail" },
                         ]
                       : slug === "ivory-limestone"
                         ? [
-                            { src: "/images/tile-styles/inspiration/ivory-limestone-sink.png", alt: "Wall-mounted Ivory Limestone porcelain sink with quiet fossil-like texture", caption: "Bespoke ivory limestone sink" },
-                            { src: "/images/tile-styles/inspiration/ivory-limestone-bathroom.png", alt: "Bathroom clad in large-format Ivory Limestone porcelain across wet room, floor and bath surround", caption: "Large-format limestone bathroom" },
-                            { src: "/images/tile-styles/inspiration/ivory-limestone-mitred-detail.png", alt: "Ivory Limestone porcelain sink corner with precise mitred fabrication", caption: "Quiet mitred edge detail" },
+                            { src: "/images/tile-styles/inspiration/ivory-limestone-sink.webp", alt: "Wall-mounted Ivory Limestone porcelain sink with quiet fossil-like texture", caption: "Bespoke ivory limestone sink" },
+                            { src: "/images/tile-styles/inspiration/ivory-limestone-bathroom.webp", alt: "Bathroom clad in large-format Ivory Limestone porcelain across wet room, floor and bath surround", caption: "Large-format limestone bathroom" },
+                            { src: "/images/tile-styles/inspiration/ivory-limestone-mitred-detail.webp", alt: "Ivory Limestone porcelain sink corner with precise mitred fabrication", caption: "Quiet mitred edge detail" },
                           ]
                         : slug === "pietra-grey"
                           ? [
-                              { src: "/images/tile-styles/inspiration/pietra-grey-linear-sink.png", alt: "Wall-mounted Pietra Grey porcelain linear sink with sparse white veining", caption: "Bespoke Pietra Grey sink" },
-                              { src: "/images/tile-styles/inspiration/pietra-grey-bathroom.png", alt: "Bathroom clad in large-format Pietra Grey porcelain across shower, walls, floor and bath surround", caption: "Large-format dark bathroom" },
-                              { src: "/images/tile-styles/inspiration/pietra-grey-mitred-detail.png", alt: "Pietra Grey porcelain sink corner with white vein continuing across a mitred edge", caption: "Vein-wrapped mitred corner" },
+                              { src: "/images/tile-styles/inspiration/pietra-grey-linear-sink.webp", alt: "Wall-mounted Pietra Grey porcelain linear sink with sparse white veining", caption: "Bespoke Pietra Grey sink" },
+                              { src: "/images/tile-styles/inspiration/pietra-grey-bathroom.webp", alt: "Bathroom clad in large-format Pietra Grey porcelain across shower, walls, floor and bath surround", caption: "Large-format dark bathroom" },
+                              { src: "/images/tile-styles/inspiration/pietra-grey-mitred-detail.webp", alt: "Pietra Grey porcelain sink corner with white vein continuing across a mitred edge", caption: "Vein-wrapped mitred corner" },
                             ]
       : slug === "nero-marquina"
       ? [
-          { src: "/images/tile-styles/inspiration/nero-marquina-bespoke-vanity.png", alt: "Nero Marquina marble-effect porcelain floating vanity with white veining and mitred edges", caption: "Bespoke dark marble vanity" },
-          { src: "/images/tile-styles/inspiration/nero-marquina-feature-wall.png", alt: "Nero Marquina marble-effect porcelain feature wall behind a freestanding bath", caption: "Statement feature wall" },
-          { src: "/images/tile-styles/inspiration/nero-marquina-detail-niche.png", alt: "Nero Marquina marble-effect porcelain shower niche and vanity detail", caption: "Mitred niche detail" },
+          { src: "/images/tile-styles/inspiration/nero-marquina-bespoke-vanity.webp", alt: "Nero Marquina marble-effect porcelain floating vanity with white veining and mitred edges", caption: "Bespoke dark marble vanity" },
+          { src: "/images/tile-styles/inspiration/nero-marquina-feature-wall.webp", alt: "Nero Marquina marble-effect porcelain feature wall behind a freestanding bath", caption: "Statement feature wall" },
+          { src: "/images/tile-styles/inspiration/nero-marquina-detail-niche.webp", alt: "Nero Marquina marble-effect porcelain shower niche and vanity detail", caption: "Mitred niche detail" },
         ]
       : slug === "green-onyx"
         ? [
-            { src: "/images/tile-styles/inspiration/green-onyx-bespoke-porcelain-sink-preview.jpg", alt: "Green Onyx onyx-effect porcelain bespoke sink with mitred edges and black wall mounted tap", caption: "Bespoke porcelain sink" },
-            { src: "/images/tile-styles/inspiration/green-onyx-porcelain-bathroom-sink-shower-preview.jpg", alt: "Green Onyx onyx-effect porcelain bathroom with bespoke sink and walk-in shower", caption: "Bathroom sink and shower concept" },
-            { src: "/images/tile-styles/inspiration/green-onyx-porcelain-wet-room-feature-wall-preview.jpg", alt: "Green Onyx onyx-effect porcelain wet room with feature shower wall and niche", caption: "Wet room feature wall" },
+            { src: "/images/tile-styles/inspiration/green-onyx-bespoke-porcelain-sink-preview.webp", alt: "Green Onyx onyx-effect porcelain bespoke sink with mitred edges and black wall mounted tap", caption: "Bespoke porcelain sink" },
+            { src: "/images/tile-styles/inspiration/green-onyx-porcelain-bathroom-sink-shower-preview.webp", alt: "Green Onyx onyx-effect porcelain bathroom with bespoke sink and walk-in shower", caption: "Bathroom sink and shower concept" },
+            { src: "/images/tile-styles/inspiration/green-onyx-porcelain-wet-room-feature-wall-preview.webp", alt: "Green Onyx onyx-effect porcelain wet room with feature shower wall and niche", caption: "Wet room feature wall" },
           ]
         : slug === "blue-onyx"
           ? [
-              { src: "/images/tile-styles/inspiration/blue-onyx-bespoke-vanity.png", alt: "Blue Onyx onyx-effect porcelain floating vanity with integrated basin and mitred edges", caption: "Bespoke blue onyx-effect vanity" },
-              { src: "/images/tile-styles/inspiration/blue-onyx-feature-wall.png", alt: "Blue Onyx onyx-effect porcelain feature wall behind a freestanding bath", caption: "Calm statement feature wall" },
-              { src: "/images/tile-styles/inspiration/blue-onyx-detail-niche.png", alt: "Blue Onyx onyx-effect porcelain shower niche and vanity detail", caption: "Mitred niche detail" },
+              { src: "/images/tile-styles/inspiration/blue-onyx-bespoke-vanity.webp", alt: "Blue Onyx onyx-effect porcelain floating vanity with integrated basin and mitred edges", caption: "Bespoke blue onyx-effect vanity" },
+              { src: "/images/tile-styles/inspiration/blue-onyx-feature-wall.webp", alt: "Blue Onyx onyx-effect porcelain feature wall behind a freestanding bath", caption: "Calm statement feature wall" },
+              { src: "/images/tile-styles/inspiration/blue-onyx-detail-niche.webp", alt: "Blue Onyx onyx-effect porcelain shower niche and vanity detail", caption: "Mitred niche detail" },
             ]
           : slug === "classic-travertine"
             ? [
-                { src: "/images/tile-styles/inspiration/travertine-material-vanity.png", alt: "Classic Travertine travertine-inspired porcelain floating vanity with integrated basin and mitred edges", caption: "Material-led floating vanity" },
-                { src: "/images/tile-styles/inspiration/travertine-curved-wet-room.png", alt: "Classic Travertine travertine-inspired porcelain curved wet room with integrated bench", caption: "Curved wet-room architecture" },
-                { src: "/images/tile-styles/inspiration/travertine-outdoor-terrace.png", alt: "Classic Travertine travertine-inspired porcelain outdoor terrace with large-format slabs", caption: "Outdoor terrace and steps" },
+                { src: "/images/tile-styles/inspiration/travertine-material-vanity.webp", alt: "Classic Travertine travertine-inspired porcelain floating vanity with integrated basin and mitred edges", caption: "Material-led floating vanity" },
+                { src: "/images/tile-styles/inspiration/travertine-curved-wet-room.webp", alt: "Classic Travertine travertine-inspired porcelain curved wet room with integrated bench", caption: "Curved wet-room architecture" },
+                { src: "/images/tile-styles/inspiration/travertine-outdoor-terrace.webp", alt: "Classic Travertine travertine-inspired porcelain outdoor terrace with large-format slabs", caption: "Outdoor terrace and steps" },
               ]
             : undefined;
 
@@ -136,7 +136,7 @@ const materialRecords: readonly Material[] = [
   material({
     id: "calacatta-gold", slug: "calacatta-gold", title: "Calacatta Gold", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Warm Refined Marble", badge: "Great for Bespoke Sinks",
     description: "A refined marble-effect porcelain with a bright white ground, warm grey movement and delicate gold veining, suited to bespoke sinks, vanity units and quietly luxurious bathrooms.",
-    colours: ["White", "Warm Grey", "Gold"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathrooms"], finishes: ["Matt", "Polished"], image: "/images/materials/calacatta-gold.jpg", imageAlt: "Calacatta Gold marble-effect porcelain surface with warm grey and gold veining", featured: true, relatedMaterials: ["calacatta-macchia", "statuario"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Sinks, walls & vanities",
+    colours: ["White", "Warm Grey", "Gold"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathrooms"], finishes: ["Matt", "Polished"], image: "/images/materials/calacatta-gold.webp", imageAlt: "Calacatta Gold marble-effect porcelain surface with warm grey and gold veining", featured: true, relatedMaterials: ["calacatta-macchia", "statuario"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Sinks, walls & vanities",
   }),
   material({
     id: "calacatta-macchia", slug: "calacatta-macchia", title: "Calacatta Macchia", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Bold Luxury Bathrooms", badge: "Great for Bespoke Sinks",
@@ -156,62 +156,62 @@ const materialRecords: readonly Material[] = [
   material({
     id: "nero-marquina", slug: "nero-marquina", title: "Nero Marquina", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Dramatic Dark Marble", badge: "Great for Bespoke Sinks",
     description: "A dramatic black marble-effect porcelain crossed by clear white veining, giving bespoke sinks, vanity units and feature walls a strong architectural presence in darker bathrooms.",
-    colours: ["Black", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls"], finishes: ["Matt", "Polished"], image: "/images/materials/nero-marquina.jpg", imageAlt: "Nero Marquina black marble-effect porcelain surface with white veining", relatedMaterials: ["calacatta-macchia", "arabescato"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Dark sinks, vanities & walls",
+    colours: ["Black", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls"], finishes: ["Matt", "Polished"], image: "/images/materials/nero-marquina.webp", imageAlt: "Nero Marquina black marble-effect porcelain surface with white veining", relatedMaterials: ["calacatta-macchia", "arabescato"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Dark sinks, vanities & walls",
   }),
   material({
     id: "green-onyx", slug: "green-onyx", title: "Green Onyx", collection: "Onyx Effect", categoryLabel: "Onyx Effect Porcelain", subtitle: "Statement Green Surfaces", badge: "Great for Bespoke Sinks",
     description: "A richly veined onyx-effect porcelain with layered green movement and soft mineral depth, designed for statement bespoke sinks, feature walls, vanity units and expressive bathrooms.",
-    colours: ["Green", "Blue", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathrooms"], finishes: ["Matt", "Polished", "Gloss"], image: "/images/materials/green-onyx.jpg", imageAlt: "Green Onyx onyx-effect porcelain surface with layered green movement", relatedMaterials: ["blue-onyx", "calacatta-macchia"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Statement sinks & features",
+    colours: ["Green", "Blue", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathrooms"], finishes: ["Matt", "Polished", "Gloss"], image: "/images/materials/green-onyx.webp", imageAlt: "Green Onyx onyx-effect porcelain surface with layered green movement", relatedMaterials: ["blue-onyx", "calacatta-macchia"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Statement sinks & features",
   }),
   material({
     id: "blue-onyx", slug: "blue-onyx", title: "Blue Onyx", collection: "Onyx Effect", categoryLabel: "Onyx Effect Porcelain", subtitle: "Soft Blue Statement Stone", badge: "Great for Bespoke Sinks",
     description: "A softly expressive onyx-effect porcelain with cool blue movement and pale mineral veining, creating distinctive but composed surfaces for bespoke sinks, vanity units and feature walls.",
-    colours: ["Blue", "Grey", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathrooms"], finishes: ["Matt", "Polished", "Gloss"], image: "/images/materials/blue-onyx.jpg", imageAlt: "Blue Onyx onyx-effect porcelain surface with pale blue mineral veining", relatedMaterials: ["green-onyx", "statuario"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Calm sinks, walls & vanities",
+    colours: ["Blue", "Grey", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathrooms"], finishes: ["Matt", "Polished", "Gloss"], image: "/images/materials/blue-onyx.webp", imageAlt: "Blue Onyx onyx-effect porcelain surface with pale blue mineral veining", relatedMaterials: ["green-onyx", "statuario"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Calm sinks, walls & vanities",
   }),
   material({
     id: "classic-travertine", slug: "classic-travertine", title: "Classic Travertine", collection: "Travertine Effect", categoryLabel: "Travertine Effect Porcelain", subtitle: "Warm Spa-Style Bathrooms", badge: "Great for Bespoke Sinks",
     description: "A warm travertine-inspired porcelain with gentle beige variation and a relaxed stone character, suited to bespoke sinks, wet rooms, bathroom floors and feature walls.",
-    colours: ["Beige", "Ivory", "Warm Neutral"], applications: ["Bespoke Sinks", "Wet Rooms", "Bathroom Floors", "Feature Walls"], finishes: ["Matt", "Honed"], image: "/images/materials/classic-travertine.jpg", imageAlt: "Classic Travertine travertine-inspired porcelain surface in warm beige tones", featured: true, relatedMaterials: ["silver-travertine", "ivory-limestone"], filterGroups: ["best-for-sinks", "stone-effect"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Warm spa-style bathrooms",
+    colours: ["Beige", "Ivory", "Warm Neutral"], applications: ["Bespoke Sinks", "Wet Rooms", "Bathroom Floors", "Feature Walls"], finishes: ["Matt", "Honed"], image: "/images/materials/classic-travertine.webp", imageAlt: "Classic Travertine travertine-inspired porcelain surface in warm beige tones", featured: true, relatedMaterials: ["silver-travertine", "ivory-limestone"], filterGroups: ["best-for-sinks", "stone-effect"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Warm spa-style bathrooms",
   }),
   material({
     id: "silver-travertine", slug: "silver-travertine", title: "Silver Travertine", collection: "Travertine Effect", categoryLabel: "Travertine Effect Porcelain", subtitle: "Calm Contemporary Stone",
     description: "A silver-toned travertine-inspired porcelain with restrained movement and cool neutral depth, bringing a calm contemporary finish to bathrooms, wet rooms, floors and walls.",
-    colours: ["Silver Grey", "Ivory", "Taupe"], applications: ["Bathrooms", "Wet Rooms", "Bathroom Floors", "Feature Walls"], finishes: ["Matt", "Honed"], image: "/images/materials/silver-travertine.png", imageAlt: "Silver Travertine travertine-inspired porcelain surface with cool neutral movement", relatedMaterials: ["classic-travertine", "pietra-grey"], filterGroups: ["stone-effect"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Calm floors, walls & wet rooms",
+    colours: ["Silver Grey", "Ivory", "Taupe"], applications: ["Bathrooms", "Wet Rooms", "Bathroom Floors", "Feature Walls"], finishes: ["Matt", "Honed"], image: "/images/materials/silver-travertine.webp", imageAlt: "Silver Travertine travertine-inspired porcelain surface with cool neutral movement", relatedMaterials: ["classic-travertine", "pietra-grey"], filterGroups: ["stone-effect"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Calm floors, walls & wet rooms",
   }),
   material({
     id: "ivory-limestone", slug: "ivory-limestone", title: "Ivory Limestone", collection: "Limestone Effect", categoryLabel: "Limestone Effect Porcelain", subtitle: "Soft Minimal Interiors",
     description: "A soft limestone-effect porcelain in quiet ivory and beige tones, providing a restrained surface language for minimal bathrooms, wet rooms, floors and understated feature walls.",
-    colours: ["Ivory", "Beige", "Soft Grey"], applications: ["Bathrooms", "Wet Rooms", "Bathroom Floors", "Feature Walls"], finishes: ["Matt", "Honed"], image: "/images/materials/ivory-limestone.jpg", imageAlt: "Ivory Limestone limestone-effect porcelain surface with soft neutral movement", relatedMaterials: ["classic-travertine", "warm-concrete"], filterGroups: ["best-for-sinks", "stone-effect"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Soft minimal bathrooms",
+    colours: ["Ivory", "Beige", "Soft Grey"], applications: ["Bathrooms", "Wet Rooms", "Bathroom Floors", "Feature Walls"], finishes: ["Matt", "Honed"], image: "/images/materials/ivory-limestone.webp", imageAlt: "Ivory Limestone limestone-effect porcelain surface with soft neutral movement", relatedMaterials: ["classic-travertine", "warm-concrete"], filterGroups: ["best-for-sinks", "stone-effect"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Soft minimal bathrooms",
   }),
   material({
     id: "pietra-grey", slug: "pietra-grey", title: "Pietra Grey", collection: "Stone Effect", categoryLabel: "Stone Effect Porcelain", subtitle: "Refined Dark Stone",
     description: "A deep stone-effect porcelain with a composed grey surface and subtle tonal variation, suited to refined bathrooms, vanity units, feature walls and carefully framed details.",
-    colours: ["Charcoal", "Grey", "Soft White"], applications: ["Bathrooms", "Vanity Units", "Feature Walls", "Bespoke Sinks"], finishes: ["Matt", "Honed"], image: "/images/materials/pietra-grey.png", imageAlt: "Pietra Grey stone-effect porcelain surface in refined dark grey tones", relatedMaterials: ["silver-travertine", "warm-concrete"], filterGroups: ["best-for-sinks", "stone-effect"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Dark walls, vanities & sinks",
+    colours: ["Charcoal", "Grey", "Soft White"], applications: ["Bathrooms", "Vanity Units", "Feature Walls", "Bespoke Sinks"], finishes: ["Matt", "Honed"], image: "/images/materials/pietra-grey.webp", imageAlt: "Pietra Grey stone-effect porcelain surface in refined dark grey tones", relatedMaterials: ["silver-travertine", "warm-concrete"], filterGroups: ["best-for-sinks", "stone-effect"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Dark walls, vanities & sinks",
   }),
   material({
-    id: "ceppo-di-gre", slug: "ceppo-di-gre", title: "Ceppo di Gré", collection: "Stone Effect", categoryLabel: "Stone Effect Porcelain", subtitle: "Architectural Aggregate Stone",
+    id: "ceppo-di-gre", slug: "ceppo-di-gre", title: "Ceppo di GrÃ©", collection: "Stone Effect", categoryLabel: "Stone Effect Porcelain", subtitle: "Architectural Aggregate Stone",
     description: "An aggregate stone-effect porcelain with a distinctive pebbled visual rhythm, adding architectural texture to bathrooms, feature walls, vanity units and sculptural surface details.",
-    colours: ["Grey", "Charcoal", "Warm Grey"], applications: ["Bathrooms", "Feature Walls", "Vanity Units", "Large-Format Installations"], finishes: ["Matt", "Honed"], image: "/images/materials/ceppo-di-gre.png", imageAlt: "Ceppo di Gré aggregate stone-effect porcelain surface with grey mineral pattern", relatedMaterials: ["pietra-grey", "terrazzo"], filterGroups: ["stone-effect", "decorative"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Architectural walls & vanities",
+    colours: ["Grey", "Charcoal", "Warm Grey"], applications: ["Bathrooms", "Feature Walls", "Vanity Units", "Large-Format Installations"], finishes: ["Matt", "Honed"], image: "/images/materials/ceppo-di-gre.webp", imageAlt: "Ceppo di GrÃ© aggregate stone-effect porcelain surface with grey mineral pattern", relatedMaterials: ["pietra-grey", "terrazzo"], filterGroups: ["stone-effect", "decorative"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Architectural walls & vanities",
   }),
   material({
     id: "warm-concrete", slug: "warm-concrete", title: "Warm Concrete", collection: "Concrete Effect", categoryLabel: "Concrete Effect Porcelain", subtitle: "Soft Contemporary Minimalism",
     description: "A warm concrete-effect porcelain with soft taupe-grey variation, offering a calm contemporary backdrop for wet rooms, floors, walls, vanity units and minimal bathrooms.",
-    colours: ["Warm Grey", "Taupe", "Beige Grey"], applications: ["Wet Rooms", "Bathroom Floors", "Feature Walls", "Vanity Units"], finishes: ["Matt", "Textured"], image: "/images/materials/warm-concrete.jpg", imageAlt: "Warm Concrete concrete-effect porcelain surface with soft taupe-grey variation", relatedMaterials: ["ivory-limestone", "pietra-grey"], filterGroups: ["stone-effect"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Minimal wet rooms & walls",
+    colours: ["Warm Grey", "Taupe", "Beige Grey"], applications: ["Wet Rooms", "Bathroom Floors", "Feature Walls", "Vanity Units"], finishes: ["Matt", "Textured"], image: "/images/materials/warm-concrete.webp", imageAlt: "Warm Concrete concrete-effect porcelain surface with soft taupe-grey variation", relatedMaterials: ["ivory-limestone", "pietra-grey"], filterGroups: ["stone-effect"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Minimal wet rooms & walls",
   }),
   material({
     id: "terrazzo", slug: "terrazzo", title: "Terrazzo", collection: "Terrazzo", categoryLabel: "Terrazzo Effect Porcelain", subtitle: "Playful Mineral Texture",
     description: "A terrazzo-effect porcelain with a lively mineral pattern and balanced neutral base, bringing playful texture to bathroom floors, feature walls, vanity units and shower areas.",
-    colours: ["White", "Grey", "Beige", "Mixed"], applications: ["Bathroom Floors", "Feature Walls", "Vanity Units", "Shower Areas"], finishes: ["Matt", "Polished", "Textured"], image: "/images/materials/terrazzo.jpg", imageAlt: "Terrazzo-effect porcelain surface with ivory base and grey beige mineral chips", relatedMaterials: ["ceppo-di-gre", "zellige-green"], filterGroups: ["decorative"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Floors, details & vanities",
+    colours: ["White", "Grey", "Beige", "Mixed"], applications: ["Bathroom Floors", "Feature Walls", "Vanity Units", "Shower Areas"], finishes: ["Matt", "Polished", "Textured"], image: "/images/materials/terrazzo.webp", imageAlt: "Terrazzo-effect porcelain surface with ivory base and grey beige mineral chips", relatedMaterials: ["ceppo-di-gre", "zellige-green"], filterGroups: ["decorative"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Floors, details & vanities",
   }),
   material({
     id: "zellige-green", slug: "zellige-green", title: "Zellige Green", collection: "Handmade Look", categoryLabel: "Handmade Look Tiles", subtitle: "Rich Glazed Character",
     description: "A green handmade-look porcelain with a rich glazed character and softly varied reflection, ideal for feature walls, shower panels, splashbacks and decorative bathroom details.",
-    colours: ["Green", "Sage", "Deep Teal"], applications: ["Feature Walls", "Shower Panels", "Splashbacks", "Decorative Details"], finishes: ["Gloss", "Handmade Look"], image: "/images/materials/zellige-green.jpg", imageAlt: "Zellige Green handmade-look porcelain surface with rich glazed variation", relatedMaterials: ["fluted-stone", "terrazzo"], filterGroups: ["decorative"], sinkSuitability: "not-usually", sinkSuitabilityLabel: "Better for walls", recommendedUseShort: "Feature walls & splashbacks",
+    colours: ["Green", "Sage", "Deep Teal"], applications: ["Feature Walls", "Shower Panels", "Splashbacks", "Decorative Details"], finishes: ["Gloss", "Handmade Look"], image: "/images/materials/zellige-green.webp", imageAlt: "Zellige Green handmade-look porcelain surface with rich glazed variation", relatedMaterials: ["fluted-stone", "terrazzo"], filterGroups: ["decorative"], sinkSuitability: "not-usually", sinkSuitabilityLabel: "Better for walls", recommendedUseShort: "Feature walls & splashbacks",
   }),
   material({
     id: "fluted-stone", slug: "fluted-stone", title: "Fluted Stone", collection: "Textured Porcelain", categoryLabel: "Textured Porcelain", subtitle: "Sculptural Linear Texture",
     description: "A fluted stone-effect porcelain with repeating linear relief and measured shadow, adding sculptural texture to feature walls, vanity units and considered bathroom details.",
-    colours: ["Ivory", "Warm Grey", "Stone"], applications: ["Feature Walls", "Vanity Units", "Bathroom Details", "Decorative Surfaces"], finishes: ["Matt", "Textured"], image: "/images/materials/fluted-stone.jpg", imageAlt: "Fluted Stone textured porcelain surface with linear relief in warm neutral tones", relatedMaterials: ["zellige-green", "pietra-grey"], filterGroups: ["decorative"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for feature details", recommendedUseShort: "Feature walls & vanities",
+    colours: ["Ivory", "Warm Grey", "Stone"], applications: ["Feature Walls", "Vanity Units", "Bathroom Details", "Decorative Surfaces"], finishes: ["Matt", "Textured"], image: "/images/materials/fluted-stone.webp", imageAlt: "Fluted Stone textured porcelain surface with linear relief in warm neutral tones", relatedMaterials: ["zellige-green", "pietra-grey"], filterGroups: ["decorative"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for feature details", recommendedUseShort: "Feature walls & vanities",
   }),
   material({
     id: "invisible-white", slug: "invisible-white", title: "Invisible White", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Elegant Contemporary Marble", badge: "Great for Bespoke Sinks",
