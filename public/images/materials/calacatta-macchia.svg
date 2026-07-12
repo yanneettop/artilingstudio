@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Calacatta Macchia artwork placeholder</title>
+  <desc id="desc">Temporary artwork placeholder for Calacatta Macchia.</desc>
+  <rect width="1200" height="600" fill="#d8d1c6"/>
+  <path d="M-40 500C220 380 280 520 510 360S850 120 1240 220" fill="none" stroke="#6a625c" stroke-width="22" opacity=".7"/>
+  <path d="M120 80C330 190 370 80 610 150S920 440 1250 370" fill="none" stroke="#aa8f67" stroke-width="10" opacity=".8"/>
+  <text x="60" y="530" fill="#2d2a27" font-family="Arial, sans-serif" font-size="30" letter-spacing="4">CALACATTA MACCHIA — ARTWORK NEEDED</text>
+</svg>

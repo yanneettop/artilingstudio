@@ -7,6 +7,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         card: "card/index.html",
+        tileStyleLibrary: "tile-style-library/index.html",
       },
     },
   },
