@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Arabescato artwork placeholder</title>
+  <desc id="desc">Temporary artwork placeholder for Arabescato.</desc>
+  <rect width="1200" height="600" fill="#d9d7d2"/>
+  <path d="M-30 420C260 130 420 500 690 240S980 110 1240 160" fill="none" stroke="#65666a" stroke-width="20" opacity=".7"/>
+  <path d="M40 140C230 290 390 110 580 280S980 420 1240 300" fill="none" stroke="#3f4146" stroke-width="8" opacity=".65"/>
+  <text x="60" y="530" fill="#27292c" font-family="Arial, sans-serif" font-size="30" letter-spacing="4">ARABESCATO — ARTWORK NEEDED</text>
+</svg>
