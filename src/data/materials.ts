@@ -78,12 +78,18 @@ const gallery = (slug: string) =>
                       { src: "/images/tile-styles/inspiration/sahara-noir-large-format-bathroom.webp", alt: "Bathroom clad in large-format Sahara Noir porcelain across walls, floor and bath surround", caption: "Large-format noir bathroom" },
                       { src: "/images/tile-styles/inspiration/sahara-noir-niche-detail.webp", alt: "Sahara Noir porcelain shower niche and mitred corner with aligned white and gold veins", caption: "Vein-aligned niche detail" },
                     ]
-                  : slug === "patagonia"
-                    ? [
-                        { src: "/images/tile-styles/inspiration/patagonia-linear-sink.webp", alt: "Wall-mounted Patagonia porcelain linear sink with ivory crystal, amber and charcoal pattern", caption: "Bespoke crystalline sink" },
-                        { src: "/images/tile-styles/inspiration/patagonia-large-format-bathroom.webp", alt: "Bathroom with large-format bookmatched Patagonia porcelain shower wall and bath surround", caption: "Large-format Patagonia bathroom" },
-                        { src: "/images/tile-styles/inspiration/patagonia-mitred-crystal-detail.webp", alt: "Patagonia porcelain mitred sink corner with amber crystal and charcoal pattern continuity", caption: "Crystal-wrapped mitred edge" },
-                      ]
+                    : slug === "patagonia"
+                      ? [
+                          { src: "/images/tile-styles/inspiration/patagonia-linear-sink.webp", alt: "Wall-mounted Patagonia porcelain linear sink with ivory crystal, amber and charcoal pattern", caption: "Bespoke crystalline sink" },
+                          { src: "/images/tile-styles/inspiration/patagonia-large-format-bathroom.webp", alt: "Bathroom with large-format bookmatched Patagonia porcelain shower wall and bath surround", caption: "Large-format Patagonia bathroom" },
+                          { src: "/images/tile-styles/inspiration/patagonia-mitred-crystal-detail.webp", alt: "Patagonia porcelain mitred sink corner with amber crystal and charcoal pattern continuity", caption: "Crystal-wrapped mitred edge" },
+                        ]
+                    : slug === "antique-black"
+                      ? [
+                          { src: "/images/tile-styles/inspiration/antique-black-bespoke-vanity.webp", alt: "Wall-mounted Antique Black gemstone-effect porcelain vanity with integrated basin and brushed bronze wall tap", caption: "Bespoke gemstone-effect vanity" },
+                          { src: "/images/tile-styles/inspiration/antique-black-large-format-bathroom.webp", alt: "Bathroom with a bookmatched large-format Antique Black porcelain shower wall and floating vanity", caption: "Large-format statement bathroom" },
+                          { src: "/images/tile-styles/inspiration/antique-black-mitred-detail.webp", alt: "Close view of an Antique Black porcelain vanity corner with continuous pattern across a precise mitred edge", caption: "Pattern-wrapped mitred edge" },
+                        ]
                     : slug === "silver-travertine"
                       ? [
                           { src: "/images/tile-styles/inspiration/silver-travertine-sink.webp", alt: "Wall-mounted Silver Travertine porcelain sink with horizontal vein-cut banding", caption: "Bespoke silver travertine sink" },
@@ -224,6 +230,11 @@ const materialRecords: readonly Material[] = [
     colours: ["Ivory", "Cream", "Amber", "Brown", "Black"], applications: ["Vanity Units", "Feature Walls", "Bespoke Sinks", "Bathroom Details"], finishes: ["Matt", "Polished"], image: "/images/materials/patagonia-quartzite-effect-porcelain-slab.webp", imageAlt: "Patagonia quartzite-effect porcelain slab with ivory crystal forms, amber tones and dark mineral accents", relatedMaterials: ["breccia-capraia", "calacatta-macchia", "fior-di-bosco", "sahara-noir"], filterGroups: ["stone-effect", "marble-onyx"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Statement vanities & walls",
   }),
   material({
+    id: "antique-black", slug: "antique-black", title: "Antique Black", collection: "Gemstone Effect", categoryLabel: "Gemstone Effect Porcelain", subtitle: "Sculptural Monochrome Pattern", badge: "Statement Surface",
+    description: "A dramatic gemstone-effect porcelain combining fluid black, white and grey formations with subtle warm gold accents. Ideal for bold feature walls, vanity units and distinctive bathroom surfaces.",
+    colours: ["Black", "White", "Grey", "Soft Gold"], applications: ["Feature Walls", "Vanity Units", "Bathroom Details", "Shower Panels"], finishes: ["Polished"], image: "/images/materials/antique-black-gemstone-effect-porcelain-slab.webp", imageAlt: "Antique Black gemstone-effect porcelain slab with swirling black, white, grey and soft gold pattern", relatedMaterials: ["sahara-noir", "nero-marquina", "patagonia", "breccia-capraia"], filterGroups: ["marble-onyx", "decorative"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected fabrication", recommendedUseShort: "Feature walls, vanities & details",
+  }),
+  material({
     id: "breccia-capraia", slug: "breccia-capraia", title: "Breccia Capraia", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Dramatic Artistic Veining", badge: "Statement Surface",
     description: "A highly expressive marble-effect porcelain with fragmented white forms, charcoal outlines and deep burgundy mineral bands, created for bold sinks, vanity units and feature installations.",
     colours: ["White", "Grey", "Charcoal", "Burgundy"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathroom Details"], finishes: ["Matt", "Polished"], image: "/images/materials/breccia-capraia-marble-effect-porcelain-slab.webp", imageAlt: "Breccia Capraia marble-effect porcelain slab with white fragments, charcoal veining and burgundy mineral bands", relatedMaterials: ["arabescato", "patagonia", "calacatta-macchia", "sahara-noir"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Bold sinks, vanities & walls",
@@ -243,6 +254,7 @@ const materialRecords: readonly Material[] = [
 const collectionOrder = [
   "Marble Effect",
   "Quartzite Effect",
+  "Gemstone Effect",
   "Onyx Effect",
   "Travertine Effect",
   "Limestone Effect",
