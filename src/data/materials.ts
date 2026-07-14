@@ -66,6 +66,12 @@ const gallery = (slug: string) =>
                   { src: "/images/tile-styles/inspiration/breccia-capraia-shower-divider.webp", alt: "Freestanding shower divider clad in bookmatched Breccia Capraia porcelain", caption: "Sculptural shower divider" },
                   { src: "/images/tile-styles/inspiration/breccia-capraia-mitred-detail.webp", alt: "Breccia Capraia porcelain sink corner with continuous burgundy vein across mitred edges", caption: "Vein-wrapped mitred corner" },
                 ]
+            : slug === "lux-viola"
+              ? [
+                  { src: "/images/tile-styles/inspiration/lux-viola-bespoke-sink.webp", alt: "Wall-mounted Lux Viola marble-effect porcelain sink with integrated basin and brushed bronze wall tap", caption: "Bespoke Lux Viola sink" },
+                  { src: "/images/tile-styles/inspiration/lux-viola-large-format-bathroom.webp", alt: "Bathroom with large-format Lux Viola porcelain across the walk-in shower wall and floating vanity", caption: "Large-format shower bathroom" },
+                  { src: "/images/tile-styles/inspiration/lux-viola-mitred-detail.webp", alt: "Close view of a Lux Viola porcelain sink with brecciated pattern continuing across a precise mitred corner", caption: "Breccia-wrapped mitred edge" },
+                ]
               : slug === "fior-di-bosco"
                 ? [
                     { src: "/images/tile-styles/inspiration/fior-di-bosco-compact-sink.webp", alt: "Compact wall-mounted Fior di Bosco porcelain sink with mitred apron and bronze wall tap", caption: "Compact bespoke sink" },
@@ -240,6 +246,11 @@ const materialRecords: readonly Material[] = [
     colours: ["White", "Grey", "Charcoal", "Burgundy"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathroom Details"], finishes: ["Matt", "Polished"], image: "/images/materials/breccia-capraia-marble-effect-porcelain-slab.webp", imageAlt: "Breccia Capraia marble-effect porcelain slab with white fragments, charcoal veining and burgundy mineral bands", relatedMaterials: ["arabescato", "patagonia", "calacatta-macchia", "sahara-noir"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Bold sinks, vanities & walls",
   }),
   material({
+    id: "lux-viola", slug: "lux-viola", title: "Lux Viola", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Soft Brecciated Marble", badge: "Great for Bespoke Sinks",
+    description: "A refined white marble-effect porcelain with fragmented grey veining and warm taupe mineral accents. Ideal for bespoke sinks, vanity units and elegant bathroom feature surfaces.",
+    colours: ["White", "Grey", "Taupe", "Warm Beige"], applications: ["Bespoke Sinks", "Vanity Units", "Shower Walls", "Feature Walls", "Bathrooms"], finishes: ["Polished"], image: "/images/materials/lux-viola-marble-effect-porcelain-slab.webp", imageAlt: "Lux Viola marble-effect porcelain slab with white brecciated forms, grey veining and warm taupe accents", relatedMaterials: ["breccia-capraia", "arabescato", "calacatta-macchia", "invisible-white"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Sinks, vanities & feature walls",
+  }),
+  material({
     id: "fior-di-bosco", slug: "fior-di-bosco", title: "Fior di Bosco", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Warm Architectural Grey", badge: "Calm Contemporary Choice",
     description: "A warm taupe-grey marble-effect porcelain with fine white veining and subtle earthy mineral notes, suited to sophisticated sinks, wet rooms and understated architectural interiors.",
     colours: ["Taupe Grey", "Warm Grey", "White", "Rust Brown"], applications: ["Bespoke Sinks", "Vanity Units", "Wet Rooms", "Floors", "Feature Walls"], finishes: ["Matt", "Honed", "Polished"], image: "/images/materials/fior-di-bosco-marble-effect-porcelain-slab.webp", imageAlt: "Fior di Bosco marble-effect porcelain slab with warm taupe grey colouring and fine white veins", relatedMaterials: ["pietra-grey", "silver-travertine", "patagonia", "sahara-noir"], filterGroups: ["best-for-sinks", "marble-onyx", "stone-effect"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Warm sinks, floors & wet rooms",
@@ -272,6 +283,7 @@ const marbleEffectOrder = [
   "arabescato",
   "invisible-white",
   "breccia-capraia",
+  "lux-viola",
   "fior-di-bosco",
   "nero-marquina",
   "sahara-noir",
