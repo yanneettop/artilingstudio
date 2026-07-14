@@ -104,29 +104,17 @@
       'Made-to-measure porcelain vanity sink preview',
       'Porcelain basin study inspired by real fabrication work',
     ];
-    const completedProjects = [
-      {
-        title: 'Bespoke Porcelain Sink, London',
-        image: './assets/images/services/bespoke-sinks/tanis-floating-trough-grey.webp',
-        alt: 'Completed bespoke porcelain sink installation in London',
-        description: 'Made-to-measure porcelain sink with mitred edges, fabricated and installed to fit the client\'s bathroom layout.',
-        details: ['Mitred porcelain edges', 'Custom measurements', 'Fabricated & installed in London'],
-      },
-      {
-        title: 'Double Porcelain Vanity Sink',
-        image: './assets/images/services/bespoke-sinks/tanis-double-porcelain-sink.webp',
-        alt: 'Made-to-measure porcelain sink with mitred edges',
-        description: 'A completed double vanity formed from porcelain with integrated basins, clean surface returns and bathroom-ready proportions.',
-        details: ['Double basin layout', 'Made-to-measure porcelain sinks', 'Bathroom vanity top fabrication'],
-      },
-      {
-        title: 'Mitred Porcelain Basin Detail',
-        image: './assets/images/services/porcelain-fabrication/mitred-porcelain-sink-basin-detail-london.webp',
-        alt: 'Real porcelain bathroom surface installation by Artiling Studio',
-        description: 'Real fabrication work showing porcelain cutouts, mitred edges and the precision needed before final installation.',
-        details: ['Porcelain fabrication', 'Mitred edge work', 'Surface and basin detailing'],
-      },
+    const selectedProjectSlugs = [
+      'onyx-frame-porcelain-vanity',
+      'onyx-vein-floating-sink',
+      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling',
     ];
+    const selectedProjects = portfolio ? portfolio.getBySlugs(selectedProjectSlugs) : [];
+    const selectedProjectLabels = {
+      'onyx-frame-porcelain-vanity': 'Bespoke Vanity',
+      'onyx-vein-floating-sink': 'Porcelain Fabrication',
+      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling': 'Bathroom Surfaces',
+    };
     const selectedWorkTitles = conceptTitles;
     const selectedWorkDescriptions = conceptDescriptions;
     const localAssetSrc = (src) =>
@@ -193,22 +181,46 @@
       </article>
     `;
 
-    const renderCompletedProject = (project, index) => `
-      <article class="completed-project-card" data-reveal="card" data-reveal-delay="${index * 90}">
-        <figure class="completed-project-card__media">
-          <img src="${withAssetVersion(project.image)}" alt="${escapeHtml(project.alt)}" loading="lazy" />
-          <figcaption class="portfolio-badge portfolio-badge--solid">Completed Project</figcaption>
-        </figure>
-        <div class="completed-project-card__body">
-          <h3>${escapeHtml(project.title)}</h3>
-          <p>${escapeHtml(project.description)}</p>
-          <ul class="completed-project-card__details">
-            ${project.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join('')}
-          </ul>
-          <a href="/quote/" class="completed-project-card__link">Discuss a Similar Project <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-    `;
+    const selectedProjectImageFor = (project, index) => {
+      if (index === 0) return project.galleryImages?.[1] || project.coverImage || project.cover || '';
+      if (index === 2) return project.galleryImages?.[0] || project.coverImage || project.cover || '';
+      return project.coverImage || project.cover || project.galleryImages?.[0] || '';
+    };
+    const selectedProjectAltFor = (project, index) => {
+      if (index === 0) return project.imageAlts?.[2] || projectAltFor(project);
+      if (index === 2) return project.imageAlts?.[1] || projectAltFor(project);
+      return projectAltFor(project);
+    };
+    const selectedProjectMetaFor = (project) => {
+      const parts = [project.scope || project.category || project.descriptor, project.location].filter(Boolean);
+      return parts.join(' · ');
+    };
+    const selectedProjectDescriptionFor = (project) =>
+      project.seoDescription || project.summary || project.descriptor || '';
+    const renderSelectedProject = (project, index) => {
+      const projectHref = `/projects/#${encodeURIComponent(project.slug)}`;
+      const label = selectedProjectLabels[project.slug] || project.serviceTags?.[0] || project.scope;
+      const description = index === 0
+        ? `<p class="home-selected-project__description">${escapeHtml(selectedProjectDescriptionFor(project))}</p>`
+        : '';
+
+      return `
+        <article class="home-selected-project home-selected-project--${index === 0 ? 'featured' : 'support'}" data-reveal="card" data-reveal-delay="${index * 90}">
+          <a class="home-selected-project__media" href="${projectHref}" aria-label="View ${escapeHtml(project.title)} project">
+            <img src="${withAssetVersion(selectedProjectImageFor(project, index))}" alt="${escapeHtml(selectedProjectAltFor(project, index))}" loading="lazy" />
+            <span class="home-selected-project__label">${escapeHtml(label)}</span>
+          </a>
+          <div class="home-selected-project__info">
+            <div class="home-selected-project__copy">
+              <h3><a href="${projectHref}">${escapeHtml(project.title)}</a></h3>
+              <p class="home-selected-project__meta">${escapeHtml(selectedProjectMetaFor(project))}</p>
+              ${description}
+            </div>
+            <a class="home-selected-project__link" href="${projectHref}">View project <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      `;
+    };
 
     portfolioSequenceRoot.innerHTML = `
       <section class="portfolio-group portfolio-group--concepts" aria-labelledby="portfolio-concepts-title">
@@ -222,14 +234,17 @@
         </div>
       </section>
 
-      <section class="portfolio-group portfolio-group--completed" aria-labelledby="portfolio-completed-title">
-        <header class="portfolio-group__head" data-reveal="copy">
-          <p class="eyebrow">Real installations</p>
-          <h3 id="portfolio-completed-title">Completed Projects</h3>
-          <p>Real installations fabricated and fitted for clients across London, using made-to-measure porcelain pieces, mitred edges and carefully planned bathroom details.</p>
+      <section class="home-selected-projects" aria-labelledby="home-selected-projects-title">
+        <header class="home-selected-projects__header" data-reveal="copy">
+          <div class="home-selected-projects__intro">
+            <p class="home-selected-projects__eyebrow">Selected Projects</p>
+            <h2 id="home-selected-projects-title">Selected projects</h2>
+            <p>Bespoke porcelain fabrication, large-format tiling and carefully resolved bathroom surfaces across London.</p>
+          </div>
+          <a class="home-selected-projects__all" href="/projects/">Explore all projects <span aria-hidden="true">→</span></a>
         </header>
-        <div class="completed-projects-grid">
-          ${completedProjects.map((project, index) => renderCompletedProject(project, index)).join('')}
+        <div class="home-selected-projects__grid">
+          ${selectedProjects.map((project, index) => renderSelectedProject(project, index)).join('')}
         </div>
       </section>
     `;
