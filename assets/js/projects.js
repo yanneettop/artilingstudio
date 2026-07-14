@@ -275,9 +275,13 @@
         document.body.style.top = `-${scrollY}px`;
         return;
       }
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
       document.body.classList.remove('is-lightbox-open');
       document.body.style.top = '';
-      window.scrollTo(0, scrollY);
+      window.scrollTo({ top: scrollY, left: 0, behavior: 'auto' });
+      root.style.scrollBehavior = previousScrollBehavior;
     };
 
     const setImage = (index) => {
