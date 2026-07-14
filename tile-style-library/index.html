@@ -156,9 +156,9 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../assets/css/styles.css?v=20260708-green-onyx-inspiration" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260714-dropdown-fix" />
   </head>
-  <body>
+  <body class="tile-style-library-body">
     <div class="page-loader" data-page-loader aria-hidden="true">
       <img class="page-loader__mark" src="../assets/images/loader-mark.webp" alt="" width="262" height="360" decoding="async" fetchpriority="high" />
       <span class="page-loader__line"></span>
@@ -236,40 +236,53 @@
     </header>
 
     <main id="top" class="style-library-page">
-      <section class="style-library-hero">
-        <div class="container style-library-hero__grid">
-          <div class="style-library-hero__copy" data-reveal>
-            <p class="eyebrow">Material guide</p>
-            <h1 class="display">Tile &amp; Porcelain Style Library</h1>
-            <p class="lede">
-              Explore common porcelain, stone-effect and tile finishes used in bespoke sinks, bathrooms, wet rooms, feature walls and outdoor surfaces.
-            </p>
-            <p class="style-library-hero__intro">
-              Not sure what style you want? This guide helps you understand different tile and porcelain looks, from Calacatta marble effect and warm travertine to dramatic onyx, terrazzo and textured handmade finishes.
-            </p>
-            <div class="hero__actions">
-              <a href="/quote/" class="btn btn--dark">Request a Quote</a>
-              <a href="/bespoke-porcelain-sinks/" class="btn btn--ghost">View Bespoke Porcelain Sinks<span aria-hidden="true">&nbsp;-&gt;</span></a>
+      <section class="style-library-hero" aria-labelledby="style-library-hero-title">
+        <div class="style-library-hero__stage">
+          <picture class="style-library-hero__visual">
+            <source media="(max-width: 720px)" srcset="/images/tile-styles/material-library-hero-960.webp" />
+            <img
+              src="/images/tile-styles/material-library-hero.webp"
+              width="1536"
+              height="1024"
+              alt="Porcelain and stone-effect tile slabs displayed in warm natural light"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
+          <div class="container style-library-hero__content">
+            <div class="style-library-hero__copy" data-reveal>
+              <p class="style-library-hero__eyebrow">Tile Library &amp; Inspiration</p>
+              <h1 class="display" id="style-library-hero-title" aria-label="Tile and Porcelain Style Library. Ideas start with texture.">
+                Ideas start<br />with <em>texture.</em>
+              </h1>
+              <p class="lede">
+                Explore a curated tile library and find inspiration for every surface, style and space.
+              </p>
+              <a href="#style-library-grid-title" class="style-library-hero__cta">
+                Explore the Library <span aria-hidden="true">-&gt;</span>
+              </a>
             </div>
           </div>
-          <aside class="style-library-hero__panel style-library-starting-points" aria-labelledby="style-library-starting-title" data-reveal data-reveal-delay="100">
-            <h2 id="style-library-starting-title">Best starting points</h2>
-            <div class="style-library-starting-points__list">
-              <button type="button" data-tile-style-filter-trigger="best-for-sinks">
-                <span>01</span>
-                Best for Sinks
-              </button>
-              <button type="button" data-tile-style-filter-trigger="marble-onyx">
-                <span>02</span>
-                Marble &amp; Onyx
-              </button>
-              <button type="button" data-tile-style-filter-trigger="stone-effect">
-                <span>03</span>
-                Stone Effect
-              </button>
-            </div>
-          </aside>
+          <a class="style-library-hero__scroll" href="#style-library-highlights" aria-label="Scroll to library highlights"></a>
         </div>
+        <ul class="style-library-hero__features" id="style-library-highlights" aria-label="Library highlights">
+          <li>
+            <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="13" height="13"/><rect x="23" y="4" width="13" height="13"/><rect x="4" y="23" width="13" height="13"/><rect x="23" y="23" width="13" height="13"/></svg>
+            <span>Curated Tile<br />Collections</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 44 40" aria-hidden="true"><circle cx="16" cy="21" r="12"/><circle cx="28" cy="21" r="12"/><circle cx="22" cy="11" r="10"/></svg>
+            <span>Styles for Every<br />Aesthetic</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 44 40" aria-hidden="true"><path d="M3 20 22 3l19 17"/><path d="M8 17v19h10V25h8v11h10V17"/></svg>
+            <span>Inspiration for<br />Every Space</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 36 42" aria-hidden="true"><path d="M6 3h24v35l-12-8-12 8z"/></svg>
+            <span>Made for Bespoke<br />Surfaces</span>
+          </li>
+        </ul>
       </section>
 
       <section class="style-library-guide" aria-labelledby="style-library-guide-title">
@@ -278,6 +291,9 @@
             <div class="style-library-guide__copy">
               <p class="eyebrow">How to use this guide</p>
               <h2 class="section-title" id="style-library-guide-title">Browse by surface look, colour family and finish.</h2>
+              <p>
+                Not sure what style you want? This guide helps you understand different tile and porcelain looks, from Calacatta marble effect and warm travertine to dramatic onyx, terrazzo and textured handmade finishes.
+              </p>
               <p>
                 Use this guide as a starting point for choosing the surface language of a bathroom, sink or feature wall. When a style feels right, mention it in your quote request or send us an inspiration image.
               </p>
