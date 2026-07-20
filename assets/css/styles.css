@@ -12168,17 +12168,16 @@ html.js-loader .page-loader {
 }
 
 .style-library-guide {
-  padding: clamp(58px, 7vw, 96px) 0 clamp(38px, 6vw, 74px);
+  padding: clamp(58px, 7vw, 96px) 0 0;
 }
 
 .style-library-guide__panel {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: clamp(28px, 5vw, 78px);
-  align-items: start;
+  align-items: center;
   padding: clamp(28px, 4vw, 52px) 0;
   border-top: 1px solid rgba(15, 15, 16, 0.1);
-  border-bottom: 1px solid rgba(15, 15, 16, 0.1);
 }
 
 .style-library-guide__copy p:not(.eyebrow) {
@@ -12252,6 +12251,10 @@ html.js-loader .page-loader {
 .style-library-grid-section .section-head {
   max-width: 980px;
   margin-bottom: clamp(28px, 4vw, 46px);
+}
+
+.style-library-grid-section .style-library-sink-link {
+  margin-top: clamp(48px, 6vw, 92px);
 }
 
 .tile-style-grid {
@@ -13488,15 +13491,16 @@ body.is-tile-style-gallery-open > .view-cursor.view-cursor--zoom {
 
 .style-library-hero {
   display: block;
-  min-height: 0;
+  min-height: 100svh;
+  min-height: 100dvh;
   padding: 0;
   color: var(--bone);
 }
 
 .style-library-hero__stage {
   position: relative;
-  min-height: 100svh;
-  min-height: 100dvh;
+  min-height: calc(100svh - 128px);
+  min-height: calc(100dvh - 128px);
   overflow: hidden;
   isolation: isolate;
   background: #4c443a;
@@ -13551,7 +13555,7 @@ body.is-tile-style-gallery-open > .view-cursor.view-cursor--zoom {
   min-height: inherit;
   max-width: none;
   align-items: center;
-  padding: 82px clamp(78px, 11vw, 190px) 42px;
+  padding: 82px clamp(78px, 11vw, 190px) 42px clamp(220px, 16vw, 330px);
 }
 
 .style-library-page .style-library-hero__copy {
@@ -13732,7 +13736,7 @@ body.is-tile-style-gallery-open > .view-cursor.view-cursor--zoom {
 
 @media (max-width: 1120px) {
   .style-library-page .style-library-hero__content {
-    padding-inline: clamp(56px, 8vw, 90px);
+    padding-inline: clamp(56px, 9vw, 100px) clamp(56px, 11vw, 124px);
   }
 
   .style-library-hero__copy .display {
@@ -13751,8 +13755,8 @@ body.is-tile-style-gallery-open > .view-cursor.view-cursor--zoom {
 
 @media (max-width: 899px) {
   .style-library-hero__stage {
-    min-height: 100svh;
-    min-height: 100dvh;
+    min-height: calc(100svh - 180px);
+    min-height: calc(100dvh - 180px);
   }
 
   .style-library-hero__stage::after {
@@ -13807,8 +13811,8 @@ body.is-tile-style-gallery-open > .view-cursor.view-cursor--zoom {
 
 @media (max-width: 520px) {
   .style-library-hero__stage {
-    min-height: 100svh;
-    min-height: 100dvh;
+    min-height: calc(100svh - 180px);
+    min-height: calc(100dvh - 180px);
   }
 
   .style-library-page .style-library-hero__content {

@@ -91,10 +91,9 @@
       'mauve-stone-statement-bathroom': 'dark',
       'verde-marble-feature-bathroom': 'verde',
     };
-    const conceptTitles = {
-      'soft-stone-double-vanity': 'Floating Porcelain Vanity',
-      'calacatta-gold-bespoke-bathroom': 'Integrated Vanity Sink',
-    };
+    /* Titles come from the portfolio data so the homepage, projects page and
+       lightbox modals all use the same project names. */
+    const conceptTitles = {};
     const conceptDescriptions = {
       'soft-stone-double-vanity': 'A soft stone vanity direction with made-to-measure proportions, floating lines and calm porcelain surface detail.',
       'calacatta-gold-bespoke-bathroom': 'An integrated vanity layout with warm porcelain finishes, storage lines and mitred edge detailing.',

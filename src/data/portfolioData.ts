@@ -400,11 +400,11 @@ export const portfolioData = [
     title: "Calacatta Gold Bespoke Bathroom",
     slug: "calacatta-gold-bespoke-bathroom",
     cover:
-      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp",
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp",
     coverImage:
-      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp",
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp",
     collage:
-      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp",
+      "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp",
     galleryImages: [
       "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-porcelain-vanity-mirror-bathroom.webp",
       "/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-double-basin-vanity-detail.webp",

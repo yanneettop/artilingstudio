@@ -636,9 +636,9 @@
     {
       title: 'Calacatta Gold Bespoke Bathroom',
       slug: 'calacatta-gold-bespoke-bathroom',
-      cover: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp',
-      coverImage: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp',
-      collage: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp',
+      cover: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp',
+      coverImage: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp',
+      collage: '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp',
       galleryImages: [
         '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-porcelain-vanity-mirror-bathroom.webp',
         '/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-double-basin-vanity-detail.webp',

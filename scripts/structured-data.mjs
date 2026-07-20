@@ -151,7 +151,7 @@ const projectItems = [
   {
     name: 'Calacatta Gold Bespoke Bathroom',
     url: `${siteUrl}/projects/#calacatta-gold-bespoke-bathroom`,
-    image: `${siteUrl}/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-bathroom-wide.webp`,
+    image: `${siteUrl}/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp`,
     description:
       'Calacatta Gold porcelain bathroom with large-format wall surfaces, tailored vanity detailing and refined transitions.',
   },
