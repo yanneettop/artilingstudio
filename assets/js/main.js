@@ -105,15 +105,25 @@
       'Porcelain basin study inspired by real fabrication work',
     ];
     const selectedProjectSlugs = [
-      'onyx-frame-porcelain-vanity',
-      'onyx-vein-floating-sink',
       'rose-onyx-porcelain-sinks-large-format-bathroom-tiling',
+      'onyx-frame-porcelain-vanity',
+      'floating-mitred-porcelain-sink',
     ];
-    const selectedProjects = portfolio ? portfolio.getBySlugs(selectedProjectSlugs) : [];
+    const selectedProjectTitles = {
+      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling': 'Rose Onyx Large Format Bathroom',
+      'onyx-frame-porcelain-vanity': 'Onyx Frame Vanity',
+      'floating-mitred-porcelain-sink': 'Floating Mitred Porcelain Sinks',
+    };
+    const selectedProjects = portfolio
+      ? portfolio.getBySlugs(selectedProjectSlugs).map((project) => ({
+          ...project,
+          title: selectedProjectTitles[project.slug] || project.title,
+        }))
+      : [];
     const selectedProjectLabels = {
+      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling': 'Large Format Bathroom',
       'onyx-frame-porcelain-vanity': 'Bespoke Vanity',
-      'onyx-vein-floating-sink': 'Porcelain Fabrication',
-      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling': 'Bathroom Surfaces',
+      'floating-mitred-porcelain-sink': 'Bespoke Sinks',
     };
     const selectedWorkTitles = conceptTitles;
     const selectedWorkDescriptions = conceptDescriptions;
@@ -149,6 +159,23 @@
             : `${project.title} ${imageIndex <= (project.galleryImages || []).length ? 'gallery' : 'detail'} image ${imageIndex}`,
       }));
     };
+    const projectModalGalleryFor = (project) => {
+      const images = project.modalGalleryImages?.length
+        ? project.modalGalleryImages
+        : [
+            project.coverImage || project.cover,
+            ...(project.galleryImages || []),
+            ...(project.detailImages || []),
+          ].filter(Boolean);
+
+      return images.map((src, imageIndex) => ({
+        src: withAssetVersion(src),
+        alt:
+          project.modalImageAlts?.[imageIndex] ||
+          project.imageAlts?.[imageIndex] ||
+          (imageIndex === 0 ? projectAltFor(project) : `${project.title} gallery image ${imageIndex}`),
+      }));
+    };
 
     const renderSelectedWork = (project, index) => `
       <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal="card" data-reveal-delay="${index * 90}">
@@ -181,16 +208,11 @@
       </article>
     `;
 
-    const selectedProjectImageFor = (project, index) => {
-      if (index === 0) return project.galleryImages?.[1] || project.coverImage || project.cover || '';
-      if (index === 2) return project.galleryImages?.[0] || project.coverImage || project.cover || '';
-      return project.coverImage || project.cover || project.galleryImages?.[0] || '';
-    };
-    const selectedProjectAltFor = (project, index) => {
-      if (index === 0) return project.imageAlts?.[2] || projectAltFor(project);
-      if (index === 2) return project.imageAlts?.[1] || projectAltFor(project);
-      return projectAltFor(project);
-    };
+    const selectedProjectImageFor = (project) =>
+      project.coverImage || project.cover || project.galleryImages?.[0] || '';
+    const selectedProjectHoverImageFor = (project) =>
+      project.galleryImages?.[0] || project.coverImage || project.cover || '';
+    const selectedProjectAltFor = (project) => projectAltFor(project);
     const selectedProjectMetaFor = (project) => {
       const parts = [project.scope || project.category || project.descriptor, project.location].filter(Boolean);
       return parts.join(' · ');
@@ -198,7 +220,6 @@
     const selectedProjectDescriptionFor = (project) =>
       project.seoDescription || project.summary || project.descriptor || '';
     const renderSelectedProject = (project, index) => {
-      const projectHref = `/projects/#${encodeURIComponent(project.slug)}`;
       const label = selectedProjectLabels[project.slug] || project.serviceTags?.[0] || project.scope;
       const description = index === 0
         ? `<p class="home-selected-project__description">${escapeHtml(selectedProjectDescriptionFor(project))}</p>`
@@ -206,17 +227,18 @@
 
       return `
         <article class="home-selected-project home-selected-project--${index === 0 ? 'featured' : 'support'}" data-reveal="card" data-reveal-delay="${index * 90}">
-          <a class="home-selected-project__media" href="${projectHref}" aria-label="View ${escapeHtml(project.title)} project">
-            <img src="${withAssetVersion(selectedProjectImageFor(project, index))}" alt="${escapeHtml(selectedProjectAltFor(project, index))}" loading="lazy" />
+          <button class="home-selected-project__media" type="button" data-lightbox-open="${project.slug}" aria-label="Open ${escapeHtml(project.title)} gallery">
+            <img class="home-selected-project__image home-selected-project__image--primary" src="${withAssetVersion(selectedProjectImageFor(project))}" alt="${escapeHtml(selectedProjectAltFor(project))}" loading="lazy" />
+            <img class="home-selected-project__image home-selected-project__image--hover" src="${withAssetVersion(selectedProjectHoverImageFor(project))}" alt="" loading="lazy" aria-hidden="true" />
             <span class="home-selected-project__label">${escapeHtml(label)}</span>
-          </a>
+          </button>
           <div class="home-selected-project__info">
             <div class="home-selected-project__copy">
-              <h3><a href="${projectHref}">${escapeHtml(project.title)}</a></h3>
+              <h3><button type="button" data-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
               <p class="home-selected-project__meta">${escapeHtml(selectedProjectMetaFor(project))}</p>
               ${description}
             </div>
-            <a class="home-selected-project__link" href="${projectHref}">View project <span aria-hidden="true">→</span></a>
+            <button class="home-selected-project__link" type="button" data-lightbox-open="${project.slug}">View project <span aria-hidden="true">→</span></button>
           </div>
         </article>
       `;
@@ -262,6 +284,10 @@
             <div>
               <p class="portfolio-lightbox__kicker" data-lightbox-category></p>
               <h2 data-lightbox-title></h2>
+              <p class="portfolio-lightbox__description" data-lightbox-description hidden></p>
+              <div class="portfolio-lightbox__sections" data-lightbox-sections hidden></div>
+              <div class="portfolio-lightbox__details" data-lightbox-details hidden></div>
+              <ul class="portfolio-lightbox__features" data-lightbox-features hidden></ul>
             </div>
             <button class="portfolio-lightbox__close" type="button" data-lightbox-close aria-label="Close gallery">Close</button>
           </header>
@@ -283,6 +309,10 @@
       const bySlug = new Map(projects.map((project) => [project.slug, project]));
       const titleEl = lightbox.querySelector('[data-lightbox-title]');
       const categoryEl = lightbox.querySelector('[data-lightbox-category]');
+      const descriptionEl = lightbox.querySelector('[data-lightbox-description]');
+      const sectionsEl = lightbox.querySelector('[data-lightbox-sections]');
+      const detailsEl = lightbox.querySelector('[data-lightbox-details]');
+      const featuresEl = lightbox.querySelector('[data-lightbox-features]');
       const imageEl = lightbox.querySelector('[data-lightbox-image]');
       const counterEl = lightbox.querySelector('[data-lightbox-counter]');
       const thumbsEl = lightbox.querySelector('[data-lightbox-thumbs]');
@@ -341,10 +371,48 @@
       const open = (slug, index = 0) => {
         activeProject = bySlug.get(slug);
         if (!activeProject) return;
-        activeImages = projectGalleryFor(activeProject);
+        activeImages = projectModalGalleryFor(activeProject);
         if (!activeImages.length) return;
         titleEl.textContent = activeProject.title;
         categoryEl.textContent = activeProject.category || activeProject.descriptor || activeProject.scope || '';
+        const description = activeProject.fullDescription || '';
+        descriptionEl.textContent = description;
+        descriptionEl.hidden = !description;
+        const sections = activeProject.projectSections || [];
+        sectionsEl.innerHTML = sections
+          .map((section) => `
+            <section class="portfolio-lightbox__section">
+              <h3>${escapeHtml(section.title)}</h3>
+              <p>${escapeHtml(section.body)}</p>
+            </section>
+          `)
+          .join('');
+        sectionsEl.hidden = !sections.length;
+        const detailRows = [
+          ['Material', activeProject.details?.material],
+          ['Work', activeProject.details?.work],
+          ['Detail', activeProject.details?.detail],
+        ].filter(([, value]) => value);
+        detailsEl.innerHTML = detailRows.length
+          ? `
+            <h3>Details</h3>
+            <dl>
+              ${detailRows
+                .map(
+                  ([label, value]) => `
+                <div>
+                  <dt>${escapeHtml(label)}</dt>
+                  <dd>${escapeHtml(value)}</dd>
+                </div>`
+                )
+                .join('')}
+            </dl>
+          `
+          : '';
+        detailsEl.hidden = !detailRows.length;
+        const features = activeProject.features || [];
+        featuresEl.innerHTML = features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join('');
+        featuresEl.hidden = !features.length;
         renderThumbs();
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
@@ -401,7 +469,7 @@
       });
     };
 
-    createPortfolioLightbox(selectedWorksTeaser);
+    createPortfolioLightbox([...selectedWorksTeaser, ...selectedProjects]);
   }
   const revealTargets = document.querySelectorAll('[data-reveal]');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

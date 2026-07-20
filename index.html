@@ -299,7 +299,7 @@
     />
 
     <link rel="preload" as="image" href="/assets/images/hero3-mobile.avif?v=20260625-cropped" type="image/avif" media="(max-width: 767px)" fetchpriority="high" />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=20260714-selected-projects" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=20260720-selected-projects-portrait" />
   </head>
   <body>
     <div class="page-loader" data-page-loader aria-hidden="true">
@@ -526,6 +526,7 @@
             <figure class="sinks__visual" data-reveal="image-left" data-reveal-delay="120">
               <img
                 class="sinks__photo"
+                data-scroll-motion="media"
                 src="./assets/images/Signature/bespoke-porcelain-sink-vanity-unit-london.webp"
                 alt="Bespoke porcelain sink with integrated vanity unit and handleless drawers by Artiling Studio"
                 width="1122"
@@ -643,6 +644,7 @@
                 </figure>
                 <div class="service-card__content">
                   <span class="service-card__num">01</span>
+                  <span class="service-card__feature-label">Signature service</span>
                   <h3>Bespoke porcelain sinks</h3>
                   <p>Made-to-measure basins, vanity tops and integrated sink details designed as part of the room.</p>
                   <span class="service-card__cta">Explore Bespoke Sinks <span aria-hidden="true">&rarr;</span></span>
@@ -697,26 +699,35 @@
       </section>
       <section class="home-material-library" aria-labelledby="home-material-library-title">
         <div class="container">
-          <a href="/tile-style-library/" class="home-material-library__link" data-reveal="card">
-            <figure class="home-material-library__media">
-              <img
-                src="/public/images/tile-styles/material-library-hero.webp"
-                width="1536"
-                height="1024"
-                alt="A curated display of marble, stone and porcelain surface styles"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <div class="home-material-library__copy">
-              <p>Tile &amp; Porcelain Style Library</p>
-              <h2 id="home-material-library-title">Find the surface language for your space.</h2>
-              <div class="home-material-library__body">
-                Explore marble, onyx, travertine and stone-effect porcelain, with guidance on colours, finishes and suitable applications.
-              </div>
-              <span class="home-material-library__cta">Explore the Style Library <span aria-hidden="true">&rarr;</span></span>
+          <div class="home-material-library__intro" data-reveal="copy">
+            <div class="home-material-library__heading">
+              <p class="home-material-library__eyebrow">Material Library</p>
+              <h2 id="home-material-library-title">
+                <span>Find the surface</span>
+                <span>that <em>defines</em> your space.</span>
+              </h2>
             </div>
-          </a>
+            <div class="home-material-library__details">
+              <p class="home-material-library__body">
+                Explore a curated collection of porcelain surfaces, from timeless marble effects to expressive contemporary finishes.
+              </p>
+              <a href="/tile-style-library/" class="home-material-library__cta">
+                Explore the library <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+          <figure class="home-material-library__media" data-reveal="image">
+            <img
+              data-scroll-motion="media"
+              src="/public/images/tile-styles/porcelain-tile-material-library-showroom.webp"
+              width="1535"
+              height="1024"
+              sizes="(max-width: 1260px) calc(100vw - 40px), 1180px"
+              alt="Porcelain and stone-effect tile slabs displayed above a bespoke stone basin in the Artiling Studio material library"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </div>
       </section>
       <!-- ──────────────────────────────────────────────────────────────
@@ -852,6 +863,7 @@
           <figure class="about__visual" data-reveal="image-right">
             <img
               class="about__photo"
+              data-scroll-motion="media"
               src="./assets/images/studio.webp"
               alt="Artiling Studio porcelain samples and bespoke surface drawings"
               width="1086"
@@ -956,6 +968,6 @@
     <script src="./assets/js/tracking.js?v=20260515-step3-1"></script>
     <script src="./assets/js/portfolio-data.js?v=20260426-gallery-refresh-3"></script>
     <script src="./assets/js/email-links.js?v=20260507-mailto-1"></script>
-    <script src="./assets/js/main.js?v=20260714-selected-projects"></script>
+    <script src="./assets/js/main.js?v=20260720-detailed-project-modal"></script>
   </body>
 </html>
