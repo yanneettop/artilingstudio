@@ -56,7 +56,7 @@ const gallery = (slug: string) =>
             ]
           : slug === "invisible-white"
             ? [
-                { src: "/images/tile-styles/inspiration/invisible-white-linear-sink.webp", alt: "Wall-mounted Invisible White porcelain linear sink with mitred apron and twin wall taps", caption: "Bespoke linear porcelain sink" },
+                { src: "/images/tile-styles/inspiration/invisible-white-bespoke-porcelain-sink.webp", alt: "Wall-mounted Invisible White marble-effect porcelain sink with an integrated basin, mitred apron and brushed metal wall tap", caption: "Bespoke Invisible White porcelain sink" },
                 { src: "/images/tile-styles/inspiration/invisible-white-corner-wet-room.webp", alt: "Sloped-roof wet room clad in large-format Invisible White porcelain slabs", caption: "Architectural corner wet room" },
                 { src: "/images/tile-styles/inspiration/invisible-white-waterfall-detail.webp", alt: "Invisible White porcelain waterfall vanity end with mitred corner and recessed drawer", caption: "Waterfall vanity junction" },
               ]
