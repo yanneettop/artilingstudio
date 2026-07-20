@@ -62,7 +62,7 @@ const gallery = (slug: string) =>
               ]
             : slug === "breccia-capraia"
               ? [
-                  { src: "/images/tile-styles/inspiration/breccia-capraia-linear-sink.webp", alt: "Wall-mounted Breccia Capraia porcelain linear sink with burgundy veining and twin wall taps", caption: "Bespoke statement sink" },
+                  { src: "/images/tile-styles/inspiration/breccia-capraia-double-bespoke-porcelain-sink.webp", alt: "Wall-mounted Breccia Capraia marble-effect porcelain double sink with burgundy veining and twin black wall taps", caption: "Bespoke Breccia Capraia double sink" },
                   { src: "/images/tile-styles/inspiration/breccia-capraia-shower-divider.webp", alt: "Freestanding shower divider clad in bookmatched Breccia Capraia porcelain", caption: "Sculptural shower divider" },
                   { src: "/images/tile-styles/inspiration/breccia-capraia-mitred-detail.webp", alt: "Breccia Capraia porcelain sink corner with continuous burgundy vein across mitred edges", caption: "Vein-wrapped mitred corner" },
                 ]
@@ -74,7 +74,7 @@ const gallery = (slug: string) =>
                 ]
               : slug === "fior-di-bosco"
                 ? [
-                    { src: "/images/tile-styles/inspiration/fior-di-bosco-compact-sink.webp", alt: "Compact wall-mounted Fior di Bosco porcelain sink with mitred apron and bronze wall tap", caption: "Compact bespoke sink" },
+                    { src: "/images/tile-styles/inspiration/fior-di-bosco-bespoke-porcelain-sink.webp", alt: "Wall-mounted Fior di Bosco marble-effect porcelain sink with mitred apron, integrated basin and brushed bronze wall tap", caption: "Bespoke Fior di Bosco porcelain sink" },
                     { src: "/images/tile-styles/inspiration/fior-di-bosco-curved-wall.webp", alt: "Bathroom walls, floor and bath surround installed in large-format Fior di Bosco porcelain slabs", caption: "Large-format bathroom installation" },
                     { src: "/images/tile-styles/inspiration/fior-di-bosco-drawer-detail.webp", alt: "Fior di Bosco porcelain vanity drawer with shadow gap and aligned amber vein", caption: "Mitred drawer detail" },
                   ]
