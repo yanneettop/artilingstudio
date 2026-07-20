@@ -156,9 +156,19 @@ const materialRecords: readonly Material[] = [
     colours: ["White", "Charcoal Grey", "Soft Gold"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Shower Panels", "Bathrooms"], finishes: ["Matt", "Polished"], image: "/images/materials/calacatta-macchia-marble-effect-porcelain-slab.webp", imageAlt: "Calacatta Macchia marble-effect porcelain slab with charcoal grey and warm gold veining", relatedMaterials: ["calacatta-gold", "arabescato", "breccia-capraia", "statuario"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Statement sinks & bathrooms",
   }),
   material({
+    id: "calacatta-viola", slug: "calacatta-viola", title: "Calacatta Viola", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Expressive Plum Veining", badge: "Statement Surface",
+    description: "An expressive white marble-effect porcelain with bold plum, charcoal and warm taupe brecciation, designed for sculptural sinks, vanity units and dramatic feature surfaces.",
+    colours: ["White", "Plum", "Charcoal", "Warm Taupe"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathroom Details"], finishes: ["Matt", "Polished"], image: "/images/materials/calacatta-viola-marble-effect-porcelain-slab.webp", imageAlt: "Calacatta Viola marble-effect porcelain slab with a white base and expressive plum charcoal and warm taupe veining", relatedMaterials: ["breccia-capraia", "lux-viola", "calacatta-macchia", "rosso-levanto"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Statement sinks & feature walls",
+  }),
+  material({
     id: "statuario", slug: "statuario", title: "Statuario", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Clean Architectural Marble",
     description: "A bright white marble-effect porcelain with refined cool-grey veining, offering a crisp architectural look for bespoke sinks, vanity units and calm contemporary bathrooms.",
     colours: ["White", "Cool Grey"], applications: ["Bespoke Sinks", "Vanity Units", "Bathrooms", "Feature Walls", "Shower Panels"], finishes: ["Matt", "Polished"], image: "/images/materials/statuario-marble-effect-porcelain-slab.webp", imageAlt: "Statuario marble-effect porcelain slab with a bright white base and cool grey veining", relatedMaterials: ["invisible-white", "arabescato", "calacatta-gold", "calacatta-macchia"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Bathrooms, walls & sinks",
+  }),
+  material({
+    id: "bianco-carrara", slug: "bianco-carrara", title: "Bianco Carrara", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Soft Classic Veining", badge: "Great for Bespoke Sinks",
+    description: "A bright white marble-effect porcelain with soft, feathered grey veining and a calm classical character, ideal for timeless sinks, vanity units and light-filled bathrooms.",
+    colours: ["White", "Soft Grey"], applications: ["Bespoke Sinks", "Vanity Units", "Bathrooms", "Shower Panels", "Feature Walls"], finishes: ["Matt", "Polished"], image: "/images/materials/bianco-carrara-marble-effect-porcelain-slab.webp", imageAlt: "Bianco Carrara marble-effect porcelain slab with a bright white base and soft feathered grey veining", relatedMaterials: ["statuario", "invisible-white", "calacatta-gold", "arabescato"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Timeless sinks & bathrooms",
   }),
   material({
     id: "arabescato", slug: "arabescato", title: "Arabescato", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Expressive Italian Character",
@@ -169,6 +179,21 @@ const materialRecords: readonly Material[] = [
     id: "nero-marquina", slug: "nero-marquina", title: "Nero Marquina", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Dramatic Dark Marble", badge: "Great for Bespoke Sinks",
     description: "A dramatic black marble-effect porcelain crossed by clear white veining, giving bespoke sinks, vanity units and feature walls a strong architectural presence in darker bathrooms.",
     colours: ["Black", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls"], finishes: ["Matt", "Polished"], image: "/images/materials/nero-marquina.webp", imageAlt: "Nero Marquina black marble-effect porcelain surface with white veining", relatedMaterials: ["calacatta-macchia", "arabescato"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Dark sinks, vanities & walls",
+  }),
+  material({
+    id: "verde-alpi", slug: "verde-alpi", title: "Verde Alpi", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Deep Alpine Green", badge: "Statement Surface",
+    description: "A deep green marble-effect porcelain animated by crisp white mineral veining, bringing rich colour and architectural contrast to bespoke sinks, vanities and feature walls.",
+    colours: ["Deep Green", "Forest Green", "White"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Shower Panels"], finishes: ["Matt", "Polished"], image: "/images/materials/verde-alpi-marble-effect-porcelain-slab.webp", imageAlt: "Verde Alpi marble-effect porcelain slab with deep forest green colouring and crisp white veining", relatedMaterials: ["green-onyx", "rosso-levanto", "nero-marquina", "marron-imperial"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Green sinks, vanities & walls",
+  }),
+  material({
+    id: "rosso-levanto", slug: "rosso-levanto", title: "Rosso Levanto", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Rich Burgundy Marble", badge: "Statement Surface",
+    description: "A rich burgundy marble-effect porcelain with fine white and charcoal veining, created for bold sinks, vanity units and high-impact bathroom feature surfaces.",
+    colours: ["Burgundy", "Deep Red", "White", "Charcoal"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathroom Details"], finishes: ["Matt", "Polished"], image: "/images/materials/rosso-levanto-marble-effect-porcelain-slab.webp", imageAlt: "Rosso Levanto marble-effect porcelain slab with a deep burgundy base and fine white charcoal veining", relatedMaterials: ["calacatta-viola", "breccia-capraia", "verde-alpi", "sahara-noir"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Bold sinks & feature surfaces",
+  }),
+  material({
+    id: "marron-imperial", slug: "marron-imperial", title: "Marron Imperial", collection: "Marble Effect", categoryLabel: "Marble Effect Porcelain", subtitle: "Warm Layered Brown", badge: "Great for Bespoke Sinks",
+    description: "A warm brown marble-effect porcelain with layered taupe, cream and pale mineral veining, giving sinks, vanity units and bathrooms a rich, grounded character.",
+    colours: ["Chocolate Brown", "Taupe", "Cream", "Soft Gold"], applications: ["Bespoke Sinks", "Vanity Units", "Bathrooms", "Feature Walls"], finishes: ["Matt", "Polished"], image: "/images/materials/marron-imperial-marble-effect-porcelain-slab.webp", imageAlt: "Marron Imperial marble-effect porcelain slab with warm brown taupe cream and pale mineral veining", relatedMaterials: ["fior-di-bosco", "taj-mahal", "verde-alpi", "sahara-noir"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Warm sinks, vanities & bathrooms",
   }),
   material({
     id: "green-onyx", slug: "green-onyx", title: "Green Onyx", collection: "Onyx Effect", categoryLabel: "Onyx Effect Porcelain", subtitle: "Statement Green Surfaces", badge: "Great for Bespoke Sinks",
@@ -231,6 +256,11 @@ const materialRecords: readonly Material[] = [
     colours: ["White", "Soft Grey"], applications: ["Bespoke Sinks", "Vanity Units", "Feature Walls", "Bathrooms", "Shower Panels"], finishes: ["Matt", "Polished"], image: "/images/materials/invisible-white-marble-effect-porcelain-slab.webp", imageAlt: "Invisible White marble-effect porcelain slab with angular soft grey veining", relatedMaterials: ["statuario", "arabescato", "calacatta-gold", "calacatta-macchia"], filterGroups: ["best-for-sinks", "marble-onyx"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Elegant sinks & bathrooms",
   }),
   material({
+    id: "taj-mahal", slug: "taj-mahal", title: "Taj Mahal", collection: "Quartzite Effect", categoryLabel: "Quartzite-Effect Porcelain", subtitle: "Soft Warm Quartzite", badge: "Great for Bespoke Sinks",
+    description: "A softly layered quartzite-effect porcelain in ivory, cream and warm beige, with gentle linear movement suited to serene sinks, vanity units and understated bathrooms.",
+    colours: ["Ivory", "Cream", "Warm Beige", "Soft Grey"], applications: ["Bespoke Sinks", "Vanity Units", "Bathrooms", "Feature Walls"], finishes: ["Matt", "Polished"], image: "/images/materials/taj-mahal-quartzite-effect-porcelain-slab.webp", imageAlt: "Taj Mahal quartzite-effect porcelain slab with soft ivory cream and warm beige linear movement", relatedMaterials: ["patagonia", "classic-travertine", "ivory-limestone", "marron-imperial"], filterGroups: ["best-for-sinks", "stone-effect"], sinkSuitability: "great", sinkSuitabilityLabel: "Great for bespoke sinks", recommendedUseShort: "Warm sinks, vanities & bathrooms",
+  }),
+  material({
     id: "patagonia", slug: "patagonia", title: "Patagonia", collection: "Quartzite Effect", categoryLabel: "Quartzite-Effect Porcelain", subtitle: "Sculptural Crystal-Like Stone", badge: "Statement Surface",
     description: "A warm quartzite-effect porcelain combining ivory crystalline forms, amber mineral tones and small dark accents for striking vanity units, feature walls and statement bathroom details.",
     colours: ["Ivory", "Cream", "Amber", "Brown", "Black"], applications: ["Vanity Units", "Feature Walls", "Bespoke Sinks", "Bathroom Details"], finishes: ["Matt", "Polished"], image: "/images/materials/patagonia-quartzite-effect-porcelain-slab.webp", imageAlt: "Patagonia quartzite-effect porcelain slab with ivory crystal forms, amber tones and dark mineral accents", relatedMaterials: ["breccia-capraia", "calacatta-macchia", "fior-di-bosco", "sahara-noir"], filterGroups: ["stone-effect", "marble-onyx"], sinkSuitability: "possible", sinkSuitabilityLabel: "Suitable for selected sinks", recommendedUseShort: "Statement vanities & walls",
@@ -279,13 +309,18 @@ const collectionOrder = [
 const marbleEffectOrder = [
   "calacatta-gold",
   "calacatta-macchia",
+  "calacatta-viola",
   "statuario",
+  "bianco-carrara",
   "arabescato",
   "invisible-white",
   "breccia-capraia",
   "lux-viola",
   "fior-di-bosco",
+  "verde-alpi",
+  "marron-imperial",
   "nero-marquina",
+  "rosso-levanto",
   "sahara-noir",
 ] as const;
 
