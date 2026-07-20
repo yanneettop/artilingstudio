@@ -29,8 +29,46 @@ export type Material = {
   recommendedUseShort: string;
 };
 
+const generatedGalleries: Readonly<Record<string, MaterialImage[]>> = {
+  "calacatta-viola": [
+    { src: "/images/tile-styles/inspiration/calacatta-viola-bespoke-vanity.webp", alt: "Calacatta Viola marble-effect porcelain wall-mounted vanity with integrated basin and plum veining", caption: "Sculptural Calacatta Viola vanity" },
+    { src: "/images/tile-styles/inspiration/calacatta-viola-bookmatched-bathroom.webp", alt: "Luxury bathroom with a bookmatched Calacatta Viola porcelain feature wall, freestanding bath and walk-in shower", caption: "Bookmatched statement bathroom" },
+    { src: "/images/tile-styles/inspiration/calacatta-viola-mitred-detail.webp", alt: "Close view of a Calacatta Viola porcelain vanity with continuous plum veining across a precise mitred edge", caption: "Vein-wrapped mitred detail" },
+  ],
+  "bianco-carrara": [
+    { src: "/images/tile-styles/inspiration/bianco-carrara-bespoke-sink.webp", alt: "Wall-mounted Bianco Carrara marble-effect porcelain trough sink with integrated basin and soft grey veining", caption: "Bespoke Bianco Carrara sink" },
+    { src: "/images/tile-styles/inspiration/bianco-carrara-light-bathroom.webp", alt: "Light-filled bathroom clad in large-format Bianco Carrara porcelain around a walk-in shower and freestanding bath", caption: "Light-filled Carrara bathroom" },
+    { src: "/images/tile-styles/inspiration/bianco-carrara-mitred-detail.webp", alt: "Close view of a Bianco Carrara porcelain vanity corner with a precise mitred edge and soft grey vein continuity", caption: "Carrara mitred edge detail" },
+  ],
+  "verde-alpi": [
+    { src: "/images/tile-styles/inspiration/verde-alpi-bespoke-sink.webp", alt: "Wall-mounted Verde Alpi marble-effect porcelain sink with integrated basin, white veining and brass wall tap", caption: "Bespoke Verde Alpi sink" },
+    { src: "/images/tile-styles/inspiration/verde-alpi-bookmatched-bathroom.webp", alt: "Luxury bathroom with a bookmatched Verde Alpi porcelain feature wall, walk-in shower and freestanding bath", caption: "Bookmatched green bathroom" },
+    { src: "/images/tile-styles/inspiration/verde-alpi-mitred-detail.webp", alt: "Close view of a Verde Alpi porcelain sink with white veins continuing across a precise mitred corner", caption: "Vein-aligned sink detail" },
+  ],
+  "rosso-levanto": [
+    { src: "/images/tile-styles/inspiration/rosso-levanto-bespoke-porcelain-sink.webp", alt: "Wall-mounted Rosso Levanto marble-effect porcelain sink with integrated basin, white veining and brass wall tap", caption: "Bespoke Rosso Levanto sink" },
+    { src: "/images/tile-styles/inspiration/rosso-levanto-bookmatched-bathroom.webp", alt: "Contemporary bathroom with a bookmatched Rosso Levanto porcelain shower wall and freestanding bath", caption: "Bookmatched burgundy bathroom" },
+    { src: "/images/tile-styles/inspiration/rosso-levanto-mitred-vanity-detail.webp", alt: "Close view of a Rosso Levanto porcelain vanity with white veins aligned across a polished mitred corner", caption: "Mitred burgundy vanity detail" },
+  ],
+  "marron-imperial": [
+    { src: "/images/tile-styles/inspiration/marron-imperial-floating-porcelain-vanity.webp", alt: "Floating Marron Imperial marble-effect porcelain vanity with integrated basin and warm mineral veining", caption: "Floating Marron Imperial vanity" },
+    { src: "/images/tile-styles/inspiration/marron-imperial-large-format-spa-bathroom.webp", alt: "Spa bathroom clad in large-format Marron Imperial porcelain across the shower walls and floor", caption: "Large-format brown spa bathroom" },
+    { src: "/images/tile-styles/inspiration/marron-imperial-mitred-sink-detail.webp", alt: "Close view of a Marron Imperial porcelain sink with amber and white veins continuing across a mitred edge", caption: "Warm vein-wrapped corner" },
+  ],
+  "ceppo-di-gre": [
+    { src: "/images/tile-styles/inspiration/ceppo-di-gre-double-trough-sink.webp", alt: "Wall-mounted Ceppo di Gre stone-effect porcelain double trough sink with brushed steel wall taps", caption: "Architectural double trough sink" },
+    { src: "/images/tile-styles/inspiration/ceppo-di-gre-large-format-wet-room.webp", alt: "Minimal wet room clad in large-format Ceppo di Gre porcelain with integrated bench and recessed niche", caption: "Large-format aggregate wet room" },
+    { src: "/images/tile-styles/inspiration/ceppo-di-gre-mitred-bench-detail.webp", alt: "Close view of a Ceppo di Gre porcelain bench with aggregate pattern and precise mitred corner joints", caption: "Mitred aggregate bench detail" },
+  ],
+  "warm-concrete": [
+    { src: "/images/tile-styles/inspiration/warm-concrete-floating-linear-sink.webp", alt: "Floating warm concrete-effect porcelain linear sink with integrated basin and black wall tap", caption: "Monolithic floating sink" },
+    { src: "/images/tile-styles/inspiration/warm-concrete-minimal-wet-room.webp", alt: "Minimal wet room clad in large-format warm concrete-effect porcelain with bench and shower niche", caption: "Seamless-look concrete wet room" },
+    { src: "/images/tile-styles/inspiration/warm-concrete-mitred-vanity-detail.webp", alt: "Close view of a warm concrete-effect porcelain vanity with precise mitred edge and shadow-gap drawer", caption: "Warm concrete mitred detail" },
+  ],
+};
+
 const gallery = (slug: string) =>
-  slug === "calacatta-gold"
+  generatedGalleries[slug] ?? (slug === "calacatta-gold"
     ? [
         { src: "/images/tile-styles/inspiration/calacatta-marble-bespoke-vanity.webp", alt: "Calacatta Gold marble-effect porcelain floating vanity with integrated basin and mitred edges", caption: "Bespoke marble-effect vanity" },
         { src: "/images/tile-styles/inspiration/calacatta-marble-feature-wall.webp", alt: "Calacatta Gold marble-effect porcelain feature wall with freestanding bath", caption: "Large-format feature wall" },
@@ -138,7 +176,7 @@ const gallery = (slug: string) =>
                 { src: "/images/tile-styles/inspiration/travertine-curved-wet-room.webp", alt: "Classic Travertine travertine-inspired porcelain curved wet room with integrated bench", caption: "Curved wet-room architecture" },
                 { src: "/images/tile-styles/inspiration/travertine-outdoor-terrace.webp", alt: "Classic Travertine travertine-inspired porcelain outdoor terrace with large-format slabs", caption: "Outdoor terrace and steps" },
               ]
-            : undefined;
+            : undefined);
 
 const material = (
   record: Omit<Material, "inspirationImages"> & { inspirationImages?: MaterialImage[] },
