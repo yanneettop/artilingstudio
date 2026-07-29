@@ -34,11 +34,14 @@ Then open http://localhost:8080.
 2. In Cloudflare Pages, connect the repo.
 3. Build settings:
    - **Framework preset:** None
-   - **Build command:** *(leave empty)*
-   - **Build output directory:** `/`
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
 4. Deploy.
 
-Clean URLs (e.g. `/projects`) resolve automatically via `projects/index.html`.
+The production build copies the static routes and assets into `dist`, minifies
+CSS and JavaScript, and includes Cloudflare Pages `_headers`, `_redirects`, and
+the custom `404.html`. Clean URLs (e.g. `/projects`) resolve through each
+route's `index.html`.
 
 ## Quote form backend setup
 

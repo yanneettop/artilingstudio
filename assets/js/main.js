@@ -49,11 +49,19 @@
     closeBtn.innerHTML = '<span></span><span></span>';
     mobileMenu.prepend(closeBtn);
 
-    const setMenu = (open) => {
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const setMenu = (open, restoreFocus = false) => {
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      mobileMenu.inert = !open;
       document.body.classList.toggle('is-menu-open', open);
       closeBtn.tabIndex = open ? 0 : -1;
+      if (open) {
+        window.setTimeout(() => closeBtn.focus({ preventScroll: true }), 50);
+      } else if (restoreFocus) {
+        menuBtn.focus({ preventScroll: true });
+      }
     };
 
     menuBtn.addEventListener('click', () => {
@@ -61,7 +69,7 @@
       setMenu(!open);
     });
 
-    closeBtn.addEventListener('click', () => setMenu(false));
+    closeBtn.addEventListener('click', () => setMenu(false, true));
 
     mobileMenu.querySelectorAll('a').forEach((a) =>
       a.addEventListener('click', () => setMenu(false))
@@ -69,7 +77,25 @@
 
     // Close on escape
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setMenu(false);
+      if (menuBtn.getAttribute('aria-expanded') !== 'true') return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMenu(false, true);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const focusable = [...mobileMenu.querySelectorAll(focusableSelector)]
+        .filter((element) => !element.hasAttribute('disabled'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
 
     setMenu(false);
@@ -276,13 +302,14 @@
       lightbox.setAttribute('aria-hidden', 'true');
       lightbox.setAttribute('role', 'dialog');
       lightbox.setAttribute('aria-modal', 'true');
+      lightbox.setAttribute('aria-labelledby', 'homepage-project-lightbox-title');
       lightbox.innerHTML = `
         <div class="portfolio-lightbox__backdrop" data-lightbox-close></div>
         <div class="portfolio-lightbox__dialog" role="document">
           <header class="portfolio-lightbox__header">
             <div>
               <p class="portfolio-lightbox__kicker" data-lightbox-category></p>
-              <h2 data-lightbox-title></h2>
+              <h2 id="homepage-project-lightbox-title" data-lightbox-title></h2>
               <p class="portfolio-lightbox__description" data-lightbox-description hidden></p>
               <div class="portfolio-lightbox__sections" data-lightbox-sections hidden></div>
               <div class="portfolio-lightbox__details" data-lightbox-details hidden></div>
@@ -322,6 +349,8 @@
       let activeIndex = 0;
       let scrollY = 0;
       let touchStartX = 0;
+      let activeTrigger = null;
+      const lightboxFocusable = 'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])';
 
       const setBodyLock = (locked) => {
         if (locked) {
@@ -367,7 +396,7 @@
           .join('');
       };
 
-      const open = (slug, index = 0) => {
+      const open = (slug, index = 0, trigger = null) => {
         activeProject = bySlug.get(slug);
         if (!activeProject) return;
         activeImages = projectModalGalleryFor(activeProject);
@@ -412,12 +441,13 @@
         const features = activeProject.features || [];
         featuresEl.innerHTML = features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join('');
         featuresEl.hidden = !features.length;
+        activeTrigger = trigger;
         renderThumbs();
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         setBodyLock(true);
         setImage(index);
-        closeBtn.focus({ preventScroll: true });
+        window.setTimeout(() => closeBtn.focus({ preventScroll: true }), 50);
       };
 
       const close = () => {
@@ -426,13 +456,15 @@
         lightbox.setAttribute('aria-hidden', 'true');
         imageEl.removeAttribute('src');
         setBodyLock(false);
+        if (activeTrigger?.isConnected) activeTrigger.focus({ preventScroll: true });
+        activeTrigger = null;
       };
 
       portfolioSequenceRoot.addEventListener('click', (event) => {
         const trigger = event.target.closest('[data-lightbox-open]');
         if (!trigger) return;
         event.preventDefault();
-        open(trigger.dataset.lightboxOpen, Number(trigger.dataset.lightboxIndex || 0));
+        open(trigger.dataset.lightboxOpen, Number(trigger.dataset.lightboxIndex || 0), trigger);
       });
 
       imageEl.addEventListener('load', () => imageEl.classList.add('is-loaded'));
@@ -456,7 +488,25 @@
       }, { passive: true });
       document.addEventListener('keydown', (event) => {
         if (!lightbox.classList.contains('is-open')) return;
-        if (event.key === 'Escape') close();
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          close();
+          return;
+        }
+        if (event.key === 'Tab') {
+          const focusable = [...lightbox.querySelectorAll(lightboxFocusable)];
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+          return;
+        }
         if (event.key === 'ArrowLeft') {
           event.preventDefault();
           setImage(activeIndex - 1);
@@ -747,6 +797,7 @@
         clone.removeEventListener('transitionend', remove);
         overlay.remove();
         document.body.classList.remove('is-sink-zoom-open');
+        if (source?.isConnected) source.focus({ preventScroll: true });
       };
       clone.addEventListener('transitionend', remove);
       window.setTimeout(remove, zoomDuration + 120);
@@ -758,6 +809,8 @@
       overlay.className = 'sink-zoom';
       overlay.setAttribute('role', 'dialog');
       overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', 'Expanded project image. Press Escape to close.');
+      overlay.tabIndex = -1;
 
       const backdrop = document.createElement('div');
       backdrop.className = 'sink-zoom__backdrop';
@@ -790,6 +843,7 @@
       requestAnimationFrame(() => {
         overlay.classList.add('is-open');
         applyRect(clone, getFinalRect(source));
+        overlay.focus({ preventScroll: true });
       });
     };
 

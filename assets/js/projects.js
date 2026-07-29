@@ -222,13 +222,14 @@
     lightbox.setAttribute('aria-hidden', 'true');
     lightbox.setAttribute('role', 'dialog');
     lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-labelledby', 'projects-lightbox-title');
     lightbox.innerHTML = `
       <div class="portfolio-lightbox__backdrop" data-project-lightbox-close></div>
       <div class="portfolio-lightbox__dialog" role="document">
         <header class="portfolio-lightbox__header">
           <div>
             <p class="portfolio-lightbox__kicker" data-project-lightbox-category></p>
-            <h2 data-project-lightbox-title></h2>
+            <h2 id="projects-lightbox-title" data-project-lightbox-title></h2>
             <p class="portfolio-lightbox__description" data-project-lightbox-description hidden></p>
             <div class="portfolio-lightbox__sections" data-project-lightbox-sections hidden></div>
             <div class="portfolio-lightbox__details" data-project-lightbox-details hidden></div>
@@ -267,6 +268,8 @@
     let activeIndex = 0;
     let scrollY = 0;
     let touchStartX = 0;
+    let activeTrigger = null;
+    const lightboxFocusable = 'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])';
 
     const setBodyLock = (locked) => {
       if (locked) {
@@ -312,7 +315,7 @@
         .join('');
     };
 
-    const open = (slug, index = 0) => {
+    const open = (slug, index = 0, trigger = null) => {
       const project = bySlug.get(slug);
       if (!project) return;
       activeImages = projectModalGalleryFor(project);
@@ -357,12 +360,13 @@
       const features = project.features || [];
       featuresEl.innerHTML = features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join('');
       featuresEl.hidden = !features.length;
+      activeTrigger = trigger;
       renderThumbs();
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
       setBodyLock(true);
       setImage(index);
-      closeBtn.focus({ preventScroll: true });
+      window.setTimeout(() => closeBtn.focus({ preventScroll: true }), 50);
     };
 
     const close = () => {
@@ -371,13 +375,15 @@
       lightbox.setAttribute('aria-hidden', 'true');
       imageEl.removeAttribute('src');
       setBodyLock(false);
+      if (activeTrigger?.isConnected) activeTrigger.focus({ preventScroll: true });
+      activeTrigger = null;
     };
 
     document.addEventListener('click', (event) => {
       const trigger = event.target.closest('[data-project-lightbox-open]');
       if (!trigger) return;
       event.preventDefault();
-      open(trigger.dataset.projectLightboxOpen, Number(trigger.dataset.projectLightboxIndex || 0));
+      open(trigger.dataset.projectLightboxOpen, Number(trigger.dataset.projectLightboxIndex || 0), trigger);
     });
 
     imageEl.addEventListener('load', () => imageEl.classList.add('is-loaded'));
@@ -401,7 +407,25 @@
     }, { passive: true });
     document.addEventListener('keydown', (event) => {
       if (!lightbox.classList.contains('is-open')) return;
-      if (event.key === 'Escape') close();
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key === 'Tab') {
+        const focusable = [...lightbox.querySelectorAll(lightboxFocusable)];
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+        return;
+      }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         setImage(activeIndex - 1);
