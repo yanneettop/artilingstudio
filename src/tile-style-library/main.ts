@@ -71,15 +71,82 @@ if (grid) {
   const related = gallery.querySelector<HTMLElement>("[data-material-related]");
   const relatedList = gallery.querySelector<HTMLElement>("[data-material-related-list]");
   let lastTrigger: HTMLElement | null = null;
-  let previousBodyOverflow = "";
-  let galleryScrollY = 0;
+  let savedPageScrollY: number | null = null;
+  let previousRootScrollBehavior = "";
+  let previousBodyStyles: Partial<Record<"position" | "top" | "left" | "right" | "width" | "overflow" | "paddingRight", string>> = {};
   const focusableSelector = "button:not([disabled]), a[href], [tabindex]:not([tabindex=\"-1\"])";
 
-  const closeGallery = () => { if (zoom.classList.contains("is-open")) closeZoom(); gallery.classList.remove("is-open"); gallery.setAttribute("aria-hidden", "true"); document.body.classList.remove("is-tile-style-gallery-open"); document.body.style.overflow = previousBodyOverflow; document.body.style.removeProperty("top"); window.scrollTo(0, galleryScrollY); lastTrigger?.focus({ preventScroll: true }); };
+  const lockPageScroll = () => {
+    if (savedPageScrollY !== null) return;
+    savedPageScrollY = window.scrollY;
+    previousRootScrollBehavior = document.documentElement.style.scrollBehavior;
+    previousBodyStyles = {
+      position: document.body.style.position,
+      top: document.body.style.top,
+      left: document.body.style.left,
+      right: document.body.style.right,
+      width: document.body.style.width,
+      overflow: document.body.style.overflow,
+      paddingRight: document.body.style.paddingRight,
+    };
+    const scrollbarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+    const bodyPaddingRight = Number.parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
+    document.body.classList.add("is-tile-style-gallery-open");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${savedPageScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) document.body.style.paddingRight = `${bodyPaddingRight + scrollbarWidth}px`;
+  };
+
+  const unlockPageScroll = () => {
+    if (savedPageScrollY === null) return;
+    const restoreScrollY = savedPageScrollY;
+    document.documentElement.style.scrollBehavior = "auto";
+    document.body.classList.remove("is-tile-style-gallery-open");
+    document.body.style.position = previousBodyStyles.position ?? "";
+    document.body.style.top = previousBodyStyles.top ?? "";
+    document.body.style.left = previousBodyStyles.left ?? "";
+    document.body.style.right = previousBodyStyles.right ?? "";
+    document.body.style.width = previousBodyStyles.width ?? "";
+    document.body.style.overflow = previousBodyStyles.overflow ?? "";
+    document.body.style.paddingRight = previousBodyStyles.paddingRight ?? "";
+    void document.documentElement.offsetHeight;
+    window.scrollTo(0, restoreScrollY);
+    document.documentElement.style.scrollBehavior = previousRootScrollBehavior;
+    savedPageScrollY = null;
+    previousBodyStyles = {};
+    previousRootScrollBehavior = "";
+  };
+
+  const resetGalleryScroll = () => {
+    if (!dialog) return;
+    dialog.scrollTop = 0;
+    requestAnimationFrame(() => {
+      dialog.scrollTop = 0;
+    });
+  };
+
+  const closeGallery = () => {
+    if (!gallery.classList.contains("is-open")) return;
+    if (zoom.classList.contains("is-open")) closeZoom();
+    gallery.classList.remove("is-open");
+    gallery.setAttribute("aria-hidden", "true");
+    if (dialog) dialog.scrollTop = 0;
+    unlockPageScroll();
+    if (lastTrigger?.isConnected) lastTrigger.focus({ preventScroll: true });
+    lastTrigger = null;
+  };
   const openGallery = (slug: string, trigger: HTMLElement) => {
     const material = cards.find((item) => item.slug === slug);
     if (!material?.inspirationImages?.length || !dialog || !galleryTitle || !galleryGrid || !description || !colours || !applications || !finishes || !badge || !cta || !related || !relatedList) return;
-    lastTrigger = trigger;
+    const isAlreadyOpen = gallery.classList.contains("is-open");
+    if (!isAlreadyOpen) {
+      lastTrigger = trigger;
+      lockPageScroll();
+    }
     galleryTitle.textContent = material.title;
     description.textContent = material.modalDescription ?? material.description;
     colours.textContent = material.colours.join(" / ");
@@ -92,11 +159,10 @@ if (grid) {
     const similar = (material.relatedMaterials ?? []).map((slug) => cards.find((item) => item.slug === slug)).filter((item): item is Material => Boolean(item));
     related.hidden = similar.length === 0;
     relatedList.innerHTML = similar.map((item) => `<button type="button" class="tile-style-gallery__related-link" data-tile-style-gallery="${item.slug}">${escapeHtml(item.title)}</button>`).join("");
-    previousBodyOverflow = document.body.style.overflow;
-    galleryScrollY = window.scrollY;
-    document.body.style.overflow = "hidden";
-    document.body.style.top = `-${galleryScrollY}px`;
-    gallery.classList.add("is-open"); gallery.setAttribute("aria-hidden", "false"); document.body.classList.add("is-tile-style-gallery-open");
+    resetGalleryScroll();
+    gallery.classList.add("is-open");
+    gallery.setAttribute("aria-hidden", "false");
+    resetGalleryScroll();
     window.setTimeout(() => gallery.querySelector<HTMLButtonElement>(".tile-style-gallery__close")?.focus({ preventScroll: true }), 50);
   };
 
