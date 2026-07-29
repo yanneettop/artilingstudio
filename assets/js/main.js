@@ -62,14 +62,17 @@
     };
 
     if (mobileNav) {
-      const servicesAreCurrent = serviceLinks.some(([, href]) => currentPath === href);
+      const servicesInitiallyExpanded = true;
       mobileNav.innerHTML = `
         <div class="mobile-menu__primary">${primaryLinks.map((link) => linkMarkup(link)).join('')}</div>
         <div class="mobile-menu__services">
-          <button class="mobile-menu__services-toggle" type="button" aria-expanded="${servicesAreCurrent}" aria-controls="mobile-menu-services">
-            <span>Services</span><span class="mobile-menu__services-icon" aria-hidden="true"></span>
-          </button>
-          <div class="mobile-menu__services-list" id="mobile-menu-services"${servicesAreCurrent ? '' : ' hidden'}>
+          <div class="mobile-menu__services-header">
+            ${linkMarkup(['Services', '/services/'], 'mobile-menu__services-overview')}
+            <button class="mobile-menu__services-toggle" type="button" aria-label="Hide service links" aria-expanded="${servicesInitiallyExpanded}" aria-controls="mobile-menu-services">
+              <span class="mobile-menu__services-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="mobile-menu__services-list" id="mobile-menu-services"${servicesInitiallyExpanded ? '' : ' hidden'}>
             ${serviceLinks.map((link) => linkMarkup(link)).join('')}
           </div>
         </div>
@@ -94,6 +97,7 @@
     servicesToggle?.addEventListener('click', () => {
       const expanded = servicesToggle.getAttribute('aria-expanded') === 'true';
       servicesToggle.setAttribute('aria-expanded', String(!expanded));
+      servicesToggle.setAttribute('aria-label', expanded ? 'Show service links' : 'Hide service links');
       if (servicesList) servicesList.hidden = expanded;
     });
 

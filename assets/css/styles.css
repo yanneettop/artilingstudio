@@ -4281,21 +4281,35 @@ body.is-menu-open {
     border-bottom: 1px solid var(--line);
   }
 
+  .mobile-menu__services-header {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .mobile-menu nav a.mobile-menu__services-overview {
+    display: flex;
+    min-height: 52px;
+    flex: 1 1 auto;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 0;
+    font-family: var(--serif);
+    font-size: clamp(21px, 6vw, 26px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.08;
+    text-transform: none;
+  }
+
   .mobile-menu__services-toggle {
     display: flex;
-    width: 100%;
-    min-height: 48px;
+    width: 52px;
+    min-height: 52px;
+    flex: 0 0 52px;
     align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
+    justify-content: flex-end;
+    padding: 0;
     color: var(--ink-deep);
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    line-height: 1.4;
-    text-align: left;
-    text-transform: uppercase;
   }
 
   .mobile-menu__services-icon {
