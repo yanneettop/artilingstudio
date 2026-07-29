@@ -41,6 +41,42 @@
   const mobileMenu = document.querySelector('[data-mobile-menu]');
 
   if (menuBtn && mobileMenu) {
+    const mobileNav = mobileMenu.querySelector('nav');
+    const currentPath = `${window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/+$/, '') || '/'}/`.replace('//', '/');
+    const primaryLinks = [
+      ['Home', '/'],
+      ['Projects', '/projects/'],
+      ['Tile Style Library', '/tile-style-library/'],
+      ['Contact', '/contact/'],
+    ];
+    const serviceLinks = [
+      ['Bespoke Porcelain Sinks', '/bespoke-porcelain-sinks/'],
+      ['Large Format Tiling', '/large-format-tiling-london/'],
+      ['Wet Rooms & Bathroom Tiling', '/wet-rooms-bathroom-tiling/'],
+      ['Porcelain Fabrication', '/porcelain-fabrication-london/'],
+      ['Microcement Alternative', '/microcement-alternative-london/'],
+    ];
+    const linkMarkup = ([label, href], className = '') => {
+      const isCurrent = currentPath === href;
+      return `<a href="${href}"${className ? ` class="${className}"` : ''}${isCurrent ? ' aria-current="page"' : ''}>${label}</a>`;
+    };
+
+    if (mobileNav) {
+      const servicesAreCurrent = serviceLinks.some(([, href]) => currentPath === href);
+      mobileNav.innerHTML = `
+        <div class="mobile-menu__primary">${primaryLinks.map((link) => linkMarkup(link)).join('')}</div>
+        <div class="mobile-menu__services">
+          <button class="mobile-menu__services-toggle" type="button" aria-expanded="${servicesAreCurrent}" aria-controls="mobile-menu-services">
+            <span>Services</span><span class="mobile-menu__services-icon" aria-hidden="true"></span>
+          </button>
+          <div class="mobile-menu__services-list" id="mobile-menu-services"${servicesAreCurrent ? '' : ' hidden'}>
+            ${serviceLinks.map((link) => linkMarkup(link)).join('')}
+          </div>
+        </div>
+        ${linkMarkup(['Start a Bespoke Sink Enquiry', '/quote/'], 'btn btn--dark mobile-menu__cta')}
+      `;
+    }
+
     const closeBtn = document.createElement('button');
     closeBtn.className = 'mobile-menu__close';
     closeBtn.type = 'button';
@@ -50,6 +86,16 @@
     mobileMenu.prepend(closeBtn);
 
     const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const servicesToggle = mobileMenu.querySelector('.mobile-menu__services-toggle');
+    const servicesList = mobileMenu.querySelector('.mobile-menu__services-list');
+    let menuScrollY = 0;
+    let menuIsOpen = false;
+
+    servicesToggle?.addEventListener('click', () => {
+      const expanded = servicesToggle.getAttribute('aria-expanded') === 'true';
+      servicesToggle.setAttribute('aria-expanded', String(!expanded));
+      if (servicesList) servicesList.hidden = expanded;
+    });
 
     const setMenu = (open, restoreFocus = false) => {
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -58,9 +104,15 @@
       document.body.classList.toggle('is-menu-open', open);
       closeBtn.tabIndex = open ? 0 : -1;
       if (open) {
+        menuScrollY = window.scrollY;
+        menuIsOpen = true;
+        document.body.style.top = `-${menuScrollY}px`;
         window.setTimeout(() => closeBtn.focus({ preventScroll: true }), 50);
-      } else if (restoreFocus) {
-        menuBtn.focus({ preventScroll: true });
+      } else if (menuIsOpen) {
+        menuIsOpen = false;
+        document.body.style.removeProperty('top');
+        window.scrollTo(0, menuScrollY);
+        if (restoreFocus) menuBtn.focus({ preventScroll: true });
       }
     };
 
@@ -85,7 +137,7 @@
       }
       if (e.key !== 'Tab') return;
       const focusable = [...mobileMenu.querySelectorAll(focusableSelector)]
-        .filter((element) => !element.hasAttribute('disabled'));
+        .filter((element) => !element.hasAttribute('disabled') && !element.closest('[hidden]'));
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -634,7 +686,9 @@
      5. Hero parallax
   ─────────────────────────────────────────────── */
   const parallaxTargets = document.querySelectorAll('.hero__parallax-bg, [data-parallax-bg]');
-  if (parallaxTargets.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const mobileHero = window.matchMedia('(max-width: 767px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (parallaxTargets.length && !mobileHero.matches && !reducedMotion.matches) {
     let ticking = false;
 
     const updateParallax = () => {
@@ -660,6 +714,11 @@
     }, { passive: true });
 
     updateParallax();
+  } else {
+    parallaxTargets.forEach((target) => {
+      target.style.removeProperty('transform');
+      target.style.setProperty('--parallax-y', '0px');
+    });
   }
 
   /* ──────────────────────────────────────────────

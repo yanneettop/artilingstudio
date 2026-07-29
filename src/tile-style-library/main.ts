@@ -36,18 +36,18 @@ if (grid) {
   const gallery = document.createElement("div");
   gallery.className = "tile-style-gallery";
   gallery.setAttribute("aria-hidden", "true");
-  gallery.innerHTML = `<div class="tile-style-gallery__backdrop" data-tile-style-gallery-close></div><div class="tile-style-gallery__dialog" role="dialog" aria-modal="true" aria-labelledby="tile-style-gallery-title" aria-describedby="tile-style-gallery-description" tabindex="-1"><button class="tile-style-gallery__close" type="button" aria-label="Close image gallery" data-tile-style-gallery-close>×</button><p class="eyebrow">Inspiration</p><h2 id="tile-style-gallery-title"></h2><div class="tile-style-gallery__grid"></div><div class="tile-style-gallery__info"><p class="tile-style-gallery__description" id="tile-style-gallery-description"></p><dl class="tile-style-gallery__facts"><div><dt>Colour family</dt><dd data-material-colours></dd></div><div><dt>Applications</dt><dd data-material-applications></dd></div><div><dt>Finishes</dt><dd data-material-finishes></dd></div></dl><p class="tile-style-gallery__badge" data-material-badge hidden></p><div class="tile-style-gallery__actions"><a class="btn btn--dark" data-material-cta href="/quote/">Ask about this material</a></div><div class="tile-style-gallery__related" data-material-related hidden><span>Similar materials</span><div data-material-related-list></div></div></div></div>`;
+  gallery.innerHTML = `<div class="tile-style-gallery__backdrop" data-tile-style-gallery-close></div><div class="tile-style-gallery__dialog" role="dialog" aria-modal="true" aria-labelledby="tile-style-gallery-title" aria-describedby="tile-style-gallery-description" tabindex="-1"><div class="tile-style-gallery__topbar"><button class="tile-style-gallery__close" type="button" aria-label="Close material image gallery" data-tile-style-gallery-close><span aria-hidden="true"></span></button></div><div class="tile-style-gallery__content"><p class="eyebrow">Inspiration</p><h2 id="tile-style-gallery-title"></h2><div class="tile-style-gallery__grid"></div><div class="tile-style-gallery__info"><p class="tile-style-gallery__description" id="tile-style-gallery-description"></p><dl class="tile-style-gallery__facts"><div><dt>Colour family</dt><dd data-material-colours></dd></div><div><dt>Applications</dt><dd data-material-applications></dd></div><div><dt>Finishes</dt><dd data-material-finishes></dd></div></dl><p class="tile-style-gallery__badge" data-material-badge hidden></p><div class="tile-style-gallery__actions"><a class="btn btn--dark" data-material-cta href="/quote/">Ask about this material</a></div><div class="tile-style-gallery__related" data-material-related hidden><span>Similar materials</span><div data-material-related-list></div></div></div></div></div>`;
   document.body.appendChild(gallery);
   const zoom = document.createElement("div");
   zoom.className = "tile-style-gallery-zoom";
   zoom.setAttribute("aria-hidden", "true");
-  zoom.innerHTML = `<div class="tile-style-gallery-zoom__backdrop" data-tile-style-gallery-zoom-close></div><div class="tile-style-gallery-zoom__stage" role="dialog" aria-modal="true" aria-label="Fullscreen material image"><button class="tile-style-gallery-zoom__close" type="button" aria-label="Close fullscreen image" data-tile-style-gallery-zoom-close>×</button><img src="" alt="" /></div>`;
+  zoom.innerHTML = `<div class="tile-style-gallery-zoom__backdrop" data-tile-style-gallery-zoom-close></div><div class="tile-style-gallery-zoom__stage" role="dialog" aria-modal="true" aria-label="Fullscreen material image"><button class="tile-style-gallery-zoom__close" type="button" aria-label="Close fullscreen material image" data-tile-style-gallery-zoom-close><span aria-hidden="true"></span></button><img src="" alt="" /></div>`;
   document.body.appendChild(zoom);
   const zoomCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches ? document.createElement("div") : null;
   if (zoomCursor) { zoomCursor.className = "view-cursor view-cursor--zoom"; zoomCursor.textContent = "Zoom"; document.body.appendChild(zoomCursor); }
   const zoomImage = zoom.querySelector<HTMLImageElement>("img");
   let lastZoomTrigger: HTMLElement | null = null;
-  const closeZoom = () => { zoom.classList.remove("is-open"); zoom.setAttribute("aria-hidden", "true"); if (zoomImage) { zoomImage.removeAttribute("src"); zoomImage.alt = ""; } lastZoomTrigger?.focus(); };
+  const closeZoom = () => { zoom.classList.remove("is-open"); zoom.setAttribute("aria-hidden", "true"); if (dialog) dialog.inert = false; if (zoomImage) { zoomImage.removeAttribute("src"); zoomImage.alt = ""; } lastZoomTrigger?.focus({ preventScroll: true }); };
   const openZoom = (trigger: HTMLElement) => {
     if (!zoomImage) return;
     zoomCursor?.classList.remove("is-visible");
@@ -56,7 +56,8 @@ if (grid) {
     zoomImage.alt = trigger.dataset.imageAlt ?? "";
     zoom.classList.add("is-open");
     zoom.setAttribute("aria-hidden", "false");
-    zoom.querySelector<HTMLButtonElement>(".tile-style-gallery-zoom__close")?.focus();
+    if (dialog) dialog.inert = true;
+    window.setTimeout(() => zoom.querySelector<HTMLButtonElement>(".tile-style-gallery-zoom__close")?.focus({ preventScroll: true }), 50);
   };
   const dialog = gallery.querySelector<HTMLElement>(".tile-style-gallery__dialog");
   const galleryTitle = gallery.querySelector<HTMLElement>("#tile-style-gallery-title");
@@ -71,9 +72,10 @@ if (grid) {
   const relatedList = gallery.querySelector<HTMLElement>("[data-material-related-list]");
   let lastTrigger: HTMLElement | null = null;
   let previousBodyOverflow = "";
+  let galleryScrollY = 0;
   const focusableSelector = "button:not([disabled]), a[href], [tabindex]:not([tabindex=\"-1\"])";
 
-  const closeGallery = () => { gallery.classList.remove("is-open"); gallery.setAttribute("aria-hidden", "true"); document.body.classList.remove("is-tile-style-gallery-open"); document.body.style.overflow = previousBodyOverflow; lastTrigger?.focus(); };
+  const closeGallery = () => { if (zoom.classList.contains("is-open")) closeZoom(); gallery.classList.remove("is-open"); gallery.setAttribute("aria-hidden", "true"); document.body.classList.remove("is-tile-style-gallery-open"); document.body.style.overflow = previousBodyOverflow; document.body.style.removeProperty("top"); window.scrollTo(0, galleryScrollY); lastTrigger?.focus({ preventScroll: true }); };
   const openGallery = (slug: string, trigger: HTMLElement) => {
     const material = cards.find((item) => item.slug === slug);
     if (!material?.inspirationImages?.length || !dialog || !galleryTitle || !galleryGrid || !description || !colours || !applications || !finishes || !badge || !cta || !related || !relatedList) return;
@@ -91,9 +93,11 @@ if (grid) {
     related.hidden = similar.length === 0;
     relatedList.innerHTML = similar.map((item) => `<button type="button" class="tile-style-gallery__related-link" data-tile-style-gallery="${item.slug}">${escapeHtml(item.title)}</button>`).join("");
     previousBodyOverflow = document.body.style.overflow;
+    galleryScrollY = window.scrollY;
     document.body.style.overflow = "hidden";
+    document.body.style.top = `-${galleryScrollY}px`;
     gallery.classList.add("is-open"); gallery.setAttribute("aria-hidden", "false"); document.body.classList.add("is-tile-style-gallery-open");
-    dialog.focus();
+    window.setTimeout(() => gallery.querySelector<HTMLButtonElement>(".tile-style-gallery__close")?.focus({ preventScroll: true }), 50);
   };
 
   document.addEventListener("click", (event) => { const target = event.target as HTMLElement; const zoomTrigger = target.closest<HTMLElement>("[data-material-zoom]"); if (zoomTrigger) { openZoom(zoomTrigger); return; } if (target.closest("[data-tile-style-gallery-zoom-close]")) { closeZoom(); return; } const trigger = target.closest<HTMLElement>("[data-tile-style-gallery]"); if (trigger) openGallery(trigger.dataset.tileStyleGallery ?? "", trigger); if (target.closest("[data-tile-style-gallery-close]")) closeGallery(); });
@@ -106,7 +110,18 @@ if (grid) {
     if (trigger && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); openGallery(trigger.dataset.tileStyleGallery ?? "", trigger); return; }
     const zoomTrigger = target.closest<HTMLElement>("[data-material-zoom]");
     if (zoomTrigger && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); openZoom(zoomTrigger); return; }
-    if (zoom.classList.contains("is-open")) { if (event.key === "Escape") { event.preventDefault(); closeZoom(); } return; }
+    if (zoom.classList.contains("is-open")) {
+      if (event.key === "Escape") { event.preventDefault(); closeZoom(); return; }
+      if (event.key === "Tab") {
+        const zoomFocusable = Array.from(zoom.querySelectorAll<HTMLElement>(focusableSelector));
+        if (!zoomFocusable.length) return;
+        const first = zoomFocusable[0];
+        const last = zoomFocusable[zoomFocusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+      return;
+    }
     if (!gallery.classList.contains("is-open")) return;
     if (event.key === "Escape") { event.preventDefault(); closeGallery(); return; }
     if (event.key === "Tab" && dialog) { const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector)); if (!focusable.length) return; const first = focusable[0]; const last = focusable[focusable.length - 1]; if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } }
