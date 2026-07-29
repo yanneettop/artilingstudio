@@ -12610,6 +12610,26 @@ html.js-reveal .projects-hero__copy[data-reveal] > .projects-hero__meta { transi
   transform: translateY(0);
 }
 
+@media (max-width: 720px), (hover: none), (pointer: coarse) {
+  .tile-style-card:hover {
+    transform: none;
+  }
+
+  .tile-style-card__media[role="button"] {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .tile-style-card__media .tile-style-card__hover-image {
+    display: none;
+  }
+
+  .tile-style-card__gallery-hint {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 body.is-tile-style-gallery-open {
   position: fixed;
   left: 0;
