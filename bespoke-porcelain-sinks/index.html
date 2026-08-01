@@ -45,11 +45,11 @@
             "logo": {
               "@type": "ImageObject",
               "@id": "https://www.artilingstudio.co.uk/#logo",
-              "url": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.webp"
+              "url": "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png"
             },
             "image": [
               "https://www.artilingstudio.co.uk/og-image-v2.jpg",
-              "https://www.artilingstudio.co.uk/assets/images/artiling_logo.webp"
+              "https://www.artilingstudio.co.uk/assets/images/artiling_logo.png"
             ],
             "description": "London-based studio specialising in bespoke porcelain sinks, porcelain fabrication, large-format tiling, wet rooms, bathroom tiling, mitred porcelain edges, vanity units and custom porcelain surfaces.",
             "email": "info@artilingstudio.co.uk",
@@ -195,12 +195,77 @@
                   "@type": "Answer",
                   "text": "Yes. We can create porcelain vanity tops, splashbacks, shelves and matching bathroom surfaces alongside the sink."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "Can you help source the porcelain slab?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We can help narrow down suitable porcelain options and finishes, or review a slab you already have in mind before the design is confirmed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What drainage options are available?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Waste details can include discreet standard outlets or linear drain arrangements, depending on the basin design, falls and chosen porcelain."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can the sink accommodate wall-mounted or deck-mounted taps?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The sink can be planned around wall-mounted or deck-mounted taps, with positions and clearances agreed before fabrication."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you provide delivery and installation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Delivery and installation can be included in the agreed project scope, with access and site conditions checked in advance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does fabrication usually take?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Timing varies with the design, porcelain availability, templating and current workload. We confirm the programme once the design and site details are agreed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you visit to measure or create a template?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Where required, yes. A site measure or template may be needed for wall-to-wall sinks, irregular walls, or polygonal and other custom shapes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What wall support or preparation is required?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The support must suit the sink's weight, fixing method and wall construction. We review the substrate, support and adjoining finishes before fabrication or installation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which areas of London do you cover?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We work across London and Greater London. Send the project postcode with your enquiry and we will confirm coverage and access arrangements."
+                }
               }
             ]
           }
         ]
       }
     </script>
+
 
 
 
@@ -215,7 +280,7 @@
     />
     <link rel="stylesheet" href="../assets/css/styles.css?v=20260729-tile-touch" />
   </head>
-  <body>
+  <body class="bespoke-sinks-page">
     <a class="skip-link" href="#top">Skip to main content</a>
     <div class="scroll-progress" aria-hidden="true"></div>
     <header class="site-header" data-header>
@@ -286,7 +351,7 @@
               Made-to-measure porcelain sinks, vanity tops and bathroom surfaces, fabricated from large-format porcelain with clean mitred edges.
             </p>
             <div class="hero__actions">
-              <a href="/quote/" class="btn btn--dark">Request a quote</a>
+              <a href="/quote/" class="btn btn--dark">Request a Quote</a>
               <a href="#sink-options" class="btn btn--ghost">Explore sink options<span aria-hidden="true">&nbsp;-&gt;</span></a>
             </div>
           </div>
@@ -334,16 +399,19 @@
               <span class="service-card__num">01</span>
               <h2>Mitred porcelain sinks</h2>
               <p>Clean folded edges, sharp lines and a seamless stone-like look for bespoke bathroom spaces.</p>
+              <a class="sink-option-link" href="#sink-gallery">View examples <span aria-hidden="true">&rarr;</span></a>
             </li>
             <li class="service-editorial-card" data-reveal data-reveal-delay="70">
               <span class="service-card__num">02</span>
               <h2>Porcelain vanity tops</h2>
               <p>Made to fit your vanity unit, wall-to-wall runs, tap holes, splashbacks and surface details.</p>
+              <a class="sink-option-link" href="#sink-gallery">View examples <span aria-hidden="true">&rarr;</span></a>
             </li>
             <li class="service-editorial-card" data-reveal data-reveal-delay="140">
               <span class="service-card__num">03</span>
               <h2>Made-to-measure bathroom surfaces</h2>
               <p>Porcelain shelves, ledges, side panels and matching details designed around the room.</p>
+              <a class="sink-option-link" href="#sink-gallery">View examples <span aria-hidden="true">&rarr;</span></a>
             </li>
           </ul>
         </div>
@@ -376,7 +444,7 @@
         <div class="container">
           <div class="service-feature-row service-feature-row--media-text">
             <figure class="sinks__visual sinks__visual--wide" data-reveal>
-              <img class="sinks__photo" src="../assets/images/services/bespoke-sinks/bespoke-double-porcelain-vanity-sink.webp" alt="Made-to-measure porcelain vanity top with integrated sink" width="1448" height="1086" decoding="async" loading="lazy" />
+              <img class="sinks__photo" src="../assets/images/services/bespoke-sinks/tanis-double-porcelain-sink.webp" alt="Completed double porcelain vanity with integrated basins and wall-mounted taps" width="1600" height="1200" decoding="async" loading="lazy" />
               <figcaption><span>02</span> Wall-to-wall porcelain vanity surface</figcaption>
             </figure>
             <div class="sinks__text service-intro__copy" data-reveal data-reveal-delay="90">
@@ -395,7 +463,7 @@
         <div class="container">
           <div class="section-rule" data-reveal><span>03 - Benefits</span></div>
           <figure class="service-supporting-visual" data-reveal>
-            <img src="../assets/images/services/bespoke-sinks/bespoke-porcelain-vanity-unit-drawers-london.webp" alt="Custom porcelain bathroom surface with open vanity drawer" width="2894" height="1746" loading="lazy" decoding="async" />
+            <img src="../public/projects/onyx-frame-porcelain-vanity/porcelain-vanity-unit-push-to-open-drawers.webp" alt="Completed porcelain vanity with integrated basin and open handleless drawers" width="1122" height="1402" loading="lazy" decoding="async" />
             <figcaption>Mitred porcelain sink with integrated vanity unit, handleless drawer fronts and concealed storage.</figcaption>
           </figure>
           <ul class="service-editorial-grid">
@@ -438,38 +506,62 @@
             </li>
             <li class="process__step" data-reveal data-reveal-delay="70">
               <span class="process__num">02</span>
-              <h3>Confirm the design</h3>
-              <p>We agree the size, porcelain finish, tap position and edge details.</p>
+              <h3>Confirm the design and porcelain</h3>
+              <p>We agree the size, porcelain finish, tap, waste and edge details.</p>
             </li>
             <li class="process__step" data-reveal data-reveal-delay="140">
               <span class="process__num">03</span>
-              <h3>Fabrication</h3>
-              <p>The porcelain is cut, mitred and prepared to fit the agreed design.</p>
+              <h3>Site measurement or template</h3>
+              <p>Where required, we measure or template wall-to-wall, irregular or custom-shaped work.</p>
             </li>
             <li class="process__step" data-reveal data-reveal-delay="210">
               <span class="process__num">04</span>
-              <h3>Installation</h3>
-              <p>Everything is fitted carefully, aligned and finished on site.</p>
+              <h3>Fabrication</h3>
+              <p>The porcelain is cut, mitred and prepared to fit the agreed design.</p>
+            </li>
+            <li class="process__step" data-reveal data-reveal-delay="280">
+              <span class="process__num">05</span>
+              <h3>Delivery and installation</h3>
+              <p>The finished pieces are delivered, fitted, aligned and completed on site.</p>
             </li>
           </ol>
         </div>
       </section>
 
-      <section class="service-gallery">
+      <section class="service-gallery" id="sink-gallery">
         <div class="container">
           <div class="section-rule" data-reveal><span>05 - Gallery</span></div>
-          <div class="sinks__strip" data-reveal>
-            <figure>
-              <img class="sinks__strip-photo" src="../assets/images/services/bespoke-sinks/bespoke-sink-planning-materials.webp" alt="Large-format porcelain samples and brassware for a bespoke sink in London" width="1536" height="1024" loading="lazy" decoding="async" />
-              <figcaption>Porcelain finish and brassware planning</figcaption>
+          <header class="section-head section-head--split" data-reveal>
+            <div>
+              <p class="eyebrow">Completed work</p>
+              <h2 class="section-title">Sink details in context</h2>
+            </div>
+            <p class="section-sub">Completed Artiling projects, from close mitred details to full bathroom compositions.</p>
+          </header>
+          <div class="sinks-gallery-grid" data-reveal>
+            <figure class="sinks-gallery-grid__item sinks-gallery-grid__item--feature">
+              <img src="../public/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london.webp" alt="Rose onyx-effect porcelain sink beside a walk-in shower" width="1122" height="1402" loading="lazy" decoding="async" />
+              <figcaption><span>01</span> Completed bespoke sink</figcaption>
             </figure>
-            <figure>
-              <img class="sinks__strip-photo" src="../assets/images/services/bespoke-sinks/bespoke-porcelain-trough-basin-detail-grey.webp" alt="Porcelain sink and splashback detail with clean folded edges" width="1448" height="1086" loading="lazy" decoding="async" />
-              <figcaption>Mitred porcelain edge detail</figcaption>
+            <figure class="sinks-gallery-grid__item sinks-gallery-grid__item--wide">
+              <img src="../assets/images/services/bespoke-sinks/tanis-trough-basin-detail-grey.webp" alt="Close view of a grey porcelain trough sink with mitred corners" width="1600" height="1200" loading="lazy" decoding="async" />
+              <figcaption><span>02</span> Mitred edge and basin detail</figcaption>
             </figure>
-            <figure>
-              <img class="sinks__strip-photo" src="../assets/images/services/bespoke-sinks/integrated-marble-porcelain-trough-sink.webp" alt="Bespoke mitred porcelain sink installed in a London bathroom" width="1086" height="1448" loading="lazy" decoding="async" />
-              <figcaption>Integrated floating porcelain trough sink</figcaption>
+            <figure class="sinks-gallery-grid__item sinks-gallery-grid__item--portrait">
+              <img src="../public/projects/onyx-frame-porcelain-vanity/made-to-measure-porcelain-sink-vanity-london.webp" alt="Porcelain vanity with integrated sink and open handleless drawers" width="1122" height="1402" loading="lazy" decoding="async" />
+              <figcaption><span>03</span> Integrated vanity composition</figcaption>
+            </figure>
+            <figure class="sinks-gallery-grid__item sinks-gallery-grid__item--portrait">
+              <img src="../assets/images/services/porcelain-fabrication/mitred-porcelain-stone-sink-fabrication-london.webp" alt="Mitred porcelain sink checked in the workshop before installation" width="1200" height="1600" loading="lazy" decoding="async" />
+              <figcaption><span>04</span> Fabrication check</figcaption>
+            </figure>
+            <figure class="sinks-gallery-grid__item sinks-gallery-grid__item--wide">
+              <img src="../assets/images/services/bespoke-sinks/tanis-double-porcelain-sink.webp" alt="Completed double porcelain vanity with wall-mounted taps" width="1600" height="1200" loading="lazy" decoding="async" />
+              <figcaption><span>05</span> Double vanity and drainage detail</figcaption>
+            </figure>
+            <figure class="sinks-gallery-grid__item sinks-gallery-grid__item--feature">
+              <img src="../public/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-large-format-porcelain-bathroom-freestanding-bath.webp" alt="Completed bathroom with rose onyx-effect porcelain walls and a freestanding bath" width="1122" height="1402" loading="lazy" decoding="async" />
+              <figcaption><span>06</span> Completed bathroom context</figcaption>
             </figure>
           </div>
         </div>
@@ -499,6 +591,38 @@
               <h3>Do you also make porcelain vanity tops and splashbacks?</h3>
               <p>Yes. We can create porcelain vanity tops, splashbacks, shelves and matching bathroom surfaces alongside the sink.</p>
             </article>
+            <article class="service-faq__item">
+              <h3>Can you help source the porcelain slab?</h3>
+              <p>Yes. We can help narrow down suitable porcelain options and finishes, or review a slab you already have in mind before the design is confirmed.</p>
+            </article>
+            <article class="service-faq__item">
+              <h3>What drainage options are available?</h3>
+              <p>Waste details can include discreet standard outlets or linear drain arrangements, depending on the basin design, falls and chosen porcelain.</p>
+            </article>
+            <article class="service-faq__item">
+              <h3>Can the sink accommodate wall-mounted or deck-mounted taps?</h3>
+              <p>Yes. The sink can be planned around wall-mounted or deck-mounted taps, with positions and clearances agreed before fabrication.</p>
+            </article>
+            <article class="service-faq__item">
+              <h3>Do you provide delivery and installation?</h3>
+              <p>Yes. Delivery and installation can be included in the agreed project scope, with access and site conditions checked in advance.</p>
+            </article>
+            <article class="service-faq__item">
+              <h3>How long does fabrication usually take?</h3>
+              <p>Timing varies with the design, porcelain availability, templating and current workload. We confirm the programme once the design and site details are agreed.</p>
+            </article>
+            <article class="service-faq__item">
+              <h3>Do you visit to measure or create a template?</h3>
+              <p>Where required, yes. A site measure or template may be needed for wall-to-wall sinks, irregular walls, or polygonal and other custom shapes.</p>
+            </article>
+            <article class="service-faq__item">
+              <h3>What wall support or preparation is required?</h3>
+              <p>The support must suit the sink's weight, fixing method and wall construction. We review the substrate, support and adjoining finishes before fabrication or installation.</p>
+            </article>
+            <article class="service-faq__item">
+              <h3>Which areas of London do you cover?</h3>
+              <p>We work across London and Greater London. Send the project postcode with your enquiry and we will confirm coverage and access arrangements.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -510,10 +634,10 @@
               <p class="eyebrow">Commission</p>
               <h2 class="projects-final__title">Planning a made-to-measure porcelain sink?</h2>
               <p class="projects-final__body">
-                Send us a few photos, rough dimensions and your preferred porcelain finish. We&rsquo;ll guide you from there.
+                Send us a few photos and rough dimensions &mdash; final drawings are not required at enquiry stage. We&rsquo;ll guide you through porcelain, detailing and next steps.
               </p>
             </div>
-            <a href="/quote/" class="btn btn--dark">Request a quote</a>
+            <a href="/quote/" class="btn btn--dark">Request a Quote</a>
           </div>
         </div>
       </section>
