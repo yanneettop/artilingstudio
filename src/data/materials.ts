@@ -30,6 +30,26 @@ export type Material = {
 };
 
 const generatedGalleries: Readonly<Record<string, MaterialImage[]>> = {
+  "taj-mahal": [
+    { src: "/images/tile-styles/inspiration/taj-mahal-floating-porcelain-vanity.webp", alt: "Wall-mounted Taj Mahal quartzite-effect porcelain vanity with an integrated basin and brushed nickel wall tap", caption: "Bespoke Taj Mahal vanity" },
+    { src: "/images/tile-styles/inspiration/taj-mahal-large-format-bathroom.webp", alt: "Serene bathroom with a bookmatched Taj Mahal porcelain shower wall, floating vanity and bath surround", caption: "Large-format quartzite bathroom" },
+    { src: "/images/tile-styles/inspiration/taj-mahal-mitred-vanity-detail.webp", alt: "Close view of a Taj Mahal porcelain vanity with warm linear veining continuing across a precise mitred corner", caption: "Warm vein-wrapped mitre" },
+  ],
+  "terrazzo": [
+    { src: "/images/tile-styles/inspiration/terrazzo-floating-porcelain-vanity.webp", alt: "Wall-mounted ivory terrazzo-effect porcelain vanity with an integrated basin and brushed nickel wall tap", caption: "Bespoke terrazzo vanity" },
+    { src: "/images/tile-styles/inspiration/terrazzo-large-format-wet-room.webp", alt: "Light-filled wet room clad in large-format ivory terrazzo-effect porcelain with a recessed niche and integrated bench", caption: "Large-format terrazzo wet room" },
+    { src: "/images/tile-styles/inspiration/terrazzo-mitred-vanity-detail.webp", alt: "Close view of an ivory terrazzo-effect porcelain vanity with mineral chips continuing across a precise mitred corner", caption: "Terrazzo mitred edge detail" },
+  ],
+  "zellige-green": [
+    { src: "/images/tile-styles/inspiration/zellige-green-vanity-splashback.webp", alt: "Floating oak bathroom vanity against a full-height wall of sage green handmade-look glazed porcelain tiles", caption: "Glazed green vanity wall" },
+    { src: "/images/tile-styles/inspiration/zellige-green-walk-in-shower.webp", alt: "Walk-in shower with a full-height sage green handmade-look porcelain tile wall and recessed niche", caption: "Zellige-look shower wall" },
+    { src: "/images/tile-styles/inspiration/zellige-green-niche-detail.webp", alt: "Close view of a shower niche and corner clad in varied sage green handmade-look glazed porcelain tiles", caption: "Hand-glazed niche detail" },
+  ],
+  "fluted-stone": [
+    { src: "/images/tile-styles/inspiration/fluted-stone-vanity-feature-wall.webp", alt: "Floating integrated basin installed against a warm ivory fluted stone-effect porcelain feature wall", caption: "Sculptural fluted vanity wall" },
+    { src: "/images/tile-styles/inspiration/fluted-stone-freestanding-bathroom.webp", alt: "Contemporary bathroom with a freestanding bath against a full-height fluted stone-effect porcelain wall", caption: "Fluted stone bath feature" },
+    { src: "/images/tile-styles/inspiration/fluted-stone-illuminated-junction-detail.webp", alt: "Close view of a fluted stone-effect porcelain panel meeting a floating shelf with concealed warm lighting", caption: "Illuminated fluted junction" },
+  ],
   "calacatta-viola": [
     { src: "/images/tile-styles/inspiration/calacatta-viola-bespoke-vanity.webp", alt: "Calacatta Viola marble-effect porcelain wall-mounted vanity with integrated basin and plum veining", caption: "Sculptural Calacatta Viola vanity" },
     { src: "/images/tile-styles/inspiration/calacatta-viola-bookmatched-bathroom.webp", alt: "Luxury bathroom with a bookmatched Calacatta Viola porcelain feature wall, freestanding bath and walk-in shower", caption: "Bookmatched statement bathroom" },
