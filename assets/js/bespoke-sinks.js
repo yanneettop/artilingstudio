@@ -205,6 +205,9 @@
 
   const faq = document.querySelector('[data-sinks-faq]');
   if (faq) {
+    const faqMore = faq.querySelector('[data-sinks-faq-more]');
+    const faqMoreToggle = faq.closest('.sink-faq__content')?.querySelector('[data-sinks-faq-toggle]');
+    const faqMoreLabel = faqMoreToggle?.querySelector('[data-sinks-faq-toggle-label]');
     const items = [...faq.querySelectorAll('.service-faq__item')];
     const buttons = items.map((item, index) => {
       const heading = item.querySelector('h3');
@@ -242,15 +245,30 @@
         buttons.forEach((other) => setExpanded(other, other === button && shouldOpen));
       });
       button.addEventListener('keydown', (event) => {
+        const visibleButtons = buttons.filter((candidate) => !candidate.closest('[hidden]'));
+        const visibleIndex = visibleButtons.indexOf(button);
         let targetIndex = null;
-        if (event.key === 'ArrowDown') targetIndex = (index + 1) % buttons.length;
-        if (event.key === 'ArrowUp') targetIndex = (index - 1 + buttons.length) % buttons.length;
+        if (event.key === 'ArrowDown') targetIndex = (visibleIndex + 1) % visibleButtons.length;
+        if (event.key === 'ArrowUp') targetIndex = (visibleIndex - 1 + visibleButtons.length) % visibleButtons.length;
         if (event.key === 'Home') targetIndex = 0;
-        if (event.key === 'End') targetIndex = buttons.length - 1;
+        if (event.key === 'End') targetIndex = visibleButtons.length - 1;
         if (targetIndex === null) return;
         event.preventDefault();
-        buttons[targetIndex].focus();
+        visibleButtons[targetIndex].focus();
       });
     });
+
+    if (faqMore && faqMoreToggle) {
+      faqMoreToggle.addEventListener('click', () => {
+        const shouldExpand = faqMoreToggle.getAttribute('aria-expanded') !== 'true';
+        faqMore.hidden = !shouldExpand;
+        faqMoreToggle.setAttribute('aria-expanded', shouldExpand ? 'true' : 'false');
+        if (faqMoreLabel) faqMoreLabel.textContent = shouldExpand ? 'Show fewer questions' : 'View 6 more questions';
+        if (!shouldExpand) {
+          buttons.filter((button) => faqMore.contains(button)).forEach((button) => setExpanded(button, false));
+          faqMoreToggle.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
   }
 })();
