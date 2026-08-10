@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promi
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { transform } from "esbuild";
+import { fingerprintHtmlAssets } from "./asset-versioning.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = path.join(projectRoot, "dist");
@@ -90,5 +91,8 @@ await Promise.all([
   copyIfPresent("public"),
 ]);
 await minifyTree(path.join(outputRoot, "assets"));
+const fingerprintSummary = await fingerprintHtmlAssets(outputRoot);
 
-console.log("Production site built in dist/ with minified CSS and JavaScript.");
+console.log(
+  `Production site built in dist/ with minified assets and ${fingerprintSummary.referenceCount} content-hashed HTML references.`,
+);

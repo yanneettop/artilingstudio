@@ -3,6 +3,7 @@ import { readFile, stat } from "node:fs/promises";
 import { createServer } from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { verifyHtmlAssetVersions } from "./asset-versioning.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = path.join(projectRoot, "dist");
@@ -51,6 +52,7 @@ for (const requiredHeader of [
 const sourceCssSize = (await stat(path.join(projectRoot, "assets/css/styles.css"))).size;
 const outputCssSize = (await stat(path.join(outputRoot, "assets/css/styles.css"))).size;
 assert(outputCssSize < sourceCssSize, "Production CSS was not minified.");
+const assetVersionSummary = await verifyHtmlAssetVersions(outputRoot);
 
 const contentTypes = new Map([
   [".css", "text/css"],
@@ -98,4 +100,6 @@ try {
   await new Promise((resolve) => server.close(resolve));
 }
 
-console.log(`Verification passed. CSS: ${sourceCssSize} bytes source -> ${outputCssSize} bytes production.`);
+console.log(
+  `Verification passed. CSS: ${sourceCssSize} bytes source -> ${outputCssSize} bytes production; ${assetVersionSummary.referenceCount} asset versions verified.`,
+);
