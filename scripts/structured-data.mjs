@@ -12,9 +12,9 @@ const business = {
   logo: {
     '@type': 'ImageObject',
     '@id': `${siteUrl}/#logo`,
-    url: `${siteUrl}/assets/images/artiling_logo.png`,
+    url: `${siteUrl}/assets/images/artiling_logo.webp`,
   },
-  image: [`${siteUrl}/og-image-v2.jpg`, `${siteUrl}/assets/images/artiling_logo.png`],
+  image: [`${siteUrl}/og-image-v2.jpg`, `${siteUrl}/assets/images/artiling_logo.webp`],
   description:
     'London-based studio specialising in bespoke porcelain sinks, porcelain fabrication, large-format tiling, wet rooms, bathroom tiling, mitred porcelain edges, vanity units and custom porcelain surfaces.',
   email: 'info@artilingstudio.co.uk',
@@ -77,13 +77,28 @@ const offerCatalog = {
   })),
 };
 
-const page = ({ url, name, description, type = 'WebPage', image = `${siteUrl}/og-image-v2.jpg` }) => ({
+const page = ({
+  url,
+  name,
+  description,
+  type = 'WebPage',
+  image = `${siteUrl}/og-image-v2.jpg`,
+  dateModified,
+  primaryImage = false,
+}) => ({
   '@type': type,
   '@id': `${url}#webpage`,
   url,
   name,
   description,
   image,
+  ...(primaryImage ? {
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: image,
+    },
+  } : {}),
+  ...(dateModified ? { dateModified } : {}),
   isPartOf: { '@id': `${siteUrl}/#website` },
   about: { '@id': `${siteUrl}/#business` },
   inLanguage: 'en-GB',
@@ -207,15 +222,18 @@ const pageSchemas = {
     ...common,
     page({
       url: `${siteUrl}/bespoke-porcelain-sinks/`,
-      name: 'Bespoke and Mitred Porcelain Sinks London',
+      name: 'Bespoke Porcelain Sinks London | Made to Measure',
       description:
-        'Made-to-measure porcelain sinks, vanity tops and bathroom surfaces fabricated around exact dimensions, tap positions and mitred edge details.',
+        'Bespoke porcelain sinks, trough basins and vanity units made to measure in London, with mitred edges, coordinated taps, drainage and installation.',
+      image: `${siteUrl}/assets/images/services/service-bespoke-porcelain-sinks.webp`,
+      dateModified: '2026-08-11',
+      primaryImage: true,
     }),
     service({
       url: `${siteUrl}/bespoke-porcelain-sinks/`,
       name: 'Bespoke Porcelain Sinks London',
       description:
-        'Made-to-measure porcelain sinks, trough basins, vanity tops, splashbacks and matching bathroom surfaces for London interiors.',
+        'Made-to-measure porcelain sinks, trough basins, vanity units and matching bathroom surfaces, designed around room dimensions, taps, water flow and installation in London.',
       serviceType: ['Bespoke porcelain sinks', 'Mitred porcelain sinks', 'Porcelain vanity units'],
       image: `${siteUrl}/assets/images/services/bespoke-sinks/bespoke-porcelain-floating-trough-grey.webp`,
     }),
@@ -443,9 +461,11 @@ function injectSchema(filePath, graph) {
   if (!headMatch) throw new Error(`Missing <head> in ${filePath}`);
 
   const head = headMatch[0].replace(/\s*<script\s+type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi, '');
-  const schema = `\n    <script type="application/ld+json" data-artiling-schema>\n${toJsonLd(graph)}\n    </script>\n`;
-  const insertionPoint = head.search(/\n\s*<link rel="preconnect"|\n\s*<link rel="stylesheet"|<\/head>/i);
-  const nextHead = `${head.slice(0, insertionPoint)}${schema}${head.slice(insertionPoint)}`;
+  const insertionPoint = head.search(/<link rel="preconnect"|<link rel="stylesheet"|<\/head>/i);
+  const beforeSchema = head.slice(0, insertionPoint).trimEnd();
+  const afterSchema = head.slice(insertionPoint).trimStart();
+  const schema = `    <script type="application/ld+json" data-artiling-schema>\n${toJsonLd(graph)}\n    </script>`;
+  const nextHead = `${beforeSchema}\n${schema}${'\n'.repeat(8)}    ${afterSchema}`;
   html = html.replace(headMatch[0], nextHead);
   writeFileSync(abs, html);
 }

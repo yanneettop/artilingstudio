@@ -1,6 +1,33 @@
 (() => {
   'use strict';
 
+  const anatomy = document.querySelector('[data-sink-anatomy]');
+  if (anatomy) {
+    const markers = [...anatomy.querySelectorAll('[data-anatomy-marker]')];
+    const items = [...anatomy.querySelectorAll('[data-anatomy-item]')];
+
+    const activateAnatomyDetail = (detail) => {
+      markers.forEach((marker) => {
+        const isActive = marker.dataset.anatomyMarker === detail;
+        marker.classList.toggle('is-active', isActive);
+        marker.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      items.forEach((item) => {
+        item.classList.toggle('is-active', item.dataset.anatomyItem === detail);
+      });
+    };
+
+    markers.forEach((marker) => {
+      marker.addEventListener('click', () => activateAnatomyDetail(marker.dataset.anatomyMarker));
+      marker.addEventListener('focus', () => activateAnatomyDetail(marker.dataset.anatomyMarker));
+    });
+    items.forEach((item) => {
+      item.addEventListener('mouseenter', () => activateAnatomyDetail(item.dataset.anatomyItem));
+    });
+
+    activateAnatomyDetail(markers.find((marker) => marker.classList.contains('is-active'))?.dataset.anatomyMarker || '1');
+  }
+
   const gallery = document.querySelector('[data-sinks-gallery]');
   if (gallery) {
     const items = [...gallery.querySelectorAll('.sinks-gallery-grid__item')]
