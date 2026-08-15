@@ -19908,3 +19908,52 @@ html.js-reveal.reveal-failsafe .large-format-page [data-reveal="image-right"].la
     grid-column: auto;
   }
 }
+
+/* Compact made-to-measure content bridge between process and selected work. */
+.sink-made-to-measure {
+  position: relative;
+  overflow: clip;
+  padding-block: clamp(82px, 8vw, 128px);
+  background: #e9e3d8;
+}
+
+.sink-made-to-measure__head {
+  margin-top: 0;
+  align-items: start;
+}
+
+.sink-made-to-measure__copy {
+  max-width: 640px;
+}
+
+.sink-made-to-measure__copy p {
+  margin: 0;
+  color: rgba(43, 43, 43, 0.76);
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.72;
+  text-wrap: pretty;
+}
+
+.sink-made-to-measure__copy p + p {
+  margin-top: 18px;
+}
+
+.sink-made-to-measure__copy .sink-text-link {
+  margin-top: 28px;
+}
+
+@media (max-width: 1099px) {
+  .sink-made-to-measure__head {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sink-made-to-measure {
+    padding-block: 72px;
+  }
+
+  .sink-made-to-measure__head {
+    margin-top: 0;
+  }
+}

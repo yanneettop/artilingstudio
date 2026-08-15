@@ -31,6 +31,8 @@ const business = {
   ],
   knowsAbout: [
     'Bespoke porcelain sinks',
+    'Bespoke porcelain basins',
+    'Made-to-measure bathroom basins',
     'Porcelain fabrication',
     'Large format tiling',
     'Wet rooms',
@@ -222,22 +224,22 @@ const pageSchemas = {
     ...common,
     page({
       url: `${siteUrl}/bespoke-porcelain-sinks/`,
-      name: 'Bespoke Porcelain Sinks London | Made to Measure',
+      name: 'Bespoke Porcelain Sinks & Basins London | Made to Measure',
       description:
-        'Bespoke porcelain sinks, trough basins and vanity units made to measure in London, with mitred edges, coordinated taps, drainage and installation.',
+        'Made-to-measure porcelain sinks and bathroom basins fabricated in London. Trough basins, floating designs, vanity tops and integrated porcelain surfaces.',
       image: `${siteUrl}/assets/images/services/service-bespoke-porcelain-sinks.webp`,
-      dateModified: '2026-08-11',
+      dateModified: '2026-08-15',
       primaryImage: true,
     }),
     service({
       url: `${siteUrl}/bespoke-porcelain-sinks/`,
-      name: 'Bespoke Porcelain Sinks London',
+      name: 'Bespoke Porcelain Sinks & Basins London',
       description:
-        'Made-to-measure porcelain sinks, trough basins, vanity units and matching bathroom surfaces, designed around room dimensions, taps, water flow and installation in London.',
-      serviceType: ['Bespoke porcelain sinks', 'Mitred porcelain sinks', 'Porcelain vanity units'],
+        'Made-to-measure porcelain sinks and bathroom basins fabricated around room dimensions, taps, drainage, support and installation in London.',
+      serviceType: ['Bespoke porcelain sinks', 'Bespoke porcelain basins', 'Made-to-measure bathroom basins', 'Mitred porcelain sinks', 'Porcelain vanity units'],
       image: `${siteUrl}/assets/images/services/bespoke-sinks/bespoke-porcelain-floating-trough-grey.webp`,
     }),
-    breadcrumb([...servicesCrumb, { name: 'Bespoke Porcelain Sinks', url: `${siteUrl}/bespoke-porcelain-sinks/` }]),
+    breadcrumb([...servicesCrumb, { name: 'Bespoke Porcelain Sinks & Basins', url: `${siteUrl}/bespoke-porcelain-sinks/` }]),
     faq(`${siteUrl}/bespoke-porcelain-sinks/`, [
       ['How much does a bespoke porcelain sink cost in London?', 'The cost depends on the size, porcelain slab, edge detail, vanity layout and installation requirements. Send us the approximate measurements and a few photos, and we can guide you with a clear quotation.'],
       ['Can you make a porcelain sink to any size?', 'Most designs can be made to measure, depending on the space, slab size, drainage position and installation access. We confirm these details before fabrication.'],
@@ -251,6 +253,9 @@ const pageSchemas = {
       ['Do you visit to measure or create a template?', 'Where required, yes. A site measure or template may be needed for wall-to-wall sinks, irregular walls, or polygonal and other custom shapes.'],
       ["What wall support or preparation is required?", "The support must suit the sink's weight, fixing method and wall construction. We review the substrate, support and adjoining finishes before fabrication or installation."],
       ['Which areas of London do you cover?', 'We work across London and Greater London. Send the project postcode with your enquiry and we will confirm coverage and access arrangements.'],
+      ['What is the difference between a bespoke sink and a bespoke basin?', 'For bathroom projects, bespoke sink, bespoke basin and washbasin are often used interchangeably. Basin or washbasin is more commonly used in the UK; Artiling designs the complete porcelain form around the room, taps, waste, support and adjoining surfaces.'],
+      ['Can you make a bathroom basin to exact dimensions?', 'Yes. Most bathroom basins can be fabricated to a project-specific width, depth and overall geometry, subject to available slab dimensions, drainage, structural support and installation access.'],
+      ['Do you make small bespoke basins for cloakrooms?', 'Yes. Compact made-to-measure porcelain basins can be designed for cloakrooms and small bathrooms, including wall-hung forms and basins integrated into a vanity.'],
     ]),
   ],
   'porcelain-fabrication-london/index.html': [

@@ -290,7 +290,7 @@
         const shouldExpand = faqMoreToggle.getAttribute('aria-expanded') !== 'true';
         faqMore.hidden = !shouldExpand;
         faqMoreToggle.setAttribute('aria-expanded', shouldExpand ? 'true' : 'false');
-        if (faqMoreLabel) faqMoreLabel.textContent = shouldExpand ? 'Show fewer questions' : 'View 6 more questions';
+        if (faqMoreLabel) faqMoreLabel.textContent = shouldExpand ? 'Show fewer questions' : 'View 9 more questions';
         if (!shouldExpand) {
           buttons.filter((button) => faqMore.contains(button)).forEach((button) => setExpanded(button, false));
           faqMoreToggle.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
