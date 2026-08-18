@@ -54,7 +54,7 @@
 
       <label class="quote-input quote-input--full">
         <span class="quote-input__label">Brief description <span class="req">*</span></span>
-        <textarea name="briefDescription" rows="6" data-required="text" required placeholder="Tell us what you are planning, where the piece or tiling will go, and anything already decided."></textarea>
+        <textarea name="projectMessage" rows="6" data-required="text" required placeholder="Tell us what you are planning, where the piece or tiling will go, and anything already decided."></textarea>
         <span class="quote-input__hint">Photos, sketches and rough measurements are welcome.</span>
       </label>
 
@@ -112,7 +112,7 @@
 
   const quoteContext = () => ({
     project_type: getProjectType(),
-    project_message: form.querySelector('[name="briefDescription"]')?.value.trim() || '',
+    project_message: form.querySelector('[name="projectMessage"]')?.value.trim() || '',
     location: form.querySelector('[name="location"]')?.value.trim() || '',
     dimensions: form.querySelector('[name="dimensions"]')?.value.trim() || '',
     page_path: '/quote/',
@@ -314,6 +314,39 @@
     return field?.value || turnstileWidget?.dataset.token || '';
   };
 
+  const validationResponseCodes = new Set([
+    'VALIDATION_ERROR',
+    'FILE_VALIDATION_ERROR',
+    'TURNSTILE_REQUIRED',
+    'TURNSTILE_FAILED',
+  ]);
+
+  const submissionFailureMessage =
+    'We could not send your request right now. Please try again or email info@artilingstudio.co.uk directly.';
+
+  const responseError = async (response) => {
+    let payload = null;
+    try {
+      payload = await response.json();
+    } catch (error) {
+      // Non-JSON responses are treated as backend failures, never as field validation.
+    }
+
+    if (response.ok && payload?.ok) return null;
+
+    const code = typeof payload?.code === 'string' ? payload.code : '';
+    const isValidationError = validationResponseCodes.has(code)
+      || (!code && response.status >= 400 && response.status < 500);
+    const message = isValidationError
+      ? (payload?.message || 'Please review the highlighted fields and try again.')
+      : submissionFailureMessage;
+    const error = new Error(message);
+    error.category = isValidationError ? 'validation' : 'server';
+    error.code = code || (isValidationError ? 'VALIDATION_ERROR' : 'SUBMISSION_FAILED');
+    error.status = response.status;
+    return error;
+  };
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!validateForm()) return;
@@ -342,10 +375,8 @@
         headers: { Accept: 'application/json' },
       });
 
-      const json = await res.json();
-      if (!res.ok || !json.ok) {
-        throw new Error(json.message || 'Network error');
-      }
+      const error = await responseError(res);
+      if (error) throw error;
     } catch (error) {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Request my quote ->';
@@ -354,7 +385,7 @@
         turnstileWidget.dataset.token = '';
       }
       console.error('Quote submission error:', error);
-      alert(error.message || 'Sorry, something went wrong. Please email info@artilingstudio.co.uk directly.');
+      alert(error.category === 'validation' ? error.message : submissionFailureMessage);
       return;
     }
 

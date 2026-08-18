@@ -8,6 +8,8 @@ const REQUIRED_FIELDS = [
 const FIELD_LABELS = [
   ['projectType', 'Project type'],
   ['projectMessage', 'Project message'],
+  ['location', 'Location'],
+  ['dimensions', 'Dimensions'],
   ['materialSituation', 'Material situation'],
   ['scope', 'Scope'],
   ['condition', 'Current condition'],
@@ -54,9 +56,19 @@ const DEFAULT_ALLOWED_ORIGINS = [
   'https://www.artilingstudio.co.uk',
 ];
 
-const QUOTE_TO_EMAIL = 'info@artilingstudio.co.uk';
 const CORS_ALLOWED_HEADERS = 'Accept, Content-Type';
 const CORS_ALLOWED_METHODS = 'POST, OPTIONS';
+const SUBMISSION_FAILURE_MESSAGE = 'Sorry, we could not send your request right now. Please email info@artilingstudio.co.uk directly.';
+
+class QuoteSubmissionError extends Error {
+  constructor(code, message, status = 500, publicMessage = SUBMISSION_FAILURE_MESSAGE) {
+    super(message);
+    this.name = 'QuoteSubmissionError';
+    this.code = code;
+    this.status = status;
+    this.publicMessage = publicMessage;
+  }
+}
 
 const asString = (value) => (typeof value === 'string' ? value.trim() : '');
 
@@ -158,6 +170,9 @@ const collectFields = (formData) => {
   FIELD_LABELS.forEach(([name]) => {
     fields[name] = asString(formData.get(name));
   });
+  // Accept the short-lived field name used by the simplified form before the
+  // frontend/backend contract was aligned. This keeps cached clients working.
+  fields.projectMessage ||= asString(formData.get('briefDescription'));
   return fields;
 };
 
@@ -165,7 +180,10 @@ const verifyOrigin = (request, env) => !getRequestOrigin(request) || !!getAllowe
 
 const verifyTurnstile = async (request, env, token) => {
   if (!env.TURNSTILE_SECRET_KEY) {
-    throw new Error('Turnstile secret is not configured.');
+    throw new QuoteSubmissionError(
+      'TURNSTILE_CONFIGURATION_ERROR',
+      'Turnstile secret is not configured.',
+    );
   }
 
   const body = new URLSearchParams();
@@ -180,7 +198,13 @@ const verifyTurnstile = async (request, env, token) => {
     body,
   });
 
-  if (!response.ok) return false;
+  if (!response.ok) {
+    throw new QuoteSubmissionError(
+      'TURNSTILE_SERVICE_ERROR',
+      `Turnstile verification service returned HTTP ${response.status}.`,
+      502,
+    );
+  }
 
   const result = await response.json();
   return !!result.success;
@@ -190,7 +214,10 @@ const uploadPhotos = async ({ env, photos, submissionId, submittedEmail }) => {
   if (!photos.length) return [];
 
   if (!env.QUOTE_UPLOADS) {
-    throw new Error('R2 upload binding is not configured.');
+    throw new QuoteSubmissionError(
+      'UPLOAD_CONFIGURATION_ERROR',
+      'R2 upload binding is not configured.',
+    );
   }
 
   const date = new Date().toISOString().slice(0, 10);
@@ -290,8 +317,13 @@ const buildEmail = ({ fields, submissionId, uploads, publicBaseUrl }) => {
 };
 
 const sendEmail = async ({ env, fields, submissionId, uploads }) => {
-  if (!env.RESEND_API_KEY || !env.QUOTE_FROM_EMAIL) {
-    throw new Error('Resend email settings are not configured.');
+  const fromEmail = asString(env.QUOTE_FROM_EMAIL);
+  const toEmail = asString(env.QUOTE_TO_EMAIL);
+  if (!env.RESEND_API_KEY || !fromEmail || !toEmail) {
+    throw new QuoteSubmissionError(
+      'EMAIL_CONFIGURATION_ERROR',
+      'Resend email settings are not configured.',
+    );
   }
 
   const { text, html } = buildEmail({
@@ -308,8 +340,8 @@ const sendEmail = async ({ env, fields, submissionId, uploads }) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: env.QUOTE_FROM_EMAIL,
-      to: [QUOTE_TO_EMAIL],
+      from: fromEmail,
+      to: [toEmail],
       subject: 'New Quote Request - Artiling Studio',
       text,
       html,
@@ -318,7 +350,11 @@ const sendEmail = async ({ env, fields, submissionId, uploads }) => {
   });
 
   if (!response.ok) {
-    throw new Error('Email delivery failed.');
+    throw new QuoteSubmissionError(
+      'EMAIL_DELIVERY_FAILED',
+      `Resend returned HTTP ${response.status}.`,
+      502,
+    );
   }
 };
 
@@ -327,6 +363,7 @@ export async function onRequestPost({ request, env }) {
     if (!verifyOrigin(request, env)) {
       return jsonResponse({
         ok: false,
+        code: 'ORIGIN_NOT_ALLOWED',
         message: 'This quote request could not be accepted from this origin.',
       }, 403, request, env);
     }
@@ -338,6 +375,7 @@ export async function onRequestPost({ request, env }) {
     if (!turnstileToken) {
       return jsonResponse({
         ok: false,
+        code: 'TURNSTILE_REQUIRED',
         message: 'Please complete the spam check and try again.',
       }, 400, request, env);
     }
@@ -346,6 +384,7 @@ export async function onRequestPost({ request, env }) {
     if (!turnstileOk) {
       return jsonResponse({
         ok: false,
+        code: 'TURNSTILE_FAILED',
         message: 'The spam check could not be verified. Please try again.',
       }, 400, request, env);
     }
@@ -354,6 +393,7 @@ export async function onRequestPost({ request, env }) {
     if (missing.length) {
       return jsonResponse({
         ok: false,
+        code: 'VALIDATION_ERROR',
         message: 'Please complete all required fields before sending your request.',
       }, 400, request, env);
     }
@@ -361,6 +401,7 @@ export async function onRequestPost({ request, env }) {
     if (fields.email && !validateEmail(fields.email)) {
       return jsonResponse({
         ok: false,
+        code: 'VALIDATION_ERROR',
         message: 'Please enter a valid email address.',
       }, 400, request, env);
     }
@@ -368,6 +409,7 @@ export async function onRequestPost({ request, env }) {
     if (!fields.email && !fields.phone) {
       return jsonResponse({
         ok: false,
+        code: 'VALIDATION_ERROR',
         message: 'Please add either an email address or a phone number.',
       }, 400, request, env);
     }
@@ -376,6 +418,7 @@ export async function onRequestPost({ request, env }) {
     if (photos.length > MAX_FILES) {
       return jsonResponse({
         ok: false,
+        code: 'FILE_VALIDATION_ERROR',
         message: `Please upload no more than ${MAX_FILES} photos.`,
       }, 400, request, env);
     }
@@ -384,12 +427,14 @@ export async function onRequestPost({ request, env }) {
       if (!isAllowedPhoto(photo)) {
         return jsonResponse({
           ok: false,
+          code: 'FILE_VALIDATION_ERROR',
           message: 'Please upload JPG, PNG, WebP or HEIC images only.',
         }, 400, request, env);
       }
       if (photo.size > MAX_FILE_SIZE) {
         return jsonResponse({
           ok: false,
+          code: 'FILE_VALIDATION_ERROR',
           message: 'Each uploaded image must be 10MB or smaller.',
         }, 400, request, env);
       }
@@ -412,14 +457,17 @@ export async function onRequestPost({ request, env }) {
 
     return jsonResponse({
       ok: true,
+      code: 'QUOTE_SENT',
       message: 'Quote request sent successfully.',
     }, 200, request, env);
   } catch (error) {
     console.error('Quote request failed:', error.message);
+    const isQuoteError = error instanceof QuoteSubmissionError;
     return jsonResponse({
       ok: false,
-      message: 'Sorry, something went wrong while sending your request. Please email info@artilingstudio.co.uk directly.',
-    }, 500, request, env);
+      code: isQuoteError ? error.code : 'SUBMISSION_FAILED',
+      message: isQuoteError ? error.publicMessage : SUBMISSION_FAILURE_MESSAGE,
+    }, isQuoteError ? error.status : 500, request, env);
   }
 }
 

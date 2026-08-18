@@ -53,6 +53,7 @@ Set these in the Cloudflare Pages project settings:
 
 - `TURNSTILE_SECRET_KEY`
 - `RESEND_API_KEY`
+- `QUOTE_TO_EMAIL`
 - `QUOTE_FROM_EMAIL`
 - `ALLOWED_ORIGIN`
 - `ALLOWED_ORIGINS` (optional, comma-separated)
@@ -67,7 +68,16 @@ https://www.artilingstudio.co.uk
 
 If extra origins are needed for testing, add them with `ALLOWED_ORIGINS`, separated by commas. Do not use wildcard origins. Only include `https://artilingstudio.pages.dev` if submissions need to be tested from the Pages preview domain.
 
-Successful quote submissions are sent to `info@artilingstudio.co.uk`.
+The Production text variables are:
+
+```text
+QUOTE_TO_EMAIL=info@artilingstudio.co.uk
+QUOTE_FROM_EMAIL=Artiling Studio <quotes@artilingstudio.co.uk>
+```
+
+If Cloudflare marks text variables as managed by `wrangler.toml`, define the
+text variables there instead of duplicating them in the dashboard. Keep
+`RESEND_API_KEY` and `TURNSTILE_SECRET_KEY` as encrypted secrets.
 
 ### Required R2 binding
 
@@ -85,16 +95,11 @@ quotes/artiling/YYYY-MM-DD/submission-id/sanitized-original-filename
 
 ### Required Turnstile setup
 
-Create a Cloudflare Turnstile widget for the site and replace the placeholder site key in:
+Keep the public Turnstile site key aligned in:
 
 ```text
 quote/index.html
-```
-
-Placeholder to replace:
-
-```text
-1x00000000000000000000AA
+assets/js/quote.js
 ```
 
 Also set the matching secret key as `TURNSTILE_SECRET_KEY` in Cloudflare Pages.
@@ -107,8 +112,8 @@ In Resend:
 2. Add the required DNS records.
 3. Create an API key.
 4. Set `RESEND_API_KEY` in Cloudflare Pages.
-5. Set `QUOTE_FROM_EMAIL` to an approved sender on the verified domain.
-6. Quote requests are sent to `info@artilingstudio.co.uk`.
+5. Set `QUOTE_FROM_EMAIL` to `Artiling Studio <quotes@artilingstudio.co.uk>` after verifying `artilingstudio.co.uk`.
+6. Set `QUOTE_TO_EMAIL` to `info@artilingstudio.co.uk`.
 
 The Function stores images in R2 and includes object keys or public links in the email. It does not attach uploaded images.
 

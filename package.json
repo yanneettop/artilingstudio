@@ -6,6 +6,7 @@
     "build:tile-library": "esbuild src/tile-style-library/main.ts --bundle --format=esm --target=es2020 --minify --outfile=assets/js/tile-style-library.js",
     "build": "node scripts/build-site.mjs",
     "preview": "vite preview --host 127.0.0.1",
+    "test:quote": "node --test tests/quote.test.mjs",
     "verify": "node scripts/verify-build.mjs"
   },
   "dependencies": {
