@@ -10,6 +10,7 @@ const FIELD_LABELS = [
   ['projectMessage', 'Project message'],
   ['location', 'Location'],
   ['dimensions', 'Dimensions'],
+  ['material', 'Preferred material'],
   ['materialSituation', 'Material situation'],
   ['scope', 'Scope'],
   ['condition', 'Current condition'],
@@ -173,6 +174,7 @@ const collectFields = (formData) => {
   // Accept the short-lived field name used by the simplified form before the
   // frontend/backend contract was aligned. This keeps cached clients working.
   fields.projectMessage ||= asString(formData.get('briefDescription'));
+  fields.material = fields.material.slice(0, 120);
   return fields;
 };
 

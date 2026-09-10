@@ -72,6 +72,16 @@ test('quote API contract and error classification', async (t) => {
     assert.match(result.emailPayload.text, /Dimensions: 1200 x 450mm/);
   });
 
+  await t.test('includes the selected material in both email formats and escapes HTML', async () => {
+    const form = makeForm();
+    form.set('material', 'Calacatta Gold <sample>');
+    const result = await submit({ form });
+    assert.equal(result.response.status, 200);
+    assert.match(result.emailPayload.text, /Preferred material: Calacatta Gold <sample>/);
+    assert.match(result.emailPayload.html, /Calacatta Gold &lt;sample&gt;/);
+    assert.doesNotMatch(result.emailPayload.html, /<sample>/);
+  });
+
   await t.test('accepts the legacy briefDescription field for cached clients', async () => {
     const result = await submit({ form: makeForm('briefDescription') });
 

@@ -688,7 +688,12 @@
   const getPortfolioItemsBySlugs = (slugs) =>
     slugs.map((slug) => portfolioItemsBySlug.get(slug)).filter(Boolean);
 
+  const imageManifest = window.ArtilingProjectImages || {};
+  const optimizedImages = new Map(Object.values(imageManifest).map((image) => [image.src, image]));
+  const imageFor = (src = '') => imageManifest[src.split('?')[0]] || optimizedImages.get(src.split('?')[0]);
+
   window.ArtilingPortfolio = {
+    imageFor,
     projects: portfolioProjects,
     categories: portfolioCategories,
     homepageSelectedWorkSlugs,

@@ -6300,7 +6300,7 @@ body.is-menu-open {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(167, 159, 148, 0.68);
+  color: #bdb6ac;
   position: relative;
   z-index: 1;
 }
@@ -6317,12 +6317,12 @@ body.is-menu-open {
   flex-wrap: wrap;
   gap: 10px 18px;
   align-items: center;
-  color: rgba(167, 159, 148, 0.68);
+  color: #bdb6ac;
 }
 
 .footer__legal a,
 .footer__cookie-settings {
-  color: rgba(167, 159, 148, 0.78);
+  color: #bdb6ac;
   font-size: inherit;
   letter-spacing: inherit;
   text-transform: inherit;
@@ -6339,7 +6339,7 @@ body.is-menu-open {
 }
 
 .footer__credit {
-  color: rgba(167, 159, 148, 0.72);
+  color: #bdb6ac;
   font-size: 10px;
   letter-spacing: 0.12em;
   white-space: nowrap;
@@ -6351,7 +6351,9 @@ body.is-menu-open {
 }
 
 .footer__credit a {
-  color: rgba(246, 244, 239, 0.62);
+  color: #e0dcd5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   font-size: inherit;
 }
 

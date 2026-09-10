@@ -52,6 +52,12 @@
         </label>
       </div>
 
+      <label class="quote-input">
+        <span class="quote-input__label">Preferred material <span class="quote-optional">optional</span></span>
+        <input type="text" name="material" maxlength="120" placeholder="e.g. Calacatta Gold" />
+        <span class="quote-input__hint">Your selected look. You can change it or leave it blank.</span>
+      </label>
+
       <label class="quote-input quote-input--full">
         <span class="quote-input__label">Brief description <span class="req">*</span></span>
         <textarea name="projectMessage" rows="6" data-required="text" required placeholder="Tell us what you are planning, where the piece or tiling will go, and anything already decided."></textarea>
@@ -100,6 +106,11 @@
       <button type="submit" class="btn btn--dark" data-submit>Request my quote <span aria-hidden="true">-&gt;</span></button>
     </div>
   `;
+
+  const params = new URLSearchParams(window.location.search);
+  const legacyStyle = (params.get('style') || '').replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+  // Assign a value, never HTML: shared enquiry links may contain arbitrary text.
+  form.querySelector('[name="material"]').value = (params.get('material') || legacyStyle).trim().slice(0, 120);
 
   const turnstileWidget = form.querySelector('[data-turnstile-widget]');
   const submitBtn = form.querySelector('[data-submit]');

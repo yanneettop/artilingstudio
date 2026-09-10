@@ -47,6 +47,7 @@
       ['Home', '/'],
       ['Projects', '/projects/'],
       ['Tile Style Library', '/tile-style-library/'],
+      ['Studio', '/studio/'],
       ['Contact', '/contact/'],
     ];
     const serviceLinks = [
@@ -211,10 +212,14 @@
     const localAssetSrc = (src) =>
       window.location.protocol === 'file:' && src.startsWith('/') ? `.${src}` : src;
     const withAssetVersion = (src) => {
-      const assetSrc = localAssetSrc(src);
+      const assetSrc = localAssetSrc(portfolio.imageFor(src)?.src || src);
       return assetSrc
         ? `${assetSrc}${assetSrc.includes('?') ? '&' : '?'}v=20260424-lightbox-gallery`
         : '';
+    };
+    const responsiveImageAttrs = (src) => {
+      const image = portfolio.imageFor(src);
+      return image ? `srcset="${image.srcset}" sizes="(max-width: 700px) 100vw, 50vw" width="${image.width}" height="${image.height}" decoding="async"` : '';
     };
     const projectImageFor = (project) =>
       withAssetVersion(project.coverImage || project.cover || project.galleryImages?.[0] || project.collage || '');
@@ -261,7 +266,7 @@
     const renderSelectedWork = (project, index) => `
       <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal="card" data-reveal-delay="${index * 90}">
         <button class="selected-work__media" type="button" data-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(selectedWorkTitles[project.slug] || project.title)} gallery">
-          <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
+          <img src="${projectImageFor(project)}" ${responsiveImageAttrs(projectImageFor(project))} alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
         </button>
         <div class="selected-work__caption">
           <span class="selected-work__number">0${index + 1}</span>
@@ -277,7 +282,7 @@
     const renderConceptWork = (project, index) => `
       <article class="selected-work selected-work--${teaserToneBySlug[project.slug] || 'warm'} selected-work--${project.slug}" data-project-slug="${project.slug}" data-reveal="card" data-reveal-delay="${index * 90}">
         <button class="selected-work__media" type="button" data-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(conceptTitles[project.slug] || project.title)} gallery">
-          <img src="${projectImageFor(project)}" alt="${escapeHtml(conceptAltText[index] || projectAltFor(project))}" loading="lazy" />
+          <img src="${projectImageFor(project)}" ${responsiveImageAttrs(projectImageFor(project))} alt="${escapeHtml(conceptAltText[index] || projectAltFor(project))}" loading="lazy" />
         </button>
         <div class="selected-work__caption">
           <span class="selected-work__number">0${index + 1}</span>
@@ -309,8 +314,8 @@
       return `
         <article class="home-selected-project home-selected-project--${index === 0 ? 'featured' : 'support'}" data-reveal="card" data-reveal-delay="${index * 90}">
           <button class="home-selected-project__media" type="button" data-lightbox-open="${project.slug}" aria-label="Open ${escapeHtml(project.title)} gallery">
-            <img class="home-selected-project__image home-selected-project__image--primary" src="${withAssetVersion(selectedProjectImageFor(project))}" alt="${escapeHtml(selectedProjectAltFor(project))}" loading="lazy" />
-            <img class="home-selected-project__image home-selected-project__image--hover" src="${withAssetVersion(selectedProjectHoverImageFor(project))}" alt="" loading="lazy" aria-hidden="true" />
+            <img class="home-selected-project__image home-selected-project__image--primary" src="${withAssetVersion(selectedProjectImageFor(project))}" ${responsiveImageAttrs(selectedProjectImageFor(project))} alt="${escapeHtml(selectedProjectAltFor(project))}" loading="lazy" />
+            ${window.matchMedia('(min-width: 701px) and (hover: hover) and (pointer: fine)').matches ? `<img class="home-selected-project__image home-selected-project__image--hover" src="${withAssetVersion(selectedProjectHoverImageFor(project))}" ${responsiveImageAttrs(selectedProjectHoverImageFor(project))} alt="" loading="lazy" aria-hidden="true" />` : ''}
             <span class="home-selected-project__label">${escapeHtml(label)}</span>
           </button>
           <div class="home-selected-project__info">
@@ -353,7 +358,7 @@
     `;
 
     const createPortfolioLightbox = (projects) => {
-      const lightbox = document.createElement('aside');
+      const lightbox = document.createElement('div');
       lightbox.className = 'portfolio-lightbox';
       lightbox.setAttribute('aria-hidden', 'true');
       lightbox.setAttribute('role', 'dialog');
@@ -445,7 +450,7 @@
           .map(
             (image, index) => `
               <button class="portfolio-lightbox__thumb" type="button" data-lightbox-index="${index}" aria-label="Show image ${index + 1}">
-                <img src="${image.src}" alt="${escapeHtml(image.alt)}" loading="lazy" />
+                <img src="${portfolio.imageFor(image.src)?.thumbnail || image.src}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async" />
               </button>
             `
           )

@@ -64,8 +64,12 @@
   const matchesFilter = (project, filter) =>
     filter === 'all' || (project.categories || []).includes(filter);
   const withAssetVersion = (src) =>
-    src ? `${src}${src.includes('?') ? '&' : '?'}v=20260424-lightbox-gallery` : '';
-  const projectImageFor = (project) =>
+    portfolio.imageFor(src)?.src || (src ? `${src}${src.includes('?') ? '&' : '?'}v=20260424-lightbox-gallery` : '');
+  const responsiveImageAttrs = (src) => {
+      const image = portfolio.imageFor(src);
+      return image ? `srcset="${image.srcset}" sizes="(max-width: 700px) 100vw, 50vw" width="${image.width}" height="${image.height}" decoding="async"` : '';
+    };
+    const projectImageFor = (project) =>
     withAssetVersion(project.coverImage || project.cover || project.galleryImages?.[0] || project.collage || '');
   const projectHoverImageFor = (project) => {
     const gallery = projectGalleryFor(project);
@@ -160,13 +164,13 @@
 
   /* ── Featured project renderer ── */
   const renderFeaturedProject = (project, index) => {
-    const hoverImage = projectHoverImageFor(project);
+    const hoverImage = window.matchMedia('(min-width: 701px) and (hover: hover) and (pointer: fine)').matches ? projectHoverImageFor(project) : null;
 
     return `
     <article id="${escapeHtml(project.slug)}" class="project-feature project-feature--${index + 1} project-feature--${project.slug}${hoverImage ? ' project-feature--has-hover-image' : ''}" data-reveal>
         <button class="project-feature__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
-          <img class="project-feature__image project-feature__image--primary" src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
-          ${hoverImage ? `<img class="project-feature__image project-feature__image--hover" src="${hoverImage.src}" alt="${escapeHtml(hoverImage.alt)}" loading="lazy" aria-hidden="true" />` : ''}
+          <img class="project-feature__image project-feature__image--primary" src="${projectImageFor(project)}" ${responsiveImageAttrs(projectImageFor(project))} alt="${escapeHtml(projectAltFor(project))}" loading="${index === 0 ? 'eager' : 'lazy'}" />
+          ${hoverImage ? `<img class="project-feature__image project-feature__image--hover" src="${hoverImage.src}" ${responsiveImageAttrs(hoverImage.src)} alt="${escapeHtml(hoverImage.alt)}" loading="lazy" aria-hidden="true" />` : ''}
         </button>
         <div class="project-feature__caption">
           <span class="project-card__index">0${index + 1}</span>
@@ -197,7 +201,7 @@
     return `
       <article id="${escapeHtml(project.slug)}" class="project-card project-card--${(index % 2) + 1} project-card--${project.slug}${isStudy ? ' project-card--study' : ''}" data-reveal>
         <button class="project-card__media" type="button" data-project-lightbox-open="${project.slug}" aria-label="View ${escapeHtml(project.title)} gallery">
-          <img src="${projectImageFor(project)}" alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
+          <img src="${projectImageFor(project)}" ${responsiveImageAttrs(projectImageFor(project))} alt="${escapeHtml(projectAltFor(project))}" loading="lazy" />
           ${isStudy ? '<span class="project-card__badge project-card__badge--overlay">Design Study</span>' : ''}
         </button>
         <div class="project-card__caption">
@@ -217,7 +221,7 @@
 
   /* ── Lightbox ── */
   const createProjectLightbox = () => {
-    const lightbox = document.createElement('aside');
+    const lightbox = document.createElement('div');
     lightbox.className = 'portfolio-lightbox';
     lightbox.setAttribute('aria-hidden', 'true');
     lightbox.setAttribute('role', 'dialog');
@@ -308,7 +312,7 @@
         .map(
           (image, index) => `
             <button class="portfolio-lightbox__thumb" type="button" data-project-lightbox-index="${index}" aria-label="Show image ${index + 1}">
-              <img src="${image.src}" alt="${escapeHtml(image.alt)}" loading="lazy" />
+              <img src="${portfolio.imageFor(image.src)?.thumbnail || image.src}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async" />
             </button>
           `
         )
