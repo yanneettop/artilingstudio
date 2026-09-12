@@ -544,11 +544,14 @@
   overflow: hidden;
 }
 
+/* The base scale is the slack the parallax offset travels inside. Keep it
+   just above the offset: the figure clips the top and sides, but a gallery
+   figure also contains its caption, so any extra bleed lands on the text. */
 .project-hero__media img,
 .project-story__media img,
 .project-gallery figure img {
   display: block;
-  --media-scale: 1.055;
+  --media-scale: 1.04;
   transform: translate3d(0, var(--parallax, 0px), 0) scale(var(--media-scale));
   transition: --media-scale 900ms cubic-bezier(0.16, 1, 0.3, 1), filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -557,7 +560,16 @@
 .project-story__media:hover img,
 .project-gallery figure:hover img,
 .project-gallery figure:focus-within img {
-  --media-scale: 1.105;
+  --media-scale: 1.09;
+}
+
+/* Caption sits in flow under the image, so it needs its own paint layer and
+   an opaque ground to sit clear of the scaled image above it. */
+.project-gallery figcaption {
+  position: relative;
+  z-index: 1;
+  padding-top: 1.15rem;
+  background: #ded7cd;
 }
 
 /* Hero frame settles in on load, then breathes on hover. */
@@ -716,5 +728,14 @@
   .project-hero__media::after {
     opacity: 1;
     animation: none;
+  }
+}
+
+/* Parallax is desktop-only, so drop the slack scale and show the full crop. */
+@media (max-width: 759px) {
+  .project-hero__media img,
+  .project-story__media img,
+  .project-gallery figure img {
+    --media-scale: 1;
   }
 }

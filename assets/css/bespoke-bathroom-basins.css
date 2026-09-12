@@ -1559,3 +1559,11 @@
     transform: none;
   }
 }
+
+@media (max-width: 759px) {
+  .basin-hero__media img,
+  .basin-small__media img,
+  .basin-material img {
+    --media-scale: 1;
+  }
+}

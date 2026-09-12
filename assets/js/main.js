@@ -626,7 +626,7 @@
   );
 
   if (parallaxMedia.length && !prefersReducedMotion && window.matchMedia('(min-width: 760px)').matches) {
-    const PARALLAX_RANGE = 16;
+    const PARALLAX_RANGE = 12;
     let parallaxFrame = 0;
 
     const paintParallax = () => {
