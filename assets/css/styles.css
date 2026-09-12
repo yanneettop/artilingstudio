@@ -7013,20 +7013,16 @@ body.is-menu-open {
 ─────────────────────────────────────────────────────────────── */
 html.js-reveal [data-reveal] {
   opacity: 0;
-  transform: translate3d(0, 42px, 0);
-  filter: blur(8px);
+  transform: translate3d(0, 22px, 0);
   transition:
-    opacity 1.1s var(--ease-out),
-    transform 1.1s var(--ease-out),
-    filter 1.1s var(--ease-out);
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
   transition-delay: 0ms;
-  will-change: opacity, transform, filter;
 }
 html.js-reveal [data-reveal].is-inview,
 html.js-reveal.reveal-failsafe [data-reveal] {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
 }
 
 html.js-reveal [data-reveal="copy"] {
@@ -7037,12 +7033,10 @@ html.js-reveal [data-reveal="copy"] {
 
 html.js-reveal [data-reveal="copy"] > * {
   opacity: 0;
-  transform: translate3d(0, 28px, 0);
-  filter: blur(5px);
+  transform: translate3d(0, 16px, 0);
   transition:
-    opacity 900ms var(--ease-out),
-    transform 900ms var(--ease-out),
-    filter 900ms var(--ease-out);
+    opacity 680ms var(--ease-out),
+    transform 680ms var(--ease-out);
 }
 
 html.js-reveal [data-reveal="copy"] > :nth-child(2) {
@@ -7065,7 +7059,29 @@ html.js-reveal [data-reveal="copy"].is-inview > *,
 html.js-reveal.reveal-failsafe [data-reveal="copy"] > * {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
+}
+
+/* Hero titles rise into a mask rather than fading out of a blur. Blurring
+   type this large means reconvolving the whole layer every frame, which is
+   what made the old reveal stutter; a clip edge and a transform do not. */
+html.js-reveal [data-reveal="copy"] > .display,
+html.js-reveal .projects-hero__copy[data-reveal] > .display {
+  opacity: 1;
+  transform: translate3d(0, 0.14em, 0);
+  clip-path: inset(100% -6% 0 -6%);
+  transition:
+    clip-path 880ms var(--ease-out),
+    transform 880ms var(--ease-out);
+  transition-delay: 70ms;
+}
+
+html.js-reveal [data-reveal="copy"].is-inview > .display,
+html.js-reveal.reveal-failsafe [data-reveal="copy"] > .display,
+html.js-reveal .projects-hero__copy[data-reveal].is-inview > .display,
+html.js-reveal.reveal-failsafe .projects-hero__copy[data-reveal] > .display {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  clip-path: inset(-14% -6% -10% -6%);
 }
 
 html.js-reveal [data-reveal="visual"],
@@ -7094,7 +7110,6 @@ html.js-reveal [data-reveal="cta"] {
 
 html.js-reveal [data-reveal="rule"] {
   transform: translate3d(0, 18px, 0);
-  filter: blur(4px);
 }
 
 html.js-reveal [data-reveal="rule"]::before,
@@ -7113,12 +7128,10 @@ html.js-reveal.reveal-failsafe [data-reveal="rule"]::after {
 
 html.js-reveal [data-reveal="gallery"] figure {
   opacity: 0;
-  transform: translate3d(0, 34px, 0) scale(0.985);
-  filter: blur(7px);
+  transform: translate3d(0, 26px, 0) scale(0.99);
   transition:
-    opacity 1s var(--ease-out),
-    transform 1s var(--ease-out),
-    filter 1s var(--ease-out);
+    opacity 760ms var(--ease-out),
+    transform 760ms var(--ease-out);
 }
 
 html.js-reveal [data-reveal="gallery"] figure:nth-child(2) {
@@ -7133,18 +7146,15 @@ html.js-reveal [data-reveal="gallery"].is-inview figure,
 html.js-reveal.reveal-failsafe [data-reveal="gallery"] figure {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
-  filter: blur(0);
 }
 
 html.js-reveal [data-reveal="list"] .detail-list__item,
 html.js-reveal [data-reveal="points"] li {
   opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  filter: blur(5px);
+  transform: translate3d(0, 16px, 0);
   transition:
-    opacity 850ms var(--ease-out),
-    transform 850ms var(--ease-out),
-    filter 850ms var(--ease-out);
+    opacity 680ms var(--ease-out),
+    transform 680ms var(--ease-out);
 }
 
 html.js-reveal [data-reveal="list"] .detail-list__item:nth-child(2),
@@ -7168,7 +7178,6 @@ html.js-reveal.reveal-failsafe [data-reveal="list"] .detail-list__item,
 html.js-reveal.reveal-failsafe [data-reveal="points"] li {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
 }
 
 /* Image wipe-in reveal — clip from bottom */
@@ -7274,6 +7283,14 @@ html.js-reveal.reveal-failsafe [data-reveal] .selected-work__media img {
     scale: none;
     filter: none;
     animation: none;
+  }
+  /* The masked title reveal starts fully clipped, so it needs an explicit
+     reset here or the heading never becomes visible. */
+  html.js-reveal [data-reveal="copy"] > .display,
+  html.js-reveal .projects-hero__copy[data-reveal] > .display,
+  html.js-reveal .services-page [data-reveal="copy"] :is(h1, h2) {
+    clip-path: none;
+    transform: none;
   }
   .hero__badge,
   .hero__scroll-line::after {
@@ -8690,8 +8707,8 @@ body {
   display: block;
 }
 @keyframes quoteFade {
-  from { opacity: 0; transform: translateY(14px); filter: blur(4px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .quote-step__head {
@@ -9764,13 +9781,10 @@ html.js-reveal .projects-hero__copy[data-reveal] > .projects-hero__intro,
 html.js-reveal .projects-hero__copy[data-reveal] > .projects-hero__actions,
 html.js-reveal .projects-hero__copy[data-reveal] > .projects-hero__meta {
   opacity: 0;
-  transform: translate3d(0, 24px, 0);
-  filter: blur(7px);
+  transform: translate3d(0, 16px, 0);
   transition:
-    opacity 950ms var(--ease-out),
-    transform 950ms var(--ease-out),
-    filter 950ms var(--ease-out);
-  will-change: opacity, transform, filter;
+    opacity 680ms var(--ease-out),
+    transform 680ms var(--ease-out);
 }
 
 html.js-reveal .projects-hero__copy[data-reveal].is-inview > .eyebrow,
@@ -9785,7 +9799,6 @@ html.js-reveal.reveal-failsafe .projects-hero__copy[data-reveal] > .projects-her
 html.js-reveal.reveal-failsafe .projects-hero__copy[data-reveal] > .projects-hero__meta {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
 }
 
 html.js-reveal .projects-hero__copy[data-reveal] > .display { transition-delay: 90ms; }
@@ -11576,12 +11589,10 @@ html.js-reveal .projects-hero__copy[data-reveal] > .projects-hero__meta { transi
 @keyframes hero-mobile-text-reveal {
   from {
     opacity: 0;
-    filter: blur(6px);
-    transform: translate3d(0, 18px, 0);
+    transform: translate3d(0, 14px, 0);
   }
   to {
     opacity: 1;
-    filter: blur(0);
     transform: translate3d(0, 0, 0);
   }
 }
@@ -17038,24 +17049,19 @@ body.is-tile-style-gallery-open > .view-cursor.view-cursor--zoom {
 }
 
 html.js-reveal .services-page [data-reveal="copy"] :is(h1, h2) {
-  opacity: 0;
-  clip-path: inset(0 0 100% 0);
-  transform: translate3d(0, 52px, 0);
-  filter: blur(3px);
+  opacity: 1;
+  clip-path: inset(100% -6% 0 -6%);
+  transform: translate3d(0, 0.14em, 0);
   transition:
-    opacity 1ms linear 90ms,
-    clip-path 1.15s var(--ease-out) 90ms,
-    transform 1.15s var(--ease-out) 90ms,
-    filter 900ms var(--ease-out) 90ms;
-  will-change: clip-path, transform;
+    clip-path 880ms var(--ease-out) 70ms,
+    transform 880ms var(--ease-out) 70ms;
 }
 
 html.js-reveal .services-page [data-reveal="copy"].is-inview :is(h1, h2),
 html.js-reveal.reveal-failsafe .services-page [data-reveal="copy"] :is(h1, h2) {
   opacity: 1;
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(-14% -6% -10% -6%);
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
 }
 
 html.js-reveal .services-page .services-feature[data-reveal] .services-feature__media img,
