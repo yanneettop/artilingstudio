@@ -29,6 +29,7 @@ const rootFiles = [
 ];
 
 const routeDirectories = [
+  "bespoke-bathroom-basins",
   "bespoke-porcelain-sinks",
   "bespoke-sinks",
   "card",

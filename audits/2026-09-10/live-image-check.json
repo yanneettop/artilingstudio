@@ -1,0 +1,765 @@
+{
+  "method": "curl HEAD; initial urllib requests returned 403 while browser and curl succeeded",
+  "results": [
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin1-2271781262-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin1-2271781262-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin1-2271781262-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin1-2271781262-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin2-44d0ff8c11-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin2-44d0ff8c11-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin2-44d0ff8c11-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin2-44d0ff8c11-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin3-678c64329d-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin3-678c64329d-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin3-678c64329d-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/arabescato-oak-basin/arabescato-oak-bespoke-porcelain-basin3-678c64329d-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/backlit-marble-double-vanity/backlit-marble-double-vanity-3e12b0d453-1430.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/backlit-marble-double-vanity/backlit-marble-double-vanity-3e12b0d453-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/backlit-marble-double-vanity/backlit-marble-double-vanity-3e12b0d453-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/backlit-marble-double-vanity/backlit-marble-double-vanity-3e12b0d453-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/beige-stone-floating-vanity/beige-stone-floating-vanity-529c59ba5b-1535.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/beige-stone-floating-vanity/beige-stone-floating-vanity-529c59ba5b-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/beige-stone-floating-vanity/beige-stone-floating-vanity-529c59ba5b-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/beige-stone-floating-vanity/beige-stone-floating-vanity-529c59ba5b-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-bathroom-niche-toilet-detail-a7a781c924-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-bathroom-niche-toilet-detail-a7a781c924-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-bathroom-niche-toilet-detail-a7a781c924-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-bathroom-niche-toilet-detail-a7a781c924-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-double-basin-vanity-detail-711c31635f-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-double-basin-vanity-detail-711c31635f-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-double-basin-vanity-detail-711c31635f-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-double-basin-vanity-detail-711c31635f-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom-a35638d505-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom-a35638d505-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom-a35638d505-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom-a35638d505-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-porcelain-vanity-mirror-bathroom-6a020bb93d-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-porcelain-vanity-mirror-bathroom-6a020bb93d-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-porcelain-vanity-mirror-bathroom-6a020bb93d-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-porcelain-vanity-mirror-bathroom-6a020bb93d-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-wall-mounted-tap-basin-detail-64349a355f-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-wall-mounted-tap-basin-detail-64349a355f-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-wall-mounted-tap-basin-detail-64349a355f-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-bespoke-bathroom/calacatta-gold-wall-mounted-tap-basin-detail-64349a355f-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-led-vanity/calacatta-gold-led-vanity-d4714114f4-1402.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-led-vanity/calacatta-gold-led-vanity-d4714114f4-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-led-vanity/calacatta-gold-led-vanity-d4714114f4-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-gold-led-vanity/calacatta-gold-led-vanity-d4714114f4-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink1-d8f80e6184-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink1-d8f80e6184-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink1-d8f80e6184-941.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink2-744e0e7a77-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink2-744e0e7a77-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink2-744e0e7a77-941.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink3-533e903ed9-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink3-533e903ed9-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink3-533e903ed9-941.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink4-6c43993266-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink4-6c43993266-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink4-6c43993266-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/calacatta-line-sink/artiling-calacatta-line-sink4-6c43993266-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink1-fa28922a5e-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink1-fa28922a5e-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink1-fa28922a5e-941.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink2-826f1835ce-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink2-826f1835ce-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink2-826f1835ce-941.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink3-92690d4bce-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink3-92690d4bce-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink3-92690d4bce-941.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink4-204aa529ba-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink4-204aa529ba-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/floating-mitred-porcelain-sink/beige_stone_sink4-204aa529ba-941.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/framed-mirror-double-vanity/framed-mirror-double-vanity-bf6fab0e59-1536.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/framed-mirror-double-vanity/framed-mirror-double-vanity-bf6fab0e59-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/framed-mirror-double-vanity/framed-mirror-double-vanity-bf6fab0e59-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/framed-mirror-double-vanity/framed-mirror-double-vanity-bf6fab0e59-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/graphite-spa-bathroom/graphite-spa-bathroom-c27acb2335-1536.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/graphite-spa-bathroom/graphite-spa-bathroom-c27acb2335-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/graphite-spa-bathroom/graphite-spa-bathroom-c27acb2335-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/graphite-spa-bathroom/graphite-spa-bathroom-c27acb2335-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/mauve-stone-statement-bathroom/mauve-stone-statement-bathroom-df30c0fe1b-1536.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/mauve-stone-statement-bathroom/mauve-stone-statement-bathroom-df30c0fe1b-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/mauve-stone-statement-bathroom/mauve-stone-statement-bathroom-df30c0fe1b-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/mauve-stone-statement-bathroom/mauve-stone-statement-bathroom-df30c0fe1b-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-feature-floating-sink/onyx-feature-floating-sink-b82771c73a-1448.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-feature-floating-sink/onyx-feature-floating-sink-b82771c73a-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-feature-floating-sink/onyx-feature-floating-sink-b82771c73a-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-feature-floating-sink/onyx-feature-floating-sink-b82771c73a-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/beige-marble-effect-porcelain-bathroom-vanity-b7831210a1-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/beige-marble-effect-porcelain-bathroom-vanity-b7831210a1-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/beige-marble-effect-porcelain-bathroom-vanity-b7831210a1-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/beige-marble-effect-porcelain-bathroom-vanity-b7831210a1-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/bespoke-mitred-porcelain-vanity-blue-onyx-wall-london-ec38412111-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/bespoke-mitred-porcelain-vanity-blue-onyx-wall-london-ec38412111-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/bespoke-mitred-porcelain-vanity-blue-onyx-wall-london-ec38412111-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/bespoke-mitred-porcelain-vanity-blue-onyx-wall-london-ec38412111-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/integrated-porcelain-sink-bronze-wall-mounted-tap-7494036463-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/integrated-porcelain-sink-bronze-wall-mounted-tap-7494036463-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/integrated-porcelain-sink-bronze-wall-mounted-tap-7494036463-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/integrated-porcelain-sink-bronze-wall-mounted-tap-7494036463-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/made-to-measure-porcelain-sink-vanity-london-e33f2db248-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/made-to-measure-porcelain-sink-vanity-london-e33f2db248-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/made-to-measure-porcelain-sink-vanity-london-e33f2db248-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/made-to-measure-porcelain-sink-vanity-london-e33f2db248-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/porcelain-vanity-unit-push-to-open-drawers-2482391289-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/porcelain-vanity-unit-push-to-open-drawers-2482391289-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/porcelain-vanity-unit-push-to-open-drawers-2482391289-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-frame-porcelain-vanity/porcelain-vanity-unit-push-to-open-drawers-2482391289-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink1-4dee0857ee-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink1-4dee0857ee-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink1-4dee0857ee-720.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink2-626b97509a-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink2-626b97509a-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink2-626b97509a-720.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink3-5f94cbabb9-1184.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink3-5f94cbabb9-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink3-5f94cbabb9-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink3-5f94cbabb9-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink4-a731910654-1184.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink4-a731910654-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink4-a731910654-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink4-a731910654-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink5-a1f74721ea-1184.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink5-a1f74721ea-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink5-a1f74721ea-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink5-a1f74721ea-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink6-763ba4b1e4-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink6-763ba4b1e4-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/onyx-vein-floating-sink/onyx-vein-floating-porcelain-sink6-763ba4b1e4-752.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/angled-rose-onyx-porcelain-sink-integrated-basin-floating-shelf-b13ce9388e-1080.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/angled-rose-onyx-porcelain-sink-integrated-basin-floating-shelf-b13ce9388e-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/angled-rose-onyx-porcelain-sink-integrated-basin-floating-shelf-b13ce9388e-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/angled-rose-onyx-porcelain-sink-integrated-basin-floating-shelf-b13ce9388e-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london-5ec8cb430a-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london-5ec8cb430a-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london-5ec8cb430a-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london-5ec8cb430a-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/close-view-rose-onyx-porcelain-sink-integrated-basin-taps-84e9a88810-1080.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/close-view-rose-onyx-porcelain-sink-integrated-basin-taps-84e9a88810-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/close-view-rose-onyx-porcelain-sink-integrated-basin-taps-84e9a88810-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/close-view-rose-onyx-porcelain-sink-integrated-basin-taps-84e9a88810-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-large-format-porcelain-bathroom-freestanding-bath-81bc312da2-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-large-format-porcelain-bathroom-freestanding-bath-81bc312da2-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-large-format-porcelain-bathroom-freestanding-bath-81bc312da2-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-large-format-porcelain-bathroom-freestanding-bath-81bc312da2-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-porcelain-bathroom-large-format-shower-walls-a2a4161692-1122.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-porcelain-bathroom-large-format-shower-walls-a2a4161692-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-porcelain-bathroom-large-format-shower-walls-a2a4161692-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/rose-onyx-porcelain-bathroom-large-format-shower-walls-a2a4161692-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/collage-0d2fbf4459-1402.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/collage-0d2fbf4459-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/collage-0d2fbf4459-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/collage-0d2fbf4459-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/cover-1b17ea4629-1280.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/cover-1b17ea4629-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/cover-1b17ea4629-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/cover-1b17ea4629-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-1-b87a49fd38-1023.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-1-b87a49fd38-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-1-b87a49fd38-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-1-b87a49fd38-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-2-a74249a044-1363.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-2-a74249a044-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-2-a74249a044-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/detail-2-a74249a044-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-1-c0938170d2-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-1-c0938170d2-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-1-c0938170d2-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-1-c0938170d2-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-2-7866edea32-1600.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-2-7866edea32-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-2-7866edea32-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-2-7866edea32-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-3-ee28363f52-1448.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-3-ee28363f52-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-3-ee28363f52-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-3-ee28363f52-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-4-c8cdfde185-1448.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-4-c8cdfde185-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-4-c8cdfde185-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/soft-stone-double-vanity/gallery-4-c8cdfde185-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/statuario-linear-sink/statuario-linear-sink-c9929c9640-1448.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/statuario-linear-sink/statuario-linear-sink-c9929c9640-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/statuario-linear-sink/statuario-linear-sink-c9929c9640-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/statuario-linear-sink/statuario-linear-sink-c9929c9640-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/verde-marble-feature-bathroom/verde-marble-feature-bathroom-86f2c80c16-1448.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/verde-marble-feature-bathroom/verde-marble-feature-bathroom-86f2c80c16-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/verde-marble-feature-bathroom/verde-marble-feature-bathroom-86f2c80c16-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/verde-marble-feature-bathroom/verde-marble-feature-bathroom-86f2c80c16-960.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/walnut-double-vanity-suite/walnut-double-vanity-suite-62b6689e78-1402.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/walnut-double-vanity-suite/walnut-double-vanity-suite-62b6689e78-240.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/walnut-double-vanity-suite/walnut-double-vanity-suite-62b6689e78-640.webp",
+      "status": "200"
+    },
+    {
+      "path": "/public/projects/optimized/walnut-double-vanity-suite/walnut-double-vanity-suite-62b6689e78-960.webp",
+      "status": "200"
+    }
+  ]
+}

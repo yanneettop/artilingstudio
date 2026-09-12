@@ -258,6 +258,36 @@ const pageSchemas = {
       ['Do you make small bespoke basins for cloakrooms?', 'Yes. Compact made-to-measure porcelain basins can be designed for cloakrooms and small bathrooms, including wall-hung forms and basins integrated into a vanity.'],
     ]),
   ],
+  'bespoke-bathroom-basins/index.html': [
+    ...common,
+    page({
+      url: `${siteUrl}/bespoke-bathroom-basins/`,
+      name: 'Bespoke Bathroom Basins London | Made to Measure Porcelain',
+      description:
+        'Made-to-measure porcelain bathroom basins designed and fabricated in London. Floating, trough, cloakroom and vanity-integrated basin designs made to fit your space.',
+      image: `${siteUrl}/public/projects/calacatta-line-sink/artiling-calacatta-line-sink4.jpg`,
+      dateModified: '2026-08-16',
+      primaryImage: true,
+    }),
+    service({
+      url: `${siteUrl}/bespoke-bathroom-basins/`,
+      name: 'Bespoke Bathroom Basins London',
+      description:
+        'Made-to-measure porcelain basins for cloakrooms, vanity units, floating installations and wall-to-wall bathroom layouts.',
+      serviceType: ['Bespoke bathroom basins', 'Made-to-measure bathroom basins', 'Bespoke porcelain basins', 'Cloakroom basins', 'Floating bathroom basins'],
+      image: `${siteUrl}/public/projects/calacatta-line-sink/artiling-calacatta-line-sink4.jpg`,
+    }),
+    breadcrumb([...servicesCrumb, { name: 'Bespoke Bathroom Basins', url: `${siteUrl}/bespoke-bathroom-basins/` }]),
+    faq(`${siteUrl}/bespoke-bathroom-basins/`, [
+      ['How much does a bespoke bathroom basin cost?', 'Cost depends on the basin size, porcelain slab, geometry, edge detail, support and installation requirements. A quotation can usually be prepared from room photos and rough dimensions.'],
+      ['Can you make a basin to exact dimensions?', 'Yes, subject to the available slab dimensions, drainage position, structural support and installation access.'],
+      ['Can you make a very small basin for a cloakroom?', 'Yes. Compact wall-hung and vanity-integrated porcelain basins can be designed for small cloakrooms and restricted spaces.'],
+      ['Can the basin match the bathroom wall tiles?', 'Yes. The same porcelain can often continue across the basin, splashback, vanity surfaces and adjoining bathroom walls.'],
+      ['Can I use wall-mounted taps?', 'Yes. Wall-mounted and deck-mounted tap arrangements can both be incorporated into the basin design.'],
+      ['Do you install the basin as well?', 'Fabrication, delivery and installation options are available depending on the project scope and location.'],
+      ['What is the difference between a bespoke basin and a bespoke sink?', 'The terms are often interchangeable in bathroom use, although basin or washbasin is more commonly used in the UK.'],
+    ]),
+  ],
   'porcelain-fabrication-london/index.html': [
     ...common,
     page({

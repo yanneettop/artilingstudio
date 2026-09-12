@@ -260,10 +260,58 @@
       return button;
     }).filter(Boolean);
 
+    const answerAnimations = new WeakMap();
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clearAnswerStyles = (answer) => {
+      answer.style.removeProperty('height');
+      answer.style.removeProperty('opacity');
+      answer.style.removeProperty('overflow');
+      answer.style.removeProperty('will-change');
+    };
+
     const setExpanded = (button, expanded) => {
       const answer = document.getElementById(button.getAttribute('aria-controls'));
+      const wasExpanded = button.getAttribute('aria-expanded') === 'true';
+      if (wasExpanded === expanded) return;
       button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-      if (answer) answer.hidden = !expanded;
+      if (!answer) return;
+
+      const runningAnimation = answerAnimations.get(answer);
+      const startHeight = answer.hidden ? 0 : answer.getBoundingClientRect().height;
+      const computedOpacity = answer.hidden ? 0 : Number.parseFloat(window.getComputedStyle(answer).opacity) || 1;
+      runningAnimation?.cancel();
+
+      if (prefersReducedMotion || typeof answer.animate !== 'function') {
+        answer.hidden = !expanded;
+        clearAnswerStyles(answer);
+        return;
+      }
+
+      if (expanded) answer.hidden = false;
+      const endHeight = expanded ? answer.scrollHeight : 0;
+      answer.style.overflow = 'hidden';
+      answer.style.willChange = 'height, opacity';
+
+      const animation = answer.animate(
+        [
+          { height: `${startHeight}px`, opacity: computedOpacity },
+          { height: `${endHeight}px`, opacity: expanded ? 1 : 0 },
+        ],
+        { duration: 280, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+      );
+      answerAnimations.set(answer, animation);
+
+      animation.onfinish = () => {
+        if (answerAnimations.get(answer) !== animation) return;
+        answer.hidden = !expanded;
+        clearAnswerStyles(answer);
+        answerAnimations.delete(answer);
+      };
+      animation.oncancel = () => {
+        if (answerAnimations.get(answer) !== animation) return;
+        clearAnswerStyles(answer);
+        answerAnimations.delete(answer);
+      };
     };
 
     buttons.forEach((button, index) => {

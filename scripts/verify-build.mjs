@@ -9,6 +9,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const outputRoot = path.join(projectRoot, "dist");
 const pagePaths = [
   "index.html",
+  "bespoke-bathroom-basins/index.html",
   "bespoke-porcelain-sinks/index.html",
   "contact/index.html",
   "large-format-tiling-london/index.html",
@@ -89,7 +90,7 @@ await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const address = server.address();
 const baseUrl = `http://127.0.0.1:${address.port}`;
 try {
-  for (const route of ["/", "/projects/", "/tile-style-library/", "/robots.txt", "/sitemap.xml"]) {
+  for (const route of ["/", "/bespoke-bathroom-basins/", "/projects/", "/tile-style-library/", "/robots.txt", "/sitemap.xml"]) {
     const response = await fetch(`${baseUrl}${route}`);
     assert(response.status === 200, `${route} returned ${response.status}, expected 200.`);
   }
