@@ -3935,8 +3935,27 @@ section {
 
 /* ── Process — how a bespoke sink project starts ──────────────── */
 .projects-process {
+  --projects-muted-aa: #6f6962;
   padding: clamp(56px, 8vw, 104px) 0 clamp(48px, 6vw, 84px);
   background: var(--bone);
+}
+
+.projects-faq {
+  --projects-muted-aa: #6f6962;
+}
+
+.projects-faq .section-rule,
+.projects-process .section-rule,
+.projects-faq .eyebrow,
+.projects-process .eyebrow,
+.projects-process .projects-process__num,
+.projects-process .projects-process__note {
+  color: var(--projects-muted-aa);
+}
+
+.projects-faq .section-rule span,
+.projects-process .section-rule span {
+  opacity: 1;
 }
 
 .projects-process__steps {
