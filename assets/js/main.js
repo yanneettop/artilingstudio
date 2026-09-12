@@ -271,9 +271,9 @@
         <div class="selected-work__caption">
           <span class="selected-work__number">0${index + 1}</span>
           <div>
-            <h3><button class="selected-work__title-action" type="button" data-lightbox-open="${project.slug}">${escapeHtml(selectedWorkTitles[project.slug] || project.title)}</button></h3>
+            <h3><a class="selected-work__title-action" href="/projects/${escapeHtml(project.slug)}/">${escapeHtml(selectedWorkTitles[project.slug] || project.title)}</a></h3>
             <p>${escapeHtml(selectedWorkDescriptions[project.slug] || project.category || project.descriptor)}</p>
-            <button class="selected-work__view" type="button" data-lightbox-open="${project.slug}">Open gallery <span aria-hidden="true">→</span></button>
+            <a class="selected-work__view" href="/projects/${escapeHtml(project.slug)}/">View project <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </article>
@@ -287,7 +287,7 @@
         <div class="selected-work__caption">
           <span class="selected-work__number">0${index + 1}</span>
           <div>
-            <h3><button class="selected-work__title-action" type="button" data-lightbox-open="${project.slug}">${escapeHtml(conceptTitles[project.slug] || project.title)}</button></h3>
+            <h3><a class="selected-work__title-action" href="/projects/${escapeHtml(project.slug)}/">${escapeHtml(conceptTitles[project.slug] || project.title)}</a></h3>
             <p>${escapeHtml(conceptDescriptions[project.slug] || project.summary || project.descriptor)}</p>
           </div>
         </div>
@@ -320,11 +320,11 @@
           </button>
           <div class="home-selected-project__info">
             <div class="home-selected-project__copy">
-              <h3><button type="button" data-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
+              <h3><a href="/projects/${escapeHtml(project.slug)}/">${escapeHtml(project.title)}</a></h3>
               <p class="home-selected-project__meta">${escapeHtml(selectedProjectMetaFor(project))}</p>
               ${description}
             </div>
-            <button class="home-selected-project__link" type="button" data-lightbox-open="${project.slug}">View project <span aria-hidden="true">→</span></button>
+            <a class="home-selected-project__link" href="/projects/${escapeHtml(project.slug)}/">View project <span aria-hidden="true">→</span></a>
           </div>
         </article>
       `;

@@ -175,11 +175,11 @@
         <div class="project-feature__caption">
           <span class="project-card__index">0${index + 1}</span>
           <div>
-            <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${escapeHtml(project.title)}</button></h3>
+            <h3><a class="project-card__title-action" href="/projects/${escapeHtml(project.slug)}/">${escapeHtml(project.title)}</a></h3>
           <p>${escapeHtml(project.category || project.descriptor)}</p>
           <p class="project-feature__editorial-desc">${escapeHtml(projectDescriptionFor(project))}</p>
           ${renderTags(project, 3)}
-          <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">View Project<span aria-hidden="true">+</span></button>
+          <a class="project-card__view" href="/projects/${escapeHtml(project.slug)}/">View Project<span aria-hidden="true">→</span></a>
         </div>
       </div>
     </article>
@@ -207,12 +207,12 @@
         <div class="project-card__caption">
           <span class="project-card__index">${indexStr}&thinsp;/</span>
           <div>
-            <h3><button class="project-card__title-action" type="button" data-project-lightbox-open="${project.slug}">${title}</button></h3>
+            <h3><a class="project-card__title-action" href="/projects/${escapeHtml(project.slug)}/">${title}</a></h3>
             <p>${label}</p>
             ${descHtml}
             ${renderDetails(project)}
             ${renderTags(project)}
-            <button class="project-card__view" type="button" data-project-lightbox-open="${project.slug}">${viewLabel}<span aria-hidden="true">+</span></button>
+            <a class="project-card__view" href="/projects/${escapeHtml(project.slug)}/">${viewLabel}<span aria-hidden="true">→</span></a>
           </div>
         </div>
       </article>
