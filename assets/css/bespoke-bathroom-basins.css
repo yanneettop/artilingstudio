@@ -377,7 +377,8 @@
   height: 100%;
   object-fit: cover;
   object-position: var(--basin-card-position);
-  transition: transform 900ms var(--ease-out), filter 900ms var(--ease-out);
+  transform: translate3d(0, var(--parallax, 0px), 0) scale(var(--media-scale, 1));
+  transition: --media-scale 900ms var(--ease-out), filter 900ms var(--ease-out);
 }
 
 .basin-type--compact {
@@ -398,8 +399,8 @@
 
 .basin-type__media:hover img,
 .basin-type:focus-within .basin-type__media img {
+  --media-scale: 1.045;
   filter: saturate(0.92);
-  transform: scale(1.025);
 }
 
 .basin-type__copy {
@@ -780,13 +781,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 900ms var(--ease-out), filter 900ms var(--ease-out);
+  transform: translate3d(0, var(--parallax, 0px), 0) scale(var(--media-scale, 1.04));
+  transition: --media-scale 900ms var(--ease-out), filter 900ms var(--ease-out);
 }
 
 .basin-material:hover img,
 .basin-material:focus-visible img {
+  --media-scale: 1.09;
   filter: saturate(0.9);
-  transform: scale(1.03);
 }
 
 .basin-material figcaption {
@@ -945,12 +947,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 900ms var(--ease-out);
+  transform: scale(var(--media-scale, 1));
+  transition: --media-scale 900ms var(--ease-out), filter 900ms var(--ease-out);
 }
 
 .basin-project:hover > a img,
 .basin-project:focus-within > a img {
-  transform: scale(1.025);
+  --media-scale: 1.05;
+  filter: saturate(0.94);
 }
 
 .basin-project > div {
@@ -1493,5 +1497,65 @@
 @media (prefers-reduced-motion: reduce) {
   .basin-page :is(.basin-type__media img, .basin-material img, .basin-project > a img, .basin-process__steps li, .basin-link) {
     transition-duration: 1ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Motion layer — editorial media drifts with the scroll (--parallax is
+   written by main.js), panels answer the pointer.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.basin-hero__media img,
+.basin-small__media img {
+  transform: translate3d(0, var(--parallax, 0px), 0) scale(var(--media-scale, 1.05));
+  transition: --media-scale 900ms var(--ease-out), filter 900ms var(--ease-out);
+}
+
+.basin-small__media:hover img,
+.basin-small__media:focus-within img {
+  --media-scale: 1.09;
+  filter: saturate(0.94);
+}
+
+.basin-plumbing__callout {
+  transition: transform 420ms var(--ease-out), border-color 420ms var(--ease), background-color 420ms var(--ease);
+}
+
+.basin-plumbing__callout:hover {
+  transform: translateY(-4px);
+  border-color: rgba(246, 244, 239, 0.72);
+  background: rgba(23, 23, 22, 0.88);
+}
+
+.basin-dimensions__list li {
+  transition: background-color 420ms var(--ease);
+}
+
+.basin-dimensions__list li strong,
+.basin-dimensions__list li span {
+  transition: color 420ms var(--ease), transform 520ms var(--ease-out);
+}
+
+.basin-dimensions__list li:hover {
+  background: rgba(246, 244, 239, 0.05);
+}
+
+.basin-dimensions__list li:hover span {
+  color: rgba(246, 244, 239, 0.72);
+}
+
+.basin-dimensions__list li:hover strong {
+  transform: translateX(5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .basin-page img {
+    --media-scale: 1;
+    transform: none;
+  }
+
+  .basin-plumbing__callout:hover,
+  .basin-dimensions__list li:hover strong {
+    transform: none;
   }
 }

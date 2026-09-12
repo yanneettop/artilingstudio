@@ -50,6 +50,21 @@ html {
   navigation: auto;
 }
 
+/* Registered so hover scale can ease on its own while JS keeps writing
+   --parallax into the same transform without any easing. */
+@property --media-scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --frame-inset {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1rem;
+}
+
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 180ms;

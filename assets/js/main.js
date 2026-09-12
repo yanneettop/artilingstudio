@@ -615,6 +615,45 @@
     }
   }
 
+  /* ──────────────────────────────────────────────
+     3b. Media parallax
+     Writes a --parallax offset onto framed images so they drift
+     against the scroll. CSS composes it with --media-scale, so the
+     hover zoom and the parallax offset never fight each other.
+  ─────────────────────────────────────────────── */
+  const parallaxMedia = document.querySelectorAll(
+    '.project-hero__media img, .project-story__media img, .project-gallery figure img, .basin-hero__media img, .basin-small__media img, .basin-material img'
+  );
+
+  if (parallaxMedia.length && !prefersReducedMotion && window.matchMedia('(min-width: 760px)').matches) {
+    const PARALLAX_RANGE = 16;
+    let parallaxFrame = 0;
+
+    const paintParallax = () => {
+      parallaxFrame = 0;
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const viewportCentre = viewportHeight / 2;
+      parallaxMedia.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < -200 || rect.top > viewportHeight + 200) return;
+        const span = viewportCentre + rect.height / 2;
+        if (span <= 0) return;
+        const progress = Math.max(-1, Math.min(1, (viewportCentre - (rect.top + rect.height / 2)) / span));
+        el.style.setProperty('--parallax', `${(progress * PARALLAX_RANGE).toFixed(2)}px`);
+      });
+    };
+
+    const queueParallax = () => {
+      if (parallaxFrame) return;
+      parallaxFrame = window.requestAnimationFrame(paintParallax);
+    };
+
+    queueParallax();
+    window.addEventListener('scroll', queueParallax, { passive: true });
+    window.addEventListener('resize', queueParallax, { passive: true });
+    window.addEventListener('load', queueParallax);
+  }
+
   const countTargets = document.querySelectorAll('[data-count-to]');
   if (countTargets.length) {
     const setCountValue = (el, value) => {
