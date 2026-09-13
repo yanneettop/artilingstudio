@@ -85,20 +85,20 @@ const copy = {
     status: 'Design study',
     title: ['Statuario', 'Linear Sink'],
     seoTitle: 'Statuario Linear Porcelain Sink Study | Artiling Studio',
-    lede: 'A design study for a linear porcelain sink with a Statuario pattern, mitred edges and a long basin.',
+    lede: 'This linear sink study explores Statuario-pattern porcelain, mitred edges and the proportions of a long integrated basin.',
     heading: 'A study of length, edge detail and proportion',
     paragraphs: [
       'The proposal uses white porcelain with grey Statuario veining across a long sink and integrated basin.',
       'The study tests the depth of the front face, the basin opening and the mitred joints before fabrication details are agreed.',
     ],
-    galleryHeading: 'Views from the design study',
+    galleryHeading: 'Linear form and edge studies',
     cta: 'Planning a linear porcelain sink?',
   },
   'calacatta-gold-led-vanity': {
     status: 'Design study',
     title: ['Calacatta Gold', 'LED Vanity'],
     seoTitle: 'Calacatta Gold LED Vanity Study | Artiling Studio',
-    lede: 'A design study pairing Calacatta Gold porcelain with a bespoke vanity and lighting around the mirror.',
+    lede: 'Calacatta Gold porcelain, vanity storage and lighting around the mirror are brought together in this design study.',
     heading: 'Porcelain, vanity storage and mirror lighting',
     paragraphs: [
       'The proposal places a porcelain basin and vanity below a mirror with integrated LED lighting. Calacatta Gold veining runs across the main surfaces.',
@@ -124,7 +124,7 @@ const copy = {
     status: 'Design study',
     title: ['Beige Stone', 'Floating Vanity'],
     seoTitle: 'Beige Stone Floating Vanity Study | Artiling Studio',
-    lede: 'A design study for a floating porcelain vanity with a beige stone pattern and large format wall surfaces.',
+    lede: 'A floating vanity concept in beige stone-pattern porcelain, considered alongside the room’s large format wall surfaces.',
     heading: 'A floating vanity in a simple bathroom layout',
     paragraphs: [
       'The study places the vanity clear of the floor and uses a beige stone pattern across the basin and wall surfaces.',
@@ -137,7 +137,7 @@ const copy = {
     status: 'Design study',
     title: ['Framed Mirror', 'Double Vanity'],
     seoTitle: 'Framed Mirror Double Vanity Study | Artiling Studio',
-    lede: 'A design study for a double vanity with framed mirrors, porcelain surfaces, lighting and brass fittings.',
+    lede: 'This double vanity proposal aligns framed mirrors, light porcelain surfaces, warm brass fittings and focused lighting.',
     heading: 'Two vanity positions aligned with framed mirrors',
     paragraphs: [
       'The proposal aligns each basin with a framed mirror and places lighting around the vanity area.',
@@ -150,7 +150,7 @@ const copy = {
     status: 'Design study',
     title: ['Backlit Marble', 'Double Vanity'],
     seoTitle: 'Backlit Marble Double Vanity Study | Artiling Studio',
-    lede: 'A design study for a double vanity with porcelain in a marble pattern and lighting behind the mirror.',
+    lede: 'A double vanity proposal combining marble-pattern porcelain with two basin positions and concealed mirror lighting.',
     heading: 'A double vanity below a backlit mirror',
     paragraphs: [
       'The proposal combines two basin positions with a wide mirror lit from behind. Porcelain with a marble pattern covers the vanity surfaces.',
@@ -189,7 +189,7 @@ const copy = {
     status: 'Design study',
     title: ['Onyx Feature', 'Floating Sink'],
     seoTitle: 'Onyx Feature Floating Sink Study | Artiling Studio',
-    lede: 'A design study for a floating porcelain sink with a strong onyx pattern and an integrated basin.',
+    lede: 'The floating sink study uses a pronounced onyx pattern across its front, top and integrated basin opening.',
     heading: 'An onyx pattern across a floating sink',
     paragraphs: [
       'The proposal uses the movement of the onyx pattern across the front and top of the sink.',
@@ -238,6 +238,38 @@ const copy = {
     cta: 'Planning a bespoke porcelain bathroom?',
   },
 };
+
+const metaDescriptions = {
+  'rose-onyx-porcelain-sinks-large-format-bathroom-tiling': 'Completed London bathrooms with rose onyx-pattern large-format porcelain, bespoke sinks, shower walls and carefully aligned niches.',
+  'arabescato-oak-basin': 'Completed bathroom project featuring an Arabescato porcelain basin, warm oak vanity, mitred edges and chrome taps mounted on the wall.',
+  'calacatta-line-sink': 'Completed wall-to-wall Calacatta porcelain sink with an integrated basin, mitred edges, linear drain and matte black wall tap.',
+  'floating-mitred-porcelain-sink': 'Completed floating porcelain sink in a warm stone pattern, formed with an integrated basin, mitred edges and brushed metal wall tap.',
+  'onyx-vein-floating-sink': 'Completed floating porcelain sink with bold onyx veining, an integrated basin, precise mitred corners and taps mounted on the wall.',
+  'statuario-linear-sink': 'Design study for a long Statuario porcelain sink, exploring an integrated basin, mitred edges and balanced proportions before fabrication.',
+  'calacatta-gold-led-vanity': 'Design study pairing a Calacatta Gold porcelain vanity with two basin positions, storage and integrated lighting around the mirror.',
+  'soft-stone-double-vanity': 'Completed porcelain double vanity with two integrated basins, clean mitred edges, wall-mounted taps and handle-free storage.',
+  'beige-stone-floating-vanity': 'Design study for a floating beige stone-pattern porcelain vanity, integrated basin and large-format wall panels within an open layout.',
+  'framed-mirror-double-vanity': 'Design study for a porcelain double vanity aligned with framed mirrors, warm brass fittings and carefully positioned bathroom lighting.',
+  'backlit-marble-double-vanity': 'Design study exploring a marble-pattern porcelain double vanity, paired basin positions and a wide mirror with concealed backlighting.',
+  'graphite-spa-bathroom': 'Design study using graphite large-format porcelain across a floating sink, textured wall surfaces and an open shower arrangement.',
+  'mauve-stone-statement-bathroom': 'Design study for a bathroom with polished mauve stone-pattern porcelain, a bespoke sink, defined panel joints and shower fittings.',
+  'onyx-feature-floating-sink': 'Design study for a floating porcelain sink with a pronounced onyx pattern, integrated basin opening and considered panel joints.',
+  'verde-marble-feature-bathroom': 'Design study using green marble-pattern porcelain across an integrated sink and full-height walls, with vein positions considered.',
+  'walnut-double-vanity-suite': 'Design study combining walnut cabinetry, a stone double vanity, paired basin positions, mirrors and layered bathroom lighting.',
+  'calacatta-gold-bespoke-bathroom': 'Completed London bathroom with a Calacatta Gold porcelain double vanity, integrated basins, large-format walls and recessed niche.',
+};
+
+const enquiryIntros = [
+  'Share the room dimensions, preferred surface and a few photographs. We can review the layout before arranging a site visit.',
+  'Send the room size, reference images and the surface you are considering. We will review the practical details and advise on next steps.',
+  'Tell us about the layout, tap position and porcelain finish. Photographs or drawings help us assess the work before a site visit.',
+];
+
+const studyDetailHeadings = [
+  'Material and layout under review',
+  'Proposed surfaces and arrangement',
+  'Design direction and key details',
+];
 
 const clean = (value = '') => String(value)
   .replaceAll('push-to-open', 'push to open')
@@ -367,7 +399,7 @@ const schemaFor = (project, pageCopy, heroImage, status) => ({
       '@id': `https://www.artilingstudio.co.uk/projects/${project.slug}/#webpage`,
       url: `https://www.artilingstudio.co.uk/projects/${project.slug}/`,
       name: pageCopy.seoTitle,
-      description: pageCopy.lede,
+      description: metaDescriptions[project.slug] || pageCopy.lede,
       breadcrumb: { '@id': `https://www.artilingstudio.co.uk/projects/${project.slug}/#breadcrumb` },
       mainEntity: { '@id': `https://www.artilingstudio.co.uk/projects/${project.slug}/#project` },
     },
@@ -376,10 +408,14 @@ const schemaFor = (project, pageCopy, heroImage, status) => ({
       '@id': `https://www.artilingstudio.co.uk/projects/${project.slug}/#project`,
       name: project.title,
       headline: pageCopy.seoTitle.replace(' | Artiling Studio', ''),
-      description: pageCopy.lede,
+      description: metaDescriptions[project.slug] || pageCopy.lede,
       creator: { '@id': 'https://www.artilingstudio.co.uk/#business' },
       genre: status,
-      image: heroImage ? [imageInfo(heroImage).src] : [],
+      image: heroImage ? {
+        '@type': 'ImageObject',
+        url: `https://www.artilingstudio.co.uk${imageInfo(heroImage).src}`,
+        caption: clean((project.imageAlts || [])[0] || project.alt || project.title),
+      } : undefined,
     },
     {
       '@type': 'BreadcrumbList',
@@ -414,10 +450,11 @@ for (const project of projects) {
 
   html = html.replace(/\s*<meta name="robots"[^>]+>/, '');
   html = replaceOne(html, /<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(pageCopy.seoTitle)}</title>`, 'title');
-  html = replaceOne(html, /<meta name="description"[^>]+>/, `<meta name="description" content="${escapeHtml(pageCopy.lede)}" />`, 'description');
+  const metaDescription = metaDescriptions[project.slug] || pageCopy.lede;
+  html = replaceOne(html, /<meta name="description"[^>]+>/, `<meta name="description" content="${escapeHtml(metaDescription)}" />`, 'description');
   html = replaceOne(html, /<link rel="canonical"[^>]+>/, `<link rel="canonical" href="https://www.artilingstudio.co.uk/projects/${project.slug}/" />`, 'canonical');
   html = replaceOne(html, /<meta property="og:title"[^>]+>/, `<meta property="og:title" content="${escapeHtml(project.title)} | Artiling Studio" />`, 'og title');
-  html = replaceOne(html, /<meta property="og:description"[^>]+>/, `<meta property="og:description" content="${escapeHtml(pageCopy.lede)}" />`, 'og description');
+  html = replaceOne(html, /<meta property="og:description"[^>]+>/, `<meta property="og:description" content="${escapeHtml(metaDescription)}" />`, 'og description');
   html = replaceOne(html, /<meta property="og:url"[^>]+>/, `<meta property="og:url" content="https://www.artilingstudio.co.uk/projects/${project.slug}/" />`, 'og url');
   html = replaceOne(html, /<meta property="og:image"[^>]+>/, `<meta property="og:image" content="https://www.artilingstudio.co.uk${heroOptimized.src}" />`, 'og image');
   html = replaceOne(html, /<link rel="preload" as="image"[^>]+>/, `<link rel="preload" as="image" href="${heroOptimized.src}"${heroOptimized.srcset ? ` imagesrcset="${heroOptimized.srcset}"` : ''} imagesizes="(max-width: 760px) 100vw, 54vw" fetchpriority="high" />`, 'preload');
@@ -426,7 +463,8 @@ for (const project of projects) {
   html = replaceOne(html, /<p class="eyebrow">[\s\S]*?<\/p>/, `<p class="eyebrow">${escapeHtml(pageCopy.status)}</p>`, 'status');
   html = replaceOne(html, /<h1>[\s\S]*?<\/h1>/, `<h1>${escapeHtml(pageCopy.title[0])}<br /><em>${escapeHtml(pageCopy.title[1])}</em></h1>`, 'h1');
   html = replaceOne(html, /<p class="project-hero__lede">[\s\S]*?<\/p>/, `<p class="project-hero__lede">${escapeHtml(pageCopy.lede)}</p>`, 'lede');
-  html = replaceOne(html, /<figure class="project-hero__media">[\s\S]*?<\/figure>/, `<figure class="project-hero__media">\n              ${imageMarkup(heroImage, altFor(0), '(max-width: 760px) 100vw, 54vw', { eager: true })}\n            </figure>`, 'hero image');
+  const heroClass = heroOptimized.width > heroOptimized.height ? 'project-hero__media project-hero__media--landscape' : 'project-hero__media';
+  html = replaceOne(html, /<figure class="project-hero__media(?: project-hero__media--landscape)?">[\s\S]*?<\/figure>/, `<figure class="${heroClass}">\n              ${imageMarkup(heroImage, altFor(0), '(max-width: 760px) 100vw, 54vw', { eager: true })}\n            </figure>`, 'hero image');
   html = replaceOne(html, /<dl class="container project-facts__grid">[\s\S]*?<\/dl>/, `<dl class="container project-facts__grid">\n${facts.map(([label, value]) => `            <div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('\n')}\n          </dl>`, 'facts');
   html = replaceOne(html, /<div class="project-story__copy" data-reveal>[\s\S]*?<\/div>/, `<div class="project-story__copy" data-reveal>\n              <p class="project-kicker">${status === 'Design study' ? 'Study overview' : 'Project overview'}</p>\n              <h2>${escapeHtml(pageCopy.heading)}</h2>\n${pageCopy.paragraphs.map((paragraph) => `              <p>${escapeHtml(paragraph)}</p>`).join('\n')}\n            </div>`, 'story copy');
   html = replaceOne(html, /<figure class="project-story__media" data-reveal>[\s\S]*?<\/figure>/, `<figure class="project-story__media" data-reveal>\n              ${imageMarkup(storyImage, altFor(1), '(max-width: 760px) 92vw, 43vw')}\n            </figure>`, 'story image');
@@ -438,10 +476,11 @@ for (const project of projects) {
     return `              <figure class="${figureClasses[index]}" data-reveal>\n                ${imageMarkup(src, caption, `(max-width: 760px) 92vw, ${index === 0 ? '57vw' : index === 1 ? '35vw' : '48vw'}`)}\n                <figcaption>${escapeHtml(sentence(caption))}</figcaption>\n              </figure>`;
   }).join('\n');
   html = replaceOne(html, /<div class="project-gallery__grid">[\s\S]*?<\/div>\n          <\/div>\n        <\/section>/, `<div class="project-gallery__grid${galleryClass}">\n${galleryHtml}\n            </div>\n          </div>\n        </section>`, 'gallery');
-  html = replaceOne(html, /<div class="project-details__heading" data-reveal>[\s\S]*?<\/div>/, `<div class="project-details__heading" data-reveal>\n              <p class="project-kicker">${status === 'Design study' ? 'Study specification' : 'Project specification'}</p>\n              <h2 id="details-title">${status === 'Design study' ? 'Elements shown in the study' : 'Materials and work'}</h2>\n            </div>`, 'detail heading');
+  html = replaceOne(html, /<div class="project-details__heading" data-reveal>[\s\S]*?<\/div>/, `<div class="project-details__heading" data-reveal>\n              <p class="project-kicker">${status === 'Design study' ? 'Study specification' : 'Project specification'}</p>\n              <h2 id="details-title">${status === 'Design study' ? studyDetailHeadings[projectIndex % studyDetailHeadings.length] : 'Materials and work'}</h2>\n            </div>`, 'detail heading');
   const detailHtml = detailPoints.map(([label, value], index) => `              <div data-reveal><span>0${index + 1}</span><h3>${escapeHtml(label)}</h3><p>${escapeHtml(value)}</p></div>`).join('\n');
   html = replaceOne(html, /<div class="project-details__list">[\s\S]*?<\/div>\n          <\/div>\n        <\/section>/, `<div class="project-details__list">\n${detailHtml}\n            </div>\n          </div>\n        </section>`, 'details');
   html = replaceOne(html, /<div><p class="project-kicker">Start an enquiry<\/p><h2>[\s\S]*?<\/h2><\/div>/, `<div><p class="project-kicker">Start an enquiry</p><h2>${escapeHtml(pageCopy.cta)}</h2></div>`, 'cta');
+  html = replaceOne(html, /<div><p>[^<]+<\/p><a href="\/quote\/"/, `<div><p>${escapeHtml(enquiryIntros[projectIndex % enquiryIntros.length])}</p><a href="/quote/"`, 'enquiry introduction');
   html = replaceOne(
     html,
     /<nav class="project-pagination"[\s\S]*?<\/nav>/,

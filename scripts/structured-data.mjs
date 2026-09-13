@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import vm from 'node:vm';
 
 const root = process.cwd();
 const siteUrl = 'https://www.artilingstudio.co.uk';
@@ -143,43 +144,15 @@ const faq = (url, questions) => ({
   })),
 });
 
-const projectItems = [
-  {
-    name: 'Onyx Frame Vanity',
-    url: `${siteUrl}/projects/onyx-frame-porcelain-vanity/`,
-    image: `${siteUrl}/public/projects/onyx-frame-porcelain-vanity/bespoke-mitred-porcelain-vanity-blue-onyx-wall-london.webp`,
-    description:
-      'A bespoke mitred porcelain sink and vanity unit with matching push-to-open drawers, beige marble-effect porcelain and a blue onyx-effect feature wall.',
-  },
-  {
-    name: 'Rose Onyx Porcelain Sinks',
-    url: `${siteUrl}/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/`,
-    image: `${siteUrl}/public/projects/rose-onyx-porcelain-sinks-large-format-bathroom-tiling/bespoke-rose-onyx-porcelain-sink-wall-mounted-taps-london.webp`,
-    description:
-      'Bespoke rose onyx-effect porcelain sinks and large format bathroom tiling completed across two bathrooms in the same London home.',
-  },
-  {
-    name: 'Soft Stone Double Vanity',
-    url: `${siteUrl}/projects/soft-stone-double-vanity/`,
-    image: `${siteUrl}/public/projects/soft-stone-double-vanity/cover.png`,
-    description:
-      'Bespoke porcelain double vanity with integrated sink proportions, clean storage lines and soft stone-effect surfaces.',
-  },
-  {
-    name: 'Calacatta Gold Bespoke Bathroom',
-    url: `${siteUrl}/projects/calacatta-gold-bespoke-bathroom/`,
-    image: `${siteUrl}/public/projects/calacatta-gold-bespoke-bathroom/calacatta-gold-integrated-vanity-sink-london-bathroom.webp`,
-    description:
-      'Calacatta Gold porcelain bathroom with large-format wall surfaces, tailored vanity detailing and refined transitions.',
-  },
-  {
-    name: 'Porcelain Sink and Vanity Material Studies',
-    url: `${siteUrl}/projects/#details-material-studies`,
-    image: `${siteUrl}/og-image-v2.jpg`,
-    description:
-      'Studio previews and material studies exploring porcelain tone, proportion, mitred details and bathroom surface composition.',
-  },
-];
+const portfolioContext = { window: {} };
+vm.createContext(portfolioContext);
+vm.runInContext(readFileSync(join(root, 'assets/js/portfolio-data.js'), 'utf8'), portfolioContext);
+const projectItems = portfolioContext.window.ArtilingPortfolioProjects.map((project) => ({
+  name: project.title,
+  url: `${siteUrl}/projects/${project.slug}/`,
+  image: `${siteUrl}${project.coverImage || project.cover}`,
+  description: project.seoDescription || project.summary,
+}));
 
 const common = [business, website];
 const homeCrumb = [{ name: 'Home', url: `${siteUrl}/` }];

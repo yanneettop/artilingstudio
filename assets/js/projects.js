@@ -28,6 +28,11 @@
     'beige-stone-floating-vanity',
     'framed-mirror-double-vanity',
     'backlit-marble-double-vanity',
+    'walnut-double-vanity-suite',
+    'graphite-spa-bathroom',
+    'verde-marble-feature-bathroom',
+    'mauve-stone-statement-bathroom',
+    'onyx-feature-floating-sink',
   ];
   const detailStudyLabels = {
     'statuario-linear-sink': 'Bespoke Porcelain Sink · Mitred Edges',
@@ -35,6 +40,11 @@
     'beige-stone-floating-vanity': 'Floating Sink · Large Format Tiling',
     'framed-mirror-double-vanity': 'Porcelain Vanity Unit · Bathroom Porcelain',
     'backlit-marble-double-vanity': 'Porcelain Vanity Unit · Bathroom Porcelain',
+    'walnut-double-vanity-suite': 'Double Vanity · Walnut Cabinetry',
+    'graphite-spa-bathroom': 'Floating Sink · Large Format Porcelain',
+    'verde-marble-feature-bathroom': 'Integrated Sink · Full Height Porcelain',
+    'mauve-stone-statement-bathroom': 'Bespoke Sink · Shower Layout',
+    'onyx-feature-floating-sink': 'Floating Sink · Onyx Pattern Porcelain',
   };
   const detailStudyTitles = {
     'statuario-linear-sink': 'Statuario Linear Porcelain Sink Study',
@@ -42,6 +52,11 @@
     'beige-stone-floating-vanity': 'Beige Stone Floating Vanity Study',
     'framed-mirror-double-vanity': 'Framed Mirror Double Vanity Study',
     'backlit-marble-double-vanity': 'Backlit Marble Double Vanity Study',
+    'walnut-double-vanity-suite': 'Walnut Double Vanity Study',
+    'graphite-spa-bathroom': 'Graphite Spa Bathroom Study',
+    'verde-marble-feature-bathroom': 'Verde Marble Bathroom Study',
+    'mauve-stone-statement-bathroom': 'Mauve Stone Bathroom Study',
+    'onyx-feature-floating-sink': 'Onyx Feature Floating Sink Study',
   };
 
   /* Editorial descriptions for featured projects */
