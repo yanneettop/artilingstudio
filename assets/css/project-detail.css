@@ -19,9 +19,10 @@
 
 .project-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.84fr) minmax(28rem, 1.16fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(28rem, 1.2fr);
   align-items: center;
-  gap: clamp(3rem, 7vw, 8.5rem);
+  gap: clamp(3rem, 5vw, 6.5rem);
+  max-width: 1400px;
 }
 
 .project-breadcrumb {
@@ -81,8 +82,22 @@
   position: relative;
   margin: 0;
   overflow: hidden;
+  width: 100%;
+  max-width: 650px;
+  justify-self: end;
   aspect-ratio: 4 / 5;
   background: #d7cec1;
+}
+
+/* Landscape project covers keep their authored composition instead of being
+   forced through the portrait frame used by the vertical photography. */
+.project-hero__media--landscape {
+  aspect-ratio: auto;
+  max-width: none;
+}
+
+.project-hero__media.project-hero__media--landscape img {
+  height: auto;
 }
 
 .project-hero__media::after {
@@ -754,9 +769,18 @@
 
 /* Parallax is desktop-only, so drop the slack scale and show the full crop. */
 @media (max-width: 759px) {
+  .project-hero__media {
+    aspect-ratio: auto;
+  }
+
   .project-hero__media img,
   .project-story__media img,
   .project-gallery figure img {
     --media-scale: 1;
+  }
+
+  .project-hero__media img {
+    height: auto;
+    object-fit: contain;
   }
 }
