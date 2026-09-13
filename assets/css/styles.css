@@ -1355,7 +1355,8 @@ section {
 .brand__tag {
   font-size: 10px;
   line-height: 1;
-  letter-spacing: 0.2em;
+  /* Match the rendered width of the studio name above. */
+  letter-spacing: 0.124em;
   text-transform: uppercase;
   color: var(--stone);
 }
@@ -7061,18 +7062,16 @@ html.js-reveal.reveal-failsafe [data-reveal="copy"] > * {
   transform: translate3d(0, 0, 0);
 }
 
-/* Hero titles rise into a mask rather than fading out of a blur. Blurring
-   type this large means reconvolving the whole layer every frame, which is
-   what made the old reveal stutter; a clip edge and a transform do not. */
+/* Keep display-title motion deliberately quiet. Large animated masks still
+   repaint a sizeable area on mobile, so hero titles use a single composited
+   opacity transition with no movement or clipping. */
 html.js-reveal [data-reveal="copy"] > .display,
 html.js-reveal .projects-hero__copy[data-reveal] > .display {
-  opacity: 1;
-  transform: translate3d(0, 0.14em, 0);
-  clip-path: inset(100% -6% 0 -6%);
-  transition:
-    clip-path 880ms var(--ease-out),
-    transform 880ms var(--ease-out);
-  transition-delay: 70ms;
+  opacity: 0;
+  transform: none;
+  clip-path: none;
+  transition: opacity 620ms ease-out;
+  transition-delay: 60ms;
 }
 
 html.js-reveal [data-reveal="copy"].is-inview > .display,
@@ -7080,8 +7079,16 @@ html.js-reveal.reveal-failsafe [data-reveal="copy"] > .display,
 html.js-reveal .projects-hero__copy[data-reveal].is-inview > .display,
 html.js-reveal.reveal-failsafe .projects-hero__copy[data-reveal] > .display {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
-  clip-path: inset(-14% -6% -10% -6%);
+  transform: none;
+  clip-path: none;
+}
+
+@media (max-width: 700px) {
+  html.js-reveal [data-reveal="copy"] > .display,
+  html.js-reveal .projects-hero__copy[data-reveal] > .display {
+    transition-duration: 380ms;
+    transition-delay: 0ms;
+  }
 }
 
 html.js-reveal [data-reveal="visual"],
@@ -7284,8 +7291,7 @@ html.js-reveal.reveal-failsafe [data-reveal] .selected-work__media img {
     filter: none;
     animation: none;
   }
-  /* The masked title reveal starts fully clipped, so it needs an explicit
-     reset here or the heading never becomes visible. */
+  /* Display titles remain visible when reduced motion is requested. */
   html.js-reveal [data-reveal="copy"] > .display,
   html.js-reveal .projects-hero__copy[data-reveal] > .display,
   html.js-reveal .services-page [data-reveal="copy"] :is(h1, h2) {
@@ -17049,19 +17055,24 @@ body.is-tile-style-gallery-open > .view-cursor.view-cursor--zoom {
 }
 
 html.js-reveal .services-page [data-reveal="copy"] :is(h1, h2) {
-  opacity: 1;
-  clip-path: inset(100% -6% 0 -6%);
-  transform: translate3d(0, 0.14em, 0);
-  transition:
-    clip-path 880ms var(--ease-out) 70ms,
-    transform 880ms var(--ease-out) 70ms;
+  opacity: 0;
+  clip-path: none;
+  transform: none;
+  transition: opacity 620ms ease-out 60ms;
 }
 
 html.js-reveal .services-page [data-reveal="copy"].is-inview :is(h1, h2),
 html.js-reveal.reveal-failsafe .services-page [data-reveal="copy"] :is(h1, h2) {
   opacity: 1;
-  clip-path: inset(-14% -6% -10% -6%);
-  transform: translate3d(0, 0, 0);
+  clip-path: none;
+  transform: none;
+}
+
+@media (max-width: 700px) {
+  html.js-reveal .services-page [data-reveal="copy"] :is(h1, h2) {
+    transition-duration: 380ms;
+    transition-delay: 0ms;
+  }
 }
 
 html.js-reveal .services-page .services-feature[data-reveal] .services-feature__media img,
