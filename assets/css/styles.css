@@ -1748,6 +1748,15 @@ section {
   margin: 40px 0 48px;
 }
 
+.hero__support {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+}
+
 .hero__meta {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2798,6 +2807,198 @@ section {
   color: rgba(50, 45, 39, 0.78);
   font-size: clamp(15px, 1.2vw, 17px);
   line-height: 1.76;
+}
+
+.fabrication-feature {
+  display: grid;
+  gap: clamp(48px, 6.5vw, 96px);
+  align-items: center;
+}
+
+.fabrication-feature__copy h3 {
+  max-width: none;
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(34px, 3.5vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: var(--ink-deep);
+  text-wrap: balance;
+}
+
+.fabrication-feature__copy h3 span {
+  display: block;
+}
+
+.fabrication-feature__intro {
+  max-width: 58ch;
+  margin: clamp(24px, 2.6vw, 34px) 0 0;
+  color: rgba(50, 45, 39, 0.78);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.76;
+}
+
+.fabrication-feature__points {
+  display: grid;
+  gap: 0;
+  margin: clamp(34px, 4.5vw, 52px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(15, 15, 16, 0.12);
+}
+
+.fabrication-feature__points li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+  padding: clamp(16px, 2vw, 22px) 0;
+  border-bottom: 1px solid rgba(15, 15, 16, 0.12);
+}
+
+.fabrication-feature__number {
+  padding-top: 3px;
+  color: var(--stone);
+  font-family: var(--serif);
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.06em;
+}
+
+.fabrication-feature__points h4 {
+  margin: 0 0 6px;
+  color: var(--ink-deep);
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 27px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.fabrication-feature__points p {
+  max-width: 46ch;
+  margin: 0;
+  color: rgba(78, 70, 61, 0.82);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.fabrication-feature__link {
+  margin-top: clamp(24px, 3vw, 34px);
+}
+
+.fabrication-feature__gallery {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: clamp(18px, 2vw, 26px);
+  row-gap: clamp(22px, 2.4vw, 32px);
+  align-items: start;
+}
+
+.fabrication-feature__media {
+  grid-column: span 3;
+  margin: 0;
+  position: relative;
+}
+
+.fabrication-feature__media:first-child {
+  grid-column: 1 / -1;
+}
+
+.fabrication-feature__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 54%;
+  border-radius: 3px;
+  box-shadow:
+    0 26px 68px -52px rgba(15, 15, 16, 0.46),
+    0 0 0 1px rgba(15, 15, 16, 0.065);
+  transition:
+    transform 0.8s var(--ease),
+    filter 0.65s var(--ease),
+    box-shadow 0.65s var(--ease);
+}
+
+.fabrication-feature__media:first-child img {
+  aspect-ratio: 3 / 2;
+}
+
+.fabrication-feature__media:not(:first-child) img {
+  aspect-ratio: 4 / 3;
+}
+
+.fabrication-feature__media figcaption {
+  margin-top: 11px;
+  color: var(--stone);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  transition:
+    color 0.45s var(--ease),
+    transform 0.45s var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fabrication-feature__media:hover img {
+    transform: translateY(-3px) scale(1.012);
+    filter: saturate(1.03) contrast(1.015);
+    box-shadow:
+      0 34px 76px -48px rgba(15, 15, 16, 0.58),
+      0 0 0 1px rgba(15, 15, 16, 0.09);
+  }
+
+  .fabrication-feature__media:hover figcaption {
+    color: var(--ink-deep);
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fabrication-feature__media img,
+  .fabrication-feature__media figcaption {
+    transition: none;
+  }
+
+  .fabrication-feature__media:hover img,
+  .fabrication-feature__media:hover figcaption {
+    transform: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .fabrication-feature {
+    grid-template-columns: minmax(0, 0.78fr) minmax(430px, 1fr);
+  }
+
+  .fabrication-feature__copy h3 span {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 899px) {
+  .fabrication-feature__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fabrication-feature__media {
+    grid-column: span 1;
+  }
+
+  .fabrication-feature__media:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .fabrication-feature__media img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .fabrication-feature__media:first-child img {
+    aspect-ratio: 3 / 2;
+  }
+
 }
 
 .portfolio-concepts-grid,

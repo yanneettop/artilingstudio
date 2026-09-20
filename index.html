@@ -298,7 +298,7 @@
 
     <link rel="preload" as="image" href="/assets/images/hero3-mobile.avif?v=20260625-cropped" type="image/avif" media="(max-width: 767px)" fetchpriority="high" />
     <link rel="preload" as="image" href="/assets/images/hero3-restored-hq.webp" type="image/webp" media="(min-width: 768px)" fetchpriority="high" />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=20260913-cookie-minimal" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=20260920-fabrication-hover" />
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -385,14 +385,15 @@
               <em>Crafted around your<br>space.</em>
             </h1>
             <p class="lede">
-              Artiling Studio designs and fabricates bespoke porcelain basins
+              Artiling Studio designs, fabricates and installs bespoke porcelain basins
               and vanity units, made to measure for the exact dimensions of
               each space.
             </p>
 
             <div class="hero__actions">
               <a href="/quote/" class="btn btn--dark">Start a Bespoke Sink Enquiry</a>
-              <a href="/services/" class="btn btn--ghost">View Services<span aria-hidden="true">&nbsp;→</span></a>
+              <a href="/porcelain-fabrication-london/" class="btn btn--ghost">See How It’s Made<span aria-hidden="true">&nbsp;→</span></a>
+              <p class="hero__support">Fabrication only, delivery or complete installation available.</p>
             </div>
 
             <dl class="hero__meta">
@@ -441,7 +442,7 @@
                 <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="0.3" opacity="0.15" />
                 <g class="badge-ring">
                   <text font-family="Inter, sans-serif" font-size="8.2" letter-spacing="3.2" fill="currentColor" opacity="0.7">
-                    <textPath href="#hero-circle">BESPOKE · PORCELAIN · LONDON · SINCE 2000 · ARTILING STUDIO · </textPath>
+                    <textPath href="#hero-circle">BESPOKE · PORCELAIN · LONDON · ARTILING STUDIO · </textPath>
                   </text>
                 </g>
                 <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3" />
@@ -463,23 +464,23 @@
       <section class="trust" aria-label="Studio credentials">
         <div class="container trust__grid trust__grid--simple">
           <div class="trust__item trust__item--stat" data-reveal="stat">
-            <span class="trust__stat-number" data-count-to="100" data-count-suffix="+">100+</span>
-            <span class="trust__stat-label">Completed Projects</span>
+            <span class="trust__stat-number" data-count-to="26" data-count-suffix=" Years">26 Years</span>
+            <span class="trust__stat-label">Experience</span>
           </div>
           <div class="trust__divider" aria-hidden="true"></div>
           <div class="trust__item trust__item--stat" data-reveal="stat" data-reveal-delay="80">
-            <span class="trust__stat-number" data-count-to="26">26</span>
-            <span class="trust__stat-label">Years Experience</span>
+            <span class="trust__stat-number" data-count-to="100" data-count-suffix="+ Made">100+ Made</span>
+            <span class="trust__stat-label">Bespoke Sinks</span>
           </div>
           <div class="trust__divider" aria-hidden="true"></div>
           <div class="trust__item trust__item--stat" data-reveal="stat" data-reveal-delay="160">
-            <span class="trust__stat-number" data-count-to="10" data-count-suffix="‑Year">10‑Year</span>
-            <span class="trust__stat-label">Workmanship Guarantee</span>
+            <span class="trust__stat-number" data-count-to="10" data-count-suffix=" Years">10 Years</span>
+            <span class="trust__stat-label">Guarantee</span>
           </div>
           <div class="trust__divider" aria-hidden="true"></div>
           <div class="trust__item trust__item--stat" data-reveal="stat" data-reveal-delay="240">
-            <span class="trust__stat-number">In-House</span>
-            <span class="trust__stat-label">Design &middot; Fabrication &middot; Installation</span>
+            <span class="trust__stat-number">Design &middot; Fabrication &middot; Installation</span>
+            <span class="trust__stat-label">Service</span>
           </div>
         </div>
       </section>
@@ -595,6 +596,23 @@
               <figcaption>Seam Detail</figcaption>
             </figure>
           </div>
+        </div>
+      </section>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           SELECTED BESPOKE PROJECTS
+      ─────────────────────────────────────────────────────────────── -->
+      <section id="selected-projects" class="home-selected-projects" aria-labelledby="home-selected-projects-title">
+        <div class="container">
+          <header class="home-selected-projects__header" data-reveal="copy">
+            <div class="home-selected-projects__intro">
+              <p class="home-selected-projects__eyebrow">Selected Work</p>
+              <h2 id="home-selected-projects-title">Bespoke porcelain, made for real spaces.</h2>
+              <p>A selection of completed basins and vanity projects, designed around the dimensions, plumbing and material direction of each room.</p>
+            </div>
+            <a class="home-selected-projects__all" href="/projects/">View Completed Projects <span aria-hidden="true">&rarr;</span></a>
+          </header>
+          <div class="home-selected-projects__grid" data-home-completed-projects></div>
         </div>
       </section>
 
@@ -716,7 +734,7 @@
       ─────────────────────────────────────────────────────────────── -->
       <section id="portfolio" class="portfolio">
         <div class="container">
-          <div class="section-rule" data-reveal="rule"><span>03 &mdash; Studio Previews</span></div>
+          <div class="section-rule" data-reveal="rule"><span>03 &mdash; Porcelain Fabrication</span></div>
 
           <div class="portfolio__sequence" data-portfolio-sequence></div>
 
@@ -946,8 +964,8 @@
     <script src="./assets/js/cookie-consent.js?v=20260608-bottom-bar"></script>
     <script src="./assets/js/tracking.js?v=20260515-step3-1"></script>
     <script src="./assets/js/project-image-manifest.js"></script>
-    <script src="./assets/js/portfolio-data.js?v=20260426-gallery-refresh-3"></script>
+    <script src="./assets/js/portfolio-data.js?v=20260920-selected-projects"></script>
     <script src="./assets/js/email-links.js?v=20260507-mailto-1"></script>
-    <script src="./assets/js/main.js?v=20260729-services-row"></script>
+    <script src="./assets/js/main.js?v=20260920-fabrication-scale"></script>
   </body>
 </html>

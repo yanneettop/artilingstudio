@@ -162,6 +162,7 @@
      3. Scroll reveal
   ─────────────────────────────────────────────── */
   const portfolioSequenceRoot = document.querySelector('[data-portfolio-sequence]');
+  const completedProjectsRoot = document.querySelector('[data-home-completed-projects]');
 
   if (portfolioSequenceRoot) {
     const portfolio = window.ArtilingPortfolio;
@@ -187,26 +188,13 @@
       'Porcelain basin study inspired by real fabrication work',
     ];
     const selectedProjectSlugs = [
-      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling',
       'onyx-frame-porcelain-vanity',
-      'floating-mitred-porcelain-sink',
+      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling',
+      'calacatta-line-sink',
     ];
-    const selectedProjectTitles = {
-      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling': 'Rose Onyx Large Format Bathroom',
-      'onyx-frame-porcelain-vanity': 'Onyx Frame Vanity',
-      'floating-mitred-porcelain-sink': 'Floating Mitred Porcelain Sinks',
-    };
     const selectedProjects = portfolio
-      ? portfolio.getBySlugs(selectedProjectSlugs).map((project) => ({
-          ...project,
-          title: selectedProjectTitles[project.slug] || project.title,
-        }))
+      ? portfolio.getBySlugs(selectedProjectSlugs)
       : [];
-    const selectedProjectLabels = {
-      'rose-onyx-porcelain-sinks-large-format-bathroom-tiling': 'Large Format Bathroom',
-      'onyx-frame-porcelain-vanity': 'Bespoke Vanity',
-      'floating-mitred-porcelain-sink': 'Bespoke Sinks',
-    };
     const selectedWorkTitles = conceptTitles;
     const selectedWorkDescriptions = conceptDescriptions;
     const localAssetSrc = (src) =>
@@ -306,18 +294,14 @@
     const selectedProjectDescriptionFor = (project) =>
       project.seoDescription || project.summary || project.descriptor || '';
     const renderSelectedProject = (project, index) => {
-      const label = selectedProjectLabels[project.slug] || project.serviceTags?.[0] || project.scope;
-      const description = index === 0
-        ? `<p class="home-selected-project__description">${escapeHtml(selectedProjectDescriptionFor(project))}</p>`
-        : '';
+      const description = `<p class="home-selected-project__description">${escapeHtml(selectedProjectDescriptionFor(project))}</p>`;
 
       return `
         <article class="home-selected-project home-selected-project--${index === 0 ? 'featured' : 'support'}" data-reveal="card" data-reveal-delay="${index * 90}">
-          <button class="home-selected-project__media" type="button" data-lightbox-open="${project.slug}" aria-label="Open ${escapeHtml(project.title)} gallery">
+          <a class="home-selected-project__media" href="/projects/${escapeHtml(project.slug)}/" aria-label="View ${escapeHtml(project.title)} project">
             <img class="home-selected-project__image home-selected-project__image--primary" src="${withAssetVersion(selectedProjectImageFor(project))}" ${responsiveImageAttrs(selectedProjectImageFor(project))} alt="${escapeHtml(selectedProjectAltFor(project))}" loading="lazy" />
             ${window.matchMedia('(min-width: 701px) and (hover: hover) and (pointer: fine)').matches ? `<img class="home-selected-project__image home-selected-project__image--hover" src="${withAssetVersion(selectedProjectHoverImageFor(project))}" ${responsiveImageAttrs(selectedProjectHoverImageFor(project))} alt="" loading="lazy" aria-hidden="true" />` : ''}
-            <span class="home-selected-project__label">${escapeHtml(label)}</span>
-          </button>
+          </a>
           <div class="home-selected-project__info">
             <div class="home-selected-project__copy">
               <h3><a href="/projects/${escapeHtml(project.slug)}/">${escapeHtml(project.title)}</a></h3>
@@ -330,29 +314,59 @@
       `;
     };
 
-    portfolioSequenceRoot.innerHTML = `
-      <section class="portfolio-group portfolio-group--concepts" aria-labelledby="portfolio-concepts-title">
-        <header class="portfolio-group__head" data-reveal="copy">
-          <p class="eyebrow">Studio previews</p>
-          <h3 id="portfolio-concepts-title">Material Studies</h3>
-          <p>Porcelain sink and vanity directions shaped around real fabrication details, helping clients picture possible proportions, finishes and mitred bathroom surfaces.</p>
-        </header>
-        <div class="portfolio-concepts-grid">
-          ${selectedWorksTeaser.map((project, index) => renderConceptWork(project, index)).join('')}
-        </div>
-      </section>
+    if (completedProjectsRoot) {
+      completedProjectsRoot.innerHTML = selectedProjects
+        .map((project, index) => renderSelectedProject(project, index))
+        .join('');
+    }
 
-      <section class="home-selected-projects" aria-labelledby="home-selected-projects-title">
-        <header class="home-selected-projects__header" data-reveal="copy">
-          <div class="home-selected-projects__intro">
-            <p class="home-selected-projects__eyebrow">Selected Projects</p>
-            <h2 id="home-selected-projects-title">Selected projects</h2>
-            <p>Bespoke porcelain fabrication, large-format tiling and carefully resolved bathroom surfaces across London.</p>
-          </div>
-          <a class="home-selected-projects__all" href="/projects/">Explore all projects <span aria-hidden="true">→</span></a>
-        </header>
-        <div class="home-selected-projects__grid">
-          ${selectedProjects.map((project, index) => renderSelectedProject(project, index)).join('')}
+    portfolioSequenceRoot.innerHTML = `
+      <section class="fabrication-feature" aria-labelledby="fabrication-feature-title">
+        <div class="fabrication-feature__copy" data-reveal="copy">
+          <p class="eyebrow">Porcelain Fabrication</p>
+          <h3 id="fabrication-feature-title"><span>Made in the workshop.</span><span>Resolved before installation.</span></h3>
+          <p class="fabrication-feature__intro">Every basin is cut, mitred and dry-fitted before installation. The visible edge is only part of the work &mdash; the slope, drainage and internal geometry are resolved before the first cut.</p>
+
+          <ol class="fabrication-feature__points">
+            <li>
+              <span class="fabrication-feature__number">01</span>
+              <div>
+                <h4>Cut &amp; mitred</h4>
+                <p>Porcelain panels are precision-cut and joined to create a clean, monolithic edge.</p>
+              </div>
+            </li>
+            <li>
+              <span class="fabrication-feature__number">02</span>
+              <div>
+                <h4>Slope &amp; drainage</h4>
+                <p>The internal incline and waste position are planned so water moves correctly towards the drain.</p>
+              </div>
+            </li>
+            <li>
+              <span class="fabrication-feature__number">03</span>
+              <div>
+                <h4>Dry-fitted</h4>
+                <p>The basin is assembled and checked in the workshop before it reaches the room.</p>
+              </div>
+            </li>
+          </ol>
+
+          <a href="/porcelain-fabrication-london/" class="text-link fabrication-feature__link">See the Fabrication Process <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="fabrication-feature__gallery" data-reveal="media" aria-label="Ciel sink workshop views and fabrication details">
+          <figure class="fabrication-feature__media">
+            <img src="/assets/images/services/porcelain-fabrication/ciel-sink-full-clean.webp" alt="Complete blue onyx-effect porcelain Ciel sink showing its mitred basin and concealed drain cover" loading="lazy" decoding="async" />
+            <figcaption>Complete Ciel sink</figcaption>
+          </figure>
+          <figure class="fabrication-feature__media">
+            <img src="/assets/images/services/porcelain-fabrication/ciel-sink-drain-detail-from-master.webp" alt="Detail of the Ciel sink concealed drain cover, circular finger hole and internal basin geometry" loading="lazy" decoding="async" />
+            <figcaption>Concealed drain detail</figcaption>
+          </figure>
+          <figure class="fabrication-feature__media">
+            <img src="/assets/images/services/porcelain-fabrication/ciel-sink-mitre-detail-from-master.webp" alt="Detail of the Ciel sink mitred front corner and the junction between the rim and internal basin wall" loading="lazy" decoding="async" />
+            <figcaption>Mitred corner detail</figcaption>
+          </figure>
         </div>
       </section>
     `;
