@@ -47,6 +47,7 @@ const routeDirectories = [
   "surfaces",
   "thank-you",
   "tile-style-library",
+  "trade",
   "wet-rooms-bathroom-tiling",
 ];
 

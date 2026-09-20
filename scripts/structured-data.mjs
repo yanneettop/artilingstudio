@@ -358,6 +358,35 @@ const pageSchemas = {
       ['Is porcelain easier to repair than microcement?', 'Individual porcelain slabs can be lifted and replaced if damaged, provided spare material is held. Microcement repairs usually involve patching, blending and resealing a wider area to keep the surface visually consistent.'],
     ]),
   ],
+  'trade/index.html': [
+    ...common,
+    page({
+      url: `${siteUrl}/trade/`,
+      name: 'Porcelain Fabrication for Designers & Architects | London',
+      description:
+        'Porcelain fabrication for London designers and architects. Send a drawing and get buildability notes and a price for basins, vanity tops and returns.',
+      image: `${siteUrl}/assets/images/services/porcelain-fabrication/porcelain-slab-basin-cutout-detail.webp`,
+      dateModified: '2026-09-19',
+      primaryImage: true,
+    }),
+    service({
+      url: `${siteUrl}/trade/`,
+      name: 'Porcelain Fabrication for Designers and Architects London',
+      description:
+        'Trade porcelain fabrication for interior designers, architects and specifiers in London, quoted from drawings with buildability notes before fabrication.',
+      serviceType: ['Porcelain fabrication for architects', 'Trade porcelain fabrication', 'Specified bespoke basins', 'Porcelain vanity tops', 'Made-to-measure porcelain surfaces'],
+      image: `${siteUrl}/assets/images/services/bespoke-sinks/bespoke-sink-planning-materials.webp`,
+    }),
+    breadcrumb([...servicesCrumb, { name: 'For Designers & Architects', url: `${siteUrl}/trade/` }]),
+    faq(`${siteUrl}/trade/`, [
+      ['Can you quote from a drawing?', 'Yes. Send dimensions, the porcelain you have in mind, tap and waste positions and the wall construction, and we will come back with buildability notes and a price, usually within three working days.'],
+      ['What file formats do you accept?', 'PDF, DWG, a rendered elevation or a photograph of a hand sketch. A dimensioned sketch is more useful to us than an undimensioned render.'],
+      ['Do you work behind our studio name?', 'Yes, if that is how you want to run the project. We can remain the fabricator behind your practice, or deal with your client directly. Tell us at the start.'],
+      ['Do you offer trade pricing?', 'We price per project and take repeat work into account for practices we work with often. Ask when you send the first drawing.'],
+      ['Do you template on site?', 'Where the piece needs it, yes. We template wall-to-wall basins, out-of-square walls and awkward geometry instead of working from assumed dimensions, and we can arrange that visit before fabrication.'],
+      ['Do you install, or fabricate only?', 'Both. We can fabricate and deliver for another trade to install, or fabricate and install ourselves and coordinate with tiling, brassware, cabinetry and wet room details on site.'],
+    ]),
+  ],
   'projects/index.html': [
     ...common,
     page({

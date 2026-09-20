@@ -20527,3 +20527,20 @@ html.js-reveal.reveal-failsafe .large-format-page [data-reveal="image-right"].la
     width: 20px;
   }
 }
+
+/* /trade checklist: lock the column count to a divisor of 4 so no empty grid cells show */
+.service-editorial-grid--trade-checklist {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .service-editorial-grid--trade-checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .service-editorial-grid--trade-checklist {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
