@@ -324,34 +324,34 @@
       <section class="fabrication-feature" aria-labelledby="fabrication-feature-title">
         <div class="fabrication-feature__copy" data-reveal="copy">
           <p class="eyebrow">Porcelain Fabrication</p>
-          <h3 id="fabrication-feature-title"><span>Made in the workshop.</span><span>Resolved before installation.</span></h3>
+          <h2 id="fabrication-feature-title"><span>Made in the workshop.</span><span>Resolved before installation.</span></h2>
           <p class="fabrication-feature__intro">Every basin is cut, mitred and dry-fitted before installation. The visible edge is only part of the work &mdash; the slope, drainage and internal geometry are resolved before the first cut.</p>
 
           <ol class="fabrication-feature__points">
             <li>
               <span class="fabrication-feature__number">01</span>
               <div>
-                <h4>Cut &amp; mitred</h4>
+                <h3>Cut &amp; mitred</h3>
                 <p>Porcelain panels are precision-cut and joined to create a clean, monolithic edge.</p>
               </div>
             </li>
             <li>
               <span class="fabrication-feature__number">02</span>
               <div>
-                <h4>Slope &amp; drainage</h4>
+                <h3>Slope &amp; drainage</h3>
                 <p>The internal incline and waste position are planned so water moves correctly towards the drain.</p>
               </div>
             </li>
             <li>
               <span class="fabrication-feature__number">03</span>
               <div>
-                <h4>Dry-fitted</h4>
+                <h3>Dry-fitted</h3>
                 <p>The basin is assembled and checked in the workshop before it reaches the room.</p>
               </div>
             </li>
           </ol>
 
-          <a href="/porcelain-fabrication-london/" class="text-link fabrication-feature__link">See the Fabrication Process <span aria-hidden="true">→</span></a>
+          <a href="/porcelain-fabrication-london/" class="text-link fabrication-feature__link">See How It’s Made <span aria-hidden="true">→</span></a>
         </div>
 
         <div class="fabrication-feature__gallery" data-reveal="media" aria-label="Ciel sink workshop views and fabrication details">
@@ -858,7 +858,8 @@
         Click a sink photo → it lifts into the window.
         Click again (or Esc) → it settles back.
   ─────────────────────────────────────────────── */
-  const zoomables = document.querySelectorAll('.sinks__photo, .sinks__strip-photo');
+  const zoomableSelector = '.sinks__photo, .sinks__strip-photo, .fabrication-feature__media img';
+  const zoomables = document.querySelectorAll(zoomableSelector);
   if (zoomables.length) {
     let active = null;
 
@@ -990,7 +991,7 @@
       document.body.appendChild(zoomCursor);
 
       const moveZoomCursor = (event) => {
-        const target = event.target.closest('.sinks__photo, .sinks__strip-photo');
+        const target = event.target.closest(zoomableSelector);
         if (!target || active) {
           zoomCursor.classList.remove('is-visible');
           return;
