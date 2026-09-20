@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   ARTILING STUDIO — main.js
+   ARTILING STUDIO: main.js
    Restrained, premium interactions only.
    ═══════════════════════════════════════════════════════════════════ */
 
@@ -179,12 +179,12 @@
        lightbox modals all use the same project names. */
     const conceptTitles = {};
     const conceptDescriptions = {
-      'soft-stone-double-vanity': 'A soft stone vanity direction with made-to-measure proportions, floating lines and calm porcelain surface detail.',
+      'soft-stone-double-vanity': 'A soft stone vanity direction with bespoke proportions, floating lines and porcelain surface detail.',
       'calacatta-gold-bespoke-bathroom': 'An integrated vanity layout with warm porcelain finishes, storage lines and mitred edge detailing.',
     };
     const conceptAltText = [
       'Studio preview of a bespoke porcelain sink with mitred edges',
-      'Made-to-measure porcelain vanity sink preview',
+      'Porcelain vanity sink preview',
       'Porcelain basin study inspired by real fabrication work',
     ];
     const selectedProjectSlugs = [
@@ -261,7 +261,7 @@
           <div>
             <h3><a class="selected-work__title-action" href="/projects/${escapeHtml(project.slug)}/">${escapeHtml(selectedWorkTitles[project.slug] || project.title)}</a></h3>
             <p>${escapeHtml(selectedWorkDescriptions[project.slug] || project.category || project.descriptor)}</p>
-            <a class="selected-work__view" href="/projects/${escapeHtml(project.slug)}/">View project <span aria-hidden="true">→</span></a>
+            <a class="selected-work__view" href="/projects/${escapeHtml(project.slug)}/">View project <span aria-hidden="true"></span></a>
           </div>
         </div>
       </article>
@@ -291,8 +291,11 @@
       const parts = [project.scope || project.category || project.descriptor, project.location].filter(Boolean);
       return parts.join(' · ');
     };
+    const selectedProjectDescriptions = {
+      'onyx-frame-porcelain-vanity': 'A made-to-measure porcelain vanity with push-to-open drawers, mitred edges and bronze wall-mounted taps, fitted to the bathroom layout.',
+    };
     const selectedProjectDescriptionFor = (project) =>
-      project.seoDescription || project.summary || project.descriptor || '';
+      selectedProjectDescriptions[project.slug] || project.seoDescription || project.summary || project.descriptor || '';
     const renderSelectedProject = (project, index) => {
       const description = `<p class="home-selected-project__description">${escapeHtml(selectedProjectDescriptionFor(project))}</p>`;
 
@@ -308,7 +311,7 @@
               <p class="home-selected-project__meta">${escapeHtml(selectedProjectMetaFor(project))}</p>
               ${description}
             </div>
-            <a class="home-selected-project__link" href="/projects/${escapeHtml(project.slug)}/">View project <span aria-hidden="true">→</span></a>
+            <a class="home-selected-project__link" href="/projects/${escapeHtml(project.slug)}/">View project <span aria-hidden="true"></span></a>
           </div>
         </article>
       `;
@@ -324,8 +327,8 @@
       <section class="fabrication-feature" aria-labelledby="fabrication-feature-title">
         <div class="fabrication-feature__copy" data-reveal="copy">
           <p class="eyebrow">Porcelain Fabrication</p>
-          <h2 id="fabrication-feature-title"><span>Made in the workshop.</span><span>Resolved before installation.</span></h2>
-          <p class="fabrication-feature__intro">Every basin is cut, mitred and dry-fitted before installation. The visible edge is only part of the work &mdash; the slope, drainage and internal geometry are resolved before the first cut.</p>
+          <h2 id="fabrication-feature-title"><span>Porcelain sink fabrication</span><span>in the workshop.</span></h2>
+          <p class="fabrication-feature__intro">Every basin is cut, mitred and dry-fitted before installation. The visible edge is only part of the work. The slope, drainage and internal geometry are resolved before the first cut.</p>
 
           <ol class="fabrication-feature__points">
             <li>
@@ -351,7 +354,7 @@
             </li>
           </ol>
 
-          <a href="/porcelain-fabrication-london/" class="text-link fabrication-feature__link">See How It’s Made <span aria-hidden="true">→</span></a>
+          <a href="/porcelain-fabrication-london/" class="text-link fabrication-feature__link">See How It’s Made <span aria-hidden="true"></span></a>
         </div>
 
         <div class="fabrication-feature__gallery" data-reveal="media" aria-label="Ciel sink workshop views and fabrication details">
@@ -855,8 +858,8 @@
 
   /* ──────────────────────────────────────────────
      7. Sink photo zoom (FLIP lightbox)
-        Click a sink photo → it lifts into the window.
-        Click again (or Esc) → it settles back.
+        Click a sink photo to lift it into the window.
+        Click again or press Esc to settle it back.
   ─────────────────────────────────────────────── */
   const zoomableSelector = '.sinks__photo, .sinks__strip-photo, .fabrication-feature__media img';
   const zoomables = document.querySelectorAll(zoomableSelector);
